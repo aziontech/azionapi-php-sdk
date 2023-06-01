@@ -1,0 +1,140 @@
+# edgenode
+
+Azion Orchestration
+
+
+## Installation & Usage
+
+### Requirements
+
+PHP 7.4 and later.
+Should also work with PHP 8.0.
+
+### Composer
+
+To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+    }
+  ],
+  "require": {
+    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
+  }
+}
+```
+
+Then run `composer install`
+
+### Manual Installation
+
+Download the files and include `autoload.php`:
+
+```php
+<?php
+require_once('/path/to/edgenode/vendor/autoload.php');
+```
+
+## Getting Started
+
+Please follow the [installation procedure](#installation--usage) and then run the following:
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+
+// Configure API key authorization: bearerAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$authorize_edge_nodes_request = new \OpenAPI\Client\Model\AuthorizeEdgeNodesRequest(); // \OpenAPI\Client\Model\AuthorizeEdgeNodesRequest
+
+try {
+    $result = $apiInstance->authorizeEdgeNode($authorize_edge_nodes_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->authorizeEdgeNode: ', $e->getMessage(), PHP_EOL;
+}
+
+```
+
+## API Endpoints
+
+All URIs are relative to *http://localhost:3001*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**authorizeEdgeNode**](docs/Api/DefaultApi.md#authorizeedgenode) | **PATCH** /edge_nodes/authorize | Authorize edge-node
+*DefaultApi* | [**createEdgeNodeSvcs**](docs/Api/DefaultApi.md#createedgenodesvcs) | **POST** /edge_nodes/{edgenodeId}/services | Create an edge-node Service association
+*DefaultApi* | [**delEdgeNode**](docs/Api/DefaultApi.md#deledgenode) | **DELETE** /edge_nodes/{edgenodeId} | Delete edge-node by ID
+*DefaultApi* | [**delEdgeNodeSvc**](docs/Api/DefaultApi.md#deledgenodesvc) | **DELETE** /edge_nodes/{edgenodeId}/services/{bindId} | Delete an edge-node Service association
+*DefaultApi* | [**getEdgeNode**](docs/Api/DefaultApi.md#getedgenode) | **GET** /edge_nodes/{edgenodeId} | Return edge-node by ID
+*DefaultApi* | [**getEdgeNodeGroups**](docs/Api/DefaultApi.md#getedgenodegroups) | **GET** /edge_nodes/groups | Return edge-node groups
+*DefaultApi* | [**getEdgeNodeSvcDetail**](docs/Api/DefaultApi.md#getedgenodesvcdetail) | **GET** /edge_nodes/{edgenodeId}/services/{bindId} | Return edge-node Service association by ID
+*DefaultApi* | [**getEdgeNodeSvcs**](docs/Api/DefaultApi.md#getedgenodesvcs) | **GET** /edge_nodes/{edgenodeId}/services | Return edge-node Services association
+*DefaultApi* | [**getEdgeNodes**](docs/Api/DefaultApi.md#getedgenodes) | **GET** /edge_nodes | Return edge-nodes
+*DefaultApi* | [**updateEdgeNode**](docs/Api/DefaultApi.md#updateedgenode) | **PATCH** /edge_nodes/{edgenodeId} | Update edge-node
+*DefaultApi* | [**updateEdgeNodeSvcDetail**](docs/Api/DefaultApi.md#updateedgenodesvcdetail) | **PATCH** /edge_nodes/{edgenodeId}/services/{bindId} | Update edge-node Service association by ID
+
+## Models
+
+- [AuthorizeEdgeNodesRequest](docs/Model/AuthorizeEdgeNodesRequest.md)
+- [AuthorizeEdgeNodesResponse](docs/Model/AuthorizeEdgeNodesResponse.md)
+- [EdgeNodeDetailResponse](docs/Model/EdgeNodeDetailResponse.md)
+- [EdgeNodeModules](docs/Model/EdgeNodeModules.md)
+- [EdgeNodeResponse](docs/Model/EdgeNodeResponse.md)
+- [EdgeNodeResponseWithTotal](docs/Model/EdgeNodeResponseWithTotal.md)
+- [NodeGroup](docs/Model/NodeGroup.md)
+- [NodeGroupResponse](docs/Model/NodeGroupResponse.md)
+- [ServiceBindDetailResponse](docs/Model/ServiceBindDetailResponse.md)
+- [ServiceBindRequest](docs/Model/ServiceBindRequest.md)
+- [ServiceResponse](docs/Model/ServiceResponse.md)
+- [ServiceResponseWithTotal](docs/Model/ServiceResponseWithTotal.md)
+- [UnauthorizedEdgeNodeInfo](docs/Model/UnauthorizedEdgeNodeInfo.md)
+- [UpdateEdgeNodeResponse](docs/Model/UpdateEdgeNodeResponse.md)
+- [UpdateServiceBindRequest](docs/Model/UpdateServiceBindRequest.md)
+- [Variable](docs/Model/Variable.md)
+
+## Authorization
+
+Authentication schemes defined for the API:
+### bearerAuth
+
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
+
+## Tests
+
+To run the tests, use:
+
+```bash
+composer install
+vendor/bin/phpunit
+```
+
+## Author
+
+
+
+## About this package
+
+This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
+
+- API version: `2.0.0`
+- Build package: `org.openapitools.codegen.languages.PhpClientCodegen`
