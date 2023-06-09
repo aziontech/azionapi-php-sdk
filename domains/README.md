@@ -155,8 +155,6 @@ dXNlckBkb21haW46cGFzc3dvcmQK
 
 ```
 
-If you do not have a Unix terminal available, you can use the free online service at [https://www.base64encode.org/](https://www.base64encode.org/)
-
 
 ## Installation & Usage
 
@@ -204,7 +202,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -239,8 +237,8 @@ Class | Method | HTTP request | Description
 *DomainsApi* | [**delDomain**](docs/Api/DomainsApi.md#deldomain) | **DELETE** /domains/{id} | /domains/:id
 *DomainsApi* | [**getDomain**](docs/Api/DomainsApi.md#getdomain) | **GET** /domains/{id} | /domains/:id
 *DomainsApi* | [**getDomains**](docs/Api/DomainsApi.md#getdomains) | **GET** /domains | /domains
-*DomainsApi* | [**putDomain**](docs/Api/DomainsApi.md#putdomain) | **PUT** /domains/{domain_id} | /domains:/:domain_id
-*DomainsApi* | [**updateDomain**](docs/Api/DomainsApi.md#updatedomain) | **PATCH** /domains/{domain_id} | /domains/:domain_id
+*DomainsApi* | [**putDomain**](docs/Api/DomainsApi.md#putdomain) | **PUT** /domains/{id} | /domains:/:id
+*DomainsApi* | [**updateDomain**](docs/Api/DomainsApi.md#updatedomain) | **PATCH** /domains/{id} | /domains/:id
 
 ## Models
 
@@ -254,7 +252,8 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 
-### JWT
+Authentication schemes defined for the API:
+### tokenAuth
 
 - **Type**: API key
 - **API key parameter name**: Authorization

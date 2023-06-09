@@ -49,8 +49,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -103,9 +105,12 @@ Class | Method | HTTP request | Description
 ## Authorization
 
 Authentication schemes defined for the API:
-### bearerAuth
+### tokenAuth
 
-- **Type**: Bearer authentication
+- **Type**: API key
+- **API key parameter name**: Authorization
+- **Location**: HTTP header
+
 
 ## Tests
 
