@@ -27,7 +27,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdDelete($edge_applicati
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -64,7 +64,7 @@ void (empty response body)
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -90,7 +90,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdGet($edge_application_
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -128,7 +128,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -154,7 +154,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPatch($edge_applicatio
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -196,7 +196,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -222,7 +222,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsDeviceGroupIdPut($edge_application_
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -264,7 +264,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -290,7 +290,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsGet($edge_application_id, $page, $p
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -336,7 +336,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -362,7 +362,7 @@ edgeApplicationsEdgeApplicationIdDeviceGroupsPost($edge_application_id, $accept,
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -402,7 +402,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

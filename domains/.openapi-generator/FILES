@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -27,11 +26,3 @@ lib/Model/PutDomainRequest.php
 lib/Model/UpdateDomainRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/DomainsApiTest.php
-test/Model/CreateDomainRequestTest.php
-test/Model/DomainLinksTest.php
-test/Model/DomainResponseWithResultTest.php
-test/Model/DomainResponseWithResultsTest.php
-test/Model/DomainResultsTest.php
-test/Model/PutDomainRequestTest.php
-test/Model/UpdateDomainRequestTest.php

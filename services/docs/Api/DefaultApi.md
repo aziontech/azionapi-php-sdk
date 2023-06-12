@@ -31,8 +31,10 @@ Delete Service Resource by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -64,7 +66,7 @@ void (empty response body)
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -90,8 +92,10 @@ Delete Service by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -121,7 +125,7 @@ void (empty response body)
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -147,8 +151,10 @@ Return Service Resource by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -181,7 +187,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -207,8 +213,10 @@ Return Service Resources by page
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -249,7 +257,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -275,8 +283,10 @@ Return Service by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -309,7 +319,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -335,8 +345,10 @@ Return Services by page
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -375,7 +387,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -401,8 +413,10 @@ Create Service
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -433,7 +447,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -459,8 +473,10 @@ Update Service by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -493,7 +509,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -519,8 +535,10 @@ Update Service Resource by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -555,7 +573,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -581,8 +599,10 @@ Create Service Resource
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure Bearer authorization: bearerAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -615,7 +635,7 @@ try {
 
 ### Authorization
 
-[bearerAuth](../../README.md#bearerAuth)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

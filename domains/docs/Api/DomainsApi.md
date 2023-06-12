@@ -8,8 +8,8 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 | [**delDomain()**](DomainsApi.md#delDomain) | **DELETE** /domains/{id} | /domains/:id |
 | [**getDomain()**](DomainsApi.md#getDomain) | **GET** /domains/{id} | /domains/:id |
 | [**getDomains()**](DomainsApi.md#getDomains) | **GET** /domains | /domains |
-| [**putDomain()**](DomainsApi.md#putDomain) | **PUT** /domains/{domain_id} | /domains:/:domain_id |
-| [**updateDomain()**](DomainsApi.md#updateDomain) | **PATCH** /domains/{domain_id} | /domains/:domain_id |
+| [**putDomain()**](DomainsApi.md#putDomain) | **PUT** /domains/{id} | /domains:/:id |
+| [**updateDomain()**](DomainsApi.md#updateDomain) | **PATCH** /domains/{id} | /domains/:id |
 
 
 ## `createDomain()`
@@ -29,7 +29,7 @@ It enables you to include a new domain into an account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -67,7 +67,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -95,7 +95,7 @@ It enables you to delete a domain.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -130,7 +130,7 @@ void (empty response body)
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -158,7 +158,7 @@ It returns details of a domain.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -194,7 +194,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -208,7 +208,7 @@ try {
 ## `getDomains()`
 
 ```php
-getDomains($page, $page_size, $filter, $order_by, $sort, $accept): \OpenAPI\Client\Model\DomainResponseWithResults
+getDomains($accept): \OpenAPI\Client\Model\DomainResponseWithResults
 ```
 
 /domains
@@ -222,7 +222,7 @@ It returns the list of domains of an account.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -234,15 +234,10 @@ $apiInstance = new OpenAPI\Client\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 56; // int
-$page_size = 56; // int
-$filter = 'filter_example'; // string
-$order_by = 'order_by_example'; // string
-$sort = 'sort_example'; // string
 $accept = application/json; version=3; // string
 
 try {
-    $result = $apiInstance->getDomains($page, $page_size, $filter, $order_by, $sort, $accept);
+    $result = $apiInstance->getDomains($accept);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->getDomains: ', $e->getMessage(), PHP_EOL;
@@ -253,11 +248,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
-| **filter** | **string**|  | [optional] |
-| **order_by** | **string**|  | [optional] |
-| **sort** | **string**|  | [optional] |
 | **accept** | **string**|  | [optional] |
 
 ### Return type
@@ -266,7 +256,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -280,10 +270,10 @@ try {
 ## `putDomain()`
 
 ```php
-putDomain($domain_id, $accept, $content_type, $put_domain_request): \OpenAPI\Client\Model\DomainResponseWithResult
+putDomain($id, $accept, $content_type, $put_domain_request): \OpenAPI\Client\Model\DomainResponseWithResult
 ```
 
-/domains:/:domain_id
+/domains:/:id
 
 It overwrites all fields of a domain, while preserving the id. Optional fields not filled in will be replaced by the default values.  To update only some fields in a domain, consider using the PATCH method instead of PUT.
 
@@ -294,7 +284,7 @@ It overwrites all fields of a domain, while preserving the id. Optional fields n
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -306,13 +296,13 @@ $apiInstance = new OpenAPI\Client\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 'domain_id_example'; // string
+$id = 'id_example'; // string
 $accept = application/json; version=3; // string
 $content_type = application/json; // string
 $put_domain_request = new \OpenAPI\Client\Model\PutDomainRequest(); // \OpenAPI\Client\Model\PutDomainRequest
 
 try {
-    $result = $apiInstance->putDomain($domain_id, $accept, $content_type, $put_domain_request);
+    $result = $apiInstance->putDomain($id, $accept, $content_type, $put_domain_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->putDomain: ', $e->getMessage(), PHP_EOL;
@@ -323,7 +313,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **string**|  | |
+| **id** | **string**|  | |
 | **accept** | **string**|  | [optional] |
 | **content_type** | **string**|  | [optional] |
 | **put_domain_request** | [**\OpenAPI\Client\Model\PutDomainRequest**](../Model/PutDomainRequest.md)|  | [optional] |
@@ -334,7 +324,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -348,10 +338,10 @@ try {
 ## `updateDomain()`
 
 ```php
-updateDomain($domain_id, $accept, $content_type, $update_domain_request): \OpenAPI\Client\Model\DomainResponseWithResult
+updateDomain($id, $accept, $content_type, $update_domain_request): \OpenAPI\Client\Model\DomainResponseWithResult
 ```
 
-/domains/:domain_id
+/domains/:id
 
 It updates one or more fields in a Domain, preserving the value of the fields not informed.
 
@@ -362,7 +352,7 @@ It updates one or more fields in a Domain, preserving the value of the fields no
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -374,13 +364,13 @@ $apiInstance = new OpenAPI\Client\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 'domain_id_example'; // string
+$id = 'id_example'; // string
 $accept = application/json; version=3; // string
 $content_type = application/json; // string
 $update_domain_request = new \OpenAPI\Client\Model\UpdateDomainRequest(); // \OpenAPI\Client\Model\UpdateDomainRequest
 
 try {
-    $result = $apiInstance->updateDomain($domain_id, $accept, $content_type, $update_domain_request);
+    $result = $apiInstance->updateDomain($id, $accept, $content_type, $update_domain_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->updateDomain: ', $e->getMessage(), PHP_EOL;
@@ -391,7 +381,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **string**|  | |
+| **id** | **string**|  | |
 | **accept** | **string**|  | [optional] |
 | **content_type** | **string**|  | [optional] |
 | **update_domain_request** | [**\OpenAPI\Client\Model\UpdateDomainRequest**](../Model/UpdateDomainRequest.md)|  | [optional] |
@@ -402,7 +392,7 @@ try {
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

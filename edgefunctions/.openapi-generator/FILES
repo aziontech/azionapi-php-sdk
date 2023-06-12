@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -33,14 +32,3 @@ lib/Model/PutEdgeFunctionRequest.php
 lib/Model/Results.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/EdgeFunctionsApiTest.php
-test/Model/BadRequestResponseTest.php
-test/Model/CreateEdgeFunctionRequestTest.php
-test/Model/EdgeFunctionResponseTest.php
-test/Model/ErrorModelTest.php
-test/Model/ErrorResponseTest.php
-test/Model/LinksTest.php
-test/Model/ListEdgeFunctionResponseTest.php
-test/Model/PatchEdgeFunctionRequestTest.php
-test/Model/PutEdgeFunctionRequestTest.php
-test/Model/ResultsTest.php
