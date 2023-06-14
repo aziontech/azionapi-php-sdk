@@ -985,6 +985,10 @@ class DomainsApi
      *
      * /domains
      *
+     * @param  int $page page (optional)
+     * @param  int $page_size page_size (optional)
+     * @param  string $sort sort (optional)
+     * @param  string $order_by order_by (optional)
      * @param  string $accept accept (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomains'] to see the possible values for this operation
      *
@@ -992,9 +996,9 @@ class DomainsApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\DomainResponseWithResults
      */
-    public function getDomains($accept = null, string $contentType = self::contentTypes['getDomains'][0])
+    public function getDomains($page = null, $page_size = null, $sort = null, $order_by = null, $accept = null, string $contentType = self::contentTypes['getDomains'][0])
     {
-        list($response) = $this->getDomainsWithHttpInfo($accept, $contentType);
+        list($response) = $this->getDomainsWithHttpInfo($page, $page_size, $sort, $order_by, $accept, $contentType);
         return $response;
     }
 
@@ -1003,6 +1007,10 @@ class DomainsApi
      *
      * /domains
      *
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $accept (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomains'] to see the possible values for this operation
      *
@@ -1010,9 +1018,9 @@ class DomainsApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\DomainResponseWithResults, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDomainsWithHttpInfo($accept = null, string $contentType = self::contentTypes['getDomains'][0])
+    public function getDomainsWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, $accept = null, string $contentType = self::contentTypes['getDomains'][0])
     {
-        $request = $this->getDomainsRequest($accept, $contentType);
+        $request = $this->getDomainsRequest($page, $page_size, $sort, $order_by, $accept, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1103,15 +1111,19 @@ class DomainsApi
      *
      * /domains
      *
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $accept (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainsAsync($accept = null, string $contentType = self::contentTypes['getDomains'][0])
+    public function getDomainsAsync($page = null, $page_size = null, $sort = null, $order_by = null, $accept = null, string $contentType = self::contentTypes['getDomains'][0])
     {
-        return $this->getDomainsAsyncWithHttpInfo($accept, $contentType)
+        return $this->getDomainsAsyncWithHttpInfo($page, $page_size, $sort, $order_by, $accept, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1124,16 +1136,20 @@ class DomainsApi
      *
      * /domains
      *
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $accept (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDomainsAsyncWithHttpInfo($accept = null, string $contentType = self::contentTypes['getDomains'][0])
+    public function getDomainsAsyncWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, $accept = null, string $contentType = self::contentTypes['getDomains'][0])
     {
         $returnType = '\OpenAPI\Client\Model\DomainResponseWithResults';
-        $request = $this->getDomainsRequest($accept, $contentType);
+        $request = $this->getDomainsRequest($page, $page_size, $sort, $order_by, $accept, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1174,14 +1190,22 @@ class DomainsApi
     /**
      * Create request for operation 'getDomains'
      *
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $accept (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDomainsRequest($accept = null, string $contentType = self::contentTypes['getDomains'][0])
+    public function getDomainsRequest($page = null, $page_size = null, $sort = null, $order_by = null, $accept = null, string $contentType = self::contentTypes['getDomains'][0])
     {
+
+
+
+
 
 
 
@@ -1192,6 +1216,42 @@ class DomainsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
         // header params
         if ($accept !== null) {

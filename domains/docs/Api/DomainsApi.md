@@ -208,7 +208,7 @@ try {
 ## `getDomains()`
 
 ```php
-getDomains($accept): \OpenAPI\Client\Model\DomainResponseWithResults
+getDomains($page, $page_size, $sort, $order_by, $accept): \OpenAPI\Client\Model\DomainResponseWithResults
 ```
 
 /domains
@@ -234,10 +234,14 @@ $apiInstance = new OpenAPI\Client\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$page = 56; // int
+$page_size = 56; // int
+$sort = 'sort_example'; // string
+$order_by = 'order_by_example'; // string
 $accept = application/json; version=3; // string
 
 try {
-    $result = $apiInstance->getDomains($accept);
+    $result = $apiInstance->getDomains($page, $page_size, $sort, $order_by, $accept);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->getDomains: ', $e->getMessage(), PHP_EOL;
@@ -248,6 +252,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **page** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] |
+| **sort** | **string**|  | [optional] |
+| **order_by** | **string**|  | [optional] |
 | **accept** | **string**|  | [optional] |
 
 ### Return type
