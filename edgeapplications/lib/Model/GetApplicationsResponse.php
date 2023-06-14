@@ -61,7 +61,7 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'int',
         'schema_version' => 'int',
         'links' => '\OpenAPI\Client\Model\ApplicationLinks',
-        'results' => '\OpenAPI\Client\Model\ApplicationResults[]'
+        'results' => '\OpenAPI\Client\Model\ApplicationsResults[]'
     ];
 
     /**
@@ -443,7 +443,7 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets results
      *
-     * @return \OpenAPI\Client\Model\ApplicationResults[]
+     * @return \OpenAPI\Client\Model\ApplicationsResults[]
      */
     public function getResults()
     {
@@ -453,7 +453,7 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets results
      *
-     * @param \OpenAPI\Client\Model\ApplicationResults[] $results results
+     * @param \OpenAPI\Client\Model\ApplicationsResults[] $results results
      *
      * @return self
      */

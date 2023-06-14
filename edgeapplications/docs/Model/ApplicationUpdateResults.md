@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **id** | **int** |  |
 **name** | **string** |  |
 **delivery_protocol** | **string** |  |
-**http_port** | [**Interface**](Interface.md) |  |
-**https_port** | [**Interface**](Interface.md) |  |
+**http_port** | **mixed** |  |
+**https_port** | **mixed** |  |
 **minimum_tls_version** | **string** |  |
 **active** | **bool** |  |
 **application_acceleration** | **bool** |  |
