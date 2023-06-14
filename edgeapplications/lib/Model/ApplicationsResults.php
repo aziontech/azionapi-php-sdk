@@ -58,9 +58,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'id' => 'int',
-        'next' => 'string',
+        'name' => 'string',
+        'debug_rules' => 'string',
+        'last_editor' => 'string',
+        'last_modified' => 'string',
         'active' => 'bool',
-        'links' => '\OpenAPI\Client\Model\ApplicationOrigins'
+        'origins' => '\OpenAPI\Client\Model\ApplicationOrigins[]'
     ];
 
     /**
@@ -72,9 +75,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'id' => 'int64',
-        'next' => null,
+        'name' => null,
+        'debug_rules' => null,
+        'last_editor' => null,
+        'last_modified' => null,
         'active' => null,
-        'links' => null
+        'origins' => null
     ];
 
     /**
@@ -84,9 +90,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'id' => false,
-		'next' => false,
+		'name' => false,
+		'debug_rules' => false,
+		'last_editor' => false,
+		'last_modified' => false,
 		'active' => false,
-		'links' => false
+		'origins' => false
     ];
 
     /**
@@ -176,9 +185,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'next' => 'next',
+        'name' => 'name',
+        'debug_rules' => 'debug_rules',
+        'last_editor' => 'last_editor',
+        'last_modified' => 'last_modified',
         'active' => 'active',
-        'links' => 'links'
+        'origins' => 'origins'
     ];
 
     /**
@@ -188,9 +200,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'id' => 'setId',
-        'next' => 'setNext',
+        'name' => 'setName',
+        'debug_rules' => 'setDebugRules',
+        'last_editor' => 'setLastEditor',
+        'last_modified' => 'setLastModified',
         'active' => 'setActive',
-        'links' => 'setLinks'
+        'origins' => 'setOrigins'
     ];
 
     /**
@@ -200,9 +215,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'id' => 'getId',
-        'next' => 'getNext',
+        'name' => 'getName',
+        'debug_rules' => 'getDebugRules',
+        'last_editor' => 'getLastEditor',
+        'last_modified' => 'getLastModified',
         'active' => 'getActive',
-        'links' => 'getLinks'
+        'origins' => 'getOrigins'
     ];
 
     /**
@@ -263,9 +281,12 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('last_editor', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
+        $this->setIfExists('origins', $data ?? [], null);
     }
 
     /**
@@ -295,9 +316,6 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['next'] === null) {
-            $invalidProperties[] = "'next' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -341,28 +359,109 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets next
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getNext()
+    public function getName()
     {
-        return $this->container['next'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets next
+     * Sets name
      *
-     * @param string $next next
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setNext($next)
+    public function setName($name)
     {
-        if (is_null($next)) {
-            throw new \InvalidArgumentException('non-nullable next cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['next'] = $next;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return string|null
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param string|null $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_editor
+     *
+     * @return string|null
+     */
+    public function getLastEditor()
+    {
+        return $this->container['last_editor'];
+    }
+
+    /**
+     * Sets last_editor
+     *
+     * @param string|null $last_editor last_editor
+     *
+     * @return self
+     */
+    public function setLastEditor($last_editor)
+    {
+        if (is_null($last_editor)) {
+            throw new \InvalidArgumentException('non-nullable last_editor cannot be null');
+        }
+        $this->container['last_editor'] = $last_editor;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return string|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param string|null $last_modified last_modified
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
+        }
+        $this->container['last_modified'] = $last_modified;
 
         return $this;
     }
@@ -395,28 +494,28 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets links
+     * Gets origins
      *
-     * @return \OpenAPI\Client\Model\ApplicationOrigins|null
+     * @return \OpenAPI\Client\Model\ApplicationOrigins[]|null
      */
-    public function getLinks()
+    public function getOrigins()
     {
-        return $this->container['links'];
+        return $this->container['origins'];
     }
 
     /**
-     * Sets links
+     * Sets origins
      *
-     * @param \OpenAPI\Client\Model\ApplicationOrigins|null $links links
+     * @param \OpenAPI\Client\Model\ApplicationOrigins[]|null $origins origins
      *
      * @return self
      */
-    public function setLinks($links)
+    public function setOrigins($origins)
     {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        if (is_null($origins)) {
+            throw new \InvalidArgumentException('non-nullable origins cannot be null');
         }
-        $this->container['links'] = $links;
+        $this->container['origins'] = $origins;
 
         return $this;
     }

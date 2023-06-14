@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
 **delivery_protocol** | **string** |  | [optional]
-**http_port** | [**Interface**](Interface.md) |  | [optional]
-**https_port** | [**Interface**](Interface.md) |  | [optional]
+**http_port** | **mixed** |  | [optional]
+**https_port** | **mixed** |  | [optional]
 **minimum_tls_version** | **string** |  | [optional]
 **active** | **bool** |  | [optional]
 **application_acceleration** | **bool** |  | [optional]

@@ -59,8 +59,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'name' => 'string',
         'delivery_protocol' => 'string',
-        'http_port' => 'Interface',
-        'https_port' => 'Interface',
+        'http_port' => 'mixed',
+        'https_port' => 'mixed',
         'minimum_tls_version' => 'string',
         'active' => 'bool',
         'application_acceleration' => 'bool',
@@ -109,8 +109,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'name' => false,
 		'delivery_protocol' => false,
-		'http_port' => false,
-		'https_port' => false,
+		'http_port' => true,
+		'https_port' => true,
 		'minimum_tls_version' => false,
 		'active' => false,
 		'application_acceleration' => false,
@@ -451,7 +451,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets http_port
      *
-     * @return Interface|null
+     * @return mixed|null
      */
     public function getHttpPort()
     {
@@ -461,14 +461,21 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets http_port
      *
-     * @param Interface|null $http_port http_port
+     * @param mixed|null $http_port http_port
      *
      * @return self
      */
     public function setHttpPort($http_port)
     {
         if (is_null($http_port)) {
-            throw new \InvalidArgumentException('non-nullable http_port cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'http_port');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('http_port', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['http_port'] = $http_port;
 
@@ -478,7 +485,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets https_port
      *
-     * @return Interface|null
+     * @return mixed|null
      */
     public function getHttpsPort()
     {
@@ -488,14 +495,21 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets https_port
      *
-     * @param Interface|null $https_port https_port
+     * @param mixed|null $https_port https_port
      *
      * @return self
      */
     public function setHttpsPort($https_port)
     {
         if (is_null($https_port)) {
-            throw new \InvalidArgumentException('non-nullable https_port cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'https_port');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('https_port', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['https_port'] = $https_port;
 
