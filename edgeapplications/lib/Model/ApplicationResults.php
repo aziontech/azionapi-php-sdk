@@ -59,8 +59,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
-        'next' => 'string',
         'active' => 'bool',
+        'debug_rules' => 'bool',
+        'http3' => 'bool',
         'delivery_protocol' => 'string',
         'http_port' => 'mixed',
         'https_port' => 'mixed',
@@ -87,8 +88,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'id' => 'int64',
         'name' => null,
-        'next' => null,
         'active' => null,
+        'debug_rules' => null,
+        'http3' => null,
         'delivery_protocol' => null,
         'http_port' => null,
         'https_port' => null,
@@ -113,8 +115,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
-		'next' => false,
 		'active' => false,
+		'debug_rules' => false,
+		'http3' => false,
 		'delivery_protocol' => false,
 		'http_port' => true,
 		'https_port' => true,
@@ -219,8 +222,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'next' => 'next',
         'active' => 'active',
+        'debug_rules' => 'debug_rules',
+        'http3' => 'http3',
         'delivery_protocol' => 'delivery_protocol',
         'http_port' => 'http_port',
         'https_port' => 'https_port',
@@ -245,8 +249,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'next' => 'setNext',
         'active' => 'setActive',
+        'debug_rules' => 'setDebugRules',
+        'http3' => 'setHttp3',
         'delivery_protocol' => 'setDeliveryProtocol',
         'http_port' => 'setHttpPort',
         'https_port' => 'setHttpsPort',
@@ -271,8 +276,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'next' => 'getNext',
         'active' => 'getActive',
+        'debug_rules' => 'getDebugRules',
+        'http3' => 'getHttp3',
         'delivery_protocol' => 'getDeliveryProtocol',
         'http_port' => 'getHttpPort',
         'https_port' => 'getHttpsPort',
@@ -348,8 +354,9 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('next', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('http3', $data ?? [], null);
         $this->setIfExists('delivery_protocol', $data ?? [], null);
         $this->setIfExists('http_port', $data ?? [], null);
         $this->setIfExists('https_port', $data ?? [], null);
@@ -401,6 +408,12 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['debug_rules'] === null) {
+            $invalidProperties[] = "'debug_rules' can't be null";
+        }
+        if ($this->container['http3'] === null) {
+            $invalidProperties[] = "'http3' can't be null";
         }
         if ($this->container['delivery_protocol'] === null) {
             $invalidProperties[] = "'delivery_protocol' can't be null";
@@ -514,33 +527,6 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets next
-     *
-     * @return string|null
-     */
-    public function getNext()
-    {
-        return $this->container['next'];
-    }
-
-    /**
-     * Sets next
-     *
-     * @param string|null $next next
-     *
-     * @return self
-     */
-    public function setNext($next)
-    {
-        if (is_null($next)) {
-            throw new \InvalidArgumentException('non-nullable next cannot be null');
-        }
-        $this->container['next'] = $next;
-
-        return $this;
-    }
-
-    /**
      * Gets active
      *
      * @return bool
@@ -563,6 +549,60 @@ class ApplicationResults implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return bool
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param bool $http3 http3
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        if (is_null($http3)) {
+            throw new \InvalidArgumentException('non-nullable http3 cannot be null');
+        }
+        $this->container['http3'] = $http3;
 
         return $this;
     }

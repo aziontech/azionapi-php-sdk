@@ -6,8 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  |
 **name** | **string** |  |
-**next** | **string** |  | [optional]
 **active** | **bool** |  |
+**debug_rules** | **bool** |  |
+**http3** | **bool** |  |
 **delivery_protocol** | **string** |  |
 **http_port** | **mixed** |  |
 **https_port** | **mixed** |  |
