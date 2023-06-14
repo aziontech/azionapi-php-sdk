@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional]
 **name** | **string** |  | [optional]
-**debug_rules** | **string** |  | [optional]
+**debug_rules** | **bool** |  | [optional]
 **last_editor** | **string** |  | [optional]
 **last_modified** | **string** |  | [optional]
 **active** | **bool** |  | [optional]

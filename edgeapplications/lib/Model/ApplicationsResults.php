@@ -59,7 +59,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
-        'debug_rules' => 'string',
+        'debug_rules' => 'bool',
         'last_editor' => 'string',
         'last_modified' => 'string',
         'active' => 'bool',
@@ -388,7 +388,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets debug_rules
      *
-     * @return string|null
+     * @return bool|null
      */
     public function getDebugRules()
     {
@@ -398,7 +398,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets debug_rules
      *
-     * @param string|null $debug_rules debug_rules
+     * @param bool|null $debug_rules debug_rules
      *
      * @return self
      */
