@@ -7,6 +7,9 @@ Name | Type | Description | Notes
 **id** | **int** |  |
 **name** | **string** |  |
 **active** | **bool** |  |
+**debug_rules** | **bool** |  |
+**http3** | **bool** |  |
+**supported_ciphers** | **string** |  |
 **delivery_protocol** | **string** |  |
 **http_port** | **mixed** |  |
 **https_port** | **mixed** |  |

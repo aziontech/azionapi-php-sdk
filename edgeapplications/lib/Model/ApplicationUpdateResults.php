@@ -64,6 +64,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'mixed',
         'minimum_tls_version' => 'string',
         'active' => 'bool',
+        'debug_rules' => 'bool',
+        'http3' => 'bool',
+        'supported_ciphers' => 'string',
         'application_acceleration' => 'bool',
         'caching' => 'bool',
         'device_detection' => 'bool',
@@ -91,6 +94,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => null,
         'minimum_tls_version' => null,
         'active' => null,
+        'debug_rules' => null,
+        'http3' => null,
+        'supported_ciphers' => null,
         'application_acceleration' => null,
         'caching' => null,
         'device_detection' => null,
@@ -116,6 +122,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
 		'https_port' => true,
 		'minimum_tls_version' => false,
 		'active' => false,
+		'debug_rules' => false,
+		'http3' => false,
+		'supported_ciphers' => false,
 		'application_acceleration' => false,
 		'caching' => false,
 		'device_detection' => false,
@@ -221,6 +230,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'https_port',
         'minimum_tls_version' => 'minimum_tls_version',
         'active' => 'active',
+        'debug_rules' => 'debug_rules',
+        'http3' => 'http3',
+        'supported_ciphers' => 'supported_ciphers',
         'application_acceleration' => 'application_acceleration',
         'caching' => 'caching',
         'device_detection' => 'device_detection',
@@ -246,6 +258,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'setHttpsPort',
         'minimum_tls_version' => 'setMinimumTlsVersion',
         'active' => 'setActive',
+        'debug_rules' => 'setDebugRules',
+        'http3' => 'setHttp3',
+        'supported_ciphers' => 'setSupportedCiphers',
         'application_acceleration' => 'setApplicationAcceleration',
         'caching' => 'setCaching',
         'device_detection' => 'setDeviceDetection',
@@ -271,6 +286,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'getHttpsPort',
         'minimum_tls_version' => 'getMinimumTlsVersion',
         'active' => 'getActive',
+        'debug_rules' => 'getDebugRules',
+        'http3' => 'getHttp3',
+        'supported_ciphers' => 'getSupportedCiphers',
         'application_acceleration' => 'getApplicationAcceleration',
         'caching' => 'getCaching',
         'device_detection' => 'getDeviceDetection',
@@ -347,6 +365,9 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('https_port', $data ?? [], null);
         $this->setIfExists('minimum_tls_version', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('http3', $data ?? [], null);
+        $this->setIfExists('supported_ciphers', $data ?? [], null);
         $this->setIfExists('application_acceleration', $data ?? [], null);
         $this->setIfExists('caching', $data ?? [], null);
         $this->setIfExists('device_detection', $data ?? [], null);
@@ -406,6 +427,15 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['debug_rules'] === null) {
+            $invalidProperties[] = "'debug_rules' can't be null";
+        }
+        if ($this->container['http3'] === null) {
+            $invalidProperties[] = "'http3' can't be null";
+        }
+        if ($this->container['supported_ciphers'] === null) {
+            $invalidProperties[] = "'supported_ciphers' can't be null";
         }
         if ($this->container['application_acceleration'] === null) {
             $invalidProperties[] = "'application_acceleration' can't be null";
@@ -651,6 +681,87 @@ class ApplicationUpdateResults implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return bool
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param bool $http3 http3
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        if (is_null($http3)) {
+            throw new \InvalidArgumentException('non-nullable http3 cannot be null');
+        }
+        $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets supported_ciphers
+     *
+     * @return string
+     */
+    public function getSupportedCiphers()
+    {
+        return $this->container['supported_ciphers'];
+    }
+
+    /**
+     * Sets supported_ciphers
+     *
+     * @param string $supported_ciphers supported_ciphers
+     *
+     * @return self
+     */
+    public function setSupportedCiphers($supported_ciphers)
+    {
+        if (is_null($supported_ciphers)) {
+            throw new \InvalidArgumentException('non-nullable supported_ciphers cannot be null');
+        }
+        $this->container['supported_ciphers'] = $supported_ciphers;
 
         return $this;
     }

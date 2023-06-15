@@ -60,6 +60,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'int',
         'name' => 'string',
         'active' => 'bool',
+        'debug_rules' => 'bool',
+        'http3' => 'bool',
+        'supported_ciphers' => 'string',
         'delivery_protocol' => 'string',
         'http_port' => 'mixed',
         'https_port' => 'mixed',
@@ -86,6 +89,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'int64',
         'name' => null,
         'active' => null,
+        'debug_rules' => null,
+        'http3' => null,
+        'supported_ciphers' => null,
         'delivery_protocol' => null,
         'http_port' => null,
         'https_port' => null,
@@ -110,6 +116,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => false,
 		'name' => false,
 		'active' => false,
+		'debug_rules' => false,
+		'http3' => false,
+		'supported_ciphers' => false,
 		'delivery_protocol' => false,
 		'http_port' => true,
 		'https_port' => true,
@@ -214,6 +223,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'id',
         'name' => 'name',
         'active' => 'active',
+        'debug_rules' => 'debug_rules',
+        'http3' => 'http3',
+        'supported_ciphers' => 'supported_ciphers',
         'delivery_protocol' => 'delivery_protocol',
         'http_port' => 'http_port',
         'https_port' => 'https_port',
@@ -238,6 +250,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'setId',
         'name' => 'setName',
         'active' => 'setActive',
+        'debug_rules' => 'setDebugRules',
+        'http3' => 'setHttp3',
+        'supported_ciphers' => 'setSupportedCiphers',
         'delivery_protocol' => 'setDeliveryProtocol',
         'http_port' => 'setHttpPort',
         'https_port' => 'setHttpsPort',
@@ -262,6 +277,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'id' => 'getId',
         'name' => 'getName',
         'active' => 'getActive',
+        'debug_rules' => 'getDebugRules',
+        'http3' => 'getHttp3',
+        'supported_ciphers' => 'getSupportedCiphers',
         'delivery_protocol' => 'getDeliveryProtocol',
         'http_port' => 'getHttpPort',
         'https_port' => 'getHttpsPort',
@@ -337,6 +355,9 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('http3', $data ?? [], null);
+        $this->setIfExists('supported_ciphers', $data ?? [], null);
         $this->setIfExists('delivery_protocol', $data ?? [], null);
         $this->setIfExists('http_port', $data ?? [], null);
         $this->setIfExists('https_port', $data ?? [], null);
@@ -387,6 +408,15 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         }
         if ($this->container['active'] === null) {
             $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['debug_rules'] === null) {
+            $invalidProperties[] = "'debug_rules' can't be null";
+        }
+        if ($this->container['http3'] === null) {
+            $invalidProperties[] = "'http3' can't be null";
+        }
+        if ($this->container['supported_ciphers'] === null) {
+            $invalidProperties[] = "'supported_ciphers' can't be null";
         }
         if ($this->container['delivery_protocol'] === null) {
             $invalidProperties[] = "'delivery_protocol' can't be null";
@@ -519,6 +549,87 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return bool
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param bool $http3 http3
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        if (is_null($http3)) {
+            throw new \InvalidArgumentException('non-nullable http3 cannot be null');
+        }
+        $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets supported_ciphers
+     *
+     * @return string
+     */
+    public function getSupportedCiphers()
+    {
+        return $this->container['supported_ciphers'];
+    }
+
+    /**
+     * Sets supported_ciphers
+     *
+     * @param string $supported_ciphers supported_ciphers
+     *
+     * @return self
+     */
+    public function setSupportedCiphers($supported_ciphers)
+    {
+        if (is_null($supported_ciphers)) {
+            throw new \InvalidArgumentException('non-nullable supported_ciphers cannot be null');
+        }
+        $this->container['supported_ciphers'] = $supported_ciphers;
 
         return $this;
     }

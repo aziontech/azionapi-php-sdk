@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **https_port** | **mixed** |  | [optional]
 **minimum_tls_version** | **string** |  | [optional]
 **active** | **bool** |  | [optional]
+**debug_rules** | **bool** |  | [optional]
 **application_acceleration** | **bool** |  | [optional]
 **caching** | **bool** |  | [optional]
 **device_detection** | **bool** |  | [optional]

@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **https_port** | **mixed** |  |
 **minimum_tls_version** | **string** |  |
 **active** | **bool** |  |
+**debug_rules** | **bool** |  |
+**http3** | **bool** |  |
+**supported_ciphers** | **string** |  |
 **application_acceleration** | **bool** |  |
 **caching** | **bool** |  |
 **device_detection** | **bool** |  |

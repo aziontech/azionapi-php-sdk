@@ -63,6 +63,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'mixed',
         'minimum_tls_version' => 'string',
         'active' => 'bool',
+        'debug_rules' => 'bool',
         'application_acceleration' => 'bool',
         'caching' => 'bool',
         'device_detection' => 'bool',
@@ -89,6 +90,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => null,
         'minimum_tls_version' => null,
         'active' => null,
+        'debug_rules' => null,
         'application_acceleration' => null,
         'caching' => null,
         'device_detection' => null,
@@ -113,6 +115,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
 		'https_port' => true,
 		'minimum_tls_version' => false,
 		'active' => false,
+		'debug_rules' => false,
 		'application_acceleration' => false,
 		'caching' => false,
 		'device_detection' => false,
@@ -217,6 +220,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'https_port',
         'minimum_tls_version' => 'minimum_tls_version',
         'active' => 'active',
+        'debug_rules' => 'debug_rules',
         'application_acceleration' => 'application_acceleration',
         'caching' => 'caching',
         'device_detection' => 'device_detection',
@@ -241,6 +245,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'setHttpsPort',
         'minimum_tls_version' => 'setMinimumTlsVersion',
         'active' => 'setActive',
+        'debug_rules' => 'setDebugRules',
         'application_acceleration' => 'setApplicationAcceleration',
         'caching' => 'setCaching',
         'device_detection' => 'setDeviceDetection',
@@ -265,6 +270,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'https_port' => 'getHttpsPort',
         'minimum_tls_version' => 'getMinimumTlsVersion',
         'active' => 'getActive',
+        'debug_rules' => 'getDebugRules',
         'application_acceleration' => 'getApplicationAcceleration',
         'caching' => 'getCaching',
         'device_detection' => 'getDeviceDetection',
@@ -340,6 +346,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('https_port', $data ?? [], null);
         $this->setIfExists('minimum_tls_version', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
         $this->setIfExists('application_acceleration', $data ?? [], null);
         $this->setIfExists('caching', $data ?? [], null);
         $this->setIfExists('device_detection', $data ?? [], null);
@@ -566,6 +573,33 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
         $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool|null
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool|null $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
 
         return $this;
     }
