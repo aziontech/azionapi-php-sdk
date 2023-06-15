@@ -1,15 +1,14 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
 composer.json
-docs/Api/ApiApi.md
+docs/Api/VariablesApi.md
 docs/Model/Variable.md
 docs/Model/VariableCreate.md
 docs/Model/VariableGet.md
 git_push.sh
-lib/Api/ApiApi.php
+lib/Api/VariablesApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
@@ -19,7 +18,4 @@ lib/Model/VariableCreate.php
 lib/Model/VariableGet.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/ApiApiTest.php
-test/Model/VariableCreateTest.php
-test/Model/VariableGetTest.php
-test/Model/VariableTest.php
+test/Api/VariablesApiTest.php
