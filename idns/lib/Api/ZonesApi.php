@@ -996,7 +996,7 @@ class ZonesApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json; version=3', ],
+            ['application/json', 'application/json; version=3', ],
             $contentType,
             $multipart
         );
