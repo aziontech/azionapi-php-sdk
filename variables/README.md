@@ -61,14 +61,13 @@ $apiInstance = new OpenAPI\Client\Api\VariablesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$format = 'format_example'; // string
-$lang = 'lang_example'; // string
+$variable_create = {"key":"MY_SIMPLE_VAR","value":"My not secret value"}; // \OpenAPI\Client\Model\VariableCreate
 
 try {
-    $result = $apiInstance->apiSchemaRetrieve($format, $lang);
+    $result = $apiInstance->apiVariablesCreate($variable_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VariablesApi->apiSchemaRetrieve: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VariablesApi->apiVariablesCreate: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -79,7 +78,6 @@ All URIs are relative to *https://stage-variables.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**apiSchemaRetrieve**](docs/Api/VariablesApi.md#apischemaretrieve) | **GET** /api/schema | 
 *VariablesApi* | [**apiVariablesCreate**](docs/Api/VariablesApi.md#apivariablescreate) | **POST** /api/variables | 
 *VariablesApi* | [**apiVariablesDestroy**](docs/Api/VariablesApi.md#apivariablesdestroy) | **DELETE** /api/variables/{uuid} | 
 *VariablesApi* | [**apiVariablesList**](docs/Api/VariablesApi.md#apivariableslist) | **GET** /api/variables | 
