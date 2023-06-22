@@ -25,11 +25,17 @@ List all user Network Lists
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $page = 56; // int
 
@@ -53,7 +59,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -79,11 +85,17 @@ Create a Network Lists
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $create_network_lists_request = new \OpenAPI\Client\Model\CreateNetworkListsRequest(); // \OpenAPI\Client\Model\CreateNetworkListsRequest
 
@@ -106,7 +118,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -132,11 +144,17 @@ Retrieve a Network Lists set by uuid
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $uuid = 'uuid_example'; // string
 
@@ -160,7 +178,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -186,11 +204,17 @@ Overwrite some Network Lists attributes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $uuid = 'uuid_example'; // string
 $update_network_lists_request = new \OpenAPI\Client\Model\UpdateNetworkListsRequest(); // \OpenAPI\Client\Model\UpdateNetworkListsRequest
@@ -216,7 +240,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

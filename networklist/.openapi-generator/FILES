@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -8,7 +7,6 @@ docs/Api/DefaultApi.md
 docs/Model/BadRequestResponse.md
 docs/Model/CreateNetworkListsRequest.md
 docs/Model/ErrorModel.md
-docs/Model/ErrorResponse.md
 docs/Model/Links.md
 docs/Model/ListNetworkListsResponse.md
 docs/Model/NetworkLists.md
@@ -22,7 +20,6 @@ lib/HeaderSelector.php
 lib/Model/BadRequestResponse.php
 lib/Model/CreateNetworkListsRequest.php
 lib/Model/ErrorModel.php
-lib/Model/ErrorResponse.php
 lib/Model/Links.php
 lib/Model/ListNetworkListsResponse.php
 lib/Model/ModelInterface.php
@@ -31,13 +28,3 @@ lib/Model/NetworkListsResponse.php
 lib/Model/UpdateNetworkListsRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/DefaultApiTest.php
-test/Model/BadRequestResponseTest.php
-test/Model/CreateNetworkListsRequestTest.php
-test/Model/ErrorModelTest.php
-test/Model/ErrorResponseTest.php
-test/Model/LinksTest.php
-test/Model/ListNetworkListsResponseTest.php
-test/Model/NetworkListsResponseTest.php
-test/Model/NetworkListsTest.php
-test/Model/UpdateNetworkListsRequestTest.php

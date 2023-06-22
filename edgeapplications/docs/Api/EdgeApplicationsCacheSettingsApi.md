@@ -4,21 +4,21 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete) | **DELETE** /edge_applications/{edge_application_id}/cache_settings/{cache_settings} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings: |
+| [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete) | **DELETE** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id: |
 | [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdGet) | **GET** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id: |
+| [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch) | **PATCH** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id: |
 | [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut) | **PUT** /edge_applications/{edge_application_id}/cache_settings/{cache_settings_id} | /edge_applications/:edge_application_id:/cache_settings/ca |
-| [**edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch) | **PATCH** /edge_applications/{edge_application_id}/cache_settings/{cache_settings} | /edge_applications/:edge_application_id:/cache_settings/:cache_settings_id: |
 | [**edgeApplicationsEdgeApplicationIdCacheSettingsGet()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsGet) | **GET** /edge_applications/{edge_application_id}/cache_settings | /edge_applications/{edge_application_id}/cache_settings |
 | [**edgeApplicationsEdgeApplicationIdCacheSettingsPost()**](EdgeApplicationsCacheSettingsApi.md#edgeApplicationsEdgeApplicationIdCacheSettingsPost) | **POST** /edge_applications/{edge_application_id}/cache_settings | /edge_applications/:edge_application_id:/cache_settings |
 
 
-## `edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete()`
+## `edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete()`
 
 ```php
-edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete($edge_application_id, $cache_settings, $accept, $content_type)
+edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete($edge_application_id, $cache_settings_id, $accept, $content_type)
 ```
 
-/edge_applications/:edge_application_id:/cache_settings/:cache_settings:
+/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
 
 ### Example
 
@@ -40,14 +40,14 @@ $apiInstance = new OpenAPI\Client\Api\EdgeApplicationsCacheSettingsApi(
     $config
 );
 $edge_application_id = 56; // int
-$cache_settings = 56; // int
+$cache_settings_id = 56; // int
 $accept = application/json; version=3; // string
 $content_type = application/json; // string | The type of coding used in the Body (application/json). <br>  Example: Content-Type: application/json
 
 try {
-    $apiInstance->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete($edge_application_id, $cache_settings, $accept, $content_type);
+    $apiInstance->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete($edge_application_id, $cache_settings_id, $accept, $content_type);
 } catch (Exception $e) {
-    echo 'Exception when calling EdgeApplicationsCacheSettingsApi->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling EdgeApplicationsCacheSettingsApi->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdDelete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,7 +56,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **edge_application_id** | **int**|  | |
-| **cache_settings** | **int**|  | |
+| **cache_settings_id** | **int**|  | |
 | **accept** | **string**|  | [optional] |
 | **content_type** | **string**| The type of coding used in the Body (application/json). &lt;br&gt;  Example: Content-Type: application/json | [optional] |
 
@@ -141,6 +141,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch()`
+
+```php
+edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch($edge_application_id, $cache_settings_id, $accept, $application_cache_patch_request): \OpenAPI\Client\Model\ApplicationCachePatchResponse
+```
+
+/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\EdgeApplicationsCacheSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$edge_application_id = 56; // int
+$cache_settings_id = 56; // int
+$accept = application/json; version=3; // string
+$application_cache_patch_request = new \OpenAPI\Client\Model\ApplicationCachePatchRequest(); // \OpenAPI\Client\Model\ApplicationCachePatchRequest
+
+try {
+    $result = $apiInstance->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch($edge_application_id, $cache_settings_id, $accept, $application_cache_patch_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EdgeApplicationsCacheSettingsApi->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPatch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **edge_application_id** | **int**|  | |
+| **cache_settings_id** | **int**|  | |
+| **accept** | **string**|  | [optional] |
+| **application_cache_patch_request** | [**\OpenAPI\Client\Model\ApplicationCachePatchRequest**](../Model/ApplicationCachePatchRequest.md)|  | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ApplicationCachePatchResponse**](../Model/ApplicationCachePatchResponse.md)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json; version=3`
+- **Accept**: `application/json; version=3`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsIdPut()`
 
 ```php
@@ -195,72 +261,6 @@ try {
 ### Return type
 
 [**\OpenAPI\Client\Model\ApplicationCachePutResponse**](../Model/ApplicationCachePutResponse.md)
-
-### Authorization
-
-[tokenAuth](../../README.md#tokenAuth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json; version=3`
-- **Accept**: `application/json; version=3`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch()`
-
-```php
-edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch($edge_application_id, $cache_settings, $accept, $application_cache_patch_request): \OpenAPI\Client\Model\ApplicationCachePatchResponse
-```
-
-/edge_applications/:edge_application_id:/cache_settings/:cache_settings_id:
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: tokenAuth
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new OpenAPI\Client\Api\EdgeApplicationsCacheSettingsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$edge_application_id = 56; // int
-$cache_settings = 56; // int
-$accept = application/json; version=3; // string
-$application_cache_patch_request = new \OpenAPI\Client\Model\ApplicationCachePatchRequest(); // \OpenAPI\Client\Model\ApplicationCachePatchRequest
-
-try {
-    $result = $apiInstance->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch($edge_application_id, $cache_settings, $accept, $application_cache_patch_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling EdgeApplicationsCacheSettingsApi->edgeApplicationsEdgeApplicationIdCacheSettingsCacheSettingsPatch: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **edge_application_id** | **int**|  | |
-| **cache_settings** | **int**|  | |
-| **accept** | **string**|  | [optional] |
-| **application_cache_patch_request** | [**\OpenAPI\Client\Model\ApplicationCachePatchRequest**](../Model/ApplicationCachePatchRequest.md)|  | [optional] |
-
-### Return type
-
-[**\OpenAPI\Client\Model\ApplicationCachePatchResponse**](../Model/ApplicationCachePatchResponse.md)
 
 ### Authorization
 

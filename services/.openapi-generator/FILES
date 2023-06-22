@@ -8,7 +8,6 @@ docs/Model/CreateResourceRequest.md
 docs/Model/CreateServiceRequest.md
 docs/Model/ResourceDetail.md
 docs/Model/ResourceResponse.md
-docs/Model/ResourceResponseWithTotal.md
 docs/Model/ServiceResponse.md
 docs/Model/ServiceResponseWithTotals.md
 docs/Model/UpdateResourceRequest.md
@@ -24,7 +23,6 @@ lib/Model/CreateServiceRequest.php
 lib/Model/ModelInterface.php
 lib/Model/ResourceDetail.php
 lib/Model/ResourceResponse.php
-lib/Model/ResourceResponseWithTotal.php
 lib/Model/ServiceResponse.php
 lib/Model/ServiceResponseWithTotals.php
 lib/Model/UpdateResourceRequest.php

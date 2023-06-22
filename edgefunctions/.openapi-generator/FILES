@@ -7,7 +7,6 @@ docs/Api/EdgeFunctionsApi.md
 docs/Model/BadRequestResponse.md
 docs/Model/CreateEdgeFunctionRequest.md
 docs/Model/EdgeFunctionResponse.md
-docs/Model/ErrorModel.md
 docs/Model/ErrorResponse.md
 docs/Model/Links.md
 docs/Model/ListEdgeFunctionResponse.md
@@ -22,7 +21,6 @@ lib/HeaderSelector.php
 lib/Model/BadRequestResponse.php
 lib/Model/CreateEdgeFunctionRequest.php
 lib/Model/EdgeFunctionResponse.php
-lib/Model/ErrorModel.php
 lib/Model/ErrorResponse.php
 lib/Model/Links.php
 lib/Model/ListEdgeFunctionResponse.php
