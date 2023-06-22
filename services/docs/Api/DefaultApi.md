@@ -1,6 +1,6 @@
 # OpenAPI\Client\DefaultApi
 
-All URIs are relative to http://localhost:3002, except if the operation defines another base path.
+All URIs are relative to http://bff.azion.net:3002, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -9,8 +9,8 @@ All URIs are relative to http://localhost:3002, except if the operation defines 
 | [**getResource()**](DefaultApi.md#getResource) | **GET** /edge_services/{serviceId}/resources/{resourceId} | Return Service Resource by ID |
 | [**getResources()**](DefaultApi.md#getResources) | **GET** /edge_services/{serviceId}/resources | Return Service Resources by page |
 | [**getService()**](DefaultApi.md#getService) | **GET** /edge_services/{id} | Return Service by ID |
-| [**getServices()**](DefaultApi.md#getServices) | **GET** /edge_services/ | Return Services by page |
-| [**newService()**](DefaultApi.md#newService) | **POST** /edge_services/ | Create Service |
+| [**getServices()**](DefaultApi.md#getServices) | **GET** /edge_services | Return Services by page |
+| [**newService()**](DefaultApi.md#newService) | **POST** /edge_services | Create Service |
 | [**patchService()**](DefaultApi.md#patchService) | **PATCH** /edge_services/{id} | Update Service by ID |
 | [**patchServiceResource()**](DefaultApi.md#patchServiceResource) | **PATCH** /edge_services/{serviceId}/resources/{resourceId} | Update Service Resource by ID |
 | [**postResource()**](DefaultApi.md#postResource) | **POST** /edge_services/{serviceId}/resources | Create Service Resource |
@@ -201,7 +201,7 @@ try {
 ## `getResources()`
 
 ```php
-getResources($service_id, $page, $page_size, $filter, $order_by, $sort): \OpenAPI\Client\Model\ResourceResponseWithTotal
+getResources($service_id, $page, $page_size, $filter, $order_by, $sort): object
 ```
 
 Return Service Resources by page
@@ -253,7 +253,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ResourceResponseWithTotal**](../Model/ResourceResponseWithTotal.md)
+**object**
 
 ### Authorization
 

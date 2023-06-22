@@ -1,6 +1,6 @@
 # OpenAPI\Client\RealTimePurgeApi
 
-All URIs are relative to http://localhost:3002, except if the operation defines another base path.
+All URIs are relative to https://api.azionapi.net, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -17,7 +17,7 @@ purgeCacheKey($accept, $content_type, $purge_cache_key_request)
 
 /purge/cachekey
 
-List of Cache Keys you want to remove from the Azion Edge Servers cache.  urls (array): list of up to 50 Cache Keys to be expired from the cache, per request.  method (choice): purge method, use the “delete” value for removal.  Layer (choice): layer where the purge will be done. Use the value “edge_caching” (default value if not informed) to purge on the Edge Caching layer and the value “l2_caching” to purge on L2 Caching.
+List of Cache Keys you want to remove from the Azion Edge Servers cache. urls (array): list of up to 50 Cache Keys to be expired from the cache, per request. method (choice): purge method, use the “delete” value for removal. Layer (choice): layer where the purge will be done. Use the value “edge_caching” (default value if not informed) to purge on the Edge Caching layer and the value “l2_caching” to purge on L2 Caching.
 
 ### Example
 
@@ -26,7 +26,7 @@ List of Cache Keys you want to remove from the Azion Edge Servers cache.  urls (
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -63,7 +63,7 @@ void (empty response body)
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -82,7 +82,7 @@ purgeUrl($accept, $content_type, $purge_url_request)
 
 /purge/url
 
-List of URLs you want to remove from the Azion Edge Servers cache.  urls (array): list of up to 50 URLs to be expired from the cache, per request.  method (choice): purge method, use the “delete” value for removal.
+List of URLs you want to remove from the Azion Edge Servers cache. urls (array): list of up to 50 URLs to be expired from the cache, per request. method (choice): purge method, use the “delete” value for removal.
 
 ### Example
 
@@ -91,7 +91,7 @@ List of URLs you want to remove from the Azion Edge Servers cache.  urls (array)
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -128,7 +128,7 @@ void (empty response body)
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -147,7 +147,7 @@ purgeWildcard($accept, $content_type, $purge_wildcard_request)
 
 /purge/wildcard
 
-The Wildcard expression that represents the list of objects that you want to remove from the Azion Edge Servers cache.  urls (array):the Wildcard URL or Wildcard Cache Key that represents the list of objects you want to expire. You can only use one Wildcard expression per request.  method (choice): purge method, use the “delete” value for removal.
+The Wildcard expression that represents the list of objects that you want to remove from the Azion Edge Servers cache. urls (array):the Wildcard URL or Wildcard Cache Key that represents the list of objects you want to expire. You can only use one Wildcard expression per request. method (choice): purge method, use the “delete” value for removal.
 
 ### Example
 
@@ -156,7 +156,7 @@ The Wildcard expression that represents the list of objects that you want to rem
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure API key authorization: JWT
+// Configure API key authorization: tokenAuth
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
@@ -193,7 +193,7 @@ void (empty response body)
 
 ### Authorization
 
-[JWT](../../README.md#JWT)
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

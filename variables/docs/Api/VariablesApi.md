@@ -4,11 +4,11 @@ All URIs are relative to https://stage-variables.azion.com, except if the operat
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**apiVariablesCreate()**](VariablesApi.md#apiVariablesCreate) | **POST** /api/variables |  |
-| [**apiVariablesDestroy()**](VariablesApi.md#apiVariablesDestroy) | **DELETE** /api/variables/{uuid} |  |
-| [**apiVariablesList()**](VariablesApi.md#apiVariablesList) | **GET** /api/variables |  |
-| [**apiVariablesRetrieve()**](VariablesApi.md#apiVariablesRetrieve) | **GET** /api/variables/{uuid} |  |
-| [**apiVariablesUpdate()**](VariablesApi.md#apiVariablesUpdate) | **PUT** /api/variables/{uuid} |  |
+| [**apiVariablesCreate()**](VariablesApi.md#apiVariablesCreate) | **POST** /api/variables | /api/variables |
+| [**apiVariablesDestroy()**](VariablesApi.md#apiVariablesDestroy) | **DELETE** /api/variables/{uuid} | /api/variables/:uuid |
+| [**apiVariablesList()**](VariablesApi.md#apiVariablesList) | **GET** /api/variables | /api/variables |
+| [**apiVariablesRetrieve()**](VariablesApi.md#apiVariablesRetrieve) | **GET** /api/variables/{uuid} | /api/variables/:uuid |
+| [**apiVariablesUpdate()**](VariablesApi.md#apiVariablesUpdate) | **PUT** /api/variables/{uuid} | /api/variables/:uuid |
 
 
 ## `apiVariablesCreate()`
@@ -17,7 +17,7 @@ All URIs are relative to https://stage-variables.azion.com, except if the operat
 apiVariablesCreate($variable_create): \OpenAPI\Client\Model\VariableGet
 ```
 
-
+/api/variables
 
 Create a new Variable. <br><ul><li>If the attribute \"secret\" is informed with value \"true\" in request payload the Variable value will be secret and no longer viewable after creation.</li><li>If the attribute \"secret\" is not informed the Variable value will be considered as not secret by default.</li></ul>
 
@@ -79,7 +79,7 @@ try {
 apiVariablesDestroy($uuid)
 ```
 
-
+/api/variables/:uuid
 
 Delete a Variable by it's UUID
 
@@ -140,7 +140,7 @@ void (empty response body)
 apiVariablesList(): \OpenAPI\Client\Model\Variable[]
 ```
 
-
+/api/variables
 
 List all user's Variables.
 
@@ -199,7 +199,7 @@ This endpoint does not need any parameter.
 apiVariablesRetrieve($uuid): \OpenAPI\Client\Model\Variable
 ```
 
-
+/api/variables/:uuid
 
 Retrieve all data for a Variable by it's UUID
 
@@ -261,7 +261,7 @@ try {
 apiVariablesUpdate($uuid, $variable_create): \OpenAPI\Client\Model\VariableGet
 ```
 
-
+/api/variables/:uuid
 
 Update variable attributes by it's UUID. Keep the Variable UUID but overwrite all editable attributes.
 

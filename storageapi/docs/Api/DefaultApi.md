@@ -4,8 +4,8 @@ All URIs are relative to https://storage-api.azion.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteVersion()**](DefaultApi.md#deleteVersion) | **DELETE** /storage/{version_id}/delete |  |
-| [**storageVersionIdPost()**](DefaultApi.md#storageVersionIdPost) | **POST** /storage/{version_id} |  |
+| [**deleteVersion()**](DefaultApi.md#deleteVersion) | **DELETE** /storage/{version_id}/delete | /domains/:version_id |
+| [**storageVersionIdPost()**](DefaultApi.md#storageVersionIdPost) | **POST** /storage/{version_id} | /domains/:version_id |
 
 
 ## `deleteVersion()`
@@ -14,7 +14,7 @@ All URIs are relative to https://storage-api.azion.com, except if the operation 
 deleteVersion($version_id)
 ```
 
-
+/domains/:version_id
 
 Delete a version. A version is just um path prefix/sub-namespace for a set of files.
 
@@ -25,11 +25,17 @@ Delete a version. A version is just um path prefix/sub-namespace for a set of fi
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $version_id = 'version_id_example'; // string | The version identifier
 
@@ -52,7 +58,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 
@@ -69,7 +75,7 @@ No authorization required
 storageVersionIdPost($x_azion_static_path, $version_id, $body): mixed
 ```
 
-
+/domains/:version_id
 
 Upload file and transfer to remote storage
 
@@ -80,11 +86,17 @@ Upload file and transfer to remote storage
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $x_azion_static_path = 'x_azion_static_path_example'; // string | Required in order to get the path and file name. i.e.: assets/css/main.css
 $version_id = 'version_id_example'; // string | 
@@ -112,7 +124,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[tokenAuth](../../README.md#tokenAuth)
 
 ### HTTP request headers
 

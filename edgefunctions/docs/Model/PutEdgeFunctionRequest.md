@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **active** | **bool** |  | [optional]
 **initiator_type** | **string** |  | [optional]
 **language** | **string** |  | [optional]
+**is_proprietary_code** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

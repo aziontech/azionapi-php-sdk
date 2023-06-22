@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -45,20 +44,3 @@ lib/Model/UpdateServiceBindRequest.php
 lib/Model/Variable.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/DefaultApiTest.php
-test/Model/AuthorizeEdgeNodesRequestTest.php
-test/Model/AuthorizeEdgeNodesResponseTest.php
-test/Model/EdgeNodeDetailResponseTest.php
-test/Model/EdgeNodeModulesTest.php
-test/Model/EdgeNodeResponseTest.php
-test/Model/EdgeNodeResponseWithTotalTest.php
-test/Model/NodeGroupResponseTest.php
-test/Model/NodeGroupTest.php
-test/Model/ServiceBindDetailResponseTest.php
-test/Model/ServiceBindRequestTest.php
-test/Model/ServiceResponseTest.php
-test/Model/ServiceResponseWithTotalTest.php
-test/Model/UnauthorizedEdgeNodeInfoTest.php
-test/Model/UpdateEdgeNodeResponseTest.php
-test/Model/UpdateServiceBindRequestTest.php
-test/Model/VariableTest.php
