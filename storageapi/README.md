@@ -77,8 +77,8 @@ All URIs are relative to *https://storage-api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**deleteVersion**](docs/Api/DefaultApi.md#deleteversion) | **DELETE** /storage/{version_id}/delete | /domains/:version_id
-*DefaultApi* | [**storageVersionIdPost**](docs/Api/DefaultApi.md#storageversionidpost) | **POST** /storage/{version_id} | /domains/:version_id
+*DefaultApi* | [**deleteVersion**](docs/Api/DefaultApi.md#deleteversion) | **DELETE** /storage/{version_id}/delete | /storage/:version_id/delete
+*DefaultApi* | [**storageVersionIdPost**](docs/Api/DefaultApi.md#storageversionidpost) | **POST** /storage/{version_id} | /storage/:version_id
 
 ## Models
 
