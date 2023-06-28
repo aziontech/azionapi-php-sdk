@@ -4,8 +4,8 @@ All URIs are relative to https://storage-api.azion.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteVersion()**](DefaultApi.md#deleteVersion) | **DELETE** /storage/{version_id}/delete | /domains/:version_id |
-| [**storageVersionIdPost()**](DefaultApi.md#storageVersionIdPost) | **POST** /storage/{version_id} | /domains/:version_id |
+| [**deleteVersion()**](DefaultApi.md#deleteVersion) | **DELETE** /storage/{version_id}/delete | /storage/:version_id/delete |
+| [**storageVersionIdPost()**](DefaultApi.md#storageVersionIdPost) | **POST** /storage/{version_id} | /storage/:version_id |
 
 
 ## `deleteVersion()`
@@ -14,7 +14,7 @@ All URIs are relative to https://storage-api.azion.com, except if the operation 
 deleteVersion($version_id)
 ```
 
-/domains/:version_id
+/storage/:version_id/delete
 
 Delete a version. A version is just um path prefix/sub-namespace for a set of files.
 
@@ -72,10 +72,10 @@ void (empty response body)
 ## `storageVersionIdPost()`
 
 ```php
-storageVersionIdPost($x_azion_static_path, $version_id, $body): mixed
+storageVersionIdPost($x_azion_static_path, $version_id, $content_type, $body): mixed
 ```
 
-/domains/:version_id
+/storage/:version_id
 
 Upload file and transfer to remote storage
 
@@ -100,10 +100,11 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
 );
 $x_azion_static_path = 'x_azion_static_path_example'; // string | Required in order to get the path and file name. i.e.: assets/css/main.css
 $version_id = 'version_id_example'; // string | 
+$content_type = 'b2/x-auto'; // string | The content type of the file (Example: text/plain).
 $body = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->storageVersionIdPost($x_azion_static_path, $version_id, $body);
+    $result = $apiInstance->storageVersionIdPost($x_azion_static_path, $version_id, $content_type, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->storageVersionIdPost: ', $e->getMessage(), PHP_EOL;
@@ -116,6 +117,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **x_azion_static_path** | **string**| Required in order to get the path and file name. i.e.: assets/css/main.css | |
 | **version_id** | **string**|  | |
+| **content_type** | **string**| The content type of the file (Example: text/plain). | [optional] [default to &#39;b2/x-auto&#39;] |
 | **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
@@ -128,7 +130,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `b2/x-auto`
+- **Content-Type**: `application/octet-stream`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

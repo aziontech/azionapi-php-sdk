@@ -75,7 +75,7 @@ class DefaultApi
             'application/json',
         ],
         'storageVersionIdPost' => [
-            'b2/x-auto',
+            'application/octet-stream',
         ],
     ];
 
@@ -128,7 +128,7 @@ class DefaultApi
     /**
      * Operation deleteVersion
      *
-     * /domains/:version_id
+     * /storage/:version_id/delete
      *
      * @param  string $version_id The version identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteVersion'] to see the possible values for this operation
@@ -145,7 +145,7 @@ class DefaultApi
     /**
      * Operation deleteVersionWithHttpInfo
      *
-     * /domains/:version_id
+     * /storage/:version_id/delete
      *
      * @param  string $version_id The version identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteVersion'] to see the possible values for this operation
@@ -205,7 +205,7 @@ class DefaultApi
     /**
      * Operation deleteVersionAsync
      *
-     * /domains/:version_id
+     * /storage/:version_id/delete
      *
      * @param  string $version_id The version identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteVersion'] to see the possible values for this operation
@@ -226,7 +226,7 @@ class DefaultApi
     /**
      * Operation deleteVersionAsyncWithHttpInfo
      *
-     * /domains/:version_id
+     * /storage/:version_id/delete
      *
      * @param  string $version_id The version identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteVersion'] to see the possible values for this operation
@@ -362,10 +362,11 @@ class DefaultApi
     /**
      * Operation storageVersionIdPost
      *
-     * /domains/:version_id
+     * /storage/:version_id
      *
      * @param  string $x_azion_static_path Required in order to get the path and file name. i.e.: assets/css/main.css (required)
      * @param  string $version_id  (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional, default to 'b2/x-auto')
      * @param  \SplFileObject $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageVersionIdPost'] to see the possible values for this operation
      *
@@ -373,19 +374,20 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return mixed
      */
-    public function storageVersionIdPost($x_azion_static_path, $version_id, $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
+    public function storageVersionIdPost($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
-        list($response) = $this->storageVersionIdPostWithHttpInfo($x_azion_static_path, $version_id, $body, $contentType);
+        list($response) = $this->storageVersionIdPostWithHttpInfo($x_azion_static_path, $version_id, $content_type, $body, $contentType);
         return $response;
     }
 
     /**
      * Operation storageVersionIdPostWithHttpInfo
      *
-     * /domains/:version_id
+     * /storage/:version_id
      *
      * @param  string $x_azion_static_path Required in order to get the path and file name. i.e.: assets/css/main.css (required)
      * @param  string $version_id  (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional, default to 'b2/x-auto')
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageVersionIdPost'] to see the possible values for this operation
      *
@@ -393,9 +395,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of mixed, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storageVersionIdPostWithHttpInfo($x_azion_static_path, $version_id, $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
+    public function storageVersionIdPostWithHttpInfo($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
-        $request = $this->storageVersionIdPostRequest($x_azion_static_path, $version_id, $body, $contentType);
+        $request = $this->storageVersionIdPostRequest($x_azion_static_path, $version_id, $content_type, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -484,19 +486,20 @@ class DefaultApi
     /**
      * Operation storageVersionIdPostAsync
      *
-     * /domains/:version_id
+     * /storage/:version_id
      *
      * @param  string $x_azion_static_path Required in order to get the path and file name. i.e.: assets/css/main.css (required)
      * @param  string $version_id  (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional, default to 'b2/x-auto')
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageVersionIdPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageVersionIdPostAsync($x_azion_static_path, $version_id, $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
+    public function storageVersionIdPostAsync($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
-        return $this->storageVersionIdPostAsyncWithHttpInfo($x_azion_static_path, $version_id, $body, $contentType)
+        return $this->storageVersionIdPostAsyncWithHttpInfo($x_azion_static_path, $version_id, $content_type, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -507,20 +510,21 @@ class DefaultApi
     /**
      * Operation storageVersionIdPostAsyncWithHttpInfo
      *
-     * /domains/:version_id
+     * /storage/:version_id
      *
      * @param  string $x_azion_static_path Required in order to get the path and file name. i.e.: assets/css/main.css (required)
      * @param  string $version_id  (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional, default to 'b2/x-auto')
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageVersionIdPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageVersionIdPostAsyncWithHttpInfo($x_azion_static_path, $version_id, $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
+    public function storageVersionIdPostAsyncWithHttpInfo($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
         $returnType = 'mixed';
-        $request = $this->storageVersionIdPostRequest($x_azion_static_path, $version_id, $body, $contentType);
+        $request = $this->storageVersionIdPostRequest($x_azion_static_path, $version_id, $content_type, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -563,13 +567,14 @@ class DefaultApi
      *
      * @param  string $x_azion_static_path Required in order to get the path and file name. i.e.: assets/css/main.css (required)
      * @param  string $version_id  (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional, default to 'b2/x-auto')
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageVersionIdPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storageVersionIdPostRequest($x_azion_static_path, $version_id, $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
+    public function storageVersionIdPostRequest($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
 
         // verify the required parameter 'x_azion_static_path' is set
@@ -588,6 +593,7 @@ class DefaultApi
 
 
 
+
         $resourcePath = '/storage/{version_id}';
         $formParams = [];
         $queryParams = [];
@@ -596,6 +602,10 @@ class DefaultApi
         $multipart = false;
 
 
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
+        }
         // header params
         if ($x_azion_static_path !== null) {
             $headerParams['X-Azion-Static-Path'] = ObjectSerializer::toHeaderValue($x_azion_static_path);
