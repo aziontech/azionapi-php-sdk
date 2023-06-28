@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 - [DeviceGroupsResponseLinks](docs/Model/DeviceGroupsResponseLinks.md)
 - [DeviceGroupsResultResponse](docs/Model/DeviceGroupsResultResponse.md)
 - [GetApplicationResponse](docs/Model/GetApplicationResponse.md)
+- [GetApplicationsResponse](docs/Model/GetApplicationsResponse.md)
 - [OriginsIdResponse](docs/Model/OriginsIdResponse.md)
 - [OriginsResponse](docs/Model/OriginsResponse.md)
 - [OriginsResponseLinks](docs/Model/OriginsResponseLinks.md)
