@@ -48,6 +48,7 @@ docs/Model/DeviceGroupsResponse.md
 docs/Model/DeviceGroupsResponseLinks.md
 docs/Model/DeviceGroupsResultResponse.md
 docs/Model/GetApplicationResponse.md
+docs/Model/GetApplicationsResponse.md
 docs/Model/OriginsIdResponse.md
 docs/Model/OriginsResponse.md
 docs/Model/OriginsResponseLinks.md
@@ -114,6 +115,7 @@ lib/Model/DeviceGroupsResponse.php
 lib/Model/DeviceGroupsResponseLinks.php
 lib/Model/DeviceGroupsResultResponse.php
 lib/Model/GetApplicationResponse.php
+lib/Model/GetApplicationsResponse.php
 lib/Model/ModelInterface.php
 lib/Model/OriginsIdResponse.php
 lib/Model/OriginsResponse.php

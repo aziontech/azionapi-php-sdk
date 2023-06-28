@@ -15,7 +15,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 ## `edgeApplicationsGet()`
 
 ```php
-edgeApplicationsGet($page, $page_size, $filter, $order_by, $sort, $accept): object
+edgeApplicationsGet($page, $page_size, $filter, $order_by, $sort, $accept): \OpenAPI\Client\Model\GetApplicationsResponse
 ```
 
 /edge_applications
@@ -67,7 +67,7 @@ try {
 
 ### Return type
 
-**object**
+[**\OpenAPI\Client\Model\GetApplicationsResponse**](../Model/GetApplicationsResponse.md)
 
 ### Authorization
 

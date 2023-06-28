@@ -152,7 +152,7 @@ class EdgeApplicationsMainSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return object
+     * @return \OpenAPI\Client\Model\GetApplicationsResponse
      */
     public function edgeApplicationsGet($page = null, $page_size = null, $filter = null, $order_by = null, $sort = null, $accept = null, string $contentType = self::contentTypes['edgeApplicationsGet'][0])
     {
@@ -175,7 +175,7 @@ class EdgeApplicationsMainSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of object, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetApplicationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function edgeApplicationsGetWithHttpInfo($page = null, $page_size = null, $filter = null, $order_by = null, $sort = null, $accept = null, string $contentType = self::contentTypes['edgeApplicationsGet'][0])
     {
@@ -218,23 +218,23 @@ class EdgeApplicationsMainSettingsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('object' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\GetApplicationsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('object' !== 'string') {
+                        if ('\OpenAPI\Client\Model\GetApplicationsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'object', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetApplicationsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = 'object';
+            $returnType = '\OpenAPI\Client\Model\GetApplicationsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -255,7 +255,7 @@ class EdgeApplicationsMainSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'object',
+                        '\OpenAPI\Client\Model\GetApplicationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -309,7 +309,7 @@ class EdgeApplicationsMainSettingsApi
      */
     public function edgeApplicationsGetAsyncWithHttpInfo($page = null, $page_size = null, $filter = null, $order_by = null, $sort = null, $accept = null, string $contentType = self::contentTypes['edgeApplicationsGet'][0])
     {
-        $returnType = 'object';
+        $returnType = '\OpenAPI\Client\Model\GetApplicationsResponse';
         $request = $this->edgeApplicationsGetRequest($page, $page_size, $filter, $order_by, $sort, $accept, $contentType);
 
         return $this->client

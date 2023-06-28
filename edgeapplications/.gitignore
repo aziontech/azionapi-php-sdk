@@ -13,7 +13,3 @@ composer.phar
 
 # PHPUnit cache
 .phpunit.result.cache
-go.mod
-go.sum
-go.mod
-go.sum
