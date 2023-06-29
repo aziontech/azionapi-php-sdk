@@ -316,6 +316,27 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['debug_rules'] === null) {
+            $invalidProperties[] = "'debug_rules' can't be null";
+        }
+        if ($this->container['last_editor'] === null) {
+            $invalidProperties[] = "'last_editor' can't be null";
+        }
+        if ($this->container['last_modified'] === null) {
+            $invalidProperties[] = "'last_modified' can't be null";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['origins'] === null) {
+            $invalidProperties[] = "'origins' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -344,7 +365,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -371,7 +392,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets debug_rules
      *
-     * @return bool|null
+     * @return bool
      */
     public function getDebugRules()
     {
@@ -398,7 +419,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets debug_rules
      *
-     * @param bool|null $debug_rules debug_rules
+     * @param bool $debug_rules debug_rules
      *
      * @return self
      */
@@ -415,7 +436,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets last_editor
      *
-     * @return string|null
+     * @return string
      */
     public function getLastEditor()
     {
@@ -425,7 +446,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets last_editor
      *
-     * @param string|null $last_editor last_editor
+     * @param string $last_editor last_editor
      *
      * @return self
      */
@@ -442,7 +463,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets last_modified
      *
-     * @return string|null
+     * @return string
      */
     public function getLastModified()
     {
@@ -452,7 +473,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets last_modified
      *
-     * @param string|null $last_modified last_modified
+     * @param string $last_modified last_modified
      *
      * @return self
      */
@@ -469,7 +490,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -479,7 +500,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */
@@ -496,7 +517,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets origins
      *
-     * @return \OpenAPI\Client\Model\ApplicationOrigins[]|null
+     * @return \OpenAPI\Client\Model\ApplicationOrigins[]
      */
     public function getOrigins()
     {
@@ -506,7 +527,7 @@ class ApplicationsResults implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets origins
      *
-     * @param \OpenAPI\Client\Model\ApplicationOrigins[]|null $origins origins
+     * @param \OpenAPI\Client\Model\ApplicationOrigins[] $origins origins
      *
      * @return self
      */
