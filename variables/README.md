@@ -74,15 +74,15 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *https://stage-variables.azion.com*
+All URIs are relative to *https://stage-api.azion.net/variables*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*VariablesApi* | [**apiVariablesCreate**](docs/Api/VariablesApi.md#apivariablescreate) | **POST** /api/variables | /api/variables
-*VariablesApi* | [**apiVariablesDestroy**](docs/Api/VariablesApi.md#apivariablesdestroy) | **DELETE** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**apiVariablesList**](docs/Api/VariablesApi.md#apivariableslist) | **GET** /api/variables | /api/variables
-*VariablesApi* | [**apiVariablesRetrieve**](docs/Api/VariablesApi.md#apivariablesretrieve) | **GET** /api/variables/{uuid} | /api/variables/:uuid
-*VariablesApi* | [**apiVariablesUpdate**](docs/Api/VariablesApi.md#apivariablesupdate) | **PUT** /api/variables/{uuid} | /api/variables/:uuid
+*VariablesApi* | [**apiVariablesCreate**](docs/Api/VariablesApi.md#apivariablescreate) | **POST** /variables | /variables
+*VariablesApi* | [**apiVariablesDestroy**](docs/Api/VariablesApi.md#apivariablesdestroy) | **DELETE** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**apiVariablesList**](docs/Api/VariablesApi.md#apivariableslist) | **GET** /variables | /variables
+*VariablesApi* | [**apiVariablesRetrieve**](docs/Api/VariablesApi.md#apivariablesretrieve) | **GET** /variables/{uuid} | /variables/:uuid
+*VariablesApi* | [**apiVariablesUpdate**](docs/Api/VariablesApi.md#apivariablesupdate) | **PUT** /variables/{uuid} | /variables/:uuid
 
 ## Models
 

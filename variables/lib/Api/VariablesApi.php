@@ -139,7 +139,7 @@ class VariablesApi
     /**
      * Operation apiVariablesCreate
      *
-     * /api/variables
+     * /variables
      *
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create variable_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesCreate'] to see the possible values for this operation
@@ -157,7 +157,7 @@ class VariablesApi
     /**
      * Operation apiVariablesCreateWithHttpInfo
      *
-     * /api/variables
+     * /variables
      *
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesCreate'] to see the possible values for this operation
@@ -257,7 +257,7 @@ class VariablesApi
     /**
      * Operation apiVariablesCreateAsync
      *
-     * /api/variables
+     * /variables
      *
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesCreate'] to see the possible values for this operation
@@ -278,7 +278,7 @@ class VariablesApi
     /**
      * Operation apiVariablesCreateAsyncWithHttpInfo
      *
-     * /api/variables
+     * /variables
      *
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesCreate'] to see the possible values for this operation
@@ -347,7 +347,7 @@ class VariablesApi
         }
 
 
-        $resourcePath = '/api/variables';
+        $resourcePath = '/variables';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -426,7 +426,7 @@ class VariablesApi
     /**
      * Operation apiVariablesDestroy
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesDestroy'] to see the possible values for this operation
@@ -443,7 +443,7 @@ class VariablesApi
     /**
      * Operation apiVariablesDestroyWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesDestroy'] to see the possible values for this operation
@@ -503,7 +503,7 @@ class VariablesApi
     /**
      * Operation apiVariablesDestroyAsync
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesDestroy'] to see the possible values for this operation
@@ -524,7 +524,7 @@ class VariablesApi
     /**
      * Operation apiVariablesDestroyAsyncWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesDestroy'] to see the possible values for this operation
@@ -583,7 +583,7 @@ class VariablesApi
         }
         
 
-        $resourcePath = '/api/variables/{uuid}';
+        $resourcePath = '/variables/{uuid}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -663,7 +663,7 @@ class VariablesApi
     /**
      * Operation apiVariablesList
      *
-     * /api/variables
+     * /variables
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesList'] to see the possible values for this operation
      *
@@ -680,7 +680,7 @@ class VariablesApi
     /**
      * Operation apiVariablesListWithHttpInfo
      *
-     * /api/variables
+     * /variables
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesList'] to see the possible values for this operation
      *
@@ -779,7 +779,7 @@ class VariablesApi
     /**
      * Operation apiVariablesListAsync
      *
-     * /api/variables
+     * /variables
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesList'] to see the possible values for this operation
      *
@@ -799,7 +799,7 @@ class VariablesApi
     /**
      * Operation apiVariablesListAsyncWithHttpInfo
      *
-     * /api/variables
+     * /variables
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesList'] to see the possible values for this operation
      *
@@ -859,7 +859,7 @@ class VariablesApi
     {
 
 
-        $resourcePath = '/api/variables';
+        $resourcePath = '/variables';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -931,7 +931,7 @@ class VariablesApi
     /**
      * Operation apiVariablesRetrieve
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesRetrieve'] to see the possible values for this operation
@@ -949,7 +949,7 @@ class VariablesApi
     /**
      * Operation apiVariablesRetrieveWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesRetrieve'] to see the possible values for this operation
@@ -1049,7 +1049,7 @@ class VariablesApi
     /**
      * Operation apiVariablesRetrieveAsync
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesRetrieve'] to see the possible values for this operation
@@ -1070,7 +1070,7 @@ class VariablesApi
     /**
      * Operation apiVariablesRetrieveAsyncWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['apiVariablesRetrieve'] to see the possible values for this operation
@@ -1142,7 +1142,7 @@ class VariablesApi
         }
         
 
-        $resourcePath = '/api/variables/{uuid}';
+        $resourcePath = '/variables/{uuid}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1222,7 +1222,7 @@ class VariablesApi
     /**
      * Operation apiVariablesUpdate
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid uuid (required)
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create variable_create (required)
@@ -1241,7 +1241,7 @@ class VariablesApi
     /**
      * Operation apiVariablesUpdateWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
@@ -1342,7 +1342,7 @@ class VariablesApi
     /**
      * Operation apiVariablesUpdateAsync
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
@@ -1364,7 +1364,7 @@ class VariablesApi
     /**
      * Operation apiVariablesUpdateAsyncWithHttpInfo
      *
-     * /api/variables/:uuid
+     * /variables/:uuid
      *
      * @param  string $uuid (required)
      * @param  \OpenAPI\Client\Model\VariableCreate $variable_create (required)
@@ -1445,7 +1445,7 @@ class VariablesApi
         }
 
 
-        $resourcePath = '/api/variables/{uuid}';
+        $resourcePath = '/variables/{uuid}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
