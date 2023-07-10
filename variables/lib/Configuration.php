@@ -93,7 +93,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://stage-variables.azion.com';
+    protected $host = 'https://stage-api.azion.net/variables';
 
     /**
      * User agent of the HTTP request, set to "OpenAPI-Generator/{version}/PHP" by default
@@ -472,7 +472,7 @@ class Configuration
     {
         return [
             [
-                "url" => "https://stage-variables.azion.com",
+                "url" => "https://stage-api.azion.net/variables",
                 "description" => "Stage",
             ]
         ];
