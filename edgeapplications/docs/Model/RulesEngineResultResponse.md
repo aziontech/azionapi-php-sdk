@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  |
 **name** | **string** |  |
+**description** | **string** |  | [optional]
 **phase** | **string** |  |
 **behaviors** | [**\OpenAPI\Client\Model\RulesEngineResultResponseBehaviors[]**](RulesEngineResultResponseBehaviors.md) |  | [optional]
 **criteria** | **\OpenAPI\Client\Model\RulesEngineCriteria[][]** |  |

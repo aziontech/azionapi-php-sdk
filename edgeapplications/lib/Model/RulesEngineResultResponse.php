@@ -59,6 +59,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'id' => 'int',
         'name' => 'string',
+        'description' => 'string',
         'phase' => 'string',
         'behaviors' => '\OpenAPI\Client\Model\RulesEngineResultResponseBehaviors[]',
         'criteria' => '\OpenAPI\Client\Model\RulesEngineCriteria[][]',
@@ -76,6 +77,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'id' => 'int64',
         'name' => null,
+        'description' => null,
         'phase' => null,
         'behaviors' => null,
         'criteria' => null,
@@ -91,6 +93,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'id' => false,
 		'name' => false,
+		'description' => false,
 		'phase' => false,
 		'behaviors' => false,
 		'criteria' => false,
@@ -186,6 +189,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
+        'description' => 'description',
         'phase' => 'phase',
         'behaviors' => 'behaviors',
         'criteria' => 'criteria',
@@ -201,6 +205,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
+        'description' => 'setDescription',
         'phase' => 'setPhase',
         'behaviors' => 'setBehaviors',
         'criteria' => 'setCriteria',
@@ -216,6 +221,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
+        'description' => 'getDescription',
         'phase' => 'getPhase',
         'behaviors' => 'getBehaviors',
         'criteria' => 'getCriteria',
@@ -282,6 +288,7 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('phase', $data ?? [], null);
         $this->setIfExists('behaviors', $data ?? [], null);
         $this->setIfExists('criteria', $data ?? [], null);
@@ -399,6 +406,33 @@ class RulesEngineResultResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
 
         return $this;
     }
