@@ -1,6 +1,6 @@
 <?php
 /**
- * PersonalTokenResponseGet
+ * CreatePersonalTokenResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PersonalTokenResponseGet Class Doc Comment
+ * CreatePersonalTokenResponse Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreatePersonalTokenResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PersonalTokenResponseGet';
+    protected static $openAPIModelName = 'CreatePersonalTokenResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,6 +59,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'uuid' => 'string',
         'name' => 'string',
+        'key' => 'string',
+        'user_id' => 'float',
         'created' => '\DateTime',
         'expires_at' => '\DateTime',
         'description' => 'string'
@@ -74,6 +76,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'uuid' => 'uuid',
         'name' => null,
+        'key' => null,
+        'user_id' => null,
         'created' => 'date-time',
         'expires_at' => 'date-time',
         'description' => null
@@ -87,6 +91,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'uuid' => false,
 		'name' => false,
+		'key' => false,
+		'user_id' => false,
 		'created' => false,
 		'expires_at' => false,
 		'description' => true
@@ -180,6 +186,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'uuid' => 'uuid',
         'name' => 'name',
+        'key' => 'key',
+        'user_id' => 'user_id',
         'created' => 'created',
         'expires_at' => 'expires_at',
         'description' => 'description'
@@ -193,6 +201,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'uuid' => 'setUuid',
         'name' => 'setName',
+        'key' => 'setKey',
+        'user_id' => 'setUserId',
         'created' => 'setCreated',
         'expires_at' => 'setExpiresAt',
         'description' => 'setDescription'
@@ -206,6 +216,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'uuid' => 'getUuid',
         'name' => 'getName',
+        'key' => 'getKey',
+        'user_id' => 'getUserId',
         'created' => 'getCreated',
         'expires_at' => 'getExpiresAt',
         'description' => 'getDescription'
@@ -270,6 +282,8 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('uuid', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
@@ -367,6 +381,60 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets key
+     *
+     * @return string|null
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     *
+     * @param string|null $key key
+     *
+     * @return self
+     */
+    public function setKey($key)
+    {
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        }
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return float|null
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param float|null $user_id user_id
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        if (is_null($user_id)) {
+            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+        }
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }

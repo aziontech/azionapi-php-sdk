@@ -1,6 +1,6 @@
 <?php
 /**
- * PersonalTokenResponseGet
+ * CreatePersonalTokenRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PersonalTokenResponseGet Class Doc Comment
+ * CreatePersonalTokenRequest Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreatePersonalTokenRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PersonalTokenResponseGet';
+    protected static $openAPIModelName = 'CreatePersonalTokenRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uuid' => 'string',
         'name' => 'string',
-        'created' => '\DateTime',
         'expires_at' => '\DateTime',
         'description' => 'string'
     ];
@@ -72,9 +70,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uuid' => 'uuid',
         'name' => null,
-        'created' => 'date-time',
         'expires_at' => 'date-time',
         'description' => null
     ];
@@ -85,9 +81,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uuid' => false,
-		'name' => false,
-		'created' => false,
+        'name' => false,
 		'expires_at' => false,
 		'description' => true
     ];
@@ -178,9 +172,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'uuid' => 'uuid',
         'name' => 'name',
-        'created' => 'created',
         'expires_at' => 'expires_at',
         'description' => 'description'
     ];
@@ -191,9 +183,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'uuid' => 'setUuid',
         'name' => 'setName',
-        'created' => 'setCreated',
         'expires_at' => 'setExpiresAt',
         'description' => 'setDescription'
     ];
@@ -204,9 +194,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'uuid' => 'getUuid',
         'name' => 'getName',
-        'created' => 'getCreated',
         'expires_at' => 'getExpiresAt',
         'description' => 'getDescription'
     ];
@@ -268,9 +256,7 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('uuid', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
     }
@@ -318,33 +304,6 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets uuid
-     *
-     * @return string|null
-     */
-    public function getUuid()
-    {
-        return $this->container['uuid'];
-    }
-
-    /**
-     * Sets uuid
-     *
-     * @param string|null $uuid uuid
-     *
-     * @return self
-     */
-    public function setUuid($uuid)
-    {
-        if (is_null($uuid)) {
-            throw new \InvalidArgumentException('non-nullable uuid cannot be null');
-        }
-        $this->container['uuid'] = $uuid;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -367,33 +326,6 @@ class PersonalTokenResponseGet implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets created
-     *
-     * @return \DateTime|null
-     */
-    public function getCreated()
-    {
-        return $this->container['created'];
-    }
-
-    /**
-     * Sets created
-     *
-     * @param \DateTime|null $created created
-     *
-     * @return self
-     */
-    public function setCreated($created)
-    {
-        if (is_null($created)) {
-            throw new \InvalidArgumentException('non-nullable created cannot be null');
-        }
-        $this->container['created'] = $created;
 
         return $this;
     }

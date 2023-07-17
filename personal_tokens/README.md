@@ -62,13 +62,13 @@ $apiInstance = new OpenAPI\Client\Api\PersonalTokenApi(
     new GuzzleHttp\Client(),
     $config
 );
-$personal_token_id = 'personal_token_id_example'; // string
+$create_personal_token_request = new \OpenAPI\Client\Model\CreatePersonalTokenRequest(); // \OpenAPI\Client\Model\CreatePersonalTokenRequest
 
 try {
-    $result = $apiInstance->getPersonalToken($personal_token_id);
+    $result = $apiInstance->createPersonalToken($create_personal_token_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling PersonalTokenApi->getPersonalToken: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PersonalTokenApi->createPersonalToken: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -79,11 +79,15 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*PersonalTokenApi* | [**createPersonalToken**](docs/Api/PersonalTokenApi.md#createpersonaltoken) | **POST** /iam/personal_tokens | Create a new personal token
+*PersonalTokenApi* | [**deletePersonalToken**](docs/Api/PersonalTokenApi.md#deletepersonaltoken) | **DELETE** /iam/personal_tokens/{personalTokenId} | Delete a personal token by id
 *PersonalTokenApi* | [**getPersonalToken**](docs/Api/PersonalTokenApi.md#getpersonaltoken) | **GET** /iam/personal_tokens/{personalTokenId} | Get a personal token info
 *PersonalTokenApi* | [**listPersonalToken**](docs/Api/PersonalTokenApi.md#listpersonaltoken) | **GET** /iam/personal_tokens | List all existing personal token
 
 ## Models
 
+- [CreatePersonalTokenRequest](docs/Model/CreatePersonalTokenRequest.md)
+- [CreatePersonalTokenResponse](docs/Model/CreatePersonalTokenResponse.md)
 - [PersonalTokenResponseGet](docs/Model/PersonalTokenResponseGet.md)
 - [PersonalTokenResponseWithResults](docs/Model/PersonalTokenResponseWithResults.md)
 - [PersonalTokenResponseWithResultsLinks](docs/Model/PersonalTokenResponseWithResultsLinks.md)
