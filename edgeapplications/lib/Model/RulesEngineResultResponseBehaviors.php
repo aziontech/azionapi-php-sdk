@@ -58,7 +58,7 @@ class RulesEngineResultResponseBehaviors implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'target' => 'mixed'
+        'target' => 'string'
     ];
 
     /**
@@ -80,7 +80,7 @@ class RulesEngineResultResponseBehaviors implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'target' => true
+		'target' => false
     ];
 
     /**
@@ -329,7 +329,7 @@ class RulesEngineResultResponseBehaviors implements ModelInterface, ArrayAccess,
     /**
      * Gets target
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getTarget()
     {
@@ -339,21 +339,14 @@ class RulesEngineResultResponseBehaviors implements ModelInterface, ArrayAccess,
     /**
      * Sets target
      *
-     * @param mixed|null $target target
+     * @param string|null $target target
      *
      * @return self
      */
     public function setTarget($target)
     {
         if (is_null($target)) {
-            array_push($this->openAPINullablesSetToNull, 'target');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('target', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
         $this->container['target'] = $target;
 
