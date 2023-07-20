@@ -61,20 +61,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'browser_cache_settings' => 'string',
         'browser_cache_settings_maximum_ttl' => 'int',
         'cdn_cache_settings' => 'string',
-        'adaptive_delivery_action' => 'string',
-        'enable_caching_for_options' => 'bool',
-        'enable_query_string_sort' => 'bool',
         'cdn_cache_settings_maximum_ttl' => 'int',
         'cache_by_query_string' => 'string',
         'query_string_fields' => 'string[]',
+        'enable_query_string_sort' => 'bool',
         'cache_by_cookies' => 'string',
         'cookie_names' => 'string[]',
-        'enable_caching_for_post' => 'bool',
-        'l2_caching_enabled' => 'bool',
-        'is_slice_configuration_enabled' => 'bool',
-        'is_slice_edge_caching_enabled' => 'bool',
-        'is_slice_l2_caching_enabled' => 'bool',
-        'slice_configuration_range' => 'int'
+        'user_email' => 'string',
+        'l2_caching_enabled' => 'bool'
     ];
 
     /**
@@ -89,20 +83,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'browser_cache_settings' => null,
         'browser_cache_settings_maximum_ttl' => 'int64',
         'cdn_cache_settings' => null,
-        'adaptive_delivery_action' => null,
-        'enable_caching_for_options' => null,
-        'enable_query_string_sort' => null,
         'cdn_cache_settings_maximum_ttl' => 'int64',
         'cache_by_query_string' => null,
         'query_string_fields' => null,
+        'enable_query_string_sort' => null,
         'cache_by_cookies' => null,
         'cookie_names' => null,
-        'enable_caching_for_post' => null,
-        'l2_caching_enabled' => null,
-        'is_slice_configuration_enabled' => null,
-        'is_slice_edge_caching_enabled' => null,
-        'is_slice_l2_caching_enabled' => null,
-        'slice_configuration_range' => 'int64'
+        'user_email' => null,
+        'l2_caching_enabled' => null
     ];
 
     /**
@@ -115,20 +103,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
 		'browser_cache_settings' => false,
 		'browser_cache_settings_maximum_ttl' => false,
 		'cdn_cache_settings' => false,
-		'adaptive_delivery_action' => false,
-		'enable_caching_for_options' => false,
-		'enable_query_string_sort' => false,
 		'cdn_cache_settings_maximum_ttl' => false,
 		'cache_by_query_string' => false,
-		'query_string_fields' => false,
+		'query_string_fields' => true,
+		'enable_query_string_sort' => false,
 		'cache_by_cookies' => false,
-		'cookie_names' => false,
-		'enable_caching_for_post' => false,
-		'l2_caching_enabled' => false,
-		'is_slice_configuration_enabled' => false,
-		'is_slice_edge_caching_enabled' => false,
-		'is_slice_l2_caching_enabled' => false,
-		'slice_configuration_range' => false
+		'cookie_names' => true,
+		'user_email' => false,
+		'l2_caching_enabled' => false
     ];
 
     /**
@@ -221,20 +203,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'browser_cache_settings' => 'browser_cache_settings',
         'browser_cache_settings_maximum_ttl' => 'browser_cache_settings_maximum_ttl',
         'cdn_cache_settings' => 'cdn_cache_settings',
-        'adaptive_delivery_action' => 'adaptive_delivery_action',
-        'enable_caching_for_options' => 'enable_caching_for_options',
-        'enable_query_string_sort' => 'enable_query_string_sort',
         'cdn_cache_settings_maximum_ttl' => 'cdn_cache_settings_maximum_ttl',
         'cache_by_query_string' => 'cache_by_query_string',
         'query_string_fields' => 'query_string_fields',
+        'enable_query_string_sort' => 'enable_query_string_sort',
         'cache_by_cookies' => 'cache_by_cookies',
         'cookie_names' => 'cookie_names',
-        'enable_caching_for_post' => 'enable_caching_for_post',
-        'l2_caching_enabled' => 'l2_caching_enabled',
-        'is_slice_configuration_enabled' => 'is_slice_configuration_enabled',
-        'is_slice_edge_caching_enabled' => 'is_slice_edge_caching_enabled',
-        'is_slice_l2_caching_enabled' => 'is_slice_l2_caching_enabled',
-        'slice_configuration_range' => 'slice_configuration_range'
+        'user_email' => 'user_email',
+        'l2_caching_enabled' => 'l2_caching_enabled'
     ];
 
     /**
@@ -247,20 +223,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'browser_cache_settings' => 'setBrowserCacheSettings',
         'browser_cache_settings_maximum_ttl' => 'setBrowserCacheSettingsMaximumTtl',
         'cdn_cache_settings' => 'setCdnCacheSettings',
-        'adaptive_delivery_action' => 'setAdaptiveDeliveryAction',
-        'enable_caching_for_options' => 'setEnableCachingForOptions',
-        'enable_query_string_sort' => 'setEnableQueryStringSort',
         'cdn_cache_settings_maximum_ttl' => 'setCdnCacheSettingsMaximumTtl',
         'cache_by_query_string' => 'setCacheByQueryString',
         'query_string_fields' => 'setQueryStringFields',
+        'enable_query_string_sort' => 'setEnableQueryStringSort',
         'cache_by_cookies' => 'setCacheByCookies',
         'cookie_names' => 'setCookieNames',
-        'enable_caching_for_post' => 'setEnableCachingForPost',
-        'l2_caching_enabled' => 'setL2CachingEnabled',
-        'is_slice_configuration_enabled' => 'setIsSliceConfigurationEnabled',
-        'is_slice_edge_caching_enabled' => 'setIsSliceEdgeCachingEnabled',
-        'is_slice_l2_caching_enabled' => 'setIsSliceL2CachingEnabled',
-        'slice_configuration_range' => 'setSliceConfigurationRange'
+        'user_email' => 'setUserEmail',
+        'l2_caching_enabled' => 'setL2CachingEnabled'
     ];
 
     /**
@@ -273,20 +243,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         'browser_cache_settings' => 'getBrowserCacheSettings',
         'browser_cache_settings_maximum_ttl' => 'getBrowserCacheSettingsMaximumTtl',
         'cdn_cache_settings' => 'getCdnCacheSettings',
-        'adaptive_delivery_action' => 'getAdaptiveDeliveryAction',
-        'enable_caching_for_options' => 'getEnableCachingForOptions',
-        'enable_query_string_sort' => 'getEnableQueryStringSort',
         'cdn_cache_settings_maximum_ttl' => 'getCdnCacheSettingsMaximumTtl',
         'cache_by_query_string' => 'getCacheByQueryString',
         'query_string_fields' => 'getQueryStringFields',
+        'enable_query_string_sort' => 'getEnableQueryStringSort',
         'cache_by_cookies' => 'getCacheByCookies',
         'cookie_names' => 'getCookieNames',
-        'enable_caching_for_post' => 'getEnableCachingForPost',
-        'l2_caching_enabled' => 'getL2CachingEnabled',
-        'is_slice_configuration_enabled' => 'getIsSliceConfigurationEnabled',
-        'is_slice_edge_caching_enabled' => 'getIsSliceEdgeCachingEnabled',
-        'is_slice_l2_caching_enabled' => 'getIsSliceL2CachingEnabled',
-        'slice_configuration_range' => 'getSliceConfigurationRange'
+        'user_email' => 'getUserEmail',
+        'l2_caching_enabled' => 'getL2CachingEnabled'
     ];
 
     /**
@@ -350,20 +314,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('browser_cache_settings', $data ?? [], null);
         $this->setIfExists('browser_cache_settings_maximum_ttl', $data ?? [], null);
         $this->setIfExists('cdn_cache_settings', $data ?? [], null);
-        $this->setIfExists('adaptive_delivery_action', $data ?? [], null);
-        $this->setIfExists('enable_caching_for_options', $data ?? [], null);
-        $this->setIfExists('enable_query_string_sort', $data ?? [], null);
         $this->setIfExists('cdn_cache_settings_maximum_ttl', $data ?? [], null);
         $this->setIfExists('cache_by_query_string', $data ?? [], null);
         $this->setIfExists('query_string_fields', $data ?? [], null);
+        $this->setIfExists('enable_query_string_sort', $data ?? [], null);
         $this->setIfExists('cache_by_cookies', $data ?? [], null);
         $this->setIfExists('cookie_names', $data ?? [], null);
-        $this->setIfExists('enable_caching_for_post', $data ?? [], null);
+        $this->setIfExists('user_email', $data ?? [], null);
         $this->setIfExists('l2_caching_enabled', $data ?? [], null);
-        $this->setIfExists('is_slice_configuration_enabled', $data ?? [], null);
-        $this->setIfExists('is_slice_edge_caching_enabled', $data ?? [], null);
-        $this->setIfExists('is_slice_l2_caching_enabled', $data ?? [], null);
-        $this->setIfExists('slice_configuration_range', $data ?? [], null);
     }
 
     /**
@@ -520,87 +478,6 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets adaptive_delivery_action
-     *
-     * @return string|null
-     */
-    public function getAdaptiveDeliveryAction()
-    {
-        return $this->container['adaptive_delivery_action'];
-    }
-
-    /**
-     * Sets adaptive_delivery_action
-     *
-     * @param string|null $adaptive_delivery_action adaptive_delivery_action
-     *
-     * @return self
-     */
-    public function setAdaptiveDeliveryAction($adaptive_delivery_action)
-    {
-        if (is_null($adaptive_delivery_action)) {
-            throw new \InvalidArgumentException('non-nullable adaptive_delivery_action cannot be null');
-        }
-        $this->container['adaptive_delivery_action'] = $adaptive_delivery_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_caching_for_options
-     *
-     * @return bool|null
-     */
-    public function getEnableCachingForOptions()
-    {
-        return $this->container['enable_caching_for_options'];
-    }
-
-    /**
-     * Sets enable_caching_for_options
-     *
-     * @param bool|null $enable_caching_for_options enable_caching_for_options
-     *
-     * @return self
-     */
-    public function setEnableCachingForOptions($enable_caching_for_options)
-    {
-        if (is_null($enable_caching_for_options)) {
-            throw new \InvalidArgumentException('non-nullable enable_caching_for_options cannot be null');
-        }
-        $this->container['enable_caching_for_options'] = $enable_caching_for_options;
-
-        return $this;
-    }
-
-    /**
-     * Gets enable_query_string_sort
-     *
-     * @return bool|null
-     */
-    public function getEnableQueryStringSort()
-    {
-        return $this->container['enable_query_string_sort'];
-    }
-
-    /**
-     * Sets enable_query_string_sort
-     *
-     * @param bool|null $enable_query_string_sort enable_query_string_sort
-     *
-     * @return self
-     */
-    public function setEnableQueryStringSort($enable_query_string_sort)
-    {
-        if (is_null($enable_query_string_sort)) {
-            throw new \InvalidArgumentException('non-nullable enable_query_string_sort cannot be null');
-        }
-        $this->container['enable_query_string_sort'] = $enable_query_string_sort;
-
-        return $this;
-    }
-
-    /**
      * Gets cdn_cache_settings_maximum_ttl
      *
      * @return int|null
@@ -674,9 +551,43 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
     public function setQueryStringFields($query_string_fields)
     {
         if (is_null($query_string_fields)) {
-            throw new \InvalidArgumentException('non-nullable query_string_fields cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'query_string_fields');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('query_string_fields', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['query_string_fields'] = $query_string_fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_query_string_sort
+     *
+     * @return bool|null
+     */
+    public function getEnableQueryStringSort()
+    {
+        return $this->container['enable_query_string_sort'];
+    }
+
+    /**
+     * Sets enable_query_string_sort
+     *
+     * @param bool|null $enable_query_string_sort enable_query_string_sort
+     *
+     * @return self
+     */
+    public function setEnableQueryStringSort($enable_query_string_sort)
+    {
+        if (is_null($enable_query_string_sort)) {
+            throw new \InvalidArgumentException('non-nullable enable_query_string_sort cannot be null');
+        }
+        $this->container['enable_query_string_sort'] = $enable_query_string_sort;
 
         return $this;
     }
@@ -728,7 +639,14 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
     public function setCookieNames($cookie_names)
     {
         if (is_null($cookie_names)) {
-            throw new \InvalidArgumentException('non-nullable cookie_names cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cookie_names');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cookie_names', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cookie_names'] = $cookie_names;
 
@@ -736,28 +654,28 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets enable_caching_for_post
+     * Gets user_email
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getEnableCachingForPost()
+    public function getUserEmail()
     {
-        return $this->container['enable_caching_for_post'];
+        return $this->container['user_email'];
     }
 
     /**
-     * Sets enable_caching_for_post
+     * Sets user_email
      *
-     * @param bool|null $enable_caching_for_post enable_caching_for_post
+     * @param string|null $user_email user_email
      *
      * @return self
      */
-    public function setEnableCachingForPost($enable_caching_for_post)
+    public function setUserEmail($user_email)
     {
-        if (is_null($enable_caching_for_post)) {
-            throw new \InvalidArgumentException('non-nullable enable_caching_for_post cannot be null');
+        if (is_null($user_email)) {
+            throw new \InvalidArgumentException('non-nullable user_email cannot be null');
         }
-        $this->container['enable_caching_for_post'] = $enable_caching_for_post;
+        $this->container['user_email'] = $user_email;
 
         return $this;
     }
@@ -785,114 +703,6 @@ class ApplicationCacheCreateRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable l2_caching_enabled cannot be null');
         }
         $this->container['l2_caching_enabled'] = $l2_caching_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_slice_configuration_enabled
-     *
-     * @return bool|null
-     */
-    public function getIsSliceConfigurationEnabled()
-    {
-        return $this->container['is_slice_configuration_enabled'];
-    }
-
-    /**
-     * Sets is_slice_configuration_enabled
-     *
-     * @param bool|null $is_slice_configuration_enabled is_slice_configuration_enabled
-     *
-     * @return self
-     */
-    public function setIsSliceConfigurationEnabled($is_slice_configuration_enabled)
-    {
-        if (is_null($is_slice_configuration_enabled)) {
-            throw new \InvalidArgumentException('non-nullable is_slice_configuration_enabled cannot be null');
-        }
-        $this->container['is_slice_configuration_enabled'] = $is_slice_configuration_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_slice_edge_caching_enabled
-     *
-     * @return bool|null
-     */
-    public function getIsSliceEdgeCachingEnabled()
-    {
-        return $this->container['is_slice_edge_caching_enabled'];
-    }
-
-    /**
-     * Sets is_slice_edge_caching_enabled
-     *
-     * @param bool|null $is_slice_edge_caching_enabled is_slice_edge_caching_enabled
-     *
-     * @return self
-     */
-    public function setIsSliceEdgeCachingEnabled($is_slice_edge_caching_enabled)
-    {
-        if (is_null($is_slice_edge_caching_enabled)) {
-            throw new \InvalidArgumentException('non-nullable is_slice_edge_caching_enabled cannot be null');
-        }
-        $this->container['is_slice_edge_caching_enabled'] = $is_slice_edge_caching_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_slice_l2_caching_enabled
-     *
-     * @return bool|null
-     */
-    public function getIsSliceL2CachingEnabled()
-    {
-        return $this->container['is_slice_l2_caching_enabled'];
-    }
-
-    /**
-     * Sets is_slice_l2_caching_enabled
-     *
-     * @param bool|null $is_slice_l2_caching_enabled is_slice_l2_caching_enabled
-     *
-     * @return self
-     */
-    public function setIsSliceL2CachingEnabled($is_slice_l2_caching_enabled)
-    {
-        if (is_null($is_slice_l2_caching_enabled)) {
-            throw new \InvalidArgumentException('non-nullable is_slice_l2_caching_enabled cannot be null');
-        }
-        $this->container['is_slice_l2_caching_enabled'] = $is_slice_l2_caching_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets slice_configuration_range
-     *
-     * @return int|null
-     */
-    public function getSliceConfigurationRange()
-    {
-        return $this->container['slice_configuration_range'];
-    }
-
-    /**
-     * Sets slice_configuration_range
-     *
-     * @param int|null $slice_configuration_range slice_configuration_range
-     *
-     * @return self
-     */
-    public function setSliceConfigurationRange($slice_configuration_range)
-    {
-        if (is_null($slice_configuration_range)) {
-            throw new \InvalidArgumentException('non-nullable slice_configuration_range cannot be null');
-        }
-        $this->container['slice_configuration_range'] = $slice_configuration_range;
 
         return $this;
     }

@@ -19,5 +19,12 @@ Name | Type | Description | Notes
 **device_group** | **string[]** |  |
 **enable_caching_for_post** | **bool** |  |
 **l2_caching_enabled** | **bool** |  |
+**is_slice_configuration_enabled** | **bool** |  | [optional]
+**is_slice_edge_caching_enabled** | **bool** |  | [optional]
+**is_slice_l2_caching_enabled** | **bool** |  | [optional]
+**slice_configuration_range** | **int** |  | [optional]
+**enable_caching_for_options** | **bool** |  | [optional]
+**enable_stale_cache** | **bool** |  | [optional]
+**l2_region** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
