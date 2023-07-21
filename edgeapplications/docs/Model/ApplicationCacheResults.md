@@ -19,5 +19,8 @@ Name | Type | Description | Notes
 **device_group** | **string[]** |  |
 **enable_caching_for_post** | **bool** |  |
 **l2_caching_enabled** | **bool** |  |
+**enable_caching_for_options** | **bool** |  |
+**enable_stale_cache** | **bool** |  |
+**l2_region** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
