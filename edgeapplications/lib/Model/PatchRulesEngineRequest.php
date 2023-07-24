@@ -58,6 +58,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'name' => 'string',
+        'description' => 'string',
         'criteria' => '\OpenAPI\Client\Model\RulesEngineCriteria[][]',
         'behaviors' => '\OpenAPI\Client\Model\RulesEngineBehavior[]'
     ];
@@ -71,6 +72,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'name' => null,
+        'description' => null,
         'criteria' => null,
         'behaviors' => null
     ];
@@ -82,6 +84,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'name' => false,
+		'description' => false,
 		'criteria' => false,
 		'behaviors' => false
     ];
@@ -173,6 +176,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'description' => 'description',
         'criteria' => 'criteria',
         'behaviors' => 'behaviors'
     ];
@@ -184,6 +188,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'name' => 'setName',
+        'description' => 'setDescription',
         'criteria' => 'setCriteria',
         'behaviors' => 'setBehaviors'
     ];
@@ -195,6 +200,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'name' => 'getName',
+        'description' => 'getDescription',
         'criteria' => 'getCriteria',
         'behaviors' => 'getBehaviors'
     ];
@@ -257,6 +263,7 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('criteria', $data ?? [], null);
         $this->setIfExists('behaviors', $data ?? [], null);
     }
@@ -287,6 +294,10 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 1000.";
+        }
 
         return $invalidProperties;
     }
@@ -326,6 +337,37 @@ class PatchRulesEngineRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling PatchRulesEngineRequest., must be smaller than or equal to 1000.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }

@@ -72,6 +72,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'device_group' => 'string[]',
         'enable_caching_for_post' => 'bool',
         'l2_caching_enabled' => 'bool',
+        'is_slice_configuration_enabled' => 'bool',
+        'is_slice_edge_caching_enabled' => 'bool',
+        'is_slice_l2_caching_enabled' => 'bool',
+        'slice_configuration_range' => 'bool',
         'enable_caching_for_options' => 'bool',
         'enable_stale_cache' => 'bool',
         'l2_region' => 'string'
@@ -100,6 +104,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'device_group' => null,
         'enable_caching_for_post' => null,
         'l2_caching_enabled' => null,
+        'is_slice_configuration_enabled' => null,
+        'is_slice_edge_caching_enabled' => null,
+        'is_slice_l2_caching_enabled' => null,
+        'slice_configuration_range' => null,
         'enable_caching_for_options' => null,
         'enable_stale_cache' => null,
         'l2_region' => null
@@ -126,6 +134,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
 		'device_group' => false,
 		'enable_caching_for_post' => false,
 		'l2_caching_enabled' => false,
+		'is_slice_configuration_enabled' => false,
+		'is_slice_edge_caching_enabled' => false,
+		'is_slice_l2_caching_enabled' => false,
+		'slice_configuration_range' => false,
 		'enable_caching_for_options' => false,
 		'enable_stale_cache' => false,
 		'l2_region' => false
@@ -232,6 +244,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'device_group' => 'device_group',
         'enable_caching_for_post' => 'enable_caching_for_post',
         'l2_caching_enabled' => 'l2_caching_enabled',
+        'is_slice_configuration_enabled' => 'is_slice_configuration_enabled',
+        'is_slice_edge_caching_enabled' => 'is_slice_edge_caching_enabled',
+        'is_slice_l2_caching_enabled' => 'is_slice_l2_caching_enabled',
+        'slice_configuration_range' => 'slice_configuration_range',
         'enable_caching_for_options' => 'enable_caching_for_options',
         'enable_stale_cache' => 'enable_stale_cache',
         'l2_region' => 'l2_region'
@@ -258,6 +274,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'device_group' => 'setDeviceGroup',
         'enable_caching_for_post' => 'setEnableCachingForPost',
         'l2_caching_enabled' => 'setL2CachingEnabled',
+        'is_slice_configuration_enabled' => 'setIsSliceConfigurationEnabled',
+        'is_slice_edge_caching_enabled' => 'setIsSliceEdgeCachingEnabled',
+        'is_slice_l2_caching_enabled' => 'setIsSliceL2CachingEnabled',
+        'slice_configuration_range' => 'setSliceConfigurationRange',
         'enable_caching_for_options' => 'setEnableCachingForOptions',
         'enable_stale_cache' => 'setEnableStaleCache',
         'l2_region' => 'setL2Region'
@@ -284,6 +304,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'device_group' => 'getDeviceGroup',
         'enable_caching_for_post' => 'getEnableCachingForPost',
         'l2_caching_enabled' => 'getL2CachingEnabled',
+        'is_slice_configuration_enabled' => 'getIsSliceConfigurationEnabled',
+        'is_slice_edge_caching_enabled' => 'getIsSliceEdgeCachingEnabled',
+        'is_slice_l2_caching_enabled' => 'getIsSliceL2CachingEnabled',
+        'slice_configuration_range' => 'getSliceConfigurationRange',
         'enable_caching_for_options' => 'getEnableCachingForOptions',
         'enable_stale_cache' => 'getEnableStaleCache',
         'l2_region' => 'getL2Region'
@@ -361,6 +385,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('device_group', $data ?? [], null);
         $this->setIfExists('enable_caching_for_post', $data ?? [], null);
         $this->setIfExists('l2_caching_enabled', $data ?? [], null);
+        $this->setIfExists('is_slice_configuration_enabled', $data ?? [], null);
+        $this->setIfExists('is_slice_edge_caching_enabled', $data ?? [], null);
+        $this->setIfExists('is_slice_l2_caching_enabled', $data ?? [], null);
+        $this->setIfExists('slice_configuration_range', $data ?? [], null);
         $this->setIfExists('enable_caching_for_options', $data ?? [], null);
         $this->setIfExists('enable_stale_cache', $data ?? [], null);
         $this->setIfExists('l2_region', $data ?? [], null);
@@ -863,6 +891,114 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable l2_caching_enabled cannot be null');
         }
         $this->container['l2_caching_enabled'] = $l2_caching_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_slice_configuration_enabled
+     *
+     * @return bool|null
+     */
+    public function getIsSliceConfigurationEnabled()
+    {
+        return $this->container['is_slice_configuration_enabled'];
+    }
+
+    /**
+     * Sets is_slice_configuration_enabled
+     *
+     * @param bool|null $is_slice_configuration_enabled is_slice_configuration_enabled
+     *
+     * @return self
+     */
+    public function setIsSliceConfigurationEnabled($is_slice_configuration_enabled)
+    {
+        if (is_null($is_slice_configuration_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_slice_configuration_enabled cannot be null');
+        }
+        $this->container['is_slice_configuration_enabled'] = $is_slice_configuration_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_slice_edge_caching_enabled
+     *
+     * @return bool|null
+     */
+    public function getIsSliceEdgeCachingEnabled()
+    {
+        return $this->container['is_slice_edge_caching_enabled'];
+    }
+
+    /**
+     * Sets is_slice_edge_caching_enabled
+     *
+     * @param bool|null $is_slice_edge_caching_enabled is_slice_edge_caching_enabled
+     *
+     * @return self
+     */
+    public function setIsSliceEdgeCachingEnabled($is_slice_edge_caching_enabled)
+    {
+        if (is_null($is_slice_edge_caching_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_slice_edge_caching_enabled cannot be null');
+        }
+        $this->container['is_slice_edge_caching_enabled'] = $is_slice_edge_caching_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_slice_l2_caching_enabled
+     *
+     * @return bool|null
+     */
+    public function getIsSliceL2CachingEnabled()
+    {
+        return $this->container['is_slice_l2_caching_enabled'];
+    }
+
+    /**
+     * Sets is_slice_l2_caching_enabled
+     *
+     * @param bool|null $is_slice_l2_caching_enabled is_slice_l2_caching_enabled
+     *
+     * @return self
+     */
+    public function setIsSliceL2CachingEnabled($is_slice_l2_caching_enabled)
+    {
+        if (is_null($is_slice_l2_caching_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_slice_l2_caching_enabled cannot be null');
+        }
+        $this->container['is_slice_l2_caching_enabled'] = $is_slice_l2_caching_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets slice_configuration_range
+     *
+     * @return bool|null
+     */
+    public function getSliceConfigurationRange()
+    {
+        return $this->container['slice_configuration_range'];
+    }
+
+    /**
+     * Sets slice_configuration_range
+     *
+     * @param bool|null $slice_configuration_range slice_configuration_range
+     *
+     * @return self
+     */
+    public function setSliceConfigurationRange($slice_configuration_range)
+    {
+        if (is_null($slice_configuration_range)) {
+            throw new \InvalidArgumentException('non-nullable slice_configuration_range cannot be null');
+        }
+        $this->container['slice_configuration_range'] = $slice_configuration_range;
 
         return $this;
     }
