@@ -63,7 +63,9 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'validity' => 'string',
         'status' => 'string',
         'certificate_type' => 'string',
-        'managed' => 'bool'
+        'managed' => 'bool',
+        'issuer' => 'string',
+        'azion_information' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'validity' => null,
         'status' => null,
         'certificate_type' => null,
-        'managed' => null
+        'managed' => null,
+        'issuer' => null,
+        'azion_information' => null
     ];
 
     /**
@@ -92,10 +96,12 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
 		'name' => false,
 		'subject_name' => false,
-		'validity' => false,
+		'validity' => true,
 		'status' => false,
 		'certificate_type' => false,
-		'managed' => false
+		'managed' => false,
+		'issuer' => true,
+		'azion_information' => false
     ];
 
     /**
@@ -190,7 +196,9 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'validity' => 'validity',
         'status' => 'status',
         'certificate_type' => 'certificate_type',
-        'managed' => 'managed'
+        'managed' => 'managed',
+        'issuer' => 'issuer',
+        'azion_information' => 'azion_information'
     ];
 
     /**
@@ -205,7 +213,9 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'validity' => 'setValidity',
         'status' => 'setStatus',
         'certificate_type' => 'setCertificateType',
-        'managed' => 'setManaged'
+        'managed' => 'setManaged',
+        'issuer' => 'setIssuer',
+        'azion_information' => 'setAzionInformation'
     ];
 
     /**
@@ -220,7 +230,9 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         'validity' => 'getValidity',
         'status' => 'getStatus',
         'certificate_type' => 'getCertificateType',
-        'managed' => 'getManaged'
+        'managed' => 'getManaged',
+        'issuer' => 'getIssuer',
+        'azion_information' => 'getAzionInformation'
     ];
 
     /**
@@ -302,6 +314,8 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('certificate_type', $data ?? [], null);
         $this->setIfExists('managed', $data ?? [], null);
+        $this->setIfExists('issuer', $data ?? [], null);
+        $this->setIfExists('azion_information', $data ?? [], null);
     }
 
     /**
@@ -456,7 +470,14 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValidity($validity)
     {
         if (is_null($validity)) {
-            throw new \InvalidArgumentException('non-nullable validity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'validity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('validity', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['validity'] = $validity;
 
@@ -550,6 +571,67 @@ class ResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable managed cannot be null');
         }
         $this->container['managed'] = $managed;
+
+        return $this;
+    }
+
+    /**
+     * Gets issuer
+     *
+     * @return string|null
+     */
+    public function getIssuer()
+    {
+        return $this->container['issuer'];
+    }
+
+    /**
+     * Sets issuer
+     *
+     * @param string|null $issuer issuer
+     *
+     * @return self
+     */
+    public function setIssuer($issuer)
+    {
+        if (is_null($issuer)) {
+            array_push($this->openAPINullablesSetToNull, 'issuer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('issuer', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['issuer'] = $issuer;
+
+        return $this;
+    }
+
+    /**
+     * Gets azion_information
+     *
+     * @return string|null
+     */
+    public function getAzionInformation()
+    {
+        return $this->container['azion_information'];
+    }
+
+    /**
+     * Sets azion_information
+     *
+     * @param string|null $azion_information azion_information
+     *
+     * @return self
+     */
+    public function setAzionInformation($azion_information)
+    {
+        if (is_null($azion_information)) {
+            throw new \InvalidArgumentException('non-nullable azion_information cannot be null');
+        }
+        $this->container['azion_information'] = $azion_information;
 
         return $this;
     }
