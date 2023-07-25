@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
+**description** | **string** |  | [optional]
 **criteria** | **\OpenAPI\Client\Model\RulesEngineCriteria[][]** |  | [optional]
 **behaviors** | [**\OpenAPI\Client\Model\RulesEngineBehavior[]**](RulesEngineBehavior.md) |  | [optional]
 
