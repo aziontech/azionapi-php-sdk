@@ -61,7 +61,7 @@ class DC200List implements ModelInterface, ArrayAccess, \JsonSerializable
         'total_pages' => 'int',
         'schema_version' => 'int',
         'links' => '\OpenAPI\Client\Model\DC200ListLinks',
-        'results' => 'array[]'
+        'results' => '\OpenAPI\Client\Model\ResultsInner[]'
     ];
 
     /**
@@ -428,7 +428,7 @@ class DC200List implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets results
      *
-     * @return array[]|null
+     * @return \OpenAPI\Client\Model\ResultsInner[]|null
      */
     public function getResults()
     {
@@ -438,7 +438,7 @@ class DC200List implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets results
      *
-     * @param array[]|null $results results
+     * @param \OpenAPI\Client\Model\ResultsInner[]|null $results results
      *
      * @return self
      */

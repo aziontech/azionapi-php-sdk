@@ -60,10 +60,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'name' => 'string',
         'subject_name' => 'string[]',
+        'issuer' => 'string',
         'validity' => 'string',
         'status' => 'string',
         'certificate_type' => 'string',
-        'managed' => 'bool'
+        'managed' => 'bool',
+        'csr' => 'string',
+        'certificate_content' => 'string',
+        'azion_information' => 'string'
     ];
 
     /**
@@ -77,10 +81,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'name' => null,
         'subject_name' => null,
+        'issuer' => null,
         'validity' => null,
         'status' => null,
         'certificate_type' => null,
-        'managed' => null
+        'managed' => null,
+        'csr' => null,
+        'certificate_content' => null,
+        'azion_information' => null
     ];
 
     /**
@@ -92,10 +100,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
 		'name' => false,
 		'subject_name' => false,
-		'validity' => false,
+		'issuer' => true,
+		'validity' => true,
 		'status' => false,
 		'certificate_type' => false,
-		'managed' => false
+		'managed' => false,
+		'csr' => true,
+		'certificate_content' => true,
+		'azion_information' => false
     ];
 
     /**
@@ -187,10 +199,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'name' => 'name',
         'subject_name' => 'subject_name',
+        'issuer' => 'issuer',
         'validity' => 'validity',
         'status' => 'status',
         'certificate_type' => 'certificate_type',
-        'managed' => 'managed'
+        'managed' => 'managed',
+        'csr' => 'csr',
+        'certificate_content' => 'certificate_content',
+        'azion_information' => 'azion_information'
     ];
 
     /**
@@ -202,10 +218,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'name' => 'setName',
         'subject_name' => 'setSubjectName',
+        'issuer' => 'setIssuer',
         'validity' => 'setValidity',
         'status' => 'setStatus',
         'certificate_type' => 'setCertificateType',
-        'managed' => 'setManaged'
+        'managed' => 'setManaged',
+        'csr' => 'setCsr',
+        'certificate_content' => 'setCertificateContent',
+        'azion_information' => 'setAzionInformation'
     ];
 
     /**
@@ -217,10 +237,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'name' => 'getName',
         'subject_name' => 'getSubjectName',
+        'issuer' => 'getIssuer',
         'validity' => 'getValidity',
         'status' => 'getStatus',
         'certificate_type' => 'getCertificateType',
-        'managed' => 'getManaged'
+        'managed' => 'getManaged',
+        'csr' => 'getCsr',
+        'certificate_content' => 'getCertificateContent',
+        'azion_information' => 'getAzionInformation'
     ];
 
     /**
@@ -298,10 +322,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('subject_name', $data ?? [], null);
+        $this->setIfExists('issuer', $data ?? [], null);
         $this->setIfExists('validity', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('certificate_type', $data ?? [], null);
         $this->setIfExists('managed', $data ?? [], null);
+        $this->setIfExists('csr', $data ?? [], null);
+        $this->setIfExists('certificate_content', $data ?? [], null);
+        $this->setIfExists('azion_information', $data ?? [], null);
     }
 
     /**
@@ -437,6 +465,40 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets issuer
+     *
+     * @return string|null
+     */
+    public function getIssuer()
+    {
+        return $this->container['issuer'];
+    }
+
+    /**
+     * Sets issuer
+     *
+     * @param string|null $issuer issuer
+     *
+     * @return self
+     */
+    public function setIssuer($issuer)
+    {
+        if (is_null($issuer)) {
+            array_push($this->openAPINullablesSetToNull, 'issuer');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('issuer', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['issuer'] = $issuer;
+
+        return $this;
+    }
+
+    /**
      * Gets validity
      *
      * @return string|null
@@ -456,7 +518,14 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setValidity($validity)
     {
         if (is_null($validity)) {
-            throw new \InvalidArgumentException('non-nullable validity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'validity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('validity', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['validity'] = $validity;
 
@@ -550,6 +619,101 @@ class SingleResult implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable managed cannot be null');
         }
         $this->container['managed'] = $managed;
+
+        return $this;
+    }
+
+    /**
+     * Gets csr
+     *
+     * @return string|null
+     */
+    public function getCsr()
+    {
+        return $this->container['csr'];
+    }
+
+    /**
+     * Sets csr
+     *
+     * @param string|null $csr csr
+     *
+     * @return self
+     */
+    public function setCsr($csr)
+    {
+        if (is_null($csr)) {
+            array_push($this->openAPINullablesSetToNull, 'csr');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('csr', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['csr'] = $csr;
+
+        return $this;
+    }
+
+    /**
+     * Gets certificate_content
+     *
+     * @return string|null
+     */
+    public function getCertificateContent()
+    {
+        return $this->container['certificate_content'];
+    }
+
+    /**
+     * Sets certificate_content
+     *
+     * @param string|null $certificate_content certificate_content
+     *
+     * @return self
+     */
+    public function setCertificateContent($certificate_content)
+    {
+        if (is_null($certificate_content)) {
+            array_push($this->openAPINullablesSetToNull, 'certificate_content');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('certificate_content', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['certificate_content'] = $certificate_content;
+
+        return $this;
+    }
+
+    /**
+     * Gets azion_information
+     *
+     * @return string|null
+     */
+    public function getAzionInformation()
+    {
+        return $this->container['azion_information'];
+    }
+
+    /**
+     * Sets azion_information
+     *
+     * @param string|null $azion_information azion_information
+     *
+     * @return self
+     */
+    public function setAzionInformation($azion_information)
+    {
+        if (is_null($azion_information)) {
+            throw new \InvalidArgumentException('non-nullable azion_information cannot be null');
+        }
+        $this->container['azion_information'] = $azion_information;
 
         return $this;
     }

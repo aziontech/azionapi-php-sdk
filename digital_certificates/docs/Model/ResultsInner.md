@@ -11,5 +11,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **certificate_type** | **string** |  | [optional]
 **managed** | **bool** |  | [optional]
+**issuer** | **string** |  | [optional]
+**azion_information** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
