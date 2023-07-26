@@ -15,7 +15,6 @@ docs/Model/CreateCertificateRequest.md
 docs/Model/DC200.md
 docs/Model/DC200List.md
 docs/Model/DC200ListLinks.md
-docs/Model/DC201.md
 docs/Model/DC400.md
 docs/Model/DC401.md
 docs/Model/DC403.md
@@ -41,7 +40,6 @@ lib/Model/CreateCertificateRequest.php
 lib/Model/DC200.php
 lib/Model/DC200List.php
 lib/Model/DC200ListLinks.php
-lib/Model/DC201.php
 lib/Model/DC400.php
 lib/Model/DC401.php
 lib/Model/DC403.php

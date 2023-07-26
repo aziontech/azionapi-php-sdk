@@ -10,7 +10,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 ## `createCSR()`
 
 ```php
-createCSR($create_csr_request): \OpenAPI\Client\Model\DC201
+createCSR($create_csr_request): \OpenAPI\Client\Model\DC200
 ```
 
 Create an encrypted Certificate Request with Azion, which can then be sent for signing to a CA
@@ -52,7 +52,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DC201**](../Model/DC201.md)
+[**\OpenAPI\Client\Model\DC200**](../Model/DC200.md)
 
 ### Authorization
 

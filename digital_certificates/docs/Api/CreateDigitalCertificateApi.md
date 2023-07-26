@@ -10,7 +10,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 ## `createCertificate()`
 
 ```php
-createCertificate($create_certificate_request): \OpenAPI\Client\Model\DC201
+createCertificate($create_certificate_request): \OpenAPI\Client\Model\DC200
 ```
 
 Create a new digital certificate
@@ -52,7 +52,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\DC201**](../Model/DC201.md)
+[**\OpenAPI\Client\Model\DC200**](../Model/DC200.md)
 
 ### Authorization
 
