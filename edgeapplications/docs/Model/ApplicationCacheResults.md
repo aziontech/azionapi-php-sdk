@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **cache_by_cookies** | **string** |  |
 **cookie_names** | **string[]** |  |
 **adaptive_delivery_action** | **string** |  |
-**device_group** | **string[]** |  |
+**device_group** | **int[]** |  |
 **enable_caching_for_post** | **bool** |  |
 **l2_caching_enabled** | **bool** |  |
 **is_slice_configuration_enabled** | **bool** |  | [optional]
 **is_slice_edge_caching_enabled** | **bool** |  | [optional]
 **is_slice_l2_caching_enabled** | **bool** |  | [optional]
-**slice_configuration_range** | **bool** |  | [optional]
+**slice_configuration_range** | **int** |  | [optional]
 **enable_caching_for_options** | **bool** |  |
 **enable_stale_cache** | **bool** |  |
 **l2_region** | **string** |  |

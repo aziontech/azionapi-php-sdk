@@ -69,13 +69,13 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'cache_by_cookies' => 'string',
         'cookie_names' => 'string[]',
         'adaptive_delivery_action' => 'string',
-        'device_group' => 'string[]',
+        'device_group' => 'int[]',
         'enable_caching_for_post' => 'bool',
         'l2_caching_enabled' => 'bool',
         'is_slice_configuration_enabled' => 'bool',
         'is_slice_edge_caching_enabled' => 'bool',
         'is_slice_l2_caching_enabled' => 'bool',
-        'slice_configuration_range' => 'bool',
+        'slice_configuration_range' => 'int',
         'enable_caching_for_options' => 'bool',
         'enable_stale_cache' => 'bool',
         'l2_region' => 'string'
@@ -107,7 +107,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
         'is_slice_configuration_enabled' => null,
         'is_slice_edge_caching_enabled' => null,
         'is_slice_l2_caching_enabled' => null,
-        'slice_configuration_range' => null,
+        'slice_configuration_range' => 'int64',
         'enable_caching_for_options' => null,
         'enable_stale_cache' => null,
         'l2_region' => null
@@ -817,7 +817,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets device_group
      *
-     * @return string[]
+     * @return int[]
      */
     public function getDeviceGroup()
     {
@@ -827,7 +827,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets device_group
      *
-     * @param string[] $device_group device_group
+     * @param int[] $device_group device_group
      *
      * @return self
      */
@@ -979,7 +979,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets slice_configuration_range
      *
-     * @return bool|null
+     * @return int|null
      */
     public function getSliceConfigurationRange()
     {
@@ -989,7 +989,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets slice_configuration_range
      *
-     * @param bool|null $slice_configuration_range slice_configuration_range
+     * @param int|null $slice_configuration_range slice_configuration_range
      *
      * @return self
      */
