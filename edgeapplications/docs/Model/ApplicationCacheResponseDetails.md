@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **cache_by_cookies** | **string** |  |
 **cookie_names** | **string[]** |  |
 **adaptive_delivery_action** | **string** |  | [optional]
-**device_group** | **string[]** |  | [optional]
+**device_group** | **int[]** |  | [optional]
 **enable_caching_for_post** | **bool** |  |
 **enable_caching_for_options** | **bool** |  | [optional]
 **l2_caching_enabled** | **bool** |  |

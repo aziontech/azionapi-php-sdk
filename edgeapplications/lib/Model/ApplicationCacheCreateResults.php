@@ -69,7 +69,7 @@ class ApplicationCacheCreateResults implements ModelInterface, ArrayAccess, \Jso
         'cache_by_cookies' => 'string',
         'cookie_names' => 'string[]',
         'adaptive_delivery_action' => 'string',
-        'device_group' => 'string[]',
+        'device_group' => 'int[]',
         'enable_caching_for_post' => 'bool',
         'l2_caching_enabled' => 'bool',
         'is_slice_configuration_enabled' => 'bool',
@@ -808,7 +808,7 @@ class ApplicationCacheCreateResults implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets device_group
      *
-     * @return string[]
+     * @return int[]
      */
     public function getDeviceGroup()
     {
@@ -818,7 +818,7 @@ class ApplicationCacheCreateResults implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets device_group
      *
-     * @param string[] $device_group device_group
+     * @param int[] $device_group device_group
      *
      * @return self
      */

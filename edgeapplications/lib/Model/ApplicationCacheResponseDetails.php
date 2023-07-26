@@ -69,7 +69,7 @@ class ApplicationCacheResponseDetails implements ModelInterface, ArrayAccess, \J
         'cache_by_cookies' => 'string',
         'cookie_names' => 'string[]',
         'adaptive_delivery_action' => 'string',
-        'device_group' => 'string[]',
+        'device_group' => 'int[]',
         'enable_caching_for_post' => 'bool',
         'enable_caching_for_options' => 'bool',
         'l2_caching_enabled' => 'bool'
@@ -774,7 +774,7 @@ class ApplicationCacheResponseDetails implements ModelInterface, ArrayAccess, \J
     /**
      * Gets device_group
      *
-     * @return string[]|null
+     * @return int[]|null
      */
     public function getDeviceGroup()
     {
@@ -784,7 +784,7 @@ class ApplicationCacheResponseDetails implements ModelInterface, ArrayAccess, \J
     /**
      * Sets device_group
      *
-     * @param string[]|null $device_group device_group
+     * @param int[]|null $device_group device_group
      *
      * @return self
      */
