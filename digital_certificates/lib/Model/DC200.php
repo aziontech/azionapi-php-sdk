@@ -58,7 +58,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'schema_version' => 'int',
-        'result' => '\OpenAPI\Client\Model\SingleResult'
+        'results' => '\OpenAPI\Client\Model\SingleResult'
     ];
 
     /**
@@ -70,7 +70,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'schema_version' => null,
-        'result' => null
+        'results' => null
     ];
 
     /**
@@ -80,7 +80,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'schema_version' => false,
-		'result' => false
+		'results' => false
     ];
 
     /**
@@ -170,7 +170,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'schema_version' => 'schema_version',
-        'result' => 'result'
+        'results' => 'results'
     ];
 
     /**
@@ -180,7 +180,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'schema_version' => 'setSchemaVersion',
-        'result' => 'setResult'
+        'results' => 'setResults'
     ];
 
     /**
@@ -190,7 +190,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'schema_version' => 'getSchemaVersion',
-        'result' => 'getResult'
+        'results' => 'getResults'
     ];
 
     /**
@@ -251,7 +251,7 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('schema_version', $data ?? [], null);
-        $this->setIfExists('result', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -324,28 +324,28 @@ class DC200 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets result
+     * Gets results
      *
      * @return \OpenAPI\Client\Model\SingleResult|null
      */
-    public function getResult()
+    public function getResults()
     {
-        return $this->container['result'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets result
+     * Sets results
      *
-     * @param \OpenAPI\Client\Model\SingleResult|null $result result
+     * @param \OpenAPI\Client\Model\SingleResult|null $results results
      *
      * @return self
      */
-    public function setResult($result)
+    public function setResults($results)
     {
-        if (is_null($result)) {
-            throw new \InvalidArgumentException('non-nullable result cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['result'] = $result;
+        $this->container['results'] = $results;
 
         return $this;
     }

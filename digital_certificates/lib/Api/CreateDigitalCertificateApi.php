@@ -132,7 +132,7 @@ class CreateDigitalCertificateApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\DC201|\OpenAPI\Client\Model\DC400|\OpenAPI\Client\Model\DC403
+     * @return \OpenAPI\Client\Model\DC200|\OpenAPI\Client\Model\DC400|\OpenAPI\Client\Model\DC403
      */
     public function createCertificate($create_certificate_request, string $contentType = self::contentTypes['createCertificate'][0])
     {
@@ -150,7 +150,7 @@ class CreateDigitalCertificateApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\DC201|\OpenAPI\Client\Model\DC400|\OpenAPI\Client\Model\DC403, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\DC200|\OpenAPI\Client\Model\DC400|\OpenAPI\Client\Model\DC403, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCertificateWithHttpInfo($create_certificate_request, string $contentType = self::contentTypes['createCertificate'][0])
     {
@@ -193,17 +193,17 @@ class CreateDigitalCertificateApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\OpenAPI\Client\Model\DC201' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\DC200' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\DC201' !== 'string') {
+                        if ('\OpenAPI\Client\Model\DC200' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\DC201', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\DC200', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -239,7 +239,7 @@ class CreateDigitalCertificateApi
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\DC201';
+            $returnType = '\OpenAPI\Client\Model\DC200';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -260,7 +260,7 @@ class CreateDigitalCertificateApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\DC201',
+                        '\OpenAPI\Client\Model\DC200',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -320,7 +320,7 @@ class CreateDigitalCertificateApi
      */
     public function createCertificateAsyncWithHttpInfo($create_certificate_request, string $contentType = self::contentTypes['createCertificate'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\DC201';
+        $returnType = '\OpenAPI\Client\Model\DC200';
         $request = $this->createCertificateRequest($create_certificate_request, $contentType);
 
         return $this->client
