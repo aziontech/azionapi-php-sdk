@@ -58,6 +58,8 @@ docs/Model/PatchDeviceGroupsRequest.md
 docs/Model/PatchOriginsRequest.md
 docs/Model/PatchRulesEngineRequest.md
 docs/Model/RulesEngineBehavior.md
+docs/Model/RulesEngineBehaviorTarget.md
+docs/Model/RulesEngineBehaviorTargetOneOf.md
 docs/Model/RulesEngineCriteria.md
 docs/Model/RulesEngineIdResponse.md
 docs/Model/RulesEngineResponse.md
@@ -126,6 +128,8 @@ lib/Model/PatchDeviceGroupsRequest.php
 lib/Model/PatchOriginsRequest.php
 lib/Model/PatchRulesEngineRequest.php
 lib/Model/RulesEngineBehavior.php
+lib/Model/RulesEngineBehaviorTarget.php
+lib/Model/RulesEngineBehaviorTargetOneOf.php
 lib/Model/RulesEngineCriteria.php
 lib/Model/RulesEngineIdResponse.php
 lib/Model/RulesEngineResponse.php
@@ -136,3 +140,5 @@ lib/Model/UpdateOriginsRequest.php
 lib/Model/UpdateRulesEngineRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RulesEngineBehaviorTargetOneOfTest.php
+test/Model/RulesEngineBehaviorTargetTest.php
