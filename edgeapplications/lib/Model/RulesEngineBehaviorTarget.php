@@ -1,6 +1,6 @@
 <?php
 /**
- * RulesEngineBehavior
+ * RulesEngineBehaviorTarget
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * RulesEngineBehavior Class Doc Comment
+ * RulesEngineBehaviorTarget Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializable
+class RulesEngineBehaviorTarget implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RulesEngineBehavior';
+    protected static $openAPIModelName = 'RulesEngineBehavior_target';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'target' => '\OpenAPI\Client\Model\RulesEngineBehaviorTarget'
+        'captured_array' => 'string',
+        'subject' => 'string',
+        'regex' => 'string'
     ];
 
     /**
@@ -69,8 +70,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'target' => null
+        'captured_array' => null,
+        'subject' => null,
+        'regex' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'target' => false
+        'captured_array' => false,
+		'subject' => false,
+		'regex' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'target' => 'target'
+        'captured_array' => 'captured_array',
+        'subject' => 'subject',
+        'regex' => 'regex'
     ];
 
     /**
@@ -179,8 +183,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'target' => 'setTarget'
+        'captured_array' => 'setCapturedArray',
+        'subject' => 'setSubject',
+        'regex' => 'setRegex'
     ];
 
     /**
@@ -189,8 +194,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'target' => 'getTarget'
+        'captured_array' => 'getCapturedArray',
+        'subject' => 'getSubject',
+        'regex' => 'getRegex'
     ];
 
     /**
@@ -250,8 +256,9 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('target', $data ?? [], null);
+        $this->setIfExists('captured_array', $data ?? [], null);
+        $this->setIfExists('subject', $data ?? [], null);
+        $this->setIfExists('regex', $data ?? [], null);
     }
 
     /**
@@ -281,9 +288,6 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -300,55 +304,82 @@ class RulesEngineBehavior implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets name
+     * Gets captured_array
      *
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getCapturedArray()
     {
-        return $this->container['name'];
+        return $this->container['captured_array'];
     }
 
     /**
-     * Sets name
+     * Sets captured_array
      *
-     * @param string $name name
+     * @param string|null $captured_array captured_array
      *
      * @return self
      */
-    public function setName($name)
+    public function setCapturedArray($captured_array)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($captured_array)) {
+            throw new \InvalidArgumentException('non-nullable captured_array cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['captured_array'] = $captured_array;
 
         return $this;
     }
 
     /**
-     * Gets target
+     * Gets subject
      *
-     * @return \OpenAPI\Client\Model\RulesEngineBehaviorTarget|null
+     * @return string|null
      */
-    public function getTarget()
+    public function getSubject()
     {
-        return $this->container['target'];
+        return $this->container['subject'];
     }
 
     /**
-     * Sets target
+     * Sets subject
      *
-     * @param \OpenAPI\Client\Model\RulesEngineBehaviorTarget|null $target target
+     * @param string|null $subject subject
      *
      * @return self
      */
-    public function setTarget($target)
+    public function setSubject($subject)
     {
-        if (is_null($target)) {
-            throw new \InvalidArgumentException('non-nullable target cannot be null');
+        if (is_null($subject)) {
+            throw new \InvalidArgumentException('non-nullable subject cannot be null');
         }
-        $this->container['target'] = $target;
+        $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets regex
+     *
+     * @return string|null
+     */
+    public function getRegex()
+    {
+        return $this->container['regex'];
+    }
+
+    /**
+     * Sets regex
+     *
+     * @param string|null $regex regex
+     *
+     * @return self
+     */
+    public function setRegex($regex)
+    {
+        if (is_null($regex)) {
+            throw new \InvalidArgumentException('non-nullable regex cannot be null');
+        }
+        $this->container['regex'] = $regex;
 
         return $this;
     }
