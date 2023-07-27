@@ -67,12 +67,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         'enable_query_string_sort' => 'bool',
         'cache_by_cookies' => 'string',
         'cookie_names' => 'string[]',
+        'adaptive_delivery_action' => 'string',
+        'device_group' => 'int[]',
         'enable_caching_for_post' => 'bool',
         'l2_caching_enabled' => 'bool',
         'is_slice_configuration_enabled' => 'bool',
         'is_slice_edge_caching_enabled' => 'bool',
         'is_slice_l2_caching_enabled' => 'bool',
-        'slice_configuration_range' => 'int'
+        'slice_configuration_range' => 'int',
+        'enable_caching_for_options' => 'bool',
+        'enable_stale_cache' => 'bool',
+        'l2_region' => 'string'
     ];
 
     /**
@@ -93,12 +98,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         'enable_query_string_sort' => null,
         'cache_by_cookies' => null,
         'cookie_names' => null,
+        'adaptive_delivery_action' => null,
+        'device_group' => null,
         'enable_caching_for_post' => null,
         'l2_caching_enabled' => null,
         'is_slice_configuration_enabled' => null,
         'is_slice_edge_caching_enabled' => null,
         'is_slice_l2_caching_enabled' => null,
-        'slice_configuration_range' => 'int64'
+        'slice_configuration_range' => 'int64',
+        'enable_caching_for_options' => null,
+        'enable_stale_cache' => null,
+        'l2_region' => null
     ];
 
     /**
@@ -117,12 +127,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
 		'enable_query_string_sort' => false,
 		'cache_by_cookies' => false,
 		'cookie_names' => false,
+		'adaptive_delivery_action' => false,
+		'device_group' => false,
 		'enable_caching_for_post' => false,
 		'l2_caching_enabled' => false,
 		'is_slice_configuration_enabled' => false,
 		'is_slice_edge_caching_enabled' => false,
 		'is_slice_l2_caching_enabled' => false,
-		'slice_configuration_range' => false
+		'slice_configuration_range' => false,
+		'enable_caching_for_options' => false,
+		'enable_stale_cache' => false,
+		'l2_region' => false
     ];
 
     /**
@@ -221,12 +236,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         'enable_query_string_sort' => 'enable_query_string_sort',
         'cache_by_cookies' => 'cache_by_cookies',
         'cookie_names' => 'cookie_names',
+        'adaptive_delivery_action' => 'adaptive_delivery_action',
+        'device_group' => 'device_group',
         'enable_caching_for_post' => 'enable_caching_for_post',
         'l2_caching_enabled' => 'l2_caching_enabled',
         'is_slice_configuration_enabled' => 'is_slice_configuration_enabled',
         'is_slice_edge_caching_enabled' => 'is_slice_edge_caching_enabled',
         'is_slice_l2_caching_enabled' => 'is_slice_l2_caching_enabled',
-        'slice_configuration_range' => 'slice_configuration_range'
+        'slice_configuration_range' => 'slice_configuration_range',
+        'enable_caching_for_options' => 'enable_caching_for_options',
+        'enable_stale_cache' => 'enable_stale_cache',
+        'l2_region' => 'l2_region'
     ];
 
     /**
@@ -245,12 +265,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         'enable_query_string_sort' => 'setEnableQueryStringSort',
         'cache_by_cookies' => 'setCacheByCookies',
         'cookie_names' => 'setCookieNames',
+        'adaptive_delivery_action' => 'setAdaptiveDeliveryAction',
+        'device_group' => 'setDeviceGroup',
         'enable_caching_for_post' => 'setEnableCachingForPost',
         'l2_caching_enabled' => 'setL2CachingEnabled',
         'is_slice_configuration_enabled' => 'setIsSliceConfigurationEnabled',
         'is_slice_edge_caching_enabled' => 'setIsSliceEdgeCachingEnabled',
         'is_slice_l2_caching_enabled' => 'setIsSliceL2CachingEnabled',
-        'slice_configuration_range' => 'setSliceConfigurationRange'
+        'slice_configuration_range' => 'setSliceConfigurationRange',
+        'enable_caching_for_options' => 'setEnableCachingForOptions',
+        'enable_stale_cache' => 'setEnableStaleCache',
+        'l2_region' => 'setL2Region'
     ];
 
     /**
@@ -269,12 +294,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         'enable_query_string_sort' => 'getEnableQueryStringSort',
         'cache_by_cookies' => 'getCacheByCookies',
         'cookie_names' => 'getCookieNames',
+        'adaptive_delivery_action' => 'getAdaptiveDeliveryAction',
+        'device_group' => 'getDeviceGroup',
         'enable_caching_for_post' => 'getEnableCachingForPost',
         'l2_caching_enabled' => 'getL2CachingEnabled',
         'is_slice_configuration_enabled' => 'getIsSliceConfigurationEnabled',
         'is_slice_edge_caching_enabled' => 'getIsSliceEdgeCachingEnabled',
         'is_slice_l2_caching_enabled' => 'getIsSliceL2CachingEnabled',
-        'slice_configuration_range' => 'getSliceConfigurationRange'
+        'slice_configuration_range' => 'getSliceConfigurationRange',
+        'enable_caching_for_options' => 'getEnableCachingForOptions',
+        'enable_stale_cache' => 'getEnableStaleCache',
+        'l2_region' => 'getL2Region'
     ];
 
     /**
@@ -344,12 +374,17 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
         $this->setIfExists('enable_query_string_sort', $data ?? [], null);
         $this->setIfExists('cache_by_cookies', $data ?? [], null);
         $this->setIfExists('cookie_names', $data ?? [], null);
+        $this->setIfExists('adaptive_delivery_action', $data ?? [], null);
+        $this->setIfExists('device_group', $data ?? [], null);
         $this->setIfExists('enable_caching_for_post', $data ?? [], null);
         $this->setIfExists('l2_caching_enabled', $data ?? [], null);
         $this->setIfExists('is_slice_configuration_enabled', $data ?? [], null);
         $this->setIfExists('is_slice_edge_caching_enabled', $data ?? [], null);
         $this->setIfExists('is_slice_l2_caching_enabled', $data ?? [], null);
         $this->setIfExists('slice_configuration_range', $data ?? [], null);
+        $this->setIfExists('enable_caching_for_options', $data ?? [], null);
+        $this->setIfExists('enable_stale_cache', $data ?? [], null);
+        $this->setIfExists('l2_region', $data ?? [], null);
     }
 
     /**
@@ -668,6 +703,60 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets adaptive_delivery_action
+     *
+     * @return string|null
+     */
+    public function getAdaptiveDeliveryAction()
+    {
+        return $this->container['adaptive_delivery_action'];
+    }
+
+    /**
+     * Sets adaptive_delivery_action
+     *
+     * @param string|null $adaptive_delivery_action adaptive_delivery_action
+     *
+     * @return self
+     */
+    public function setAdaptiveDeliveryAction($adaptive_delivery_action)
+    {
+        if (is_null($adaptive_delivery_action)) {
+            throw new \InvalidArgumentException('non-nullable adaptive_delivery_action cannot be null');
+        }
+        $this->container['adaptive_delivery_action'] = $adaptive_delivery_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets device_group
+     *
+     * @return int[]|null
+     */
+    public function getDeviceGroup()
+    {
+        return $this->container['device_group'];
+    }
+
+    /**
+     * Sets device_group
+     *
+     * @param int[]|null $device_group device_group
+     *
+     * @return self
+     */
+    public function setDeviceGroup($device_group)
+    {
+        if (is_null($device_group)) {
+            throw new \InvalidArgumentException('non-nullable device_group cannot be null');
+        }
+        $this->container['device_group'] = $device_group;
+
+        return $this;
+    }
+
+    /**
      * Gets enable_caching_for_post
      *
      * @return bool|null
@@ -825,6 +914,87 @@ class ApplicationCachePutRequest implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable slice_configuration_range cannot be null');
         }
         $this->container['slice_configuration_range'] = $slice_configuration_range;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_caching_for_options
+     *
+     * @return bool|null
+     */
+    public function getEnableCachingForOptions()
+    {
+        return $this->container['enable_caching_for_options'];
+    }
+
+    /**
+     * Sets enable_caching_for_options
+     *
+     * @param bool|null $enable_caching_for_options enable_caching_for_options
+     *
+     * @return self
+     */
+    public function setEnableCachingForOptions($enable_caching_for_options)
+    {
+        if (is_null($enable_caching_for_options)) {
+            throw new \InvalidArgumentException('non-nullable enable_caching_for_options cannot be null');
+        }
+        $this->container['enable_caching_for_options'] = $enable_caching_for_options;
+
+        return $this;
+    }
+
+    /**
+     * Gets enable_stale_cache
+     *
+     * @return bool|null
+     */
+    public function getEnableStaleCache()
+    {
+        return $this->container['enable_stale_cache'];
+    }
+
+    /**
+     * Sets enable_stale_cache
+     *
+     * @param bool|null $enable_stale_cache enable_stale_cache
+     *
+     * @return self
+     */
+    public function setEnableStaleCache($enable_stale_cache)
+    {
+        if (is_null($enable_stale_cache)) {
+            throw new \InvalidArgumentException('non-nullable enable_stale_cache cannot be null');
+        }
+        $this->container['enable_stale_cache'] = $enable_stale_cache;
+
+        return $this;
+    }
+
+    /**
+     * Gets l2_region
+     *
+     * @return string|null
+     */
+    public function getL2Region()
+    {
+        return $this->container['l2_region'];
+    }
+
+    /**
+     * Sets l2_region
+     *
+     * @param string|null $l2_region l2_region
+     *
+     * @return self
+     */
+    public function setL2Region($l2_region)
+    {
+        if (is_null($l2_region)) {
+            throw new \InvalidArgumentException('non-nullable l2_region cannot be null');
+        }
+        $this->container['l2_region'] = $l2_region;
 
         return $this;
     }
