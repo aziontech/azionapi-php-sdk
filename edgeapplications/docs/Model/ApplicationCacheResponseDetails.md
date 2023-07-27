@@ -20,5 +20,11 @@ Name | Type | Description | Notes
 **enable_caching_for_post** | **bool** |  |
 **enable_caching_for_options** | **bool** |  | [optional]
 **l2_caching_enabled** | **bool** |  |
+**is_slice_configuration_enabled** | **bool** |  | [optional]
+**is_slice_edge_caching_enabled** | **bool** |  | [optional]
+**is_slice_l2_caching_enabled** | **bool** |  | [optional]
+**slice_configuration_range** | **int** |  | [optional]
+**enable_stale_cache** | **bool** |  | [optional]
+**l2_region** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
