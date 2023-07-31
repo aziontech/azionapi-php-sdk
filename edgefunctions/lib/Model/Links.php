@@ -79,8 +79,8 @@ class Links implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'previous' => false,
-		'next' => false
+        'previous' => true,
+		'next' => true
     ];
 
     /**
@@ -316,7 +316,14 @@ class Links implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPrevious($previous)
     {
         if (is_null($previous)) {
-            throw new \InvalidArgumentException('non-nullable previous cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['previous'] = $previous;
 
@@ -343,7 +350,14 @@ class Links implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setNext($next)
     {
         if (is_null($next)) {
-            throw new \InvalidArgumentException('non-nullable next cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['next'] = $next;
 
