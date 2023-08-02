@@ -75,7 +75,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'image_optimization' => 'bool',
         'load_balancer' => 'bool',
         'raw_logs' => 'bool',
-        'web_application_firewall' => 'bool'
+        'web_application_firewall' => 'bool',
+        'l2_caching' => 'bool'
     ];
 
     /**
@@ -104,7 +105,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'image_optimization' => null,
         'load_balancer' => null,
         'raw_logs' => null,
-        'web_application_firewall' => null
+        'web_application_firewall' => null,
+        'l2_caching' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
 		'image_optimization' => false,
 		'load_balancer' => false,
 		'raw_logs' => false,
-		'web_application_firewall' => false
+		'web_application_firewall' => false,
+		'l2_caching' => false
     ];
 
     /**
@@ -238,7 +241,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'image_optimization' => 'image_optimization',
         'load_balancer' => 'load_balancer',
         'raw_logs' => 'raw_logs',
-        'web_application_firewall' => 'web_application_firewall'
+        'web_application_firewall' => 'web_application_firewall',
+        'l2_caching' => 'l2_caching'
     ];
 
     /**
@@ -265,7 +269,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'image_optimization' => 'setImageOptimization',
         'load_balancer' => 'setLoadBalancer',
         'raw_logs' => 'setRawLogs',
-        'web_application_firewall' => 'setWebApplicationFirewall'
+        'web_application_firewall' => 'setWebApplicationFirewall',
+        'l2_caching' => 'setL2Caching'
     ];
 
     /**
@@ -292,7 +297,8 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         'image_optimization' => 'getImageOptimization',
         'load_balancer' => 'getLoadBalancer',
         'raw_logs' => 'getRawLogs',
-        'web_application_firewall' => 'getWebApplicationFirewall'
+        'web_application_firewall' => 'getWebApplicationFirewall',
+        'l2_caching' => 'getL2Caching'
     ];
 
     /**
@@ -371,6 +377,7 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('load_balancer', $data ?? [], null);
         $this->setIfExists('raw_logs', $data ?? [], null);
         $this->setIfExists('web_application_firewall', $data ?? [], null);
+        $this->setIfExists('l2_caching', $data ?? [], null);
     }
 
     /**
@@ -995,6 +1002,33 @@ class ApplicationResultsCreate implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable web_application_firewall cannot be null');
         }
         $this->container['web_application_firewall'] = $web_application_firewall;
+
+        return $this;
+    }
+
+    /**
+     * Gets l2_caching
+     *
+     * @return bool|null
+     */
+    public function getL2Caching()
+    {
+        return $this->container['l2_caching'];
+    }
+
+    /**
+     * Sets l2_caching
+     *
+     * @param bool|null $l2_caching l2_caching
+     *
+     * @return self
+     */
+    public function setL2Caching($l2_caching)
+    {
+        if (is_null($l2_caching)) {
+            throw new \InvalidArgumentException('non-nullable l2_caching cannot be null');
+        }
+        $this->container['l2_caching'] = $l2_caching;
 
         return $this;
     }
