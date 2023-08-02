@@ -478,7 +478,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse
+     * @return \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function getZoneRecords($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
@@ -496,7 +496,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getZoneRecordsWithHttpInfo($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
@@ -568,6 +568,21 @@ class RecordsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\GetRecordsResponse';
@@ -600,6 +615,14 @@ class RecordsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -793,7 +816,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse
+     * @return \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function postZoneRecord($zone_id, $record_post_or_put = null, string $contentType = self::contentTypes['postZoneRecord'][0])
     {
@@ -812,7 +835,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function postZoneRecordWithHttpInfo($zone_id, $record_post_or_put = null, string $contentType = self::contentTypes['postZoneRecord'][0])
     {
@@ -884,6 +907,21 @@ class RecordsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\PostOrPutRecordResponse';
@@ -916,6 +954,14 @@ class RecordsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1121,7 +1167,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse
+     * @return \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function putZoneRecord($zone_id, $record_id, $record_post_or_put = null, string $contentType = self::contentTypes['putZoneRecord'][0])
     {
@@ -1141,7 +1187,7 @@ class RecordsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\PostOrPutRecordResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function putZoneRecordWithHttpInfo($zone_id, $record_id, $record_post_or_put = null, string $contentType = self::contentTypes['putZoneRecord'][0])
     {
@@ -1213,6 +1259,21 @@ class RecordsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\PostOrPutRecordResponse';
@@ -1245,6 +1306,14 @@ class RecordsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
