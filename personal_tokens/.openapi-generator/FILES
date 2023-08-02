@@ -22,5 +22,3 @@ lib/Model/PersonalTokenResponseWithResults.php
 lib/Model/PersonalTokenResponseWithResultsLinks.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreatePersonalTokenRequestTest.php
-test/Model/CreatePersonalTokenResponseTest.php
