@@ -72,7 +72,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'l2_caching' => 'bool',
         'load_balancer' => 'bool',
         'raw_logs' => 'bool',
-        'web_application_firewall' => 'bool'
+        'web_application_firewall' => 'bool',
+        'debug_rules' => 'bool',
+        'http3' => 'bool',
+        'supported_ciphers' => 'string'
     ];
 
     /**
@@ -98,7 +101,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'l2_caching' => null,
         'load_balancer' => null,
         'raw_logs' => null,
-        'web_application_firewall' => null
+        'web_application_firewall' => null,
+        'debug_rules' => null,
+        'http3' => null,
+        'supported_ciphers' => null
     ];
 
     /**
@@ -122,7 +128,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 		'l2_caching' => false,
 		'load_balancer' => false,
 		'raw_logs' => false,
-		'web_application_firewall' => false
+		'web_application_firewall' => false,
+		'debug_rules' => false,
+		'http3' => false,
+		'supported_ciphers' => false
     ];
 
     /**
@@ -226,7 +235,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'l2_caching' => 'l2_caching',
         'load_balancer' => 'load_balancer',
         'raw_logs' => 'raw_logs',
-        'web_application_firewall' => 'web_application_firewall'
+        'web_application_firewall' => 'web_application_firewall',
+        'debug_rules' => 'debug_rules',
+        'http3' => 'http3',
+        'supported_ciphers' => 'supported_ciphers'
     ];
 
     /**
@@ -250,7 +262,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'l2_caching' => 'setL2Caching',
         'load_balancer' => 'setLoadBalancer',
         'raw_logs' => 'setRawLogs',
-        'web_application_firewall' => 'setWebApplicationFirewall'
+        'web_application_firewall' => 'setWebApplicationFirewall',
+        'debug_rules' => 'setDebugRules',
+        'http3' => 'setHttp3',
+        'supported_ciphers' => 'setSupportedCiphers'
     ];
 
     /**
@@ -274,7 +289,10 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'l2_caching' => 'getL2Caching',
         'load_balancer' => 'getLoadBalancer',
         'raw_logs' => 'getRawLogs',
-        'web_application_firewall' => 'getWebApplicationFirewall'
+        'web_application_firewall' => 'getWebApplicationFirewall',
+        'debug_rules' => 'getDebugRules',
+        'http3' => 'getHttp3',
+        'supported_ciphers' => 'getSupportedCiphers'
     ];
 
     /**
@@ -350,6 +368,9 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('load_balancer', $data ?? [], null);
         $this->setIfExists('raw_logs', $data ?? [], null);
         $this->setIfExists('web_application_firewall', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('http3', $data ?? [], null);
+        $this->setIfExists('supported_ciphers', $data ?? [], null);
     }
 
     /**
@@ -839,6 +860,87 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable web_application_firewall cannot be null');
         }
         $this->container['web_application_firewall'] = $web_application_firewall;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool|null
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool|null $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return bool|null
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param bool|null $http3 http3
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        if (is_null($http3)) {
+            throw new \InvalidArgumentException('non-nullable http3 cannot be null');
+        }
+        $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets supported_ciphers
+     *
+     * @return string|null
+     */
+    public function getSupportedCiphers()
+    {
+        return $this->container['supported_ciphers'];
+    }
+
+    /**
+     * Sets supported_ciphers
+     *
+     * @param string|null $supported_ciphers supported_ciphers
+     *
+     * @return self
+     */
+    public function setSupportedCiphers($supported_ciphers)
+    {
+        if (is_null($supported_ciphers)) {
+            throw new \InvalidArgumentException('non-nullable supported_ciphers cannot be null');
+        }
+        $this->container['supported_ciphers'] = $supported_ciphers;
 
         return $this;
     }

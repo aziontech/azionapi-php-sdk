@@ -67,7 +67,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'browser_cache_settings' => 'string',
         'cdn_cache_settings' => 'string',
         'browser_cache_settings_maximum_ttl' => 'int',
-        'cdn_cache_settings_maximum_ttl' => 'int'
+        'cdn_cache_settings_maximum_ttl' => 'int',
+        'debug_rules' => 'bool',
+        'supported_ciphers' => 'string',
+        'http_port' => 'mixed',
+        'https_port' => 'mixed',
+        'l2_caching' => 'bool',
+        'http3' => 'bool'
     ];
 
     /**
@@ -88,7 +94,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'browser_cache_settings' => null,
         'cdn_cache_settings' => null,
         'browser_cache_settings_maximum_ttl' => 'int64',
-        'cdn_cache_settings_maximum_ttl' => 'int64'
+        'cdn_cache_settings_maximum_ttl' => 'int64',
+        'debug_rules' => null,
+        'supported_ciphers' => null,
+        'http_port' => null,
+        'https_port' => null,
+        'l2_caching' => null,
+        'http3' => null
     ];
 
     /**
@@ -107,7 +119,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
 		'browser_cache_settings' => false,
 		'cdn_cache_settings' => false,
 		'browser_cache_settings_maximum_ttl' => false,
-		'cdn_cache_settings_maximum_ttl' => false
+		'cdn_cache_settings_maximum_ttl' => false,
+		'debug_rules' => false,
+		'supported_ciphers' => false,
+		'http_port' => true,
+		'https_port' => true,
+		'l2_caching' => false,
+		'http3' => false
     ];
 
     /**
@@ -206,7 +224,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'browser_cache_settings' => 'browser_cache_settings',
         'cdn_cache_settings' => 'cdn_cache_settings',
         'browser_cache_settings_maximum_ttl' => 'browser_cache_settings_maximum_ttl',
-        'cdn_cache_settings_maximum_ttl' => 'cdn_cache_settings_maximum_ttl'
+        'cdn_cache_settings_maximum_ttl' => 'cdn_cache_settings_maximum_ttl',
+        'debug_rules' => 'debug_rules',
+        'supported_ciphers' => 'supported_ciphers',
+        'http_port' => 'http_port',
+        'https_port' => 'https_port',
+        'l2_caching' => 'l2_caching',
+        'http3' => 'http3'
     ];
 
     /**
@@ -225,7 +249,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'browser_cache_settings' => 'setBrowserCacheSettings',
         'cdn_cache_settings' => 'setCdnCacheSettings',
         'browser_cache_settings_maximum_ttl' => 'setBrowserCacheSettingsMaximumTtl',
-        'cdn_cache_settings_maximum_ttl' => 'setCdnCacheSettingsMaximumTtl'
+        'cdn_cache_settings_maximum_ttl' => 'setCdnCacheSettingsMaximumTtl',
+        'debug_rules' => 'setDebugRules',
+        'supported_ciphers' => 'setSupportedCiphers',
+        'http_port' => 'setHttpPort',
+        'https_port' => 'setHttpsPort',
+        'l2_caching' => 'setL2Caching',
+        'http3' => 'setHttp3'
     ];
 
     /**
@@ -244,7 +274,13 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'browser_cache_settings' => 'getBrowserCacheSettings',
         'cdn_cache_settings' => 'getCdnCacheSettings',
         'browser_cache_settings_maximum_ttl' => 'getBrowserCacheSettingsMaximumTtl',
-        'cdn_cache_settings_maximum_ttl' => 'getCdnCacheSettingsMaximumTtl'
+        'cdn_cache_settings_maximum_ttl' => 'getCdnCacheSettingsMaximumTtl',
+        'debug_rules' => 'getDebugRules',
+        'supported_ciphers' => 'getSupportedCiphers',
+        'http_port' => 'getHttpPort',
+        'https_port' => 'getHttpsPort',
+        'l2_caching' => 'getL2Caching',
+        'http3' => 'getHttp3'
     ];
 
     /**
@@ -315,6 +351,12 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('cdn_cache_settings', $data ?? [], null);
         $this->setIfExists('browser_cache_settings_maximum_ttl', $data ?? [], null);
         $this->setIfExists('cdn_cache_settings_maximum_ttl', $data ?? [], null);
+        $this->setIfExists('debug_rules', $data ?? [], null);
+        $this->setIfExists('supported_ciphers', $data ?? [], null);
+        $this->setIfExists('http_port', $data ?? [], null);
+        $this->setIfExists('https_port', $data ?? [], null);
+        $this->setIfExists('l2_caching', $data ?? [], null);
+        $this->setIfExists('http3', $data ?? [], null);
     }
 
     /**
@@ -655,6 +697,182 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable cdn_cache_settings_maximum_ttl cannot be null');
         }
         $this->container['cdn_cache_settings_maximum_ttl'] = $cdn_cache_settings_maximum_ttl;
+
+        return $this;
+    }
+
+    /**
+     * Gets debug_rules
+     *
+     * @return bool|null
+     */
+    public function getDebugRules()
+    {
+        return $this->container['debug_rules'];
+    }
+
+    /**
+     * Sets debug_rules
+     *
+     * @param bool|null $debug_rules debug_rules
+     *
+     * @return self
+     */
+    public function setDebugRules($debug_rules)
+    {
+        if (is_null($debug_rules)) {
+            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
+        }
+        $this->container['debug_rules'] = $debug_rules;
+
+        return $this;
+    }
+
+    /**
+     * Gets supported_ciphers
+     *
+     * @return string|null
+     */
+    public function getSupportedCiphers()
+    {
+        return $this->container['supported_ciphers'];
+    }
+
+    /**
+     * Sets supported_ciphers
+     *
+     * @param string|null $supported_ciphers supported_ciphers
+     *
+     * @return self
+     */
+    public function setSupportedCiphers($supported_ciphers)
+    {
+        if (is_null($supported_ciphers)) {
+            throw new \InvalidArgumentException('non-nullable supported_ciphers cannot be null');
+        }
+        $this->container['supported_ciphers'] = $supported_ciphers;
+
+        return $this;
+    }
+
+    /**
+     * Gets http_port
+     *
+     * @return mixed|null
+     */
+    public function getHttpPort()
+    {
+        return $this->container['http_port'];
+    }
+
+    /**
+     * Sets http_port
+     *
+     * @param mixed|null $http_port http_port
+     *
+     * @return self
+     */
+    public function setHttpPort($http_port)
+    {
+        if (is_null($http_port)) {
+            array_push($this->openAPINullablesSetToNull, 'http_port');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('http_port', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['http_port'] = $http_port;
+
+        return $this;
+    }
+
+    /**
+     * Gets https_port
+     *
+     * @return mixed|null
+     */
+    public function getHttpsPort()
+    {
+        return $this->container['https_port'];
+    }
+
+    /**
+     * Sets https_port
+     *
+     * @param mixed|null $https_port https_port
+     *
+     * @return self
+     */
+    public function setHttpsPort($https_port)
+    {
+        if (is_null($https_port)) {
+            array_push($this->openAPINullablesSetToNull, 'https_port');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('https_port', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['https_port'] = $https_port;
+
+        return $this;
+    }
+
+    /**
+     * Gets l2_caching
+     *
+     * @return bool|null
+     */
+    public function getL2Caching()
+    {
+        return $this->container['l2_caching'];
+    }
+
+    /**
+     * Sets l2_caching
+     *
+     * @param bool|null $l2_caching l2_caching
+     *
+     * @return self
+     */
+    public function setL2Caching($l2_caching)
+    {
+        if (is_null($l2_caching)) {
+            throw new \InvalidArgumentException('non-nullable l2_caching cannot be null');
+        }
+        $this->container['l2_caching'] = $l2_caching;
+
+        return $this;
+    }
+
+    /**
+     * Gets http3
+     *
+     * @return bool|null
+     */
+    public function getHttp3()
+    {
+        return $this->container['http3'];
+    }
+
+    /**
+     * Sets http3
+     *
+     * @param bool|null $http3 http3
+     *
+     * @return self
+     */
+    public function setHttp3($http3)
+    {
+        if (is_null($http3)) {
+            throw new \InvalidArgumentException('non-nullable http3 cannot be null');
+        }
+        $this->container['http3'] = $http3;
 
         return $this;
     }

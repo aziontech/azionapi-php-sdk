@@ -15,5 +15,11 @@ Name | Type | Description | Notes
 **cdn_cache_settings** | **string** |  | [optional]
 **browser_cache_settings_maximum_ttl** | **int** |  | [optional]
 **cdn_cache_settings_maximum_ttl** | **int** |  | [optional]
+**debug_rules** | **bool** |  | [optional]
+**supported_ciphers** | **string** |  | [optional]
+**http_port** | **mixed** |  | [optional]
+**https_port** | **mixed** |  | [optional]
+**l2_caching** | **bool** |  | [optional]
+**http3** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
