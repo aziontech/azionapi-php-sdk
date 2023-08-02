@@ -135,7 +135,7 @@ class DNSSECApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
+     * @return \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function getZoneDnsSec($zone_id, string $contentType = self::contentTypes['getZoneDnsSec'][0])
     {
@@ -153,7 +153,7 @@ class DNSSECApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getZoneDnsSecWithHttpInfo($zone_id, string $contentType = self::contentTypes['getZoneDnsSec'][0])
     {
@@ -240,6 +240,21 @@ class DNSSECApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\GetOrPatchDnsSecResponse';
@@ -277,6 +292,14 @@ class DNSSECApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorResponse',
@@ -473,7 +496,7 @@ class DNSSECApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse
+     * @return \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
      */
     public function putZoneDnsSec($zone_id, $dns_sec = null, string $contentType = self::contentTypes['putZoneDnsSec'][0])
     {
@@ -492,7 +515,7 @@ class DNSSECApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\GetOrPatchDnsSecResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function putZoneDnsSecWithHttpInfo($zone_id, $dns_sec = null, string $contentType = self::contentTypes['putZoneDnsSec'][0])
     {
@@ -534,6 +557,21 @@ class DNSSECApi
             }
 
             switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\GetOrPatchDnsSecResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\GetOrPatchDnsSecResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\GetOrPatchDnsSecResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 201:
                     if ('\OpenAPI\Client\Model\GetOrPatchDnsSecResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -564,6 +602,21 @@ class DNSSECApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\ErrorResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\GetOrPatchDnsSecResponse';
@@ -584,6 +637,14 @@ class DNSSECApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\GetOrPatchDnsSecResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -596,6 +657,14 @@ class DNSSECApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\ErrorsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
