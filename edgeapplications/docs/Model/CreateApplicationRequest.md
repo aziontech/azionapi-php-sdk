@@ -21,6 +21,5 @@ Name | Type | Description | Notes
 **https_port** | **mixed** |  | [optional]
 **l2_caching** | **bool** |  | [optional]
 **http3** | **bool** |  | [optional]
-**minimum_tls_version** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

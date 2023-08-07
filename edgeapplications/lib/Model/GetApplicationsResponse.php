@@ -61,7 +61,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'int',
         'schema_version' => 'int',
         'links' => '\OpenAPI\Client\Model\ApplicationLinks',
-        'results' => '\OpenAPI\Client\Model\ApplicationsResults[]'
+        'results' => '\OpenAPI\Client\Model\ApplicationsResults[]',
+        'next' => 'string',
+        'previous' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'int64',
         'schema_version' => 'int64',
         'links' => null,
-        'results' => null
+        'results' => null,
+        'next' => null,
+        'previous' => null
     ];
 
     /**
@@ -89,7 +93,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
 		'total_pages' => false,
 		'schema_version' => false,
 		'links' => false,
-		'results' => false
+		'results' => false,
+		'next' => true,
+		'previous' => true
     ];
 
     /**
@@ -182,7 +188,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'total_pages',
         'schema_version' => 'schema_version',
         'links' => 'links',
-        'results' => 'results'
+        'results' => 'results',
+        'next' => 'next',
+        'previous' => 'previous'
     ];
 
     /**
@@ -195,7 +203,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'setTotalPages',
         'schema_version' => 'setSchemaVersion',
         'links' => 'setLinks',
-        'results' => 'setResults'
+        'results' => 'setResults',
+        'next' => 'setNext',
+        'previous' => 'setPrevious'
     ];
 
     /**
@@ -208,7 +218,9 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         'total_pages' => 'getTotalPages',
         'schema_version' => 'getSchemaVersion',
         'links' => 'getLinks',
-        'results' => 'getResults'
+        'results' => 'getResults',
+        'next' => 'getNext',
+        'previous' => 'getPrevious'
     ];
 
     /**
@@ -273,6 +285,8 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('schema_version', $data ?? [], null);
         $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('previous', $data ?? [], null);
     }
 
     /**
@@ -463,6 +477,74 @@ class GetApplicationsResponse implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
         $this->container['results'] = $results;
+
+        return $this;
+    }
+
+    /**
+     * Gets next
+     *
+     * @return string|null
+     */
+    public function getNext()
+    {
+        return $this->container['next'];
+    }
+
+    /**
+     * Sets next
+     *
+     * @param string|null $next next
+     *
+     * @return self
+     */
+    public function setNext($next)
+    {
+        if (is_null($next)) {
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous
+     *
+     * @return string|null
+     */
+    public function getPrevious()
+    {
+        return $this->container['previous'];
+    }
+
+    /**
+     * Sets previous
+     *
+     * @param string|null $previous previous
+     *
+     * @return self
+     */
+    public function setPrevious($previous)
+    {
+        if (is_null($previous)) {
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous'] = $previous;
 
         return $this;
     }

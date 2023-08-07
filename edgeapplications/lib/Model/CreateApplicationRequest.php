@@ -73,8 +73,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'http_port' => 'mixed',
         'https_port' => 'mixed',
         'l2_caching' => 'bool',
-        'http3' => 'bool',
-        'minimum_tls_version' => 'string'
+        'http3' => 'bool'
     ];
 
     /**
@@ -101,8 +100,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'http_port' => null,
         'https_port' => null,
         'l2_caching' => null,
-        'http3' => null,
-        'minimum_tls_version' => null
+        'http3' => null
     ];
 
     /**
@@ -127,8 +125,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
 		'http_port' => true,
 		'https_port' => true,
 		'l2_caching' => false,
-		'http3' => false,
-		'minimum_tls_version' => false
+		'http3' => false
     ];
 
     /**
@@ -233,8 +230,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'http_port' => 'http_port',
         'https_port' => 'https_port',
         'l2_caching' => 'l2_caching',
-        'http3' => 'http3',
-        'minimum_tls_version' => 'minimum_tls_version'
+        'http3' => 'http3'
     ];
 
     /**
@@ -259,8 +255,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'http_port' => 'setHttpPort',
         'https_port' => 'setHttpsPort',
         'l2_caching' => 'setL2Caching',
-        'http3' => 'setHttp3',
-        'minimum_tls_version' => 'setMinimumTlsVersion'
+        'http3' => 'setHttp3'
     ];
 
     /**
@@ -285,8 +280,7 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'http_port' => 'getHttpPort',
         'https_port' => 'getHttpsPort',
         'l2_caching' => 'getL2Caching',
-        'http3' => 'getHttp3',
-        'minimum_tls_version' => 'getMinimumTlsVersion'
+        'http3' => 'getHttp3'
     ];
 
     /**
@@ -363,7 +357,6 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('https_port', $data ?? [], null);
         $this->setIfExists('l2_caching', $data ?? [], null);
         $this->setIfExists('http3', $data ?? [], null);
-        $this->setIfExists('minimum_tls_version', $data ?? [], null);
     }
 
     /**
@@ -880,33 +873,6 @@ class CreateApplicationRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable http3 cannot be null');
         }
         $this->container['http3'] = $http3;
-
-        return $this;
-    }
-
-    /**
-     * Gets minimum_tls_version
-     *
-     * @return string|null
-     */
-    public function getMinimumTlsVersion()
-    {
-        return $this->container['minimum_tls_version'];
-    }
-
-    /**
-     * Sets minimum_tls_version
-     *
-     * @param string|null $minimum_tls_version minimum_tls_version
-     *
-     * @return self
-     */
-    public function setMinimumTlsVersion($minimum_tls_version)
-    {
-        if (is_null($minimum_tls_version)) {
-            throw new \InvalidArgumentException('non-nullable minimum_tls_version cannot be null');
-        }
-        $this->container['minimum_tls_version'] = $minimum_tls_version;
 
         return $this;
     }
