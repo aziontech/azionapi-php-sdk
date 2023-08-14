@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateNetworkListsRequest
+ * NetworkListUuidResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CreateNetworkListsRequest Class Doc Comment
+ * NetworkListUuidResponse Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class NetworkListUuidResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateNetworkListsRequest';
+    protected static $openAPIModelName = 'NetworkListUuidResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'items_values' => 'string[]',
-        'list_type' => 'string'
+        'results' => '\OpenAPI\Client\Model\NetworkListUuidResponseEntry',
+        'schema_version' => 'int'
     ];
 
     /**
@@ -70,9 +69,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'items_values' => null,
-        'list_type' => null
+        'results' => null,
+        'schema_version' => 'int64'
     ];
 
     /**
@@ -81,9 +79,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'items_values' => false,
-		'list_type' => false
+        'results' => false,
+		'schema_version' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'items_values' => 'items_values',
-        'list_type' => 'list_type'
+        'results' => 'results',
+        'schema_version' => 'schema_version'
     ];
 
     /**
@@ -183,9 +179,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'items_values' => 'setItemsValues',
-        'list_type' => 'setListType'
+        'results' => 'setResults',
+        'schema_version' => 'setSchemaVersion'
     ];
 
     /**
@@ -194,9 +189,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'items_values' => 'getItemsValues',
-        'list_type' => 'getListType'
+        'results' => 'getResults',
+        'schema_version' => 'getSchemaVersion'
     ];
 
     /**
@@ -240,23 +234,6 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const LIST_TYPE_IP_CIDR = 'ip_cidr';
-    public const LIST_TYPE_ASN = 'asn';
-    public const LIST_TYPE_COUNTRIES = 'countries';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getListTypeAllowableValues()
-    {
-        return [
-            self::LIST_TYPE_IP_CIDR,
-            self::LIST_TYPE_ASN,
-            self::LIST_TYPE_COUNTRIES,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -273,9 +250,8 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('items_values', $data ?? [], null);
-        $this->setIfExists('list_type', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('schema_version', $data ?? [], null);
     }
 
     /**
@@ -305,15 +281,6 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getListTypeAllowableValues();
-        if (!is_null($this->container['list_type']) && !in_array($this->container['list_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'list_type', must be one of '%s'",
-                $this->container['list_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -330,92 +297,55 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets name
+     * Gets results
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\NetworkListUuidResponseEntry|null
      */
-    public function getName()
+    public function getResults()
     {
-        return $this->container['name'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets name
+     * Sets results
      *
-     * @param string|null $name name
+     * @param \OpenAPI\Client\Model\NetworkListUuidResponseEntry|null $results results
      *
      * @return self
      */
-    public function setName($name)
+    public function setResults($results)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['results'] = $results;
 
         return $this;
     }
 
     /**
-     * Gets items_values
+     * Gets schema_version
      *
-     * @return string[]|null
+     * @return int|null
      */
-    public function getItemsValues()
+    public function getSchemaVersion()
     {
-        return $this->container['items_values'];
+        return $this->container['schema_version'];
     }
 
     /**
-     * Sets items_values
+     * Sets schema_version
      *
-     * @param string[]|null $items_values items_values
+     * @param int|null $schema_version schema_version
      *
      * @return self
      */
-    public function setItemsValues($items_values)
+    public function setSchemaVersion($schema_version)
     {
-        if (is_null($items_values)) {
-            throw new \InvalidArgumentException('non-nullable items_values cannot be null');
+        if (is_null($schema_version)) {
+            throw new \InvalidArgumentException('non-nullable schema_version cannot be null');
         }
-        $this->container['items_values'] = $items_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets list_type
-     *
-     * @return string|null
-     */
-    public function getListType()
-    {
-        return $this->container['list_type'];
-    }
-
-    /**
-     * Sets list_type
-     *
-     * @param string|null $list_type list_type
-     *
-     * @return self
-     */
-    public function setListType($list_type)
-    {
-        if (is_null($list_type)) {
-            throw new \InvalidArgumentException('non-nullable list_type cannot be null');
-        }
-        $allowedValues = $this->getListTypeAllowableValues();
-        if (!in_array($list_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'list_type', must be one of '%s'",
-                    $list_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['list_type'] = $list_type;
+        $this->container['schema_version'] = $schema_version;
 
         return $this;
     }

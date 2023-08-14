@@ -57,7 +57,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\OpenAPI\Client\Model\NetworkLists',
+        'results' => '\OpenAPI\Client\Model\NetworkListResponseEntry',
         'schema_version' => 'float'
     ];
 
@@ -299,7 +299,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets results
      *
-     * @return \OpenAPI\Client\Model\NetworkLists|null
+     * @return \OpenAPI\Client\Model\NetworkListResponseEntry|null
      */
     public function getResults()
     {
@@ -309,7 +309,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets results
      *
-     * @param \OpenAPI\Client\Model\NetworkLists|null $results results
+     * @param \OpenAPI\Client\Model\NetworkListResponseEntry|null $results results
      *
      * @return self
      */

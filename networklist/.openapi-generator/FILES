@@ -9,9 +9,11 @@ docs/Model/CreateNetworkListsRequest.md
 docs/Model/ErrorModel.md
 docs/Model/Links.md
 docs/Model/ListNetworkListsResponse.md
+docs/Model/NetworkListResponseEntry.md
+docs/Model/NetworkListUuidResponse.md
+docs/Model/NetworkListUuidResponseEntry.md
 docs/Model/NetworkLists.md
 docs/Model/NetworkListsResponse.md
-docs/Model/UpdateNetworkListsRequest.md
 git_push.sh
 lib/Api/DefaultApi.php
 lib/ApiException.php
@@ -23,8 +25,13 @@ lib/Model/ErrorModel.php
 lib/Model/Links.php
 lib/Model/ListNetworkListsResponse.php
 lib/Model/ModelInterface.php
+lib/Model/NetworkListResponseEntry.php
+lib/Model/NetworkListUuidResponse.php
+lib/Model/NetworkListUuidResponseEntry.php
 lib/Model/NetworkLists.php
 lib/Model/NetworkListsResponse.php
-lib/Model/UpdateNetworkListsRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/NetworkListResponseEntryTest.php
+test/Model/NetworkListUuidResponseEntryTest.php
+test/Model/NetworkListUuidResponseTest.php

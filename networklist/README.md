@@ -62,9 +62,12 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $page = 56; // int
+$page_size = 56; // int
+$sort = 'sort_example'; // string
+$order_by = 'order_by_example'; // string
 
 try {
-    $result = $apiInstance->networkListsGet($page);
+    $result = $apiInstance->networkListsGet($page, $page_size, $sort, $order_by);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->networkListsGet: ', $e->getMessage(), PHP_EOL;
@@ -90,9 +93,11 @@ Class | Method | HTTP request | Description
 - [ErrorModel](docs/Model/ErrorModel.md)
 - [Links](docs/Model/Links.md)
 - [ListNetworkListsResponse](docs/Model/ListNetworkListsResponse.md)
+- [NetworkListResponseEntry](docs/Model/NetworkListResponseEntry.md)
+- [NetworkListUuidResponse](docs/Model/NetworkListUuidResponse.md)
+- [NetworkListUuidResponseEntry](docs/Model/NetworkListUuidResponseEntry.md)
 - [NetworkLists](docs/Model/NetworkLists.md)
 - [NetworkListsResponse](docs/Model/NetworkListsResponse.md)
-- [UpdateNetworkListsRequest](docs/Model/UpdateNetworkListsRequest.md)
 
 ## Authorization
 

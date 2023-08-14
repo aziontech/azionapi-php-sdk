@@ -13,7 +13,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 ## `networkListsGet()`
 
 ```php
-networkListsGet($page): \OpenAPI\Client\Model\ListNetworkListsResponse
+networkListsGet($page, $page_size, $sort, $order_by): \OpenAPI\Client\Model\ListNetworkListsResponse
 ```
 
 List all user Network Lists
@@ -38,9 +38,12 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $page = 56; // int
+$page_size = 56; // int
+$sort = 'sort_example'; // string
+$order_by = 'order_by_example'; // string
 
 try {
-    $result = $apiInstance->networkListsGet($page);
+    $result = $apiInstance->networkListsGet($page, $page_size, $sort, $order_by);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->networkListsGet: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +55,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] |
+| **sort** | **string**|  | [optional] |
+| **order_by** | **string**|  | [optional] |
 
 ### Return type
 
@@ -73,7 +79,7 @@ try {
 ## `networkListsPost()`
 
 ```php
-networkListsPost($create_network_lists_request)
+networkListsPost($create_network_lists_request): \OpenAPI\Client\Model\NetworkListsResponse
 ```
 
 Create a Network Lists
@@ -100,7 +106,8 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
 $create_network_lists_request = new \OpenAPI\Client\Model\CreateNetworkListsRequest(); // \OpenAPI\Client\Model\CreateNetworkListsRequest
 
 try {
-    $apiInstance->networkListsPost($create_network_lists_request);
+    $result = $apiInstance->networkListsPost($create_network_lists_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->networkListsPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -114,7 +121,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\NetworkListsResponse**](../Model/NetworkListsResponse.md)
 
 ### Authorization
 
@@ -132,7 +139,7 @@ void (empty response body)
 ## `networkListsUuidGet()`
 
 ```php
-networkListsUuidGet($uuid): \OpenAPI\Client\Model\NetworkListsResponse
+networkListsUuidGet($uuid): \OpenAPI\Client\Model\NetworkListUuidResponse
 ```
 
 Retrieve a Network Lists set by uuid
@@ -174,7 +181,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\NetworkListsResponse**](../Model/NetworkListsResponse.md)
+[**\OpenAPI\Client\Model\NetworkListUuidResponse**](../Model/NetworkListUuidResponse.md)
 
 ### Authorization
 
@@ -192,7 +199,7 @@ try {
 ## `networkListsUuidPut()`
 
 ```php
-networkListsUuidPut($uuid, $update_network_lists_request): \OpenAPI\Client\Model\ListNetworkListsResponse
+networkListsUuidPut($uuid, $create_network_lists_request): \OpenAPI\Client\Model\NetworkListsResponse
 ```
 
 Overwrite some Network Lists attributes
@@ -217,10 +224,10 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $uuid = 'uuid_example'; // string
-$update_network_lists_request = new \OpenAPI\Client\Model\UpdateNetworkListsRequest(); // \OpenAPI\Client\Model\UpdateNetworkListsRequest
+$create_network_lists_request = new \OpenAPI\Client\Model\CreateNetworkListsRequest(); // \OpenAPI\Client\Model\CreateNetworkListsRequest
 
 try {
-    $result = $apiInstance->networkListsUuidPut($uuid, $update_network_lists_request);
+    $result = $apiInstance->networkListsUuidPut($uuid, $create_network_lists_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->networkListsUuidPut: ', $e->getMessage(), PHP_EOL;
@@ -232,11 +239,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **uuid** | **string**|  | |
-| **update_network_lists_request** | [**\OpenAPI\Client\Model\UpdateNetworkListsRequest**](../Model/UpdateNetworkListsRequest.md)|  | |
+| **create_network_lists_request** | [**\OpenAPI\Client\Model\CreateNetworkListsRequest**](../Model/CreateNetworkListsRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListNetworkListsResponse**](../Model/ListNetworkListsResponse.md)
+[**\OpenAPI\Client\Model\NetworkListsResponse**](../Model/NetworkListsResponse.md)
 
 ### Authorization
 

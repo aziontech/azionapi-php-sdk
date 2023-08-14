@@ -58,9 +58,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'int',
+        'last_editor' => 'string',
+        'last_modified' => 'string',
+        'list_type' => 'string',
         'name' => 'string',
-        'items_values' => 'string[]',
-        'list_type' => 'string'
+        'country_list' => 'string[]',
+        'ip_list' => 'string[]'
     ];
 
     /**
@@ -71,10 +74,13 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'id' => 'int64',
+        'last_editor' => null,
+        'last_modified' => null,
+        'list_type' => null,
         'name' => null,
-        'items_values' => null,
-        'list_type' => null
+        'country_list' => null,
+        'ip_list' => null
     ];
 
     /**
@@ -84,9 +90,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
+		'last_editor' => false,
+		'last_modified' => false,
+		'list_type' => false,
 		'name' => false,
-		'items_values' => false,
-		'list_type' => false
+		'country_list' => false,
+		'ip_list' => false
     ];
 
     /**
@@ -176,9 +185,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'last_editor' => 'last_editor',
+        'last_modified' => 'last_modified',
+        'list_type' => 'list_type',
         'name' => 'name',
-        'items_values' => 'items_values',
-        'list_type' => 'list_type'
+        'country_list' => 'country_list',
+        'ip_list' => 'ip_list'
     ];
 
     /**
@@ -188,9 +200,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
+        'last_editor' => 'setLastEditor',
+        'last_modified' => 'setLastModified',
+        'list_type' => 'setListType',
         'name' => 'setName',
-        'items_values' => 'setItemsValues',
-        'list_type' => 'setListType'
+        'country_list' => 'setCountryList',
+        'ip_list' => 'setIpList'
     ];
 
     /**
@@ -200,9 +215,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
+        'last_editor' => 'getLastEditor',
+        'last_modified' => 'getLastModified',
+        'list_type' => 'getListType',
         'name' => 'getName',
-        'items_values' => 'getItemsValues',
-        'list_type' => 'getListType'
+        'country_list' => 'getCountryList',
+        'ip_list' => 'getIpList'
     ];
 
     /**
@@ -263,9 +281,12 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('items_values', $data ?? [], null);
+        $this->setIfExists('last_editor', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
         $this->setIfExists('list_type', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('country_list', $data ?? [], null);
+        $this->setIfExists('ip_list', $data ?? [], null);
     }
 
     /**
@@ -338,55 +359,55 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets last_editor
      *
      * @return string|null
      */
-    public function getName()
+    public function getLastEditor()
     {
-        return $this->container['name'];
+        return $this->container['last_editor'];
     }
 
     /**
-     * Sets name
+     * Sets last_editor
      *
-     * @param string|null $name name
+     * @param string|null $last_editor last_editor
      *
      * @return self
      */
-    public function setName($name)
+    public function setLastEditor($last_editor)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($last_editor)) {
+            throw new \InvalidArgumentException('non-nullable last_editor cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['last_editor'] = $last_editor;
 
         return $this;
     }
 
     /**
-     * Gets items_values
+     * Gets last_modified
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getItemsValues()
+    public function getLastModified()
     {
-        return $this->container['items_values'];
+        return $this->container['last_modified'];
     }
 
     /**
-     * Sets items_values
+     * Sets last_modified
      *
-     * @param string[]|null $items_values items_values
+     * @param string|null $last_modified last_modified
      *
      * @return self
      */
-    public function setItemsValues($items_values)
+    public function setLastModified($last_modified)
     {
-        if (is_null($items_values)) {
-            throw new \InvalidArgumentException('non-nullable items_values cannot be null');
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
         }
-        $this->container['items_values'] = $items_values;
+        $this->container['last_modified'] = $last_modified;
 
         return $this;
     }
@@ -414,6 +435,87 @@ class NetworkLists implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable list_type cannot be null');
         }
         $this->container['list_type'] = $list_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_list
+     *
+     * @return string[]|null
+     */
+    public function getCountryList()
+    {
+        return $this->container['country_list'];
+    }
+
+    /**
+     * Sets country_list
+     *
+     * @param string[]|null $country_list country_list
+     *
+     * @return self
+     */
+    public function setCountryList($country_list)
+    {
+        if (is_null($country_list)) {
+            throw new \InvalidArgumentException('non-nullable country_list cannot be null');
+        }
+        $this->container['country_list'] = $country_list;
+
+        return $this;
+    }
+
+    /**
+     * Gets ip_list
+     *
+     * @return string[]|null
+     */
+    public function getIpList()
+    {
+        return $this->container['ip_list'];
+    }
+
+    /**
+     * Sets ip_list
+     *
+     * @param string[]|null $ip_list ip_list
+     *
+     * @return self
+     */
+    public function setIpList($ip_list)
+    {
+        if (is_null($ip_list)) {
+            throw new \InvalidArgumentException('non-nullable ip_list cannot be null');
+        }
+        $this->container['ip_list'] = $ip_list;
 
         return $this;
     }
