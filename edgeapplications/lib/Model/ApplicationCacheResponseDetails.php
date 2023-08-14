@@ -140,7 +140,7 @@ class ApplicationCacheResponseDetails implements ModelInterface, ArrayAccess, \J
 		'is_slice_l2_caching_enabled' => false,
 		'slice_configuration_range' => false,
 		'enable_stale_cache' => false,
-		'l2_region' => false
+		'l2_region' => true
     ];
 
     /**
@@ -1076,7 +1076,14 @@ class ApplicationCacheResponseDetails implements ModelInterface, ArrayAccess, \J
     public function setL2Region($l2_region)
     {
         if (is_null($l2_region)) {
-            throw new \InvalidArgumentException('non-nullable l2_region cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'l2_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('l2_region', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['l2_region'] = $l2_region;
 

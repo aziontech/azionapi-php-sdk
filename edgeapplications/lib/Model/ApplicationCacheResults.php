@@ -126,10 +126,10 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
 		'cdn_cache_settings' => false,
 		'cdn_cache_settings_maximum_ttl' => false,
 		'cache_by_query_string' => false,
-		'query_string_fields' => false,
+		'query_string_fields' => true,
 		'enable_query_string_sort' => false,
 		'cache_by_cookies' => false,
-		'cookie_names' => false,
+		'cookie_names' => true,
 		'adaptive_delivery_action' => false,
 		'device_group' => false,
 		'enable_caching_for_post' => false,
@@ -140,7 +140,7 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
 		'slice_configuration_range' => false,
 		'enable_caching_for_options' => false,
 		'enable_stale_cache' => false,
-		'l2_region' => false
+		'l2_region' => true
     ];
 
     /**
@@ -699,7 +699,14 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     public function setQueryStringFields($query_string_fields)
     {
         if (is_null($query_string_fields)) {
-            throw new \InvalidArgumentException('non-nullable query_string_fields cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'query_string_fields');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('query_string_fields', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['query_string_fields'] = $query_string_fields;
 
@@ -780,7 +787,14 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     public function setCookieNames($cookie_names)
     {
         if (is_null($cookie_names)) {
-            throw new \InvalidArgumentException('non-nullable cookie_names cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'cookie_names');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cookie_names', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['cookie_names'] = $cookie_names;
 
@@ -1077,7 +1091,14 @@ class ApplicationCacheResults implements ModelInterface, ArrayAccess, \JsonSeria
     public function setL2Region($l2_region)
     {
         if (is_null($l2_region)) {
-            throw new \InvalidArgumentException('non-nullable l2_region cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'l2_region');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('l2_region', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['l2_region'] = $l2_region;
 

@@ -1686,7 +1686,7 @@ class EdgeApplicationsMainSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CreateApplicationResult
+     * @return \OpenAPI\Client\Model\CreateApplicationResult|\OpenAPI\Client\Model\CreateApplicationResult
      */
     public function edgeApplicationsPost($accept = null, $content_type = null, $create_application_request = null, string $contentType = self::contentTypes['edgeApplicationsPost'][0])
     {
@@ -1706,7 +1706,7 @@ class EdgeApplicationsMainSettingsApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CreateApplicationResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\CreateApplicationResult|\OpenAPI\Client\Model\CreateApplicationResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function edgeApplicationsPostWithHttpInfo($accept = null, $content_type = null, $create_application_request = null, string $contentType = self::contentTypes['edgeApplicationsPost'][0])
     {
@@ -1763,6 +1763,21 @@ class EdgeApplicationsMainSettingsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 201:
+                    if ('\OpenAPI\Client\Model\CreateApplicationResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\CreateApplicationResult' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\CreateApplicationResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\CreateApplicationResult';
@@ -1784,6 +1799,14 @@ class EdgeApplicationsMainSettingsApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\CreateApplicationResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\CreateApplicationResult',
