@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateNetworkListsRequest
+ * NetworkListResponseEntry
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CreateNetworkListsRequest Class Doc Comment
+ * NetworkListResponseEntry Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class NetworkListResponseEntry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateNetworkListsRequest';
+    protected static $openAPIModelName = 'NetworkListResponseEntry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'int',
+        'last_editor' => 'string',
+        'last_modified' => 'string',
+        'list_type' => 'string',
         'name' => 'string',
-        'items_values' => 'string[]',
-        'list_type' => 'string'
+        'items_values' => 'string[]'
     ];
 
     /**
@@ -70,9 +73,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => 'int64',
+        'last_editor' => null,
+        'last_modified' => null,
+        'list_type' => null,
         'name' => null,
-        'items_values' => null,
-        'list_type' => null
+        'items_values' => null
     ];
 
     /**
@@ -81,9 +87,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'items_values' => false,
-		'list_type' => false
+        'id' => false,
+		'last_editor' => false,
+		'last_modified' => false,
+		'list_type' => false,
+		'name' => false,
+		'items_values' => false
     ];
 
     /**
@@ -172,9 +181,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
+        'last_editor' => 'last_editor',
+        'last_modified' => 'last_modified',
+        'list_type' => 'list_type',
         'name' => 'name',
-        'items_values' => 'items_values',
-        'list_type' => 'list_type'
+        'items_values' => 'items_values'
     ];
 
     /**
@@ -183,9 +195,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
+        'last_editor' => 'setLastEditor',
+        'last_modified' => 'setLastModified',
+        'list_type' => 'setListType',
         'name' => 'setName',
-        'items_values' => 'setItemsValues',
-        'list_type' => 'setListType'
+        'items_values' => 'setItemsValues'
     ];
 
     /**
@@ -194,9 +209,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
+        'last_editor' => 'getLastEditor',
+        'last_modified' => 'getLastModified',
+        'list_type' => 'getListType',
         'name' => 'getName',
-        'items_values' => 'getItemsValues',
-        'list_type' => 'getListType'
+        'items_values' => 'getItemsValues'
     ];
 
     /**
@@ -240,23 +258,6 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const LIST_TYPE_IP_CIDR = 'ip_cidr';
-    public const LIST_TYPE_ASN = 'asn';
-    public const LIST_TYPE_COUNTRIES = 'countries';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getListTypeAllowableValues()
-    {
-        return [
-            self::LIST_TYPE_IP_CIDR,
-            self::LIST_TYPE_ASN,
-            self::LIST_TYPE_COUNTRIES,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -273,9 +274,12 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('last_editor', $data ?? [], null);
+        $this->setIfExists('last_modified', $data ?? [], null);
+        $this->setIfExists('list_type', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('items_values', $data ?? [], null);
-        $this->setIfExists('list_type', $data ?? [], null);
     }
 
     /**
@@ -305,15 +309,6 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getListTypeAllowableValues();
-        if (!is_null($this->container['list_type']) && !in_array($this->container['list_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'list_type', must be one of '%s'",
-                $this->container['list_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -328,6 +323,114 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_editor
+     *
+     * @return string|null
+     */
+    public function getLastEditor()
+    {
+        return $this->container['last_editor'];
+    }
+
+    /**
+     * Sets last_editor
+     *
+     * @param string|null $last_editor last_editor
+     *
+     * @return self
+     */
+    public function setLastEditor($last_editor)
+    {
+        if (is_null($last_editor)) {
+            throw new \InvalidArgumentException('non-nullable last_editor cannot be null');
+        }
+        $this->container['last_editor'] = $last_editor;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return string|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param string|null $last_modified last_modified
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        if (is_null($last_modified)) {
+            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
+        }
+        $this->container['last_modified'] = $last_modified;
+
+        return $this;
+    }
+
+    /**
+     * Gets list_type
+     *
+     * @return string|null
+     */
+    public function getListType()
+    {
+        return $this->container['list_type'];
+    }
+
+    /**
+     * Sets list_type
+     *
+     * @param string|null $list_type list_type
+     *
+     * @return self
+     */
+    public function setListType($list_type)
+    {
+        if (is_null($list_type)) {
+            throw new \InvalidArgumentException('non-nullable list_type cannot be null');
+        }
+        $this->container['list_type'] = $list_type;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -379,43 +482,6 @@ class CreateNetworkListsRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable items_values cannot be null');
         }
         $this->container['items_values'] = $items_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets list_type
-     *
-     * @return string|null
-     */
-    public function getListType()
-    {
-        return $this->container['list_type'];
-    }
-
-    /**
-     * Sets list_type
-     *
-     * @param string|null $list_type list_type
-     *
-     * @return self
-     */
-    public function setListType($list_type)
-    {
-        if (is_null($list_type)) {
-            throw new \InvalidArgumentException('non-nullable list_type cannot be null');
-        }
-        $allowedValues = $this->getListTypeAllowableValues();
-        if (!in_array($list_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'list_type', must be one of '%s'",
-                    $list_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['list_type'] = $list_type;
 
         return $this;
     }

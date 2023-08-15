@@ -137,15 +137,18 @@ class DefaultApi
      * List all user Network Lists
      *
      * @param  int $page page (optional)
+     * @param  int $page_size page_size (optional)
+     * @param  string $sort sort (optional)
+     * @param  string $order_by order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ListNetworkListsResponse
      */
-    public function networkListsGet($page = null, string $contentType = self::contentTypes['networkListsGet'][0])
+    public function networkListsGet($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['networkListsGet'][0])
     {
-        list($response) = $this->networkListsGetWithHttpInfo($page, $contentType);
+        list($response) = $this->networkListsGetWithHttpInfo($page, $page_size, $sort, $order_by, $contentType);
         return $response;
     }
 
@@ -155,15 +158,18 @@ class DefaultApi
      * List all user Network Lists
      *
      * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ListNetworkListsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function networkListsGetWithHttpInfo($page = null, string $contentType = self::contentTypes['networkListsGet'][0])
+    public function networkListsGetWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['networkListsGet'][0])
     {
-        $request = $this->networkListsGetRequest($page, $contentType);
+        $request = $this->networkListsGetRequest($page, $page_size, $sort, $order_by, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -255,14 +261,17 @@ class DefaultApi
      * List all user Network Lists
      *
      * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function networkListsGetAsync($page = null, string $contentType = self::contentTypes['networkListsGet'][0])
+    public function networkListsGetAsync($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['networkListsGet'][0])
     {
-        return $this->networkListsGetAsyncWithHttpInfo($page, $contentType)
+        return $this->networkListsGetAsyncWithHttpInfo($page, $page_size, $sort, $order_by, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -276,15 +285,18 @@ class DefaultApi
      * List all user Network Lists
      *
      * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function networkListsGetAsyncWithHttpInfo($page = null, string $contentType = self::contentTypes['networkListsGet'][0])
+    public function networkListsGetAsyncWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['networkListsGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ListNetworkListsResponse';
-        $request = $this->networkListsGetRequest($page, $contentType);
+        $request = $this->networkListsGetRequest($page, $page_size, $sort, $order_by, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -326,13 +338,19 @@ class DefaultApi
      * Create request for operation 'networkListsGet'
      *
      * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function networkListsGetRequest($page = null, string $contentType = self::contentTypes['networkListsGet'][0])
+    public function networkListsGetRequest($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['networkListsGet'][0])
     {
+
+
+
 
 
 
@@ -348,6 +366,33 @@ class DefaultApi
             $page,
             'page', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -424,11 +469,12 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel
      */
     public function networkListsPost($create_network_lists_request, string $contentType = self::contentTypes['networkListsPost'][0])
     {
-        $this->networkListsPostWithHttpInfo($create_network_lists_request, $contentType);
+        list($response) = $this->networkListsPostWithHttpInfo($create_network_lists_request, $contentType);
+        return $response;
     }
 
     /**
@@ -441,7 +487,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function networkListsPostWithHttpInfo($create_network_lists_request, string $contentType = self::contentTypes['networkListsPost'][0])
     {
@@ -482,10 +528,80 @@ class DefaultApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 201:
+                    if ('\OpenAPI\Client\Model\NetworkListsResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\NetworkListsResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NetworkListsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\OpenAPI\Client\Model\BadRequestResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\BadRequestResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\BadRequestResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\OpenAPI\Client\Model\ErrorModel' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\ErrorModel' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ErrorModel', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\NetworkListsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -541,14 +657,27 @@ class DefaultApi
      */
     public function networkListsPostAsyncWithHttpInfo($create_network_lists_request, string $contentType = self::contentTypes['networkListsPost'][0])
     {
-        $returnType = '';
+        $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
         $request = $this->networkListsPostRequest($create_network_lists_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -673,7 +802,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse
+     * @return \OpenAPI\Client\Model\NetworkListUuidResponse|\OpenAPI\Client\Model\BadRequestResponse
      */
     public function networkListsUuidGet($uuid, string $contentType = self::contentTypes['networkListsUuidGet'][0])
     {
@@ -691,7 +820,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\NetworkListUuidResponse|\OpenAPI\Client\Model\BadRequestResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function networkListsUuidGetWithHttpInfo($uuid, string $contentType = self::contentTypes['networkListsUuidGet'][0])
     {
@@ -734,17 +863,17 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\NetworkListsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NetworkListUuidResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\NetworkListsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NetworkListUuidResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NetworkListsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NetworkListUuidResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -765,7 +894,7 @@ class DefaultApi
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
+            $returnType = '\OpenAPI\Client\Model\NetworkListUuidResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -786,7 +915,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\NetworkListsResponse',
+                        '\OpenAPI\Client\Model\NetworkListUuidResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -838,7 +967,7 @@ class DefaultApi
      */
     public function networkListsUuidGetAsyncWithHttpInfo($uuid, string $contentType = self::contentTypes['networkListsUuidGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
+        $returnType = '\OpenAPI\Client\Model\NetworkListUuidResponse';
         $request = $this->networkListsUuidGetRequest($uuid, $contentType);
 
         return $this->client
@@ -980,16 +1109,16 @@ class DefaultApi
      * Overwrite some Network Lists attributes
      *
      * @param  string $uuid uuid (required)
-     * @param  \OpenAPI\Client\Model\UpdateNetworkListsRequest $update_network_lists_request update_network_lists_request (required)
+     * @param  \OpenAPI\Client\Model\CreateNetworkListsRequest $create_network_lists_request create_network_lists_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsUuidPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListNetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel
+     * @return \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel
      */
-    public function networkListsUuidPut($uuid, $update_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
+    public function networkListsUuidPut($uuid, $create_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
     {
-        list($response) = $this->networkListsUuidPutWithHttpInfo($uuid, $update_network_lists_request, $contentType);
+        list($response) = $this->networkListsUuidPutWithHttpInfo($uuid, $create_network_lists_request, $contentType);
         return $response;
     }
 
@@ -999,16 +1128,16 @@ class DefaultApi
      * Overwrite some Network Lists attributes
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\UpdateNetworkListsRequest $update_network_lists_request (required)
+     * @param  \OpenAPI\Client\Model\CreateNetworkListsRequest $create_network_lists_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsUuidPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListNetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\NetworkListsResponse|\OpenAPI\Client\Model\BadRequestResponse|\OpenAPI\Client\Model\ErrorModel, HTTP status code, HTTP response headers (array of strings)
      */
-    public function networkListsUuidPutWithHttpInfo($uuid, $update_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
+    public function networkListsUuidPutWithHttpInfo($uuid, $create_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
     {
-        $request = $this->networkListsUuidPutRequest($uuid, $update_network_lists_request, $contentType);
+        $request = $this->networkListsUuidPutRequest($uuid, $create_network_lists_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1047,17 +1176,17 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListNetworkListsResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\NetworkListsResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListNetworkListsResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\NetworkListsResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListNetworkListsResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\NetworkListsResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1093,7 +1222,7 @@ class DefaultApi
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListNetworkListsResponse';
+            $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1114,7 +1243,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListNetworkListsResponse',
+                        '\OpenAPI\Client\Model\NetworkListsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1146,15 +1275,15 @@ class DefaultApi
      * Overwrite some Network Lists attributes
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\UpdateNetworkListsRequest $update_network_lists_request (required)
+     * @param  \OpenAPI\Client\Model\CreateNetworkListsRequest $create_network_lists_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function networkListsUuidPutAsync($uuid, $update_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
+    public function networkListsUuidPutAsync($uuid, $create_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
     {
-        return $this->networkListsUuidPutAsyncWithHttpInfo($uuid, $update_network_lists_request, $contentType)
+        return $this->networkListsUuidPutAsyncWithHttpInfo($uuid, $create_network_lists_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1168,16 +1297,16 @@ class DefaultApi
      * Overwrite some Network Lists attributes
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\UpdateNetworkListsRequest $update_network_lists_request (required)
+     * @param  \OpenAPI\Client\Model\CreateNetworkListsRequest $create_network_lists_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function networkListsUuidPutAsyncWithHttpInfo($uuid, $update_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
+    public function networkListsUuidPutAsyncWithHttpInfo($uuid, $create_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListNetworkListsResponse';
-        $request = $this->networkListsUuidPutRequest($uuid, $update_network_lists_request, $contentType);
+        $returnType = '\OpenAPI\Client\Model\NetworkListsResponse';
+        $request = $this->networkListsUuidPutRequest($uuid, $create_network_lists_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1219,13 +1348,13 @@ class DefaultApi
      * Create request for operation 'networkListsUuidPut'
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\UpdateNetworkListsRequest $update_network_lists_request (required)
+     * @param  \OpenAPI\Client\Model\CreateNetworkListsRequest $create_network_lists_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['networkListsUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function networkListsUuidPutRequest($uuid, $update_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
+    public function networkListsUuidPutRequest($uuid, $create_network_lists_request, string $contentType = self::contentTypes['networkListsUuidPut'][0])
     {
 
         // verify the required parameter 'uuid' is set
@@ -1235,10 +1364,10 @@ class DefaultApi
             );
         }
 
-        // verify the required parameter 'update_network_lists_request' is set
-        if ($update_network_lists_request === null || (is_array($update_network_lists_request) && count($update_network_lists_request) === 0)) {
+        // verify the required parameter 'create_network_lists_request' is set
+        if ($create_network_lists_request === null || (is_array($create_network_lists_request) && count($create_network_lists_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_network_lists_request when calling networkListsUuidPut'
+                'Missing the required parameter $create_network_lists_request when calling networkListsUuidPut'
             );
         }
 
@@ -1269,12 +1398,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($update_network_lists_request)) {
+        if (isset($create_network_lists_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_network_lists_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_network_lists_request));
             } else {
-                $httpBody = $update_network_lists_request;
+                $httpBody = $create_network_lists_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
