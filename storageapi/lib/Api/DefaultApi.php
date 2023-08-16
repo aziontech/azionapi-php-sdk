@@ -197,6 +197,14 @@ class DefaultApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'mixed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -302,7 +310,7 @@ class DefaultApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -372,7 +380,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return mixed
+     * @return mixed|mixed
      */
     public function storageVersionIdPost($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
@@ -393,7 +401,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of mixed, HTTP status code, HTTP response headers (array of strings)
+     * @return array of mixed|mixed, HTTP status code, HTTP response headers (array of strings)
      */
     public function storageVersionIdPostWithHttpInfo($x_azion_static_path, $version_id, $content_type = 'b2/x-auto', $body = null, string $contentType = self::contentTypes['storageVersionIdPost'][0])
     {
@@ -450,6 +458,21 @@ class DefaultApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 404:
+                    if ('mixed' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('mixed' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, 'mixed', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = 'mixed';
@@ -471,6 +494,14 @@ class DefaultApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'mixed',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'mixed',
