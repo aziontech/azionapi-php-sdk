@@ -12,6 +12,8 @@ docs/Model/ListNetworkListsResponse.md
 docs/Model/NetworkListResponseEntry.md
 docs/Model/NetworkListUuidResponse.md
 docs/Model/NetworkListUuidResponseEntry.md
+docs/Model/NetworkListUuidResponseEntryInt.md
+docs/Model/NetworkListUuidResponseEntryString.md
 docs/Model/NetworkLists.md
 docs/Model/NetworkListsResponse.md
 git_push.sh
@@ -28,10 +30,11 @@ lib/Model/ModelInterface.php
 lib/Model/NetworkListResponseEntry.php
 lib/Model/NetworkListUuidResponse.php
 lib/Model/NetworkListUuidResponseEntry.php
+lib/Model/NetworkListUuidResponseEntryInt.php
+lib/Model/NetworkListUuidResponseEntryString.php
 lib/Model/NetworkLists.php
 lib/Model/NetworkListsResponse.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/NetworkListResponseEntryTest.php
-test/Model/NetworkListUuidResponseEntryTest.php
-test/Model/NetworkListUuidResponseTest.php
+test/Model/NetworkListUuidResponseEntryIntTest.php
+test/Model/NetworkListUuidResponseEntryStringTest.php

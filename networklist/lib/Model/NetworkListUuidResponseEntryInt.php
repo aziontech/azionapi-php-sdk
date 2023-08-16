@@ -1,6 +1,6 @@
 <?php
 /**
- * NetworkListUuidResponseEntry
+ * NetworkListUuidResponseEntryInt
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * NetworkListUuidResponseEntry Class Doc Comment
+ * NetworkListUuidResponseEntryInt Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class NetworkListUuidResponseEntry implements ModelInterface, ArrayAccess, \JsonSerializable
+class NetworkListUuidResponseEntryInt implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class NetworkListUuidResponseEntry implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'NetworkListUuidResponseEntry';
+    protected static $openAPIModelName = 'NetworkListUuidResponseEntryInt';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
