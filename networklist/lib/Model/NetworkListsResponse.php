@@ -58,7 +58,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'results' => '\OpenAPI\Client\Model\NetworkListResponseEntry',
-        'schema_version' => 'float'
+        'schema_version' => 'int'
     ];
 
     /**
@@ -70,7 +70,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'results' => null,
-        'schema_version' => null
+        'schema_version' => 'int64'
     ];
 
     /**
@@ -326,7 +326,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets schema_version
      *
-     * @return float|null
+     * @return int|null
      */
     public function getSchemaVersion()
     {
@@ -336,7 +336,7 @@ class NetworkListsResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets schema_version
      *
-     * @param float|null $schema_version schema_version
+     * @param int|null $schema_version schema_version
      *
      * @return self
      */
