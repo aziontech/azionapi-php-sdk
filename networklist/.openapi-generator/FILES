@@ -36,5 +36,3 @@ lib/Model/NetworkLists.php
 lib/Model/NetworkListsResponse.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/NetworkListUuidResponseEntryIntTest.php
-test/Model/NetworkListUuidResponseEntryStringTest.php

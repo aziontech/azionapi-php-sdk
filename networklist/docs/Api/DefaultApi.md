@@ -6,6 +6,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 | ------------- | ------------- | ------------- |
 | [**networkListsGet()**](DefaultApi.md#networkListsGet) | **GET** /network_lists | List all user Network Lists |
 | [**networkListsPost()**](DefaultApi.md#networkListsPost) | **POST** /network_lists | Create a Network Lists |
+| [**networkListsUuidDelete()**](DefaultApi.md#networkListsUuidDelete) | **DELETE** /network_lists/{uuid} | Delete a Network Lists set by uuid |
 | [**networkListsUuidGet()**](DefaultApi.md#networkListsUuidGet) | **GET** /network_lists/{uuid} | Retrieve a Network Lists set by uuid |
 | [**networkListsUuidPut()**](DefaultApi.md#networkListsUuidPut) | **PUT** /network_lists/{uuid} | Overwrite some Network Lists attributes |
 
@@ -131,6 +132,67 @@ try {
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`, `text/html`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `networkListsUuidDelete()`
+
+```php
+networkListsUuidDelete($uuid, $accept)
+```
+
+Delete a Network Lists set by uuid
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$uuid = 'uuid_example'; // string | The id of the networkList to be deleted.
+$accept = application/json; version=3; // string
+
+try {
+    $apiInstance->networkListsUuidDelete($uuid, $accept);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->networkListsUuidDelete: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **uuid** | **string**| The id of the networkList to be deleted. | |
+| **accept** | **string**|  | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
