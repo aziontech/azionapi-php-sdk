@@ -136,7 +136,7 @@ class WAFApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WAFDomains200
+     * @return \OpenAPI\Client\Model\WAFDomains200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404
      */
     public function getWAFDomains($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
@@ -155,7 +155,7 @@ class WAFApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WAFDomains200, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WAFDomains200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWAFDomainsWithHttpInfo($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
@@ -212,6 +212,36 @@ class WAFApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\OpenAPI\Client\Model\WAFEvents400' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\WAFEvents400' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WAFEvents400', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\WAFEvents404' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\WAFEvents404' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WAFEvents404', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\OpenAPI\Client\Model\WAFDomains200';
@@ -236,6 +266,22 @@ class WAFApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\WAFDomains200',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\WAFEvents400',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\WAFEvents404',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -441,7 +487,7 @@ class WAFApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404|\OpenAPI\Client\Model\WAFEvents401
+     * @return \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents401|\OpenAPI\Client\Model\WAFEvents404
      */
     public function getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id = null, string $contentType = self::contentTypes['getWAFEvents'][0])
     {
@@ -462,7 +508,7 @@ class WAFApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404|\OpenAPI\Client\Model\WAFEvents401, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents401|\OpenAPI\Client\Model\WAFEvents404, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWAFEventsWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id = null, string $contentType = self::contentTypes['getWAFEvents'][0])
     {
@@ -534,21 +580,6 @@ class WAFApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 404:
-                    if ('\OpenAPI\Client\Model\WAFEvents404' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\WAFEvents404' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WAFEvents404', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
                 case 401:
                     if ('\OpenAPI\Client\Model\WAFEvents401' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -561,6 +592,21 @@ class WAFApi
 
                     return [
                         ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WAFEvents401', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\OpenAPI\Client\Model\WAFEvents404' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\WAFEvents404' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\WAFEvents404', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -600,18 +646,18 @@ class WAFApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\WAFEvents404',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\OpenAPI\Client\Model\WAFEvents401',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\WAFEvents404',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

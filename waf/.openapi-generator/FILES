@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .php-cs-fixer.dist.php
 .travis.yml
 README.md
@@ -23,9 +22,3 @@ lib/Model/WAFEvents401.php
 lib/Model/WAFEvents404.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/WAFApiTest.php
-test/Model/WAFDomains200Test.php
-test/Model/WAFEvents200Test.php
-test/Model/WAFEvents400Test.php
-test/Model/WAFEvents401Test.php
-test/Model/WAFEvents404Test.php
