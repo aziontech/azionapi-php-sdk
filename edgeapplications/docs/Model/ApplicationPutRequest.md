@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **web_application_firewall** | **bool** |  | [optional]
 **debug_rules** | **bool** |  | [optional]
 **http3** | **bool** |  | [optional]
+**websocket** | **bool** |  | [optional]
 **supported_ciphers** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

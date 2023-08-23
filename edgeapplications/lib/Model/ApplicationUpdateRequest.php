@@ -73,7 +73,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'l2_caching' => 'bool',
         'load_balancer' => 'bool',
         'raw_logs' => 'bool',
-        'web_application_firewall' => 'bool'
+        'web_application_firewall' => 'bool',
+        'websocket' => 'bool'
     ];
 
     /**
@@ -100,7 +101,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'l2_caching' => null,
         'load_balancer' => null,
         'raw_logs' => null,
-        'web_application_firewall' => null
+        'web_application_firewall' => null,
+        'websocket' => null
     ];
 
     /**
@@ -125,7 +127,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
 		'l2_caching' => false,
 		'load_balancer' => false,
 		'raw_logs' => false,
-		'web_application_firewall' => false
+		'web_application_firewall' => false,
+		'websocket' => false
     ];
 
     /**
@@ -230,7 +233,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'l2_caching' => 'l2_caching',
         'load_balancer' => 'load_balancer',
         'raw_logs' => 'raw_logs',
-        'web_application_firewall' => 'web_application_firewall'
+        'web_application_firewall' => 'web_application_firewall',
+        'websocket' => 'websocket'
     ];
 
     /**
@@ -255,7 +259,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'l2_caching' => 'setL2Caching',
         'load_balancer' => 'setLoadBalancer',
         'raw_logs' => 'setRawLogs',
-        'web_application_firewall' => 'setWebApplicationFirewall'
+        'web_application_firewall' => 'setWebApplicationFirewall',
+        'websocket' => 'setWebsocket'
     ];
 
     /**
@@ -280,7 +285,8 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'l2_caching' => 'getL2Caching',
         'load_balancer' => 'getLoadBalancer',
         'raw_logs' => 'getRawLogs',
-        'web_application_firewall' => 'getWebApplicationFirewall'
+        'web_application_firewall' => 'getWebApplicationFirewall',
+        'websocket' => 'getWebsocket'
     ];
 
     /**
@@ -357,6 +363,7 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('load_balancer', $data ?? [], null);
         $this->setIfExists('raw_logs', $data ?? [], null);
         $this->setIfExists('web_application_firewall', $data ?? [], null);
+        $this->setIfExists('websocket', $data ?? [], null);
     }
 
     /**
@@ -870,6 +877,33 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable web_application_firewall cannot be null');
         }
         $this->container['web_application_firewall'] = $web_application_firewall;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket
+     *
+     * @return bool|null
+     */
+    public function getWebsocket()
+    {
+        return $this->container['websocket'];
+    }
+
+    /**
+     * Sets websocket
+     *
+     * @param bool|null $websocket websocket
+     *
+     * @return self
+     */
+    public function setWebsocket($websocket)
+    {
+        if (is_null($websocket)) {
+            throw new \InvalidArgumentException('non-nullable websocket cannot be null');
+        }
+        $this->container['websocket'] = $websocket;
 
         return $this;
     }
