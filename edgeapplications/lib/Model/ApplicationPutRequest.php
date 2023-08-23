@@ -75,6 +75,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'web_application_firewall' => 'bool',
         'debug_rules' => 'bool',
         'http3' => 'bool',
+        'websocket' => 'bool',
         'supported_ciphers' => 'string'
     ];
 
@@ -104,6 +105,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'web_application_firewall' => null,
         'debug_rules' => null,
         'http3' => null,
+        'websocket' => null,
         'supported_ciphers' => null
     ];
 
@@ -131,6 +133,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 		'web_application_firewall' => false,
 		'debug_rules' => false,
 		'http3' => false,
+		'websocket' => false,
 		'supported_ciphers' => false
     ];
 
@@ -238,6 +241,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'web_application_firewall' => 'web_application_firewall',
         'debug_rules' => 'debug_rules',
         'http3' => 'http3',
+        'websocket' => 'websocket',
         'supported_ciphers' => 'supported_ciphers'
     ];
 
@@ -265,6 +269,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'web_application_firewall' => 'setWebApplicationFirewall',
         'debug_rules' => 'setDebugRules',
         'http3' => 'setHttp3',
+        'websocket' => 'setWebsocket',
         'supported_ciphers' => 'setSupportedCiphers'
     ];
 
@@ -292,6 +297,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'web_application_firewall' => 'getWebApplicationFirewall',
         'debug_rules' => 'getDebugRules',
         'http3' => 'getHttp3',
+        'websocket' => 'getWebsocket',
         'supported_ciphers' => 'getSupportedCiphers'
     ];
 
@@ -370,6 +376,7 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('web_application_firewall', $data ?? [], null);
         $this->setIfExists('debug_rules', $data ?? [], null);
         $this->setIfExists('http3', $data ?? [], null);
+        $this->setIfExists('websocket', $data ?? [], null);
         $this->setIfExists('supported_ciphers', $data ?? [], null);
     }
 
@@ -914,6 +921,33 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable http3 cannot be null');
         }
         $this->container['http3'] = $http3;
+
+        return $this;
+    }
+
+    /**
+     * Gets websocket
+     *
+     * @return bool|null
+     */
+    public function getWebsocket()
+    {
+        return $this->container['websocket'];
+    }
+
+    /**
+     * Sets websocket
+     *
+     * @param bool|null $websocket websocket
+     *
+     * @return self
+     */
+    public function setWebsocket($websocket)
+    {
+        if (is_null($websocket)) {
+            throw new \InvalidArgumentException('non-nullable websocket cannot be null');
+        }
+        $this->container['websocket'] = $websocket;
 
         return $this;
     }
