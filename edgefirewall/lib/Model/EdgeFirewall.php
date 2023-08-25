@@ -86,7 +86,7 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
         'network_protection_enabled' => null,
         'waf_enabled' => null,
         'debug_rules' => null,
-        'domains' => null
+        'domains' => 'int64'
     ];
 
     /**

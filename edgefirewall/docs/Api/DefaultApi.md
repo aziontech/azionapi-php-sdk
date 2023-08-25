@@ -81,7 +81,7 @@ try {
 ## `edgeFirewallPost()`
 
 ```php
-edgeFirewallPost($create_edge_firewall_request)
+edgeFirewallPost($create_edge_firewall_request): \OpenAPI\Client\Model\EdgeFirewallResponse
 ```
 
 Create a edge firewall
@@ -108,7 +108,8 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
 $create_edge_firewall_request = new \OpenAPI\Client\Model\CreateEdgeFirewallRequest(); // \OpenAPI\Client\Model\CreateEdgeFirewallRequest
 
 try {
-    $apiInstance->edgeFirewallPost($create_edge_firewall_request);
+    $result = $apiInstance->edgeFirewallPost($create_edge_firewall_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -122,7 +123,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\EdgeFirewallResponse**](../Model/EdgeFirewallResponse.md)
 
 ### Authorization
 
@@ -131,7 +132,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -259,7 +260,7 @@ try {
 ## `edgeFirewallUuidPatch()`
 
 ```php
-edgeFirewallUuidPatch($uuid, $body): \OpenAPI\Client\Model\ListEdgeFirewallResponse
+edgeFirewallUuidPatch($uuid, $update_edge_firewall_request): \OpenAPI\Client\Model\EdgeFirewallResponse
 ```
 
 Update some edge firewall attributes, like \"active\"
@@ -284,10 +285,10 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $uuid = 'uuid_example'; // string
-$body = new \OpenAPI\Client\Model\ListEdgeFirewallResponse(); // \OpenAPI\Client\Model\ListEdgeFirewallResponse
+$update_edge_firewall_request = new \OpenAPI\Client\Model\UpdateEdgeFirewallRequest(); // \OpenAPI\Client\Model\UpdateEdgeFirewallRequest
 
 try {
-    $result = $apiInstance->edgeFirewallUuidPatch($uuid, $body);
+    $result = $apiInstance->edgeFirewallUuidPatch($uuid, $update_edge_firewall_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallUuidPatch: ', $e->getMessage(), PHP_EOL;
@@ -299,11 +300,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **uuid** | **string**|  | |
-| **body** | **\OpenAPI\Client\Model\ListEdgeFirewallResponse**|  | |
+| **update_edge_firewall_request** | [**\OpenAPI\Client\Model\UpdateEdgeFirewallRequest**](../Model/UpdateEdgeFirewallRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListEdgeFirewallResponse**](../Model/ListEdgeFirewallResponse.md)
+[**\OpenAPI\Client\Model\EdgeFirewallResponse**](../Model/EdgeFirewallResponse.md)
 
 ### Authorization
 
@@ -321,7 +322,7 @@ try {
 ## `edgeFirewallUuidPut()`
 
 ```php
-edgeFirewallUuidPut($uuid, $body): \OpenAPI\Client\Model\ListEdgeFirewallResponse
+edgeFirewallUuidPut($uuid, $update_edge_firewall_request): \OpenAPI\Client\Model\EdgeFirewallResponse
 ```
 
 Overwrite some edge firewall attributes, like \"active\"
@@ -346,10 +347,10 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $uuid = 'uuid_example'; // string
-$body = new \OpenAPI\Client\Model\ListEdgeFirewallResponse(); // \OpenAPI\Client\Model\ListEdgeFirewallResponse
+$update_edge_firewall_request = new \OpenAPI\Client\Model\UpdateEdgeFirewallRequest(); // \OpenAPI\Client\Model\UpdateEdgeFirewallRequest
 
 try {
-    $result = $apiInstance->edgeFirewallUuidPut($uuid, $body);
+    $result = $apiInstance->edgeFirewallUuidPut($uuid, $update_edge_firewall_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallUuidPut: ', $e->getMessage(), PHP_EOL;
@@ -361,11 +362,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **uuid** | **string**|  | |
-| **body** | **\OpenAPI\Client\Model\ListEdgeFirewallResponse**|  | |
+| **update_edge_firewall_request** | [**\OpenAPI\Client\Model\UpdateEdgeFirewallRequest**](../Model/UpdateEdgeFirewallRequest.md)|  | |
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListEdgeFirewallResponse**](../Model/ListEdgeFirewallResponse.md)
+[**\OpenAPI\Client\Model\EdgeFirewallResponse**](../Model/EdgeFirewallResponse.md)
 
 ### Authorization
 

@@ -475,11 +475,12 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \OpenAPI\Client\Model\EdgeFirewallResponse
      */
     public function edgeFirewallPost($create_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallPost'][0])
     {
-        $this->edgeFirewallPostWithHttpInfo($create_edge_firewall_request, $contentType);
+        list($response) = $this->edgeFirewallPostWithHttpInfo($create_edge_firewall_request, $contentType);
+        return $response;
     }
 
     /**
@@ -492,7 +493,7 @@ class DefaultApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EdgeFirewallResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function edgeFirewallPostWithHttpInfo($create_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallPost'][0])
     {
@@ -533,10 +534,50 @@ class DefaultApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 201:
+                    if ('\OpenAPI\Client\Model\EdgeFirewallResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\EdgeFirewallResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFirewallResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\EdgeFirewallResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -576,14 +617,27 @@ class DefaultApi
      */
     public function edgeFirewallPostAsyncWithHttpInfo($create_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallPost'][0])
     {
-        $returnType = '';
+        $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
         $request = $this->edgeFirewallPostRequest($create_edge_firewall_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -634,7 +688,7 @@ class DefaultApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1226,16 +1280,16 @@ class DefaultApi
      * Update some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPatch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListEdgeFirewallResponse
+     * @return \OpenAPI\Client\Model\EdgeFirewallResponse
      */
-    public function edgeFirewallUuidPatch($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
+    public function edgeFirewallUuidPatch($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
     {
-        list($response) = $this->edgeFirewallUuidPatchWithHttpInfo($uuid, $body, $contentType);
+        list($response) = $this->edgeFirewallUuidPatchWithHttpInfo($uuid, $update_edge_firewall_request, $contentType);
         return $response;
     }
 
@@ -1245,16 +1299,16 @@ class DefaultApi
      * Update some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPatch'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListEdgeFirewallResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EdgeFirewallResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function edgeFirewallUuidPatchWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
+    public function edgeFirewallUuidPatchWithHttpInfo($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
     {
-        $request = $this->edgeFirewallUuidPatchRequest($uuid, $body, $contentType);
+        $request = $this->edgeFirewallUuidPatchRequest($uuid, $update_edge_firewall_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1293,23 +1347,23 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListEdgeFirewallResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\EdgeFirewallResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListEdgeFirewallResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\EdgeFirewallResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListEdgeFirewallResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFirewallResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListEdgeFirewallResponse';
+            $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1330,7 +1384,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListEdgeFirewallResponse',
+                        '\OpenAPI\Client\Model\EdgeFirewallResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1346,15 +1400,15 @@ class DefaultApi
      * Update some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallUuidPatchAsync($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
+    public function edgeFirewallUuidPatchAsync($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
     {
-        return $this->edgeFirewallUuidPatchAsyncWithHttpInfo($uuid, $body, $contentType)
+        return $this->edgeFirewallUuidPatchAsyncWithHttpInfo($uuid, $update_edge_firewall_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1368,16 +1422,16 @@ class DefaultApi
      * Update some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallUuidPatchAsyncWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
+    public function edgeFirewallUuidPatchAsyncWithHttpInfo($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListEdgeFirewallResponse';
-        $request = $this->edgeFirewallUuidPatchRequest($uuid, $body, $contentType);
+        $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
+        $request = $this->edgeFirewallUuidPatchRequest($uuid, $update_edge_firewall_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1419,13 +1473,13 @@ class DefaultApi
      * Create request for operation 'edgeFirewallUuidPatch'
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function edgeFirewallUuidPatchRequest($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
+    public function edgeFirewallUuidPatchRequest($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPatch'][0])
     {
 
         // verify the required parameter 'uuid' is set
@@ -1435,10 +1489,10 @@ class DefaultApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'update_edge_firewall_request' is set
+        if ($update_edge_firewall_request === null || (is_array($update_edge_firewall_request) && count($update_edge_firewall_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling edgeFirewallUuidPatch'
+                'Missing the required parameter $update_edge_firewall_request when calling edgeFirewallUuidPatch'
             );
         }
 
@@ -1469,12 +1523,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($update_edge_firewall_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_edge_firewall_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $update_edge_firewall_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1533,16 +1587,16 @@ class DefaultApi
      * Overwrite some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\ListEdgeFirewallResponse
+     * @return \OpenAPI\Client\Model\EdgeFirewallResponse
      */
-    public function edgeFirewallUuidPut($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
+    public function edgeFirewallUuidPut($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
     {
-        list($response) = $this->edgeFirewallUuidPutWithHttpInfo($uuid, $body, $contentType);
+        list($response) = $this->edgeFirewallUuidPutWithHttpInfo($uuid, $update_edge_firewall_request, $contentType);
         return $response;
     }
 
@@ -1552,16 +1606,16 @@ class DefaultApi
      * Overwrite some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPut'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\ListEdgeFirewallResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\EdgeFirewallResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function edgeFirewallUuidPutWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
+    public function edgeFirewallUuidPutWithHttpInfo($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
     {
-        $request = $this->edgeFirewallUuidPutRequest($uuid, $body, $contentType);
+        $request = $this->edgeFirewallUuidPutRequest($uuid, $update_edge_firewall_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1600,23 +1654,23 @@ class DefaultApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\ListEdgeFirewallResponse' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\EdgeFirewallResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\ListEdgeFirewallResponse' !== 'string') {
+                        if ('\OpenAPI\Client\Model\EdgeFirewallResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\ListEdgeFirewallResponse', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFirewallResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\ListEdgeFirewallResponse';
+            $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1637,7 +1691,7 @@ class DefaultApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\ListEdgeFirewallResponse',
+                        '\OpenAPI\Client\Model\EdgeFirewallResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1653,15 +1707,15 @@ class DefaultApi
      * Overwrite some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallUuidPutAsync($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
+    public function edgeFirewallUuidPutAsync($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
     {
-        return $this->edgeFirewallUuidPutAsyncWithHttpInfo($uuid, $body, $contentType)
+        return $this->edgeFirewallUuidPutAsyncWithHttpInfo($uuid, $update_edge_firewall_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1675,16 +1729,16 @@ class DefaultApi
      * Overwrite some edge firewall attributes, like \&quot;active\&quot;
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallUuidPutAsyncWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
+    public function edgeFirewallUuidPutAsyncWithHttpInfo($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\ListEdgeFirewallResponse';
-        $request = $this->edgeFirewallUuidPutRequest($uuid, $body, $contentType);
+        $returnType = '\OpenAPI\Client\Model\EdgeFirewallResponse';
+        $request = $this->edgeFirewallUuidPutRequest($uuid, $update_edge_firewall_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1726,13 +1780,13 @@ class DefaultApi
      * Create request for operation 'edgeFirewallUuidPut'
      *
      * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\ListEdgeFirewallResponse $body (required)
+     * @param  \OpenAPI\Client\Model\UpdateEdgeFirewallRequest $update_edge_firewall_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallUuidPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function edgeFirewallUuidPutRequest($uuid, $body, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
+    public function edgeFirewallUuidPutRequest($uuid, $update_edge_firewall_request, string $contentType = self::contentTypes['edgeFirewallUuidPut'][0])
     {
 
         // verify the required parameter 'uuid' is set
@@ -1742,10 +1796,10 @@ class DefaultApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'update_edge_firewall_request' is set
+        if ($update_edge_firewall_request === null || (is_array($update_edge_firewall_request) && count($update_edge_firewall_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling edgeFirewallUuidPut'
+                'Missing the required parameter $update_edge_firewall_request when calling edgeFirewallUuidPut'
             );
         }
 
@@ -1776,12 +1830,12 @@ class DefaultApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($update_edge_firewall_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_edge_firewall_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $update_edge_firewall_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
