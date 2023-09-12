@@ -20,7 +20,7 @@ createNewDataStreaming($create_new_data_streaming_request): \OpenAPI\Client\Mode
 
 Create a new data streaming
 
-
+Create a new data streaming.
 
 ### Example
 
