@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **delivery_protocol** | **string** |  | [optional]
 **origin_type** | **string** |  | [optional]
 **address** | **string** |  | [optional]
+**minimum_tls_version** | **string** |  | [optional]
 **origin_protocol_policy** | **string** |  | [optional]
 **host_header** | **string** |  | [optional]
 **browser_cache_settings** | **string** |  | [optional]
