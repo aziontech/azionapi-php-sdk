@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOriginsRequestAddresses
+ * RulesEngineBehaviorObjectTarget
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CreateOriginsRequestAddresses Class Doc Comment
+ * RulesEngineBehaviorObjectTarget Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \JsonSerializable
+class RulesEngineBehaviorObjectTarget implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateOriginsRequest_addresses';
+    protected static $openAPIModelName = 'RulesEngineBehaviorObject_target';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'address' => 'string'
+        'captured_array' => 'string',
+        'subject' => 'string',
+        'regex' => 'string'
     ];
 
     /**
@@ -68,7 +70,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'address' => null
+        'captured_array' => null,
+        'subject' => null,
+        'regex' => null
     ];
 
     /**
@@ -77,7 +81,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'address' => false
+        'captured_array' => false,
+		'subject' => false,
+		'regex' => false
     ];
 
     /**
@@ -166,7 +172,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'address' => 'address'
+        'captured_array' => 'captured_array',
+        'subject' => 'subject',
+        'regex' => 'regex'
     ];
 
     /**
@@ -175,7 +183,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'address' => 'setAddress'
+        'captured_array' => 'setCapturedArray',
+        'subject' => 'setSubject',
+        'regex' => 'setRegex'
     ];
 
     /**
@@ -184,7 +194,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'address' => 'getAddress'
+        'captured_array' => 'getCapturedArray',
+        'subject' => 'getSubject',
+        'regex' => 'getRegex'
     ];
 
     /**
@@ -244,7 +256,9 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('captured_array', $data ?? [], null);
+        $this->setIfExists('subject', $data ?? [], null);
+        $this->setIfExists('regex', $data ?? [], null);
     }
 
     /**
@@ -274,9 +288,6 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['address'] === null) {
-            $invalidProperties[] = "'address' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -293,28 +304,82 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets address
+     * Gets captured_array
      *
-     * @return string
+     * @return string|null
      */
-    public function getAddress()
+    public function getCapturedArray()
     {
-        return $this->container['address'];
+        return $this->container['captured_array'];
     }
 
     /**
-     * Sets address
+     * Sets captured_array
      *
-     * @param string $address address
+     * @param string|null $captured_array captured_array
      *
      * @return self
      */
-    public function setAddress($address)
+    public function setCapturedArray($captured_array)
     {
-        if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        if (is_null($captured_array)) {
+            throw new \InvalidArgumentException('non-nullable captured_array cannot be null');
         }
-        $this->container['address'] = $address;
+        $this->container['captured_array'] = $captured_array;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject
+     *
+     * @return string|null
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /**
+     * Sets subject
+     *
+     * @param string|null $subject subject
+     *
+     * @return self
+     */
+    public function setSubject($subject)
+    {
+        if (is_null($subject)) {
+            throw new \InvalidArgumentException('non-nullable subject cannot be null');
+        }
+        $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets regex
+     *
+     * @return string|null
+     */
+    public function getRegex()
+    {
+        return $this->container['regex'];
+    }
+
+    /**
+     * Sets regex
+     *
+     * @param string|null $regex regex
+     *
+     * @return self
+     */
+    public function setRegex($regex)
+    {
+        if (is_null($regex)) {
+            throw new \InvalidArgumentException('non-nullable regex cannot be null');
+        }
+        $this->container['regex'] = $regex;
 
         return $this;
     }
