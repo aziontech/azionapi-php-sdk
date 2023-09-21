@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** |  |
 **description** | **string** |  | [optional]
 **phase** | **string** |  |
-**behaviors** | [**\OpenAPI\Client\Model\RulesEngineResultResponseBehaviors[]**](RulesEngineResultResponseBehaviors.md) |  | [optional]
+**behaviors** | [**\OpenAPI\Client\Model\RulesEngineBehaviorEntry[]**](RulesEngineBehaviorEntry.md) |  | [optional]
 **criteria** | **\OpenAPI\Client\Model\RulesEngineCriteria[][]** |  |
 **is_active** | **bool** |  |
 **order** | **int** |  |

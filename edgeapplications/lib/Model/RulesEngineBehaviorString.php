@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateOriginsRequestAddresses
+ * RulesEngineBehaviorString
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CreateOriginsRequestAddresses Class Doc Comment
+ * RulesEngineBehaviorString Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \JsonSerializable
+class RulesEngineBehaviorString implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateOriginsRequest_addresses';
+    protected static $openAPIModelName = 'RulesEngineBehaviorString';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'address' => 'string'
+        'name' => 'string',
+        'target' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'address' => null
+        'name' => null,
+        'target' => null
     ];
 
     /**
@@ -77,7 +79,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'address' => false
+        'name' => false,
+		'target' => false
     ];
 
     /**
@@ -166,7 +169,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'address' => 'address'
+        'name' => 'name',
+        'target' => 'target'
     ];
 
     /**
@@ -175,7 +179,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'address' => 'setAddress'
+        'name' => 'setName',
+        'target' => 'setTarget'
     ];
 
     /**
@@ -184,7 +189,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'address' => 'getAddress'
+        'name' => 'getName',
+        'target' => 'getTarget'
     ];
 
     /**
@@ -244,7 +250,8 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('address', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('target', $data ?? [], null);
     }
 
     /**
@@ -274,8 +281,11 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['address'] === null) {
-            $invalidProperties[] = "'address' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['target'] === null) {
+            $invalidProperties[] = "'target' can't be null";
         }
         return $invalidProperties;
     }
@@ -293,28 +303,55 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets address
+     * Gets name
      *
      * @return string
      */
-    public function getAddress()
+    public function getName()
     {
-        return $this->container['address'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets address
+     * Sets name
      *
-     * @param string $address address
+     * @param string $name name
      *
      * @return self
      */
-    public function setAddress($address)
+    public function setName($name)
     {
-        if (is_null($address)) {
-            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['address'] = $address;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets target
+     *
+     * @return string
+     */
+    public function getTarget()
+    {
+        return $this->container['target'];
+    }
+
+    /**
+     * Sets target
+     *
+     * @param string $target target
+     *
+     * @return self
+     */
+    public function setTarget($target)
+    {
+        if (is_null($target)) {
+            throw new \InvalidArgumentException('non-nullable target cannot be null');
+        }
+        $this->container['target'] = $target;
 
         return $this;
     }
