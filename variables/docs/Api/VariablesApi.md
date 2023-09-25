@@ -1,6 +1,6 @@
 # OpenAPI\Client\VariablesApi
 
-All URIs are relative to https://api.azionapi.net/variables, except if the operation defines another base path.
+All URIs are relative to https://api.azionapi.net, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
