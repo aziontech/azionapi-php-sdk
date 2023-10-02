@@ -61,16 +61,13 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 56; // int
-$page_size = 56; // int
-$sort = 'sort_example'; // string
-$order_by = 'order_by_example'; // string
+$edge_firewall_id = 56; // int
 
 try {
-    $result = $apiInstance->edgeFirewallGet($page, $page_size, $sort, $order_by);
+    $result = $apiInstance->edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->edgeFirewallGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling DefaultApi->edgeFirewallEdgeFirewallIdRulesEngineGet: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -81,6 +78,12 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEngineGet**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesengineget) | **GET** /edge_firewall/{edge_firewall_id}/rules_engine | List all rule sets.
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEnginePost**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesenginepost) | **POST** /edge_firewall/{edge_firewall_id}/rules_engine | Create rule set.
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEngineRuleSetIdDelete**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesenginerulesetiddelete) | **DELETE** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Delete rule set.
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEngineRuleSetIdGet**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesenginerulesetidget) | **GET** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Retrieve rule set by ID.
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEngineRuleSetIdPatch**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesenginerulesetidpatch) | **PATCH** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Edit rule set.
+*DefaultApi* | [**edgeFirewallEdgeFirewallIdRulesEngineRuleSetIdPut**](docs/Api/DefaultApi.md#edgefirewalledgefirewallidrulesenginerulesetidput) | **PUT** /edge_firewall/{edge_firewall_id}/rules_engine/{rule_set_id} | Overwrite rule set
 *DefaultApi* | [**edgeFirewallGet**](docs/Api/DefaultApi.md#edgefirewallget) | **GET** /edge_firewall | List all user edge firewall
 *DefaultApi* | [**edgeFirewallPost**](docs/Api/DefaultApi.md#edgefirewallpost) | **POST** /edge_firewall | Create a edge firewall
 *DefaultApi* | [**edgeFirewallUuidDelete**](docs/Api/DefaultApi.md#edgefirewalluuiddelete) | **DELETE** /edge_firewall/{uuid} | Delete an edge firewall by uuid
@@ -90,12 +93,24 @@ Class | Method | HTTP request | Description
 
 ## Models
 
+- [Behaviors](docs/Model/Behaviors.md)
+- [Conditionals](docs/Model/Conditionals.md)
 - [CreateEdgeFirewallRequest](docs/Model/CreateEdgeFirewallRequest.md)
+- [CreateRuleSetRequest](docs/Model/CreateRuleSetRequest.md)
 - [EdgeFirewall](docs/Model/EdgeFirewall.md)
 - [EdgeFirewallResponse](docs/Model/EdgeFirewallResponse.md)
 - [Links](docs/Model/Links.md)
 - [ListEdgeFirewallResponse](docs/Model/ListEdgeFirewallResponse.md)
+- [RuleSetResponse](docs/Model/RuleSetResponse.md)
+- [RuleSetResponseAll](docs/Model/RuleSetResponseAll.md)
+- [RuleSetResult](docs/Model/RuleSetResult.md)
+- [RuleSetResultAll](docs/Model/RuleSetResultAll.md)
+- [RuleSetResultResults](docs/Model/RuleSetResultResults.md)
+- [SSLVerificationStatusArguments](docs/Model/SSLVerificationStatusArguments.md)
+- [SSLVerificationStatusCriteria](docs/Model/SSLVerificationStatusCriteria.md)
+- [SSLVerificationStatusOperators](docs/Model/SSLVerificationStatusOperators.md)
 - [UpdateEdgeFirewallRequest](docs/Model/UpdateEdgeFirewallRequest.md)
+- [Variables](docs/Model/Variables.md)
 
 ## Authorization
 
