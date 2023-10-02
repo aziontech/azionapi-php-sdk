@@ -1,6 +1,6 @@
 <?php
 /**
- * WAFEvents400
+ * WAFList200
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * WAFEvents400 Class Doc Comment
+ * WAFList200 Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WAFEvents400';
+    protected static $openAPIModelName = 'WAFList200';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'errors' => 'object[]',
+        'count' => 'int',
+        'total_pages' => 'int',
+        'links' => '\OpenAPI\Client\Model\SingleWAF',
         'schema_version' => 'int'
     ];
 
@@ -69,7 +71,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'errors' => null,
+        'count' => 'int64',
+        'total_pages' => 'int64',
+        'links' => null,
         'schema_version' => 'int64'
     ];
 
@@ -79,7 +83,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => false,
+        'count' => false,
+		'total_pages' => false,
+		'links' => false,
 		'schema_version' => false
     ];
 
@@ -169,7 +175,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'errors' => 'errors',
+        'count' => 'count',
+        'total_pages' => 'total_pages',
+        'links' => 'links',
         'schema_version' => 'schema_version'
     ];
 
@@ -179,7 +187,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'errors' => 'setErrors',
+        'count' => 'setCount',
+        'total_pages' => 'setTotalPages',
+        'links' => 'setLinks',
         'schema_version' => 'setSchemaVersion'
     ];
 
@@ -189,7 +199,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'errors' => 'getErrors',
+        'count' => 'getCount',
+        'total_pages' => 'getTotalPages',
+        'links' => 'getLinks',
         'schema_version' => 'getSchemaVersion'
     ];
 
@@ -250,7 +262,9 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('total_pages', $data ?? [], null);
+        $this->setIfExists('links', $data ?? [], null);
         $this->setIfExists('schema_version', $data ?? [], null);
     }
 
@@ -297,28 +311,82 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets count
      *
-     * @return object[]|null
+     * @return int|null
      */
-    public function getErrors()
+    public function getCount()
     {
-        return $this->container['errors'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets errors
+     * Sets count
      *
-     * @param object[]|null $errors errors
+     * @param int|null $count count
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setCount($count)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['count'] = $count;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_pages
+     *
+     * @return int|null
+     */
+    public function getTotalPages()
+    {
+        return $this->container['total_pages'];
+    }
+
+    /**
+     * Sets total_pages
+     *
+     * @param int|null $total_pages total_pages
+     *
+     * @return self
+     */
+    public function setTotalPages($total_pages)
+    {
+        if (is_null($total_pages)) {
+            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
+        }
+        $this->container['total_pages'] = $total_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets links
+     *
+     * @return \OpenAPI\Client\Model\SingleWAF|null
+     */
+    public function getLinks()
+    {
+        return $this->container['links'];
+    }
+
+    /**
+     * Sets links
+     *
+     * @param \OpenAPI\Client\Model\SingleWAF|null $links links
+     *
+     * @return self
+     */
+    public function setLinks($links)
+    {
+        if (is_null($links)) {
+            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        }
+        $this->container['links'] = $links;
 
         return $this;
     }

@@ -61,14 +61,13 @@ $apiInstance = new OpenAPI\Client\Api\WAFApi(
     new GuzzleHttp\Client(),
     $config
 );
-$waf_id = 56; // int | ID of WAF to return
-$name = 'name_example'; // string | searches WAF for name
+$create_new_waf_ruleset_request = new \OpenAPI\Client\Model\CreateNewWAFRulesetRequest(); // \OpenAPI\Client\Model\CreateNewWAFRulesetRequest
 
 try {
-    $result = $apiInstance->getWAFDomains($waf_id, $name);
+    $result = $apiInstance->createNewWAFRuleset($create_new_waf_ruleset_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WAFApi->getWAFDomains: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WAFApi->createNewWAFRuleset: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -79,16 +78,27 @@ All URIs are relative to *https://api.azionapi.net*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*WAFApi* | [**getWAFDomains**](docs/Api/WAFApi.md#getwafdomains) | **GET** /waf/{wafId}/domains | Find domains attached to a WAF
+*WAFApi* | [**createNewWAFRuleset**](docs/Api/WAFApi.md#createnewwafruleset) | **POST** /waf/rulesets | Create a new WAF Rule Set in an account.
+*WAFApi* | [**deleteWAFRuleset**](docs/Api/WAFApi.md#deletewafruleset) | **DELETE** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone.
+*WAFApi* | [**getWAFDomains**](docs/Api/WAFApi.md#getwafdomains) | **GET** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account.
 *WAFApi* | [**getWAFEvents**](docs/Api/WAFApi.md#getwafevents) | **GET** /waf/{wafId}/waf_events | Find WAF log events
+*WAFApi* | [**getWAFRuleset**](docs/Api/WAFApi.md#getwafruleset) | **GET** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account.
+*WAFApi* | [**listAllWAF**](docs/Api/WAFApi.md#listallwaf) | **GET** /waf | List all Web Application Firewalls (WAFs) created in an account
+*WAFApi* | [**listAllWAFRulesets**](docs/Api/WAFApi.md#listallwafrulesets) | **GET** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account.
+*WAFApi* | [**updateWAFRuleset**](docs/Api/WAFApi.md#updatewafruleset) | **PATCH** /waf/rulesets/{waf_rule_set_id} | Change only select settings of a WAF Rule Set
 
 ## Models
 
+- [CreateNewWAFRulesetRequest](docs/Model/CreateNewWAFRulesetRequest.md)
+- [SingleWAF](docs/Model/SingleWAF.md)
 - [WAFDomains200](docs/Model/WAFDomains200.md)
 - [WAFEvents200](docs/Model/WAFEvents200.md)
 - [WAFEvents400](docs/Model/WAFEvents400.md)
 - [WAFEvents401](docs/Model/WAFEvents401.md)
 - [WAFEvents404](docs/Model/WAFEvents404.md)
+- [WAFList200](docs/Model/WAFList200.md)
+- [WAFSensitivityChoices](docs/Model/WAFSensitivityChoices.md)
+- [WAFSingle200](docs/Model/WAFSingle200.md)
 
 ## Authorization
 

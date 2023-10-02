@@ -1,6 +1,6 @@
 <?php
 /**
- * WAFEvents400
+ * WAFSingle200
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * WAFEvents400 Class Doc Comment
+ * WAFSingle200 Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WAFSingle200 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WAFEvents400';
+    protected static $openAPIModelName = 'WAFSingle200';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'errors' => 'object[]',
+        'results' => '\OpenAPI\Client\Model\SingleWAF',
         'schema_version' => 'int'
     ];
 
@@ -69,7 +69,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'errors' => null,
+        'results' => null,
         'schema_version' => 'int64'
     ];
 
@@ -79,7 +79,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => false,
+        'results' => false,
 		'schema_version' => false
     ];
 
@@ -169,7 +169,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'errors' => 'errors',
+        'results' => 'results',
         'schema_version' => 'schema_version'
     ];
 
@@ -179,7 +179,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'errors' => 'setErrors',
+        'results' => 'setResults',
         'schema_version' => 'setSchemaVersion'
     ];
 
@@ -189,7 +189,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'errors' => 'getErrors',
+        'results' => 'getResults',
         'schema_version' => 'getSchemaVersion'
     ];
 
@@ -250,7 +250,7 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
         $this->setIfExists('schema_version', $data ?? [], null);
     }
 
@@ -297,28 +297,28 @@ class WAFEvents400 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets errors
+     * Gets results
      *
-     * @return object[]|null
+     * @return \OpenAPI\Client\Model\SingleWAF|null
      */
-    public function getErrors()
+    public function getResults()
     {
-        return $this->container['errors'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets errors
+     * Sets results
      *
-     * @param object[]|null $errors errors
+     * @param \OpenAPI\Client\Model\SingleWAF|null $results results
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setResults($results)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['results'] = $results;
 
         return $this;
     }
