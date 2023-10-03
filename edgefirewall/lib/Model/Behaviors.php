@@ -1,6 +1,6 @@
 <?php
 /**
- * EdgeFirewall
+ * Behaviors
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * EdgeFirewall Class Doc Comment
+ * Behaviors Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
+class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EdgeFirewall';
+    protected static $openAPIModelName = 'Behaviors';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,16 +57,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'int',
         'name' => 'string',
-        'is_active' => 'bool',
-        'last_editor' => 'string',
-        'last_modified' => 'string',
-        'edge_functions_enabled' => 'bool',
-        'network_protection_enabled' => 'bool',
-        'waf_enabled' => 'bool',
-        'debug_rules' => 'bool',
-        'domains' => 'int[]'
+        'target' => 'string'
     ];
 
     /**
@@ -77,16 +69,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'int64',
         'name' => null,
-        'is_active' => null,
-        'last_editor' => null,
-        'last_modified' => null,
-        'edge_functions_enabled' => null,
-        'network_protection_enabled' => null,
-        'waf_enabled' => null,
-        'debug_rules' => null,
-        'domains' => 'int64'
+        'target' => null
     ];
 
     /**
@@ -95,16 +79,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'name' => false,
-		'is_active' => false,
-		'last_editor' => false,
-		'last_modified' => false,
-		'edge_functions_enabled' => false,
-		'network_protection_enabled' => false,
-		'waf_enabled' => false,
-		'debug_rules' => false,
-		'domains' => false
+        'name' => false,
+		'target' => false
     ];
 
     /**
@@ -193,16 +169,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'name' => 'name',
-        'is_active' => 'is_active',
-        'last_editor' => 'last_editor',
-        'last_modified' => 'last_modified',
-        'edge_functions_enabled' => 'edge_functions_enabled',
-        'network_protection_enabled' => 'network_protection_enabled',
-        'waf_enabled' => 'waf_enabled',
-        'debug_rules' => 'debug_rules',
-        'domains' => 'domains'
+        'target' => 'target'
     ];
 
     /**
@@ -211,16 +179,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'name' => 'setName',
-        'is_active' => 'setIsActive',
-        'last_editor' => 'setLastEditor',
-        'last_modified' => 'setLastModified',
-        'edge_functions_enabled' => 'setEdgeFunctionsEnabled',
-        'network_protection_enabled' => 'setNetworkProtectionEnabled',
-        'waf_enabled' => 'setWafEnabled',
-        'debug_rules' => 'setDebugRules',
-        'domains' => 'setDomains'
+        'target' => 'setTarget'
     ];
 
     /**
@@ -229,16 +189,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'name' => 'getName',
-        'is_active' => 'getIsActive',
-        'last_editor' => 'getLastEditor',
-        'last_modified' => 'getLastModified',
-        'edge_functions_enabled' => 'getEdgeFunctionsEnabled',
-        'network_protection_enabled' => 'getNetworkProtectionEnabled',
-        'waf_enabled' => 'getWafEnabled',
-        'debug_rules' => 'getDebugRules',
-        'domains' => 'getDomains'
+        'target' => 'getTarget'
     ];
 
     /**
@@ -282,6 +234,29 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const NAME_DENY = 'deny';
+    public const NAME_DROP = 'drop';
+    public const NAME_SET_RATE_LIMIT = 'set_rate_limit';
+    public const NAME_SET_WAF_RULESET = 'set_waf_ruleset';
+    public const NAME_RUN_FUNCTION = 'run_function';
+    public const NAME_TAG_EVENT = 'tag_event';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getNameAllowableValues()
+    {
+        return [
+            self::NAME_DENY,
+            self::NAME_DROP,
+            self::NAME_SET_RATE_LIMIT,
+            self::NAME_SET_WAF_RULESET,
+            self::NAME_RUN_FUNCTION,
+            self::NAME_TAG_EVENT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -298,16 +273,8 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('last_editor', $data ?? [], null);
-        $this->setIfExists('last_modified', $data ?? [], null);
-        $this->setIfExists('edge_functions_enabled', $data ?? [], null);
-        $this->setIfExists('network_protection_enabled', $data ?? [], null);
-        $this->setIfExists('waf_enabled', $data ?? [], null);
-        $this->setIfExists('debug_rules', $data ?? [], null);
-        $this->setIfExists('domains', $data ?? [], null);
+        $this->setIfExists('target', $data ?? [], null);
     }
 
     /**
@@ -337,6 +304,15 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getNameAllowableValues();
+        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'name', must be one of '%s'",
+                $this->container['name'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -351,33 +327,6 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return int|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -401,223 +350,44 @@ class EdgeFirewall implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        $allowedValues = $this->getNameAllowableValues();
+        if (!in_array($name, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'name', must be one of '%s'",
+                    $name,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets is_active
-     *
-     * @return bool|null
-     */
-    public function getIsActive()
-    {
-        return $this->container['is_active'];
-    }
-
-    /**
-     * Sets is_active
-     *
-     * @param bool|null $is_active is_active
-     *
-     * @return self
-     */
-    public function setIsActive($is_active)
-    {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
-        }
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_editor
+     * Gets target
      *
      * @return string|null
      */
-    public function getLastEditor()
+    public function getTarget()
     {
-        return $this->container['last_editor'];
+        return $this->container['target'];
     }
 
     /**
-     * Sets last_editor
+     * Sets target
      *
-     * @param string|null $last_editor last_editor
+     * @param string|null $target target
      *
      * @return self
      */
-    public function setLastEditor($last_editor)
+    public function setTarget($target)
     {
-        if (is_null($last_editor)) {
-            throw new \InvalidArgumentException('non-nullable last_editor cannot be null');
+        if (is_null($target)) {
+            throw new \InvalidArgumentException('non-nullable target cannot be null');
         }
-        $this->container['last_editor'] = $last_editor;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_modified
-     *
-     * @return string|null
-     */
-    public function getLastModified()
-    {
-        return $this->container['last_modified'];
-    }
-
-    /**
-     * Sets last_modified
-     *
-     * @param string|null $last_modified last_modified
-     *
-     * @return self
-     */
-    public function setLastModified($last_modified)
-    {
-        if (is_null($last_modified)) {
-            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
-        }
-        $this->container['last_modified'] = $last_modified;
-
-        return $this;
-    }
-
-    /**
-     * Gets edge_functions_enabled
-     *
-     * @return bool|null
-     */
-    public function getEdgeFunctionsEnabled()
-    {
-        return $this->container['edge_functions_enabled'];
-    }
-
-    /**
-     * Sets edge_functions_enabled
-     *
-     * @param bool|null $edge_functions_enabled edge_functions_enabled
-     *
-     * @return self
-     */
-    public function setEdgeFunctionsEnabled($edge_functions_enabled)
-    {
-        if (is_null($edge_functions_enabled)) {
-            throw new \InvalidArgumentException('non-nullable edge_functions_enabled cannot be null');
-        }
-        $this->container['edge_functions_enabled'] = $edge_functions_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets network_protection_enabled
-     *
-     * @return bool|null
-     */
-    public function getNetworkProtectionEnabled()
-    {
-        return $this->container['network_protection_enabled'];
-    }
-
-    /**
-     * Sets network_protection_enabled
-     *
-     * @param bool|null $network_protection_enabled network_protection_enabled
-     *
-     * @return self
-     */
-    public function setNetworkProtectionEnabled($network_protection_enabled)
-    {
-        if (is_null($network_protection_enabled)) {
-            throw new \InvalidArgumentException('non-nullable network_protection_enabled cannot be null');
-        }
-        $this->container['network_protection_enabled'] = $network_protection_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets waf_enabled
-     *
-     * @return bool|null
-     */
-    public function getWafEnabled()
-    {
-        return $this->container['waf_enabled'];
-    }
-
-    /**
-     * Sets waf_enabled
-     *
-     * @param bool|null $waf_enabled waf_enabled
-     *
-     * @return self
-     */
-    public function setWafEnabled($waf_enabled)
-    {
-        if (is_null($waf_enabled)) {
-            throw new \InvalidArgumentException('non-nullable waf_enabled cannot be null');
-        }
-        $this->container['waf_enabled'] = $waf_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets debug_rules
-     *
-     * @return bool|null
-     */
-    public function getDebugRules()
-    {
-        return $this->container['debug_rules'];
-    }
-
-    /**
-     * Sets debug_rules
-     *
-     * @param bool|null $debug_rules debug_rules
-     *
-     * @return self
-     */
-    public function setDebugRules($debug_rules)
-    {
-        if (is_null($debug_rules)) {
-            throw new \InvalidArgumentException('non-nullable debug_rules cannot be null');
-        }
-        $this->container['debug_rules'] = $debug_rules;
-
-        return $this;
-    }
-
-    /**
-     * Gets domains
-     *
-     * @return int[]|null
-     */
-    public function getDomains()
-    {
-        return $this->container['domains'];
-    }
-
-    /**
-     * Sets domains
-     *
-     * @param int[]|null $domains domains
-     *
-     * @return self
-     */
-    public function setDomains($domains)
-    {
-        if (is_null($domains)) {
-            throw new \InvalidArgumentException('non-nullable domains cannot be null');
-        }
-        $this->container['domains'] = $domains;
+        $this->container['target'] = $target;
 
         return $this;
     }
