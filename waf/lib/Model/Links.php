@@ -1,6 +1,6 @@
 <?php
 /**
- * WAFList200
+ * Links
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * WAFList200 Class Doc Comment
+ * Links Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
+class Links implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WAFList200';
+    protected static $openAPIModelName = 'Links';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'total_pages' => 'int',
-        'links' => '\OpenAPI\Client\Model\Links',
-        'results' => '\OpenAPI\Client\Model\SingleWAF[]',
-        'schema_version' => 'int'
+        'previous' => 'string',
+        'next' => 'string'
     ];
 
     /**
@@ -72,11 +69,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => 'int64',
-        'total_pages' => 'int64',
-        'links' => null,
-        'results' => null,
-        'schema_version' => 'int64'
+        'previous' => null,
+        'next' => null
     ];
 
     /**
@@ -85,11 +79,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-		'total_pages' => false,
-		'links' => false,
-		'results' => false,
-		'schema_version' => false
+        'previous' => true,
+		'next' => true
     ];
 
     /**
@@ -178,11 +169,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'total_pages' => 'total_pages',
-        'links' => 'links',
-        'results' => 'results',
-        'schema_version' => 'schema_version'
+        'previous' => 'previous',
+        'next' => 'next'
     ];
 
     /**
@@ -191,11 +179,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'total_pages' => 'setTotalPages',
-        'links' => 'setLinks',
-        'results' => 'setResults',
-        'schema_version' => 'setSchemaVersion'
+        'previous' => 'setPrevious',
+        'next' => 'setNext'
     ];
 
     /**
@@ -204,11 +189,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'total_pages' => 'getTotalPages',
-        'links' => 'getLinks',
-        'results' => 'getResults',
-        'schema_version' => 'getSchemaVersion'
+        'previous' => 'getPrevious',
+        'next' => 'getNext'
     ];
 
     /**
@@ -268,11 +250,8 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('total_pages', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('schema_version', $data ?? [], null);
+        $this->setIfExists('previous', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
     }
 
     /**
@@ -318,136 +297,69 @@ class WAFList200 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets count
+     * Gets previous
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getCount()
+    public function getPrevious()
     {
-        return $this->container['count'];
+        return $this->container['previous'];
     }
 
     /**
-     * Sets count
+     * Sets previous
      *
-     * @param int|null $count count
+     * @param string|null $previous previous
      *
      * @return self
      */
-    public function setCount($count)
+    public function setPrevious($previous)
     {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        if (is_null($previous)) {
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['count'] = $count;
+        $this->container['previous'] = $previous;
 
         return $this;
     }
 
     /**
-     * Gets total_pages
+     * Gets next
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTotalPages()
+    public function getNext()
     {
-        return $this->container['total_pages'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets total_pages
+     * Sets next
      *
-     * @param int|null $total_pages total_pages
+     * @param string|null $next next
      *
      * @return self
      */
-    public function setTotalPages($total_pages)
+    public function setNext($next)
     {
-        if (is_null($total_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
+        if (is_null($next)) {
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['total_pages'] = $total_pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return \OpenAPI\Client\Model\Links|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param \OpenAPI\Client\Model\Links|null $links links
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \OpenAPI\Client\Model\SingleWAF[]|null
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \OpenAPI\Client\Model\SingleWAF[]|null $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets schema_version
-     *
-     * @return int|null
-     */
-    public function getSchemaVersion()
-    {
-        return $this->container['schema_version'];
-    }
-
-    /**
-     * Sets schema_version
-     *
-     * @param int|null $schema_version schema_version
-     *
-     * @return self
-     */
-    public function setSchemaVersion($schema_version)
-    {
-        if (is_null($schema_version)) {
-            throw new \InvalidArgumentException('non-nullable schema_version cannot be null');
-        }
-        $this->container['schema_version'] = $schema_version;
+        $this->container['next'] = $next;
 
         return $this;
     }
