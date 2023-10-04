@@ -5,6 +5,7 @@ README.md
 composer.json
 docs/Api/WAFApi.md
 docs/Model/CreateNewWAFRulesetRequest.md
+docs/Model/Links.md
 docs/Model/SingleWAF.md
 docs/Model/WAFDomains200.md
 docs/Model/WAFEvents200.md
@@ -20,6 +21,7 @@ lib/ApiException.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/CreateNewWAFRulesetRequest.php
+lib/Model/Links.php
 lib/Model/ModelInterface.php
 lib/Model/SingleWAF.php
 lib/Model/WAFDomains200.php
@@ -32,8 +34,4 @@ lib/Model/WAFSensitivityChoices.php
 lib/Model/WAFSingle200.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateNewWAFRulesetRequestTest.php
-test/Model/SingleWAFTest.php
-test/Model/WAFList200Test.php
-test/Model/WAFSensitivityChoicesTest.php
-test/Model/WAFSingle200Test.php
+test/Model/LinksTest.php
