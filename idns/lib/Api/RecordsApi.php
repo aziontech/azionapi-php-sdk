@@ -474,15 +474,17 @@ class RecordsApi
      * Get a collection of Intelligent DNS zone records
      *
      * @param  int $zone_id The hosted zone id (required)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getZoneRecords'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse
      */
-    public function getZoneRecords($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
+    public function getZoneRecords($zone_id, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
-        list($response) = $this->getZoneRecordsWithHttpInfo($zone_id, $contentType);
+        list($response) = $this->getZoneRecordsWithHttpInfo($zone_id, $page, $page_size, $contentType);
         return $response;
     }
 
@@ -492,15 +494,17 @@ class RecordsApi
      * Get a collection of Intelligent DNS zone records
      *
      * @param  int $zone_id The hosted zone id (required)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getZoneRecords'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\GetRecordsResponse|\OpenAPI\Client\Model\ErrorsResponse|\OpenAPI\Client\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getZoneRecordsWithHttpInfo($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
+    public function getZoneRecordsWithHttpInfo($zone_id, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
-        $request = $this->getZoneRecordsRequest($zone_id, $contentType);
+        $request = $this->getZoneRecordsRequest($zone_id, $page, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -638,14 +642,16 @@ class RecordsApi
      * Get a collection of Intelligent DNS zone records
      *
      * @param  int $zone_id The hosted zone id (required)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getZoneRecords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getZoneRecordsAsync($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
+    public function getZoneRecordsAsync($zone_id, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
-        return $this->getZoneRecordsAsyncWithHttpInfo($zone_id, $contentType)
+        return $this->getZoneRecordsAsyncWithHttpInfo($zone_id, $page, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -659,15 +665,17 @@ class RecordsApi
      * Get a collection of Intelligent DNS zone records
      *
      * @param  int $zone_id The hosted zone id (required)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getZoneRecords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getZoneRecordsAsyncWithHttpInfo($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
+    public function getZoneRecordsAsyncWithHttpInfo($zone_id, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
         $returnType = '\OpenAPI\Client\Model\GetRecordsResponse';
-        $request = $this->getZoneRecordsRequest($zone_id, $contentType);
+        $request = $this->getZoneRecordsRequest($zone_id, $page, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -709,12 +717,14 @@ class RecordsApi
      * Create request for operation 'getZoneRecords'
      *
      * @param  int $zone_id The hosted zone id (required)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getZoneRecords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getZoneRecordsRequest($zone_id, string $contentType = self::contentTypes['getZoneRecords'][0])
+    public function getZoneRecordsRequest($zone_id, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getZoneRecords'][0])
     {
 
         // verify the required parameter 'zone_id' is set
@@ -728,6 +738,8 @@ class RecordsApi
         }
         
 
+
+
         $resourcePath = '/intelligent_dns/{zone_id}/records';
         $formParams = [];
         $queryParams = [];
@@ -735,6 +747,24 @@ class RecordsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

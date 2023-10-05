@@ -75,7 +75,7 @@ try {
 ## `getZoneRecords()`
 
 ```php
-getZoneRecords($zone_id): \OpenAPI\Client\Model\GetRecordsResponse
+getZoneRecords($zone_id, $page, $page_size): \OpenAPI\Client\Model\GetRecordsResponse
 ```
 
 Get a collection of Intelligent DNS zone records
@@ -100,9 +100,11 @@ $apiInstance = new OpenAPI\Client\Api\RecordsApi(
     $config
 );
 $zone_id = 56; // int | The hosted zone id
+$page = 1; // int | Identifies which page should be returned, if the return is paginated.
+$page_size = 10; // int | Identifies how many items should be returned per page.
 
 try {
-    $result = $apiInstance->getZoneRecords($zone_id);
+    $result = $apiInstance->getZoneRecords($zone_id, $page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RecordsApi->getZoneRecords: ', $e->getMessage(), PHP_EOL;
@@ -114,6 +116,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **zone_id** | **int**| The hosted zone id | |
+| **page** | **int**| Identifies which page should be returned, if the return is paginated. | [optional] [default to 1] |
+| **page_size** | **int**| Identifies how many items should be returned per page. | [optional] [default to 10] |
 
 ### Return type
 
