@@ -134,7 +134,7 @@ try {
 ## `getZones()`
 
 ```php
-getZones(): \OpenAPI\Client\Model\GetZonesResponse
+getZones($order_by, $sort, $page, $page_size): \OpenAPI\Client\Model\GetZonesResponse
 ```
 
 Get a collection of Intelligent DNS zones
@@ -158,9 +158,13 @@ $apiInstance = new OpenAPI\Client\Api\ZonesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$order_by = 'name'; // string | Identifies which property the return should be sorted by.
+$sort = 'asc'; // string | Defines whether objects are shown in ascending or descending order depending on the value set in order_by.
+$page = 1; // int | Identifies which page should be returned, if the return is paginated.
+$page_size = 10; // int | Identifies how many items should be returned per page.
 
 try {
-    $result = $apiInstance->getZones();
+    $result = $apiInstance->getZones($order_by, $sort, $page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ZonesApi->getZones: ', $e->getMessage(), PHP_EOL;
@@ -169,7 +173,12 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **order_by** | **string**| Identifies which property the return should be sorted by. | [optional] [default to &#39;name&#39;] |
+| **sort** | **string**| Defines whether objects are shown in ascending or descending order depending on the value set in order_by. | [optional] [default to &#39;asc&#39;] |
+| **page** | **int**| Identifies which page should be returned, if the return is paginated. | [optional] [default to 1] |
+| **page_size** | **int**| Identifies how many items should be returned per page. | [optional] [default to 10] |
 
 ### Return type
 
