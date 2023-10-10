@@ -81,7 +81,7 @@ try {
 ## `edgeFirewallEdgeFirewallIdFunctionsInstancesPost()`
 
 ```php
-edgeFirewallEdgeFirewallIdFunctionsInstancesPost($create_edge_functions_instances_request)
+edgeFirewallEdgeFirewallIdFunctionsInstancesPost($create_edge_functions_instances_request): \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
 ```
 
 Create an Edge Functions Instance
@@ -108,7 +108,8 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
 $create_edge_functions_instances_request = new \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest(); // \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest
 
 try {
-    $apiInstance->edgeFirewallEdgeFirewallIdFunctionsInstancesPost($create_edge_functions_instances_request);
+    $result = $apiInstance->edgeFirewallEdgeFirewallIdFunctionsInstancesPost($create_edge_functions_instances_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallEdgeFirewallIdFunctionsInstancesPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -122,7 +123,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse**](../Model/EdgeFunctionsInstanceResponse.md)
 
 ### Authorization
 
@@ -131,7 +132,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -259,7 +260,7 @@ try {
 ## `edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch()`
 
 ```php
-edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch($uuid, $body): \OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse
+edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch($uuid, $body): \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
 ```
 
 Update some Edge Functions Instance attributes
@@ -303,7 +304,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse**](../Model/ListEdgeFunctionsInstancesResponse.md)
+[**\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse**](../Model/EdgeFunctionsInstanceResponse.md)
 
 ### Authorization
 
@@ -321,7 +322,7 @@ try {
 ## `edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut()`
 
 ```php
-edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut($uuid, $body): \OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse
+edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut($uuid, $body): \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
 ```
 
 Overwrite some Edge Functions Instance attributes
@@ -365,7 +366,7 @@ try {
 
 ### Return type
 
-[**\OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse**](../Model/ListEdgeFunctionsInstancesResponse.md)
+[**\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse**](../Model/EdgeFunctionsInstanceResponse.md)
 
 ### Authorization
 
