@@ -71,22 +71,22 @@ class DefaultApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete' => [
+            'application/json',
+        ],
+        'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet' => [
+            'application/json',
+        ],
+        'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch' => [
+            'application/json',
+        ],
+        'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut' => [
+            'application/json',
+        ],
         'edgeFirewallEdgeFirewallIdFunctionsInstancesGet' => [
             'application/json',
         ],
         'edgeFirewallEdgeFirewallIdFunctionsInstancesPost' => [
-            'application/json',
-        ],
-        'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete' => [
-            'application/json',
-        ],
-        'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet' => [
-            'application/json',
-        ],
-        'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch' => [
-            'application/json',
-        ],
-        'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut' => [
             'application/json',
         ],
     ];
@@ -138,10 +138,1227 @@ class DefaultApi
     }
 
     /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete
+     *
+     * Delete an Edge Functions Instance by uuid
+     *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
+     * @param  int $edge_function_instance_id edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'][0])
+    {
+        $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $contentType);
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteWithHttpInfo
+     *
+     * Delete an Edge Functions Instance by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteWithHttpInfo($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'][0])
+    {
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest($edge_firewall_id, $edge_function_instance_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteAsync
+     *
+     * Delete an Edge Functions Instance by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteAsync($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'][0])
+    {
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteAsyncWithHttpInfo
+     *
+     * Delete an Edge Functions Instance by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'][0])
+    {
+        $returnType = '';
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest($edge_firewall_id, $edge_function_instance_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDeleteRequest($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'][0])
+    {
+
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'
+            );
+        }
+
+        // verify the required parameter 'edge_function_instance_id' is set
+        if ($edge_function_instance_id === null || (is_array($edge_function_instance_id) && count($edge_function_instance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_function_instance_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdDelete'
+            );
+        }
+
+
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($edge_function_instance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_function_instance_id' . '}',
+                ObjectSerializer::toPathValue($edge_function_instance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet
+     *
+     * Retrieve an Edge Functions Instance set by uuid
+     *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
+     * @param  int $edge_function_instance_id edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'][0])
+    {
+        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetWithHttpInfo
+     *
+     * Retrieve an Edge Functions Instance set by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetWithHttpInfo($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'][0])
+    {
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest($edge_firewall_id, $edge_function_instance_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetAsync
+     *
+     * Retrieve an Edge Functions Instance set by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetAsync($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'][0])
+    {
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetAsyncWithHttpInfo
+     *
+     * Retrieve an Edge Functions Instance set by uuid
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest($edge_firewall_id, $edge_function_instance_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGetRequest($edge_firewall_id, $edge_function_instance_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'][0])
+    {
+
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'
+            );
+        }
+
+        // verify the required parameter 'edge_function_instance_id' is set
+        if ($edge_function_instance_id === null || (is_array($edge_function_instance_id) && count($edge_function_instance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_function_instance_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdGet'
+            );
+        }
+
+
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($edge_function_instance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_function_instance_id' . '}',
+                ObjectSerializer::toPathValue($edge_function_instance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch
+     *
+     * Update some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
+     * @param  int $edge_function_instance_id edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'][0])
+    {
+        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchWithHttpInfo
+     *
+     * Update some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'][0])
+    {
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchAsync
+     *
+     * Update some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchAsync($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'][0])
+    {
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchAsyncWithHttpInfo
+     *
+     * Update some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatchRequest($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'][0])
+    {
+
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'
+            );
+        }
+
+        // verify the required parameter 'edge_function_instance_id' is set
+        if ($edge_function_instance_id === null || (is_array($edge_function_instance_id) && count($edge_function_instance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_function_instance_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'
+            );
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPatch'
+            );
+        }
+
+
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($edge_function_instance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_function_instance_id' . '}',
+                ObjectSerializer::toPathValue($edge_function_instance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut
+     *
+     * Overwrite some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
+     * @param  int $edge_function_instance_id edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'][0])
+    {
+        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutWithHttpInfo
+     *
+     * Overwrite some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'] to see the possible values for this operation
+     *
+     * @throws \OpenAPI\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'][0])
+    {
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutAsync
+     *
+     * Overwrite some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutAsync($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'][0])
+    {
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutAsyncWithHttpInfo
+     *
+     * Overwrite some Edge Functions Instance attributes
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutAsyncWithHttpInfo($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'][0])
+    {
+        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest($edge_firewall_id, $edge_function_instance_id, $body, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'
+     *
+     * @param  int $edge_firewall_id (required)
+     * @param  int $edge_function_instance_id (required)
+     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPutRequest($edge_firewall_id, $edge_function_instance_id, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'][0])
+    {
+
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'
+            );
+        }
+
+        // verify the required parameter 'edge_function_instance_id' is set
+        if ($edge_function_instance_id === null || (is_array($edge_function_instance_id) && count($edge_function_instance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_function_instance_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'
+            );
+        }
+
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling edgeFirewallEdgeFirewallIdFunctionsInstancesEdgeFunctionInstanceIdPut'
+            );
+        }
+
+
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances/{edge_function_instance_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($edge_function_instance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_function_instance_id' . '}',
+                ObjectSerializer::toPathValue($edge_function_instance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($body)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+            } else {
+                $httpBody = $body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesGet
      *
      * List all user Edge Functions Instances
      *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
      * @param  int $page page (optional)
      * @param  int $page_size page_size (optional)
      * @param  string $sort sort (optional)
@@ -152,9 +1369,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGet($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGet($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
     {
-        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetWithHttpInfo($page, $page_size, $sort, $order_by, $contentType);
+        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetWithHttpInfo($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
         return $response;
     }
 
@@ -163,6 +1380,7 @@ class DefaultApi
      *
      * List all user Edge Functions Instances
      *
+     * @param  int $edge_firewall_id (required)
      * @param  int $page (optional)
      * @param  int $page_size (optional)
      * @param  string $sort (optional)
@@ -173,9 +1391,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetWithHttpInfo($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
     {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($page, $page_size, $sort, $order_by, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -266,6 +1484,7 @@ class DefaultApi
      *
      * List all user Edge Functions Instances
      *
+     * @param  int $edge_firewall_id (required)
      * @param  int $page (optional)
      * @param  int $page_size (optional)
      * @param  string $sort (optional)
@@ -275,9 +1494,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsync($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsync($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
     {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsyncWithHttpInfo($page, $page_size, $sort, $order_by, $contentType)
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsyncWithHttpInfo($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -290,6 +1509,7 @@ class DefaultApi
      *
      * List all user Edge Functions Instances
      *
+     * @param  int $edge_firewall_id (required)
      * @param  int $page (optional)
      * @param  int $page_size (optional)
      * @param  string $sort (optional)
@@ -299,10 +1519,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsyncWithHttpInfo($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetAsyncWithHttpInfo($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ListEdgeFunctionsInstancesResponse';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($page, $page_size, $sort, $order_by, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -343,6 +1563,7 @@ class DefaultApi
     /**
      * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesGet'
      *
+     * @param  int $edge_firewall_id (required)
      * @param  int $page (optional)
      * @param  int $page_size (optional)
      * @param  string $sort (optional)
@@ -352,15 +1573,22 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesGetRequest($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesGet'][0])
     {
 
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesGet'
+            );
+        }
 
 
 
 
 
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances';
+
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -405,6 +1633,14 @@ class DefaultApi
         ) ?? []);
 
 
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -470,6 +1706,7 @@ class DefaultApi
      *
      * Create an Edge Functions Instance
      *
+     * @param  int $edge_firewall_id edge_firewall_id (required)
      * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $create_edge_functions_instances_request create_edge_functions_instances_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'] to see the possible values for this operation
      *
@@ -477,9 +1714,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPost($create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPost($edge_firewall_id, $create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
     {
-        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostWithHttpInfo($create_edge_functions_instances_request, $contentType);
+        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostWithHttpInfo($edge_firewall_id, $create_edge_functions_instances_request, $contentType);
         return $response;
     }
 
@@ -488,6 +1725,7 @@ class DefaultApi
      *
      * Create an Edge Functions Instance
      *
+     * @param  int $edge_firewall_id (required)
      * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $create_edge_functions_instances_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'] to see the possible values for this operation
      *
@@ -495,9 +1733,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostWithHttpInfo($create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostWithHttpInfo($edge_firewall_id, $create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
     {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($create_edge_functions_instances_request, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($edge_firewall_id, $create_edge_functions_instances_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -588,15 +1826,16 @@ class DefaultApi
      *
      * Create an Edge Functions Instance
      *
+     * @param  int $edge_firewall_id (required)
      * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $create_edge_functions_instances_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsync($create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsync($edge_firewall_id, $create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
     {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsyncWithHttpInfo($create_edge_functions_instances_request, $contentType)
+        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsyncWithHttpInfo($edge_firewall_id, $create_edge_functions_instances_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -609,16 +1848,17 @@ class DefaultApi
      *
      * Create an Edge Functions Instance
      *
+     * @param  int $edge_firewall_id (required)
      * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $create_edge_functions_instances_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsyncWithHttpInfo($create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostAsyncWithHttpInfo($edge_firewall_id, $create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
     {
         $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($create_edge_functions_instances_request, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($edge_firewall_id, $create_edge_functions_instances_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -659,14 +1899,22 @@ class DefaultApi
     /**
      * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesPost'
      *
+     * @param  int $edge_firewall_id (required)
      * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $create_edge_functions_instances_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
+    public function edgeFirewallEdgeFirewallIdFunctionsInstancesPostRequest($edge_firewall_id, $create_edge_functions_instances_request, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesPost'][0])
     {
+
+        // verify the required parameter 'edge_firewall_id' is set
+        if ($edge_firewall_id === null || (is_array($edge_firewall_id) && count($edge_firewall_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $edge_firewall_id when calling edgeFirewallEdgeFirewallIdFunctionsInstancesPost'
+            );
+        }
 
         // verify the required parameter 'create_edge_functions_instances_request' is set
         if ($create_edge_functions_instances_request === null || (is_array($create_edge_functions_instances_request) && count($create_edge_functions_instances_request) === 0)) {
@@ -676,7 +1924,7 @@ class DefaultApi
         }
 
 
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances';
+        $resourcePath = '/edge_firewall/{edge_firewall_id}/functions_instances';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -685,6 +1933,14 @@ class DefaultApi
 
 
 
+        // path params
+        if ($edge_firewall_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'edge_firewall_id' . '}',
+                ObjectSerializer::toPathValue($edge_firewall_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -746,1142 +2002,6 @@ class DefaultApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete
-     *
-     * Delete an Edge Functions Instance by uuid
-     *
-     * @param  string $uuid uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'][0])
-    {
-        $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteWithHttpInfo($uuid, $contentType);
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteWithHttpInfo
-     *
-     * Delete an Edge Functions Instance by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteWithHttpInfo($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'][0])
-    {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest($uuid, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteAsync
-     *
-     * Delete an Edge Functions Instance by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteAsync($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'][0])
-    {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteAsyncWithHttpInfo($uuid, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteAsyncWithHttpInfo
-     *
-     * Delete an Edge Functions Instance by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteAsyncWithHttpInfo($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'][0])
-    {
-        $returnType = '';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest($uuid, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDeleteRequest($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'][0])
-    {
-
-        // verify the required parameter 'uuid' is set
-        if ($uuid === null || (is_array($uuid) && count($uuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uuid when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidDelete'
-            );
-        }
-
-
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($uuid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'uuid' . '}',
-                ObjectSerializer::toPathValue($uuid),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            [],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet
-     *
-     * Retrieve an Edge Functions Instance set by uuid
-     *
-     * @param  string $uuid uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'][0])
-    {
-        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetWithHttpInfo($uuid, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetWithHttpInfo
-     *
-     * Retrieve an Edge Functions Instance set by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetWithHttpInfo($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'][0])
-    {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest($uuid, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetAsync
-     *
-     * Retrieve an Edge Functions Instance set by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetAsync($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'][0])
-    {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetAsyncWithHttpInfo($uuid, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetAsyncWithHttpInfo
-     *
-     * Retrieve an Edge Functions Instance set by uuid
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetAsyncWithHttpInfo($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest($uuid, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'
-     *
-     * @param  string $uuid (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGetRequest($uuid, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'][0])
-    {
-
-        // verify the required parameter 'uuid' is set
-        if ($uuid === null || (is_array($uuid) && count($uuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uuid when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidGet'
-            );
-        }
-
-
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($uuid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'uuid' . '}',
-                ObjectSerializer::toPathValue($uuid),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch
-     *
-     * Update some Edge Functions Instance attributes
-     *
-     * @param  string $uuid uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'][0])
-    {
-        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchWithHttpInfo($uuid, $body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchWithHttpInfo
-     *
-     * Update some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'][0])
-    {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest($uuid, $body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchAsync
-     *
-     * Update some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchAsync($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'][0])
-    {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchAsyncWithHttpInfo($uuid, $body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchAsyncWithHttpInfo
-     *
-     * Update some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchAsyncWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest($uuid, $body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatchRequest($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'][0])
-    {
-
-        // verify the required parameter 'uuid' is set
-        if ($uuid === null || (is_array($uuid) && count($uuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uuid when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'
-            );
-        }
-
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPatch'
-            );
-        }
-
-
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($uuid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'uuid' . '}',
-                ObjectSerializer::toPathValue($uuid),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
-            } else {
-                $httpBody = $body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PATCH',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut
-     *
-     * Overwrite some Edge Functions Instance attributes
-     *
-     * @param  string $uuid uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'][0])
-    {
-        list($response) = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutWithHttpInfo($uuid, $body, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutWithHttpInfo
-     *
-     * Overwrite some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'] to see the possible values for this operation
-     *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\EdgeFunctionsInstanceResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'][0])
-    {
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest($uuid, $body, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutAsync
-     *
-     * Overwrite some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutAsync($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'][0])
-    {
-        return $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutAsyncWithHttpInfo($uuid, $body, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutAsyncWithHttpInfo
-     *
-     * Overwrite some Edge Functions Instance attributes
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutAsyncWithHttpInfo($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'][0])
-    {
-        $returnType = '\OpenAPI\Client\Model\EdgeFunctionsInstanceResponse';
-        $request = $this->edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest($uuid, $body, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'
-     *
-     * @param  string $uuid (required)
-     * @param  \OpenAPI\Client\Model\CreateEdgeFunctionsInstancesRequest $body (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPutRequest($uuid, $body, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'][0])
-    {
-
-        // verify the required parameter 'uuid' is set
-        if ($uuid === null || (is_array($uuid) && count($uuid) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $uuid when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'
-            );
-        }
-
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling edgeFirewallEdgeFirewallIdFunctionsInstancesUuidPut'
-            );
-        }
-
-
-        $resourcePath = '/edge_firewall/:edge_firewall_id:/functions_instances/{uuid}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($uuid !== null) {
-            $resourcePath = str_replace(
-                '{' . 'uuid' . '}',
-                ObjectSerializer::toPathValue($uuid),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($body)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
-            } else {
-                $httpBody = $body;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
