@@ -1,6 +1,6 @@
 <?php
 /**
- * WAFDomains200
+ * WAFDomainList200
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * WAFDomains200 Class Doc Comment
+ * WAFDomainList200 Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
+class WAFDomainList200 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WAFDomains200';
+    protected static $openAPIModelName = 'WAFDomainList200';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'total_pages' => 'int',
-        'links' => '\OpenAPI\Client\Model\Links',
-        'results' => '\OpenAPI\Client\Model\WAFDomainList200[]',
-        'schema_version' => 'int'
+        'id' => 'int',
+        'name' => 'string',
+        'domain' => 'string',
+        'cnames' => 'string[]'
     ];
 
     /**
@@ -72,11 +71,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => 'int64',
-        'total_pages' => 'int64',
-        'links' => null,
-        'results' => null,
-        'schema_version' => 'int64'
+        'id' => 'int64',
+        'name' => null,
+        'domain' => null,
+        'cnames' => null
     ];
 
     /**
@@ -85,11 +83,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-		'total_pages' => false,
-		'links' => false,
-		'results' => false,
-		'schema_version' => false
+        'id' => false,
+		'name' => false,
+		'domain' => false,
+		'cnames' => false
     ];
 
     /**
@@ -178,11 +175,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'total_pages' => 'total_pages',
-        'links' => 'links',
-        'results' => 'results',
-        'schema_version' => 'schema_version'
+        'id' => 'id',
+        'name' => 'name',
+        'domain' => 'domain',
+        'cnames' => 'cnames'
     ];
 
     /**
@@ -191,11 +187,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'total_pages' => 'setTotalPages',
-        'links' => 'setLinks',
-        'results' => 'setResults',
-        'schema_version' => 'setSchemaVersion'
+        'id' => 'setId',
+        'name' => 'setName',
+        'domain' => 'setDomain',
+        'cnames' => 'setCnames'
     ];
 
     /**
@@ -204,11 +199,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'total_pages' => 'getTotalPages',
-        'links' => 'getLinks',
-        'results' => 'getResults',
-        'schema_version' => 'getSchemaVersion'
+        'id' => 'getId',
+        'name' => 'getName',
+        'domain' => 'getDomain',
+        'cnames' => 'getCnames'
     ];
 
     /**
@@ -268,11 +262,10 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('total_pages', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('schema_version', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('domain', $data ?? [], null);
+        $this->setIfExists('cnames', $data ?? [], null);
     }
 
     /**
@@ -318,136 +311,109 @@ class WAFDomains200 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets count
+     * Gets id
      *
      * @return int|null
      */
-    public function getCount()
+    public function getId()
     {
-        return $this->container['count'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets count
+     * Sets id
      *
-     * @param int|null $count count
+     * @param int|null $id id
      *
      * @return self
      */
-    public function setCount($count)
+    public function setId($id)
     {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['count'] = $count;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets total_pages
+     * Gets name
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTotalPages()
+    public function getName()
     {
-        return $this->container['total_pages'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets total_pages
+     * Sets name
      *
-     * @param int|null $total_pages total_pages
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setTotalPages($total_pages)
+    public function setName($name)
     {
-        if (is_null($total_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['total_pages'] = $total_pages;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets links
+     * Gets domain
      *
-     * @return \OpenAPI\Client\Model\Links|null
+     * @return string|null
      */
-    public function getLinks()
+    public function getDomain()
     {
-        return $this->container['links'];
+        return $this->container['domain'];
     }
 
     /**
-     * Sets links
+     * Sets domain
      *
-     * @param \OpenAPI\Client\Model\Links|null $links links
+     * @param string|null $domain domain
      *
      * @return self
      */
-    public function setLinks($links)
+    public function setDomain($domain)
     {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
+        if (is_null($domain)) {
+            throw new \InvalidArgumentException('non-nullable domain cannot be null');
         }
-        $this->container['links'] = $links;
+        $this->container['domain'] = $domain;
 
         return $this;
     }
 
     /**
-     * Gets results
+     * Gets cnames
      *
-     * @return \OpenAPI\Client\Model\WAFDomainList200[]|null
+     * @return string[]|null
      */
-    public function getResults()
+    public function getCnames()
     {
-        return $this->container['results'];
+        return $this->container['cnames'];
     }
 
     /**
-     * Sets results
+     * Sets cnames
      *
-     * @param \OpenAPI\Client\Model\WAFDomainList200[]|null $results results
+     * @param string[]|null $cnames cnames
      *
      * @return self
      */
-    public function setResults($results)
+    public function setCnames($cnames)
     {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        if (is_null($cnames)) {
+            throw new \InvalidArgumentException('non-nullable cnames cannot be null');
         }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets schema_version
-     *
-     * @return int|null
-     */
-    public function getSchemaVersion()
-    {
-        return $this->container['schema_version'];
-    }
-
-    /**
-     * Sets schema_version
-     *
-     * @param int|null $schema_version schema_version
-     *
-     * @return self
-     */
-    public function setSchemaVersion($schema_version)
-    {
-        if (is_null($schema_version)) {
-            throw new \InvalidArgumentException('non-nullable schema_version cannot be null');
-        }
-        $this->container['schema_version'] = $schema_version;
+        $this->container['cnames'] = $cnames;
 
         return $this;
     }
