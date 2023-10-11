@@ -6,8 +6,8 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 | ------------- | ------------- | ------------- |
 | [**createNewWAFRuleset()**](WAFApi.md#createNewWAFRuleset) | **POST** /waf/rulesets | Create a new WAF Rule Set in an account. |
 | [**deleteWAFRuleset()**](WAFApi.md#deleteWAFRuleset) | **DELETE** /waf/rulesets/{waf_rule_set_id} | Remove an WAF Rule Set from an account. Warning: this action cannot be undone. |
-| [**getWAFDomains()**](WAFApi.md#getWAFDomains) | **GET** /waf/{wafId}/domains | List all domains attached to a Web Application Firewall (WAF) in an account. |
-| [**getWAFEvents()**](WAFApi.md#getWAFEvents) | **GET** /waf/{wafId}/waf_events | Find WAF log events |
+| [**getWAFDomains()**](WAFApi.md#getWAFDomains) | **GET** /waf/{waf_id}/domains | List all domains attached to a Web Application Firewall (WAF) in an account. |
+| [**getWAFEvents()**](WAFApi.md#getWAFEvents) | **GET** /waf/{waf_id}/waf_events | Find WAF log events |
 | [**getWAFRuleset()**](WAFApi.md#getWAFRuleset) | **GET** /waf/rulesets/{waf_rule_set_id} | List a specific Rule Set associated to a Web Application Firewall (WAF) in an account. |
 | [**listAllWAF()**](WAFApi.md#listAllWAF) | **GET** /waf | List all Web Application Firewalls (WAFs) created in an account |
 | [**listAllWAFRulesets()**](WAFApi.md#listAllWAFRulesets) | **GET** /waf/rulesets | list all Rule Sets associated to a Web Application Firewall (WAF) in an account. |
@@ -198,7 +198,7 @@ try {
 ## `getWAFEvents()`
 
 ```php
-getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id): \OpenAPI\Client\Model\WAFEvents200
+getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size): \OpenAPI\Client\Model\WAFEvents200
 ```
 
 Find WAF log events
@@ -226,9 +226,12 @@ $waf_id = 56; // int | ID of WAF to return
 $hour_range = 56; // int | Last log hours since now (it must be a integer number ranging between 1 and 72)
 $domains_ids = 'domains_ids_example'; // string | Multiple domain's id (they must be separated by comma like 1233,1234)
 $network_list_id = 56; // int | Id of a network list
+$sort = 'asc'; // string
+$page = 1; // int
+$page_size = 10; // int
 
 try {
-    $result = $apiInstance->getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id);
+    $result = $apiInstance->getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WAFApi->getWAFEvents: ', $e->getMessage(), PHP_EOL;
@@ -243,6 +246,9 @@ try {
 | **hour_range** | **int**| Last log hours since now (it must be a integer number ranging between 1 and 72) | |
 | **domains_ids** | **string**| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | |
 | **network_list_id** | **int**| Id of a network list | [optional] |
+| **sort** | **string**|  | [optional] [default to &#39;asc&#39;] |
+| **page** | **int**|  | [optional] [default to 1] |
+| **page_size** | **int**|  | [optional] [default to 10] |
 
 ### Return type
 

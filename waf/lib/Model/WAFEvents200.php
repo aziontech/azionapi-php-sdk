@@ -57,7 +57,7 @@ class WAFEvents200 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => 'object[]',
+        'results' => '\OpenAPI\Client\Model\WAFEvents200ResultsInner[]',
         'schema_version' => 'int'
     ];
 
@@ -299,7 +299,7 @@ class WAFEvents200 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets results
      *
-     * @return object[]|null
+     * @return \OpenAPI\Client\Model\WAFEvents200ResultsInner[]|null
      */
     public function getResults()
     {
@@ -309,7 +309,7 @@ class WAFEvents200 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets results
      *
-     * @param object[]|null $results results
+     * @param \OpenAPI\Client\Model\WAFEvents200ResultsInner[]|null $results results
      *
      * @return self
      */

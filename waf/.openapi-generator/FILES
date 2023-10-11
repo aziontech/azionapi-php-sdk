@@ -7,8 +7,10 @@ docs/Api/WAFApi.md
 docs/Model/CreateNewWAFRulesetRequest.md
 docs/Model/Links.md
 docs/Model/SingleWAF.md
+docs/Model/WAFDomainList200.md
 docs/Model/WAFDomains200.md
 docs/Model/WAFEvents200.md
+docs/Model/WAFEvents200ResultsInner.md
 docs/Model/WAFEvents400.md
 docs/Model/WAFEvents401.md
 docs/Model/WAFEvents404.md
@@ -24,8 +26,10 @@ lib/Model/CreateNewWAFRulesetRequest.php
 lib/Model/Links.php
 lib/Model/ModelInterface.php
 lib/Model/SingleWAF.php
+lib/Model/WAFDomainList200.php
 lib/Model/WAFDomains200.php
 lib/Model/WAFEvents200.php
+lib/Model/WAFEvents200ResultsInner.php
 lib/Model/WAFEvents400.php
 lib/Model/WAFEvents401.php
 lib/Model/WAFEvents404.php
@@ -34,4 +38,5 @@ lib/Model/WAFSensitivityChoices.php
 lib/Model/WAFSingle200.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/LinksTest.php
+test/Model/WAFDomainList200Test.php
+test/Model/WAFEvents200ResultsInnerTest.php
