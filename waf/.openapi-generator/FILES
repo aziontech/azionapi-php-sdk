@@ -38,5 +38,3 @@ lib/Model/WAFSensitivityChoices.php
 lib/Model/WAFSingle200.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WAFDomainList200Test.php
-test/Model/WAFEvents200ResultsInnerTest.php
