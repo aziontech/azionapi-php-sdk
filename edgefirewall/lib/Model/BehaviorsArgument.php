@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * BehaviorsArgument
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * BehaviorsArgument Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class BehaviorsArgument implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'Behaviors_argument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\BehaviorsArgument'
+        'type' => 'string',
+        'limit_by' => 'string',
+        'average_rate_limit' => 'int',
+        'maximum_burst_size' => 'int',
+        'waf_id' => 'int',
+        'mode' => 'string'
     ];
 
     /**
@@ -70,7 +75,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'argument' => null
+        'type' => null,
+        'limit_by' => null,
+        'average_rate_limit' => null,
+        'maximum_burst_size' => null,
+        'waf_id' => null,
+        'mode' => null
     ];
 
     /**
@@ -80,7 +90,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'argument' => false
+		'type' => false,
+		'limit_by' => false,
+		'average_rate_limit' => false,
+		'maximum_burst_size' => false,
+		'waf_id' => false,
+		'mode' => false
     ];
 
     /**
@@ -170,7 +185,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'argument' => 'argument'
+        'type' => 'type',
+        'limit_by' => 'limit_by',
+        'average_rate_limit' => 'average_rate_limit',
+        'maximum_burst_size' => 'maximum_burst_size',
+        'waf_id' => 'waf_id',
+        'mode' => 'mode'
     ];
 
     /**
@@ -180,7 +200,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'name' => 'setName',
-        'argument' => 'setArgument'
+        'type' => 'setType',
+        'limit_by' => 'setLimitBy',
+        'average_rate_limit' => 'setAverageRateLimit',
+        'maximum_burst_size' => 'setMaximumBurstSize',
+        'waf_id' => 'setWafId',
+        'mode' => 'setMode'
     ];
 
     /**
@@ -190,7 +215,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'name' => 'getName',
-        'argument' => 'getArgument'
+        'type' => 'getType',
+        'limit_by' => 'getLimitBy',
+        'average_rate_limit' => 'getAverageRateLimit',
+        'maximum_burst_size' => 'getMaximumBurstSize',
+        'waf_id' => 'getWafId',
+        'mode' => 'getMode'
     ];
 
     /**
@@ -234,27 +264,49 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_DENY = 'deny';
-    public const NAME_DROP = 'drop';
-    public const NAME_SET_RATE_LIMIT = 'set_rate_limit';
-    public const NAME_SET_WAF_RULESET = 'set_waf_ruleset';
-    public const NAME_RUN_FUNCTION = 'run_function';
-    public const NAME_TAG_EVENT = 'tag_event';
+    public const TYPE_SECOND = 'second';
+    public const TYPE_MINUTE = 'minute';
+    public const LIMIT_BY_CLIENT_IP = 'client_ip';
+    public const LIMIT_BY__GLOBAL = 'global';
+    public const MODE_LEARNING = 'Learning';
+    public const MODE_BLOCKING = 'Blocking';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getNameAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::NAME_DENY,
-            self::NAME_DROP,
-            self::NAME_SET_RATE_LIMIT,
-            self::NAME_SET_WAF_RULESET,
-            self::NAME_RUN_FUNCTION,
-            self::NAME_TAG_EVENT,
+            self::TYPE_SECOND,
+            self::TYPE_MINUTE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLimitByAllowableValues()
+    {
+        return [
+            self::LIMIT_BY_CLIENT_IP,
+            self::LIMIT_BY__GLOBAL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getModeAllowableValues()
+    {
+        return [
+            self::MODE_LEARNING,
+            self::MODE_BLOCKING,
         ];
     }
 
@@ -274,7 +326,12 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('argument', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('limit_by', $data ?? [], null);
+        $this->setIfExists('average_rate_limit', $data ?? [], null);
+        $this->setIfExists('maximum_burst_size', $data ?? [], null);
+        $this->setIfExists('waf_id', $data ?? [], null);
+        $this->setIfExists('mode', $data ?? [], null);
     }
 
     /**
@@ -304,11 +361,41 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLimitByAllowableValues();
+        if (!is_null($this->container['limit_by']) && !in_array($this->container['limit_by'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'limit_by', must be one of '%s'",
+                $this->container['limit_by'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['average_rate_limit']) && ($this->container['average_rate_limit'] < 1)) {
+            $invalidProperties[] = "invalid value for 'average_rate_limit', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['maximum_burst_size']) && ($this->container['maximum_burst_size'] < 1)) {
+            $invalidProperties[] = "invalid value for 'maximum_burst_size', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['waf_id']) && ($this->container['waf_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'waf_id', must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
                 implode("', '", $allowedValues)
             );
         }
@@ -350,44 +437,214 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets argument
+     * Gets type
      *
-     * @return \OpenAPI\Client\Model\BehaviorsArgument|null
+     * @return string|null
      */
-    public function getArgument()
+    public function getType()
     {
-        return $this->container['argument'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets argument
+     * Sets type
      *
-     * @param \OpenAPI\Client\Model\BehaviorsArgument|null $argument argument
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setArgument($argument)
+    public function setType($type)
     {
-        if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['argument'] = $argument;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit_by
+     *
+     * @return string|null
+     */
+    public function getLimitBy()
+    {
+        return $this->container['limit_by'];
+    }
+
+    /**
+     * Sets limit_by
+     *
+     * @param string|null $limit_by limit_by
+     *
+     * @return self
+     */
+    public function setLimitBy($limit_by)
+    {
+        if (is_null($limit_by)) {
+            throw new \InvalidArgumentException('non-nullable limit_by cannot be null');
+        }
+        $allowedValues = $this->getLimitByAllowableValues();
+        if (!in_array($limit_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'limit_by', must be one of '%s'",
+                    $limit_by,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['limit_by'] = $limit_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_rate_limit
+     *
+     * @return int|null
+     */
+    public function getAverageRateLimit()
+    {
+        return $this->container['average_rate_limit'];
+    }
+
+    /**
+     * Sets average_rate_limit
+     *
+     * @param int|null $average_rate_limit average_rate_limit
+     *
+     * @return self
+     */
+    public function setAverageRateLimit($average_rate_limit)
+    {
+        if (is_null($average_rate_limit)) {
+            throw new \InvalidArgumentException('non-nullable average_rate_limit cannot be null');
+        }
+
+        if (($average_rate_limit < 1)) {
+            throw new \InvalidArgumentException('invalid value for $average_rate_limit when calling BehaviorsArgument., must be bigger than or equal to 1.');
+        }
+
+        $this->container['average_rate_limit'] = $average_rate_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets maximum_burst_size
+     *
+     * @return int|null
+     */
+    public function getMaximumBurstSize()
+    {
+        return $this->container['maximum_burst_size'];
+    }
+
+    /**
+     * Sets maximum_burst_size
+     *
+     * @param int|null $maximum_burst_size maximum_burst_size
+     *
+     * @return self
+     */
+    public function setMaximumBurstSize($maximum_burst_size)
+    {
+        if (is_null($maximum_burst_size)) {
+            throw new \InvalidArgumentException('non-nullable maximum_burst_size cannot be null');
+        }
+
+        if (($maximum_burst_size < 1)) {
+            throw new \InvalidArgumentException('invalid value for $maximum_burst_size when calling BehaviorsArgument., must be bigger than or equal to 1.');
+        }
+
+        $this->container['maximum_burst_size'] = $maximum_burst_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets waf_id
+     *
+     * @return int|null
+     */
+    public function getWafId()
+    {
+        return $this->container['waf_id'];
+    }
+
+    /**
+     * Sets waf_id
+     *
+     * @param int|null $waf_id waf_id
+     *
+     * @return self
+     */
+    public function setWafId($waf_id)
+    {
+        if (is_null($waf_id)) {
+            throw new \InvalidArgumentException('non-nullable waf_id cannot be null');
+        }
+
+        if (($waf_id < 1)) {
+            throw new \InvalidArgumentException('invalid value for $waf_id when calling BehaviorsArgument., must be bigger than or equal to 1.');
+        }
+
+        $this->container['waf_id'] = $waf_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets mode
+     *
+     * @return string|null
+     */
+    public function getMode()
+    {
+        return $this->container['mode'];
+    }
+
+    /**
+     * Sets mode
+     *
+     * @param string|null $mode mode
+     *
+     * @return self
+     */
+    public function setMode($mode)
+    {
+        if (is_null($mode)) {
+            throw new \InvalidArgumentException('non-nullable mode cannot be null');
+        }
+        $allowedValues = $this->getModeAllowableValues();
+        if (!in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['mode'] = $mode;
 
         return $this;
     }

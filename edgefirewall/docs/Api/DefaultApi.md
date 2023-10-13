@@ -21,7 +21,7 @@ All URIs are relative to https://api.azionapi.net, except if the operation defin
 ## `edgeFirewallEdgeFirewallIdRulesEngineGet()`
 
 ```php
-edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id): \OpenAPI\Client\Model\RuleSetResponseAll
+edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id, $page, $page_size, $sort, $order_by): \OpenAPI\Client\Model\RuleSetResponseAll
 ```
 
 List all rule sets.
@@ -46,9 +46,13 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $edge_firewall_id = 56; // int
+$page = 56; // int
+$page_size = 56; // int
+$sort = 'sort_example'; // string
+$order_by = 'order_by_example'; // string
 
 try {
-    $result = $apiInstance->edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id);
+    $result = $apiInstance->edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id, $page, $page_size, $sort, $order_by);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallEdgeFirewallIdRulesEngineGet: ', $e->getMessage(), PHP_EOL;
@@ -60,6 +64,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **edge_firewall_id** | **int**|  | |
+| **page** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] |
+| **sort** | **string**|  | [optional] |
+| **order_by** | **string**|  | [optional] |
 
 ### Return type
 

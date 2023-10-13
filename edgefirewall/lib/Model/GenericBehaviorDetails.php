@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * GenericBehaviorDetails
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * GenericBehaviorDetails Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class GenericBehaviorDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'GenericBehaviorDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\BehaviorsArgument'
+        'name' => 'string'
     ];
 
     /**
@@ -69,8 +68,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'argument' => null
+        'name' => null
     ];
 
     /**
@@ -79,8 +77,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'argument' => false
+        'name' => false
     ];
 
     /**
@@ -169,8 +166,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'argument' => 'argument'
+        'name' => 'name'
     ];
 
     /**
@@ -179,8 +175,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'argument' => 'setArgument'
+        'name' => 'setName'
     ];
 
     /**
@@ -189,8 +184,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'argument' => 'getArgument'
+        'name' => 'getName'
     ];
 
     /**
@@ -234,29 +228,6 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_DENY = 'deny';
-    public const NAME_DROP = 'drop';
-    public const NAME_SET_RATE_LIMIT = 'set_rate_limit';
-    public const NAME_SET_WAF_RULESET = 'set_waf_ruleset';
-    public const NAME_RUN_FUNCTION = 'run_function';
-    public const NAME_TAG_EVENT = 'tag_event';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNameAllowableValues()
-    {
-        return [
-            self::NAME_DENY,
-            self::NAME_DROP,
-            self::NAME_SET_RATE_LIMIT,
-            self::NAME_SET_WAF_RULESET,
-            self::NAME_RUN_FUNCTION,
-            self::NAME_TAG_EVENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -274,7 +245,6 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('argument', $data ?? [], null);
     }
 
     /**
@@ -303,15 +273,6 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -350,44 +311,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets argument
-     *
-     * @return \OpenAPI\Client\Model\BehaviorsArgument|null
-     */
-    public function getArgument()
-    {
-        return $this->container['argument'];
-    }
-
-    /**
-     * Sets argument
-     *
-     * @param \OpenAPI\Client\Model\BehaviorsArgument|null $argument argument
-     *
-     * @return self
-     */
-    public function setArgument($argument)
-    {
-        if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
-        }
-        $this->container['argument'] = $argument;
 
         return $this;
     }

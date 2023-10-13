@@ -62,9 +62,13 @@ $apiInstance = new OpenAPI\Client\Api\DefaultApi(
     $config
 );
 $edge_firewall_id = 56; // int
+$page = 56; // int
+$page_size = 56; // int
+$sort = 'sort_example'; // string
+$order_by = 'order_by_example'; // string
 
 try {
-    $result = $apiInstance->edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id);
+    $result = $apiInstance->edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id, $page, $page_size, $sort, $order_by);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->edgeFirewallEdgeFirewallIdRulesEngineGet: ', $e->getMessage(), PHP_EOL;
@@ -94,11 +98,13 @@ Class | Method | HTTP request | Description
 ## Models
 
 - [Behaviors](docs/Model/Behaviors.md)
+- [BehaviorsArgument](docs/Model/BehaviorsArgument.md)
 - [Conditionals](docs/Model/Conditionals.md)
 - [CreateEdgeFirewallRequest](docs/Model/CreateEdgeFirewallRequest.md)
 - [CreateRuleSetRequest](docs/Model/CreateRuleSetRequest.md)
 - [EdgeFirewall](docs/Model/EdgeFirewall.md)
 - [EdgeFirewallResponse](docs/Model/EdgeFirewallResponse.md)
+- [GenericBehaviorDetails](docs/Model/GenericBehaviorDetails.md)
 - [Links](docs/Model/Links.md)
 - [ListEdgeFirewallResponse](docs/Model/ListEdgeFirewallResponse.md)
 - [RuleSetResponse](docs/Model/RuleSetResponse.md)
@@ -109,6 +115,8 @@ Class | Method | HTTP request | Description
 - [SSLVerificationStatusArguments](docs/Model/SSLVerificationStatusArguments.md)
 - [SSLVerificationStatusCriteria](docs/Model/SSLVerificationStatusCriteria.md)
 - [SSLVerificationStatusOperators](docs/Model/SSLVerificationStatusOperators.md)
+- [SetRateLimitDetails](docs/Model/SetRateLimitDetails.md)
+- [SetWAFRuleSetDetails](docs/Model/SetWAFRuleSetDetails.md)
 - [UpdateEdgeFirewallRequest](docs/Model/UpdateEdgeFirewallRequest.md)
 - [Variables](docs/Model/Variables.md)
 
