@@ -688,15 +688,17 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  string $name searches WAF for name (optional)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFDomains'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\WAFDomains200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404
      */
-    public function getWAFDomains($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
+    public function getWAFDomains($waf_id, $name = null, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
-        list($response) = $this->getWAFDomainsWithHttpInfo($waf_id, $name, $contentType);
+        list($response) = $this->getWAFDomainsWithHttpInfo($waf_id, $name, $page, $page_size, $contentType);
         return $response;
     }
 
@@ -707,15 +709,17 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  string $name searches WAF for name (optional)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFDomains'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\WAFDomains200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents404, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWAFDomainsWithHttpInfo($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
+    public function getWAFDomainsWithHttpInfo($waf_id, $name = null, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
-        $request = $this->getWAFDomainsRequest($waf_id, $name, $contentType);
+        $request = $this->getWAFDomainsRequest($waf_id, $name, $page, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -854,14 +858,16 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  string $name searches WAF for name (optional)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWAFDomainsAsync($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
+    public function getWAFDomainsAsync($waf_id, $name = null, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
-        return $this->getWAFDomainsAsyncWithHttpInfo($waf_id, $name, $contentType)
+        return $this->getWAFDomainsAsyncWithHttpInfo($waf_id, $name, $page, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -876,15 +882,17 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  string $name searches WAF for name (optional)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWAFDomainsAsyncWithHttpInfo($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
+    public function getWAFDomainsAsyncWithHttpInfo($waf_id, $name = null, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WAFDomains200';
-        $request = $this->getWAFDomainsRequest($waf_id, $name, $contentType);
+        $request = $this->getWAFDomainsRequest($waf_id, $name, $page, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -927,12 +935,14 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  string $name searches WAF for name (optional)
+     * @param  int $page Identifies which page should be returned, if the return is paginated. (optional, default to 1)
+     * @param  int $page_size Identifies how many items should be returned per page. (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFDomains'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getWAFDomainsRequest($waf_id, $name = null, string $contentType = self::contentTypes['getWAFDomains'][0])
+    public function getWAFDomainsRequest($waf_id, $name = null, $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFDomains'][0])
     {
 
         // verify the required parameter 'waf_id' is set
@@ -941,6 +951,8 @@ class WAFApi
                 'Missing the required parameter $waf_id when calling getWAFDomains'
             );
         }
+
+
 
 
 
@@ -956,6 +968,24 @@ class WAFApi
             $name,
             'name', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1037,20 +1067,18 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  int $hour_range Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
-     * @param  string $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
+     * @param  int[] $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
      * @param  int $network_list_id Id of a network list (optional)
      * @param  string $sort sort (optional, default to 'asc')
-     * @param  int $page page (optional, default to 1)
-     * @param  int $page_size page_size (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFEvents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents401|\OpenAPI\Client\Model\WAFEvents404
      */
-    public function getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFEvents'][0])
+    public function getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', string $contentType = self::contentTypes['getWAFEvents'][0])
     {
-        list($response) = $this->getWAFEventsWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size, $contentType);
+        list($response) = $this->getWAFEventsWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $contentType);
         return $response;
     }
 
@@ -1061,20 +1089,18 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  int $hour_range Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
-     * @param  string $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
+     * @param  int[] $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
      * @param  int $network_list_id Id of a network list (optional)
      * @param  string $sort (optional, default to 'asc')
-     * @param  int $page (optional, default to 1)
-     * @param  int $page_size (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFEvents'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\WAFEvents200|\OpenAPI\Client\Model\WAFEvents400|\OpenAPI\Client\Model\WAFEvents401|\OpenAPI\Client\Model\WAFEvents404, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWAFEventsWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFEvents'][0])
+    public function getWAFEventsWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', string $contentType = self::contentTypes['getWAFEvents'][0])
     {
-        $request = $this->getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size, $contentType);
+        $request = $this->getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1236,19 +1262,17 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  int $hour_range Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
-     * @param  string $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
+     * @param  int[] $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
      * @param  int $network_list_id Id of a network list (optional)
      * @param  string $sort (optional, default to 'asc')
-     * @param  int $page (optional, default to 1)
-     * @param  int $page_size (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWAFEventsAsync($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFEvents'][0])
+    public function getWAFEventsAsync($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', string $contentType = self::contentTypes['getWAFEvents'][0])
     {
-        return $this->getWAFEventsAsyncWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size, $contentType)
+        return $this->getWAFEventsAsyncWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1263,20 +1287,18 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  int $hour_range Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
-     * @param  string $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
+     * @param  int[] $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
      * @param  int $network_list_id Id of a network list (optional)
      * @param  string $sort (optional, default to 'asc')
-     * @param  int $page (optional, default to 1)
-     * @param  int $page_size (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getWAFEventsAsyncWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFEvents'][0])
+    public function getWAFEventsAsyncWithHttpInfo($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', string $contentType = self::contentTypes['getWAFEvents'][0])
     {
         $returnType = '\OpenAPI\Client\Model\WAFEvents200';
-        $request = $this->getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size, $contentType);
+        $request = $this->getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1319,17 +1341,15 @@ class WAFApi
      *
      * @param  int $waf_id ID of WAF to return (required)
      * @param  int $hour_range Last log hours since now (it must be a integer number ranging between 1 and 72) (required)
-     * @param  string $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
+     * @param  int[] $domains_ids Multiple domain&#39;s id (they must be separated by comma like 1233,1234) (required)
      * @param  int $network_list_id Id of a network list (optional)
      * @param  string $sort (optional, default to 'asc')
-     * @param  int $page (optional, default to 1)
-     * @param  int $page_size (optional, default to 10)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWAFEvents'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', $page = 1, $page_size = 10, string $contentType = self::contentTypes['getWAFEvents'][0])
+    public function getWAFEventsRequest($waf_id, $hour_range, $domains_ids, $network_list_id = null, $sort = 'asc', string $contentType = self::contentTypes['getWAFEvents'][0])
     {
 
         // verify the required parameter 'waf_id' is set
@@ -1352,8 +1372,6 @@ class WAFApi
                 'Missing the required parameter $domains_ids when calling getWAFEvents'
             );
         }
-
-
 
 
 
@@ -1387,7 +1405,7 @@ class WAFApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $domains_ids,
             'domains_ids', // param base name
-            'string', // openApiType
+            'array', // openApiType
             'form', // style
             true, // explode
             true // required
@@ -1397,24 +1415,6 @@ class WAFApi
             $sort,
             'sort', // param base name
             'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'page_size', // param base name
-            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

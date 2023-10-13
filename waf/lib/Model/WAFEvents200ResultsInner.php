@@ -58,8 +58,8 @@ class WAFEvents200ResultsInner implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'country_count' => 'int',
-        'top_10_countries' => 'string[]',
-        'top_10_ips' => 'string[]',
+        'top_10_countries' => '\OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]',
+        'top_10_ips' => '\OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]',
         'hit_count' => 'int',
         'rule_id' => 'int',
         'ip_count' => 'int',
@@ -440,7 +440,7 @@ class WAFEvents200ResultsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets top_10_countries
      *
-     * @return string[]|null
+     * @return \OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]|null
      */
     public function getTop10Countries()
     {
@@ -450,7 +450,7 @@ class WAFEvents200ResultsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets top_10_countries
      *
-     * @param string[]|null $top_10_countries top_10_countries
+     * @param \OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]|null $top_10_countries top_10_countries
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class WAFEvents200ResultsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets top_10_ips
      *
-     * @return string[]|null
+     * @return \OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]|null
      */
     public function getTop10Ips()
     {
@@ -477,7 +477,7 @@ class WAFEvents200ResultsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets top_10_ips
      *
-     * @param string[]|null $top_10_ips top_10_ips
+     * @param \OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]|null $top_10_ips top_10_ips
      *
      * @return self
      */

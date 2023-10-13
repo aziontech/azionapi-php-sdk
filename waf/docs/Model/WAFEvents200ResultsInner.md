@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **country_count** | **int** |  | [optional]
-**top_10_countries** | **string[]** |  | [optional]
-**top_10_ips** | **string[]** |  | [optional]
+**top_10_countries** | [**\OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional]
+**top_10_ips** | [**\OpenAPI\Client\Model\WAFEvents200ResultsInnerTop10CountriesInner[]**](WAFEvents200ResultsInnerTop10CountriesInner.md) |  | [optional]
 **hit_count** | **int** |  | [optional]
 **rule_id** | **int** |  | [optional]
 **ip_count** | **int** |  | [optional]
