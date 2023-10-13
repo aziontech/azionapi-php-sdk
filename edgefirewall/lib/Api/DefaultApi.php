@@ -161,15 +161,19 @@ class DefaultApi
      * List all rule sets.
      *
      * @param  int $edge_firewall_id edge_firewall_id (required)
+     * @param  int $page page (optional)
+     * @param  int $page_size page_size (optional)
+     * @param  string $sort sort (optional)
+     * @param  string $order_by order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\RuleSetResponseAll
      */
-    public function edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
+    public function edgeFirewallEdgeFirewallIdRulesEngineGet($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
     {
-        list($response) = $this->edgeFirewallEdgeFirewallIdRulesEngineGetWithHttpInfo($edge_firewall_id, $contentType);
+        list($response) = $this->edgeFirewallEdgeFirewallIdRulesEngineGetWithHttpInfo($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
         return $response;
     }
 
@@ -179,15 +183,19 @@ class DefaultApi
      * List all rule sets.
      *
      * @param  int $edge_firewall_id (required)
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\RuleSetResponseAll, HTTP status code, HTTP response headers (array of strings)
      */
-    public function edgeFirewallEdgeFirewallIdRulesEngineGetWithHttpInfo($edge_firewall_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
+    public function edgeFirewallEdgeFirewallIdRulesEngineGetWithHttpInfo($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
     {
-        $request = $this->edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -279,14 +287,18 @@ class DefaultApi
      * List all rule sets.
      *
      * @param  int $edge_firewall_id (required)
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdRulesEngineGetAsync($edge_firewall_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
+    public function edgeFirewallEdgeFirewallIdRulesEngineGetAsync($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
     {
-        return $this->edgeFirewallEdgeFirewallIdRulesEngineGetAsyncWithHttpInfo($edge_firewall_id, $contentType)
+        return $this->edgeFirewallEdgeFirewallIdRulesEngineGetAsyncWithHttpInfo($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -300,15 +312,19 @@ class DefaultApi
      * List all rule sets.
      *
      * @param  int $edge_firewall_id (required)
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function edgeFirewallEdgeFirewallIdRulesEngineGetAsyncWithHttpInfo($edge_firewall_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
+    public function edgeFirewallEdgeFirewallIdRulesEngineGetAsyncWithHttpInfo($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
     {
         $returnType = '\OpenAPI\Client\Model\RuleSetResponseAll';
-        $request = $this->edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, $contentType);
+        $request = $this->edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, $page, $page_size, $sort, $order_by, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -350,12 +366,16 @@ class DefaultApi
      * Create request for operation 'edgeFirewallEdgeFirewallIdRulesEngineGet'
      *
      * @param  int $edge_firewall_id (required)
+     * @param  int $page (optional)
+     * @param  int $page_size (optional)
+     * @param  string $sort (optional)
+     * @param  string $order_by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
+    public function edgeFirewallEdgeFirewallIdRulesEngineGetRequest($edge_firewall_id, $page = null, $page_size = null, $sort = null, $order_by = null, string $contentType = self::contentTypes['edgeFirewallEdgeFirewallIdRulesEngineGet'][0])
     {
 
         // verify the required parameter 'edge_firewall_id' is set
@@ -369,6 +389,10 @@ class DefaultApi
         }
         
 
+
+
+
+
         $resourcePath = '/edge_firewall/{edge_firewall_id}/rules_engine';
         $formParams = [];
         $queryParams = [];
@@ -376,6 +400,42 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'page_size', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $order_by,
+            'order_by', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

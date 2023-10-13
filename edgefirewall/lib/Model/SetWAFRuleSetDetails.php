@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * SetWAFRuleSetDetails
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * SetWAFRuleSetDetails Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetWAFRuleSetDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'SetWAFRuleSetDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\BehaviorsArgument'
+        'waf_id' => 'int',
+        'mode' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'argument' => null
+        'waf_id' => null,
+        'mode' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'argument' => false
+        'waf_id' => false,
+		'mode' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'argument' => 'argument'
+        'waf_id' => 'waf_id',
+        'mode' => 'mode'
     ];
 
     /**
@@ -179,8 +179,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'argument' => 'setArgument'
+        'waf_id' => 'setWafId',
+        'mode' => 'setMode'
     ];
 
     /**
@@ -189,8 +189,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'argument' => 'getArgument'
+        'waf_id' => 'getWafId',
+        'mode' => 'getMode'
     ];
 
     /**
@@ -234,27 +234,19 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_DENY = 'deny';
-    public const NAME_DROP = 'drop';
-    public const NAME_SET_RATE_LIMIT = 'set_rate_limit';
-    public const NAME_SET_WAF_RULESET = 'set_waf_ruleset';
-    public const NAME_RUN_FUNCTION = 'run_function';
-    public const NAME_TAG_EVENT = 'tag_event';
+    public const MODE_LEARNING = 'Learning';
+    public const MODE_BLOCKING = 'Blocking';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getNameAllowableValues()
+    public function getModeAllowableValues()
     {
         return [
-            self::NAME_DENY,
-            self::NAME_DROP,
-            self::NAME_SET_RATE_LIMIT,
-            self::NAME_SET_WAF_RULESET,
-            self::NAME_RUN_FUNCTION,
-            self::NAME_TAG_EVENT,
+            self::MODE_LEARNING,
+            self::MODE_BLOCKING,
         ];
     }
 
@@ -273,8 +265,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('argument', $data ?? [], null);
+        $this->setIfExists('waf_id', $data ?? [], null);
+        $this->setIfExists('mode', $data ?? [], null);
     }
 
     /**
@@ -304,11 +296,15 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+        if (!is_null($this->container['waf_id']) && ($this->container['waf_id'] < 1)) {
+            $invalidProperties[] = "invalid value for 'waf_id', must be bigger than or equal to 1.";
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
                 implode("', '", $allowedValues)
             );
         }
@@ -329,65 +325,70 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets waf_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getWafId()
     {
-        return $this->container['name'];
+        return $this->container['waf_id'];
     }
 
     /**
-     * Sets name
+     * Sets waf_id
      *
-     * @param string|null $name name
+     * @param int|null $waf_id waf_id
      *
      * @return self
      */
-    public function setName($name)
+    public function setWafId($waf_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($waf_id)) {
+            throw new \InvalidArgumentException('non-nullable waf_id cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (($waf_id < 1)) {
+            throw new \InvalidArgumentException('invalid value for $waf_id when calling SetWAFRuleSetDetails., must be bigger than or equal to 1.');
         }
-        $this->container['name'] = $name;
+
+        $this->container['waf_id'] = $waf_id;
 
         return $this;
     }
 
     /**
-     * Gets argument
+     * Gets mode
      *
-     * @return \OpenAPI\Client\Model\BehaviorsArgument|null
+     * @return string|null
      */
-    public function getArgument()
+    public function getMode()
     {
-        return $this->container['argument'];
+        return $this->container['mode'];
     }
 
     /**
-     * Sets argument
+     * Sets mode
      *
-     * @param \OpenAPI\Client\Model\BehaviorsArgument|null $argument argument
+     * @param string|null $mode mode
      *
      * @return self
      */
-    public function setArgument($argument)
+    public function setMode($mode)
     {
-        if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
+        if (is_null($mode)) {
+            throw new \InvalidArgumentException('non-nullable mode cannot be null');
         }
-        $this->container['argument'] = $argument;
+        $allowedValues = $this->getModeAllowableValues();
+        if (!in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['mode'] = $mode;
 
         return $this;
     }
