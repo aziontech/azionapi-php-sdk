@@ -136,7 +136,7 @@ void (empty response body)
 ## `getWAFDomains()`
 
 ```php
-getWAFDomains($waf_id, $name): \OpenAPI\Client\Model\WAFDomains200
+getWAFDomains($waf_id, $name, $page, $page_size): \OpenAPI\Client\Model\WAFDomains200
 ```
 
 List all domains attached to a Web Application Firewall (WAF) in an account.
@@ -162,9 +162,11 @@ $apiInstance = new OpenAPI\Client\Api\WAFApi(
 );
 $waf_id = 56; // int | ID of WAF to return
 $name = 'name_example'; // string | searches WAF for name
+$page = 1; // int | Identifies which page should be returned, if the return is paginated.
+$page_size = 10; // int | Identifies how many items should be returned per page.
 
 try {
-    $result = $apiInstance->getWAFDomains($waf_id, $name);
+    $result = $apiInstance->getWAFDomains($waf_id, $name, $page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WAFApi->getWAFDomains: ', $e->getMessage(), PHP_EOL;
@@ -177,6 +179,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **waf_id** | **int**| ID of WAF to return | |
 | **name** | **string**| searches WAF for name | [optional] |
+| **page** | **int**| Identifies which page should be returned, if the return is paginated. | [optional] [default to 1] |
+| **page_size** | **int**| Identifies how many items should be returned per page. | [optional] [default to 10] |
 
 ### Return type
 
@@ -198,7 +202,7 @@ try {
 ## `getWAFEvents()`
 
 ```php
-getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size): \OpenAPI\Client\Model\WAFEvents200
+getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort): \OpenAPI\Client\Model\WAFEvents200
 ```
 
 Find WAF log events
@@ -224,14 +228,12 @@ $apiInstance = new OpenAPI\Client\Api\WAFApi(
 );
 $waf_id = 56; // int | ID of WAF to return
 $hour_range = 56; // int | Last log hours since now (it must be a integer number ranging between 1 and 72)
-$domains_ids = 'domains_ids_example'; // string | Multiple domain's id (they must be separated by comma like 1233,1234)
+$domains_ids = array(56); // int[] | Multiple domain's id (they must be separated by comma like 1233,1234)
 $network_list_id = 56; // int | Id of a network list
 $sort = 'asc'; // string
-$page = 1; // int
-$page_size = 10; // int
 
 try {
-    $result = $apiInstance->getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort, $page, $page_size);
+    $result = $apiInstance->getWAFEvents($waf_id, $hour_range, $domains_ids, $network_list_id, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WAFApi->getWAFEvents: ', $e->getMessage(), PHP_EOL;
@@ -244,11 +246,9 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **waf_id** | **int**| ID of WAF to return | |
 | **hour_range** | **int**| Last log hours since now (it must be a integer number ranging between 1 and 72) | |
-| **domains_ids** | **string**| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | |
+| **domains_ids** | [**int[]**](../Model/int.md)| Multiple domain&#39;s id (they must be separated by comma like 1233,1234) | |
 | **network_list_id** | **int**| Id of a network list | [optional] |
 | **sort** | **string**|  | [optional] [default to &#39;asc&#39;] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **page_size** | **int**|  | [optional] [default to 10] |
 
 ### Return type
 
