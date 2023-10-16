@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * NullArgumentBehavior
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * NullArgumentBehavior Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class NullArgumentBehavior implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'NullArgumentBehavior';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\SetCustomResponseArgument'
+        'argument' => 'int'
     ];
 
     /**
@@ -80,7 +80,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'argument' => false
+		'argument' => true
     ];
 
     /**
@@ -234,7 +234,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_SET_CUSTOM_RESPONSE = 'set_custom_response';
+    public const NAME_DENY = 'deny';
+    public const NAME_DROP = 'drop';
 
     /**
      * Gets allowable values of the enum
@@ -244,7 +245,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_SET_CUSTOM_RESPONSE,
+            self::NAME_DENY,
+            self::NAME_DROP,
         ];
     }
 
@@ -358,7 +360,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets argument
      *
-     * @return \OpenAPI\Client\Model\SetCustomResponseArgument|null
+     * @return int|null
      */
     public function getArgument()
     {
@@ -368,14 +370,21 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets argument
      *
-     * @param \OpenAPI\Client\Model\SetCustomResponseArgument|null $argument argument
+     * @param int|null $argument argument
      *
      * @return self
      */
     public function setArgument($argument)
     {
         if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'argument');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('argument', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['argument'] = $argument;
 
