@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * SetWAFRuleSetBehavior
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * SetWAFRuleSetBehavior Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetWAFRuleSetBehavior implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'SetWAFRuleSetBehavior';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\SetCustomResponseArgument'
+        'argument' => '\OpenAPI\Client\Model\SetWAFRuleSetBehaviorArgument'
     ];
 
     /**
@@ -234,7 +234,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_SET_CUSTOM_RESPONSE = 'set_custom_response';
+    public const NAME_SET_WAF_RULESET = 'set_waf_ruleset';
 
     /**
      * Gets allowable values of the enum
@@ -244,7 +244,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_SET_CUSTOM_RESPONSE,
+            self::NAME_SET_WAF_RULESET,
         ];
     }
 
@@ -358,7 +358,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets argument
      *
-     * @return \OpenAPI\Client\Model\SetCustomResponseArgument|null
+     * @return \OpenAPI\Client\Model\SetWAFRuleSetBehaviorArgument|null
      */
     public function getArgument()
     {
@@ -368,7 +368,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets argument
      *
-     * @param \OpenAPI\Client\Model\SetCustomResponseArgument|null $argument argument
+     * @param \OpenAPI\Client\Model\SetWAFRuleSetBehaviorArgument|null $argument argument
      *
      * @return self
      */

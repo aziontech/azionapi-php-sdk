@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * SetCustomResponseArgument
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * SetCustomResponseArgument Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetCustomResponseArgument implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'SetCustomResponse_argument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\SetCustomResponseArgument'
+        'status_code' => '\OpenAPI\Client\Model\SetCustomResponseArgumentStatusCode',
+        'content_type' => 'string',
+        'content_body' => 'string'
     ];
 
     /**
@@ -69,8 +70,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'argument' => null
+        'status_code' => null,
+        'content_type' => null,
+        'content_body' => null
     ];
 
     /**
@@ -79,8 +81,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'argument' => false
+        'status_code' => false,
+		'content_type' => false,
+		'content_body' => false
     ];
 
     /**
@@ -169,8 +172,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'argument' => 'argument'
+        'status_code' => 'status_code',
+        'content_type' => 'content_type',
+        'content_body' => 'content_body'
     ];
 
     /**
@@ -179,8 +183,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'argument' => 'setArgument'
+        'status_code' => 'setStatusCode',
+        'content_type' => 'setContentType',
+        'content_body' => 'setContentBody'
     ];
 
     /**
@@ -189,8 +194,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'argument' => 'getArgument'
+        'status_code' => 'getStatusCode',
+        'content_type' => 'getContentType',
+        'content_body' => 'getContentBody'
     ];
 
     /**
@@ -234,19 +240,6 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_SET_CUSTOM_RESPONSE = 'set_custom_response';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNameAllowableValues()
-    {
-        return [
-            self::NAME_SET_CUSTOM_RESPONSE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -263,8 +256,9 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('argument', $data ?? [], null);
+        $this->setIfExists('status_code', $data ?? [], null);
+        $this->setIfExists('content_type', $data ?? [], null);
+        $this->setIfExists('content_body', $data ?? [], null);
     }
 
     /**
@@ -294,15 +288,15 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['status_code'] === null) {
+            $invalidProperties[] = "'status_code' can't be null";
         }
-
+        if ($this->container['content_type'] === null) {
+            $invalidProperties[] = "'content_type' can't be null";
+        }
+        if ($this->container['content_body'] === null) {
+            $invalidProperties[] = "'content_body' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -319,65 +313,82 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets status_code
      *
-     * @return string|null
+     * @return \OpenAPI\Client\Model\SetCustomResponseArgumentStatusCode
      */
-    public function getName()
+    public function getStatusCode()
     {
-        return $this->container['name'];
+        return $this->container['status_code'];
     }
 
     /**
-     * Sets name
+     * Sets status_code
      *
-     * @param string|null $name name
+     * @param \OpenAPI\Client\Model\SetCustomResponseArgumentStatusCode $status_code status_code
      *
      * @return self
      */
-    public function setName($name)
+    public function setStatusCode($status_code)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($status_code)) {
+            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['name'] = $name;
+        $this->container['status_code'] = $status_code;
 
         return $this;
     }
 
     /**
-     * Gets argument
+     * Gets content_type
      *
-     * @return \OpenAPI\Client\Model\SetCustomResponseArgument|null
+     * @return string
      */
-    public function getArgument()
+    public function getContentType()
     {
-        return $this->container['argument'];
+        return $this->container['content_type'];
     }
 
     /**
-     * Sets argument
+     * Sets content_type
      *
-     * @param \OpenAPI\Client\Model\SetCustomResponseArgument|null $argument argument
+     * @param string $content_type content_type
      *
      * @return self
      */
-    public function setArgument($argument)
+    public function setContentType($content_type)
     {
-        if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
+        if (is_null($content_type)) {
+            throw new \InvalidArgumentException('non-nullable content_type cannot be null');
         }
-        $this->container['argument'] = $argument;
+        $this->container['content_type'] = $content_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_body
+     *
+     * @return string
+     */
+    public function getContentBody()
+    {
+        return $this->container['content_body'];
+    }
+
+    /**
+     * Sets content_body
+     *
+     * @param string $content_body content_body
+     *
+     * @return self
+     */
+    public function setContentBody($content_body)
+    {
+        if (is_null($content_body)) {
+            throw new \InvalidArgumentException('non-nullable content_body cannot be null');
+        }
+        $this->container['content_body'] = $content_body;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * SetCustomResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * SetCustomResponse Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetCustomResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'SetCustomResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

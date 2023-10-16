@@ -1,6 +1,6 @@
 <?php
 /**
- * Behaviors
+ * SetWAFRuleSetAndWafModeBehaviorArgument
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * Behaviors Class Doc Comment
+ * SetWAFRuleSetAndWafModeBehaviorArgument Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetWAFRuleSetAndWafModeBehaviorArgument implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Behaviors';
+    protected static $openAPIModelName = 'SetWAFRuleSetAndWafModeBehavior_argument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'argument' => '\OpenAPI\Client\Model\SetCustomResponseArgument'
+        'set_waf_ruleset_and_waf_mode' => 'int',
+        'waf_mode' => 'string'
     ];
 
     /**
@@ -69,8 +69,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'argument' => null
+        'set_waf_ruleset_and_waf_mode' => null,
+        'waf_mode' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'argument' => false
+        'set_waf_ruleset_and_waf_mode' => false,
+		'waf_mode' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'argument' => 'argument'
+        'set_waf_ruleset_and_waf_mode' => 'set_waf_ruleset_and_waf_mode',
+        'waf_mode' => 'waf_mode'
     ];
 
     /**
@@ -179,8 +179,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'argument' => 'setArgument'
+        'set_waf_ruleset_and_waf_mode' => 'setSetWafRulesetAndWafMode',
+        'waf_mode' => 'setWafMode'
     ];
 
     /**
@@ -189,8 +189,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'argument' => 'getArgument'
+        'set_waf_ruleset_and_waf_mode' => 'getSetWafRulesetAndWafMode',
+        'waf_mode' => 'getWafMode'
     ];
 
     /**
@@ -234,17 +234,19 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const NAME_SET_CUSTOM_RESPONSE = 'set_custom_response';
+    public const WAF_MODE_LEARNING = 'learning';
+    public const WAF_MODE_BLOCKING = 'blocking';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getNameAllowableValues()
+    public function getWafModeAllowableValues()
     {
         return [
-            self::NAME_SET_CUSTOM_RESPONSE,
+            self::WAF_MODE_LEARNING,
+            self::WAF_MODE_BLOCKING,
         ];
     }
 
@@ -263,8 +265,8 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('argument', $data ?? [], null);
+        $this->setIfExists('set_waf_ruleset_and_waf_mode', $data ?? [], null);
+        $this->setIfExists('waf_mode', $data ?? [], null);
     }
 
     /**
@@ -294,11 +296,21 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
+        if ($this->container['set_waf_ruleset_and_waf_mode'] === null) {
+            $invalidProperties[] = "'set_waf_ruleset_and_waf_mode' can't be null";
+        }
+        if (($this->container['set_waf_ruleset_and_waf_mode'] < 1)) {
+            $invalidProperties[] = "invalid value for 'set_waf_ruleset_and_waf_mode', must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['waf_mode'] === null) {
+            $invalidProperties[] = "'waf_mode' can't be null";
+        }
+        $allowedValues = $this->getWafModeAllowableValues();
+        if (!is_null($this->container['waf_mode']) && !in_array($this->container['waf_mode'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
+                "invalid value '%s' for 'waf_mode', must be one of '%s'",
+                $this->container['waf_mode'],
                 implode("', '", $allowedValues)
             );
         }
@@ -319,65 +331,70 @@ class Behaviors implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets set_waf_ruleset_and_waf_mode
      *
-     * @return string|null
+     * @return int
      */
-    public function getName()
+    public function getSetWafRulesetAndWafMode()
     {
-        return $this->container['name'];
+        return $this->container['set_waf_ruleset_and_waf_mode'];
     }
 
     /**
-     * Sets name
+     * Sets set_waf_ruleset_and_waf_mode
      *
-     * @param string|null $name name
+     * @param int $set_waf_ruleset_and_waf_mode set_waf_ruleset_and_waf_mode
      *
      * @return self
      */
-    public function setName($name)
+    public function setSetWafRulesetAndWafMode($set_waf_ruleset_and_waf_mode)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($set_waf_ruleset_and_waf_mode)) {
+            throw new \InvalidArgumentException('non-nullable set_waf_ruleset_and_waf_mode cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (($set_waf_ruleset_and_waf_mode < 1)) {
+            throw new \InvalidArgumentException('invalid value for $set_waf_ruleset_and_waf_mode when calling SetWAFRuleSetAndWafModeBehaviorArgument., must be bigger than or equal to 1.');
         }
-        $this->container['name'] = $name;
+
+        $this->container['set_waf_ruleset_and_waf_mode'] = $set_waf_ruleset_and_waf_mode;
 
         return $this;
     }
 
     /**
-     * Gets argument
+     * Gets waf_mode
      *
-     * @return \OpenAPI\Client\Model\SetCustomResponseArgument|null
+     * @return string
      */
-    public function getArgument()
+    public function getWafMode()
     {
-        return $this->container['argument'];
+        return $this->container['waf_mode'];
     }
 
     /**
-     * Sets argument
+     * Sets waf_mode
      *
-     * @param \OpenAPI\Client\Model\SetCustomResponseArgument|null $argument argument
+     * @param string $waf_mode waf_mode
      *
      * @return self
      */
-    public function setArgument($argument)
+    public function setWafMode($waf_mode)
     {
-        if (is_null($argument)) {
-            throw new \InvalidArgumentException('non-nullable argument cannot be null');
+        if (is_null($waf_mode)) {
+            throw new \InvalidArgumentException('non-nullable waf_mode cannot be null');
         }
-        $this->container['argument'] = $argument;
+        $allowedValues = $this->getWafModeAllowableValues();
+        if (!in_array($waf_mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'waf_mode', must be one of '%s'",
+                    $waf_mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['waf_mode'] = $waf_mode;
 
         return $this;
     }
