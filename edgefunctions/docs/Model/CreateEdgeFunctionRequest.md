@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **language** | **string** |  | [optional]
 **code** | **string** |  | [optional]
 **json_args** | **mixed** |  | [optional]
+**initiator_type** | **string** |  | [optional]
 **active** | **bool** |  | [optional]
 **is_proprietary_code** | **bool** |  | [optional]
 
