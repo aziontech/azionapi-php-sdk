@@ -74,16 +74,3 @@ lib/Model/UpdateEdgeFirewallRequest.php
 lib/Model/Variables.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/NullArgumentBehaviorTest.php
-test/Model/SetCustomResponseArgumentStatusCodeTest.php
-test/Model/SetCustomResponseArgumentTest.php
-test/Model/SetCustomResponseTest.php
-test/Model/SetRateLimitBehaviorArgumentAverageRateLimitTest.php
-test/Model/SetRateLimitBehaviorArgumentTest.php
-test/Model/SetRateLimitBehaviorTest.php
-test/Model/SetWAFRuleSetAndWafModeBehaviorArgumentTest.php
-test/Model/SetWAFRuleSetAndWafModeBehaviorTest.php
-test/Model/SetWAFRuleSetBehaviorArgumentTest.php
-test/Model/SetWAFRuleSetBehaviorTest.php
-test/Model/SimpleArgumentBehaviorArgumentTest.php
-test/Model/SimpleArgumentBehaviorTest.php
