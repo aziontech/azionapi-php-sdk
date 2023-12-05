@@ -140,7 +140,3 @@ lib/Model/UpdateOriginsRequest.php
 lib/Model/UpdateRulesEngineRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/RulesEngineBehaviorEntryTest.php
-test/Model/RulesEngineBehaviorObjectTargetTest.php
-test/Model/RulesEngineBehaviorObjectTest.php
-test/Model/RulesEngineBehaviorStringTest.php
