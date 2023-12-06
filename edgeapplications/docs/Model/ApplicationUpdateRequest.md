@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **active** | **bool** |  | [optional]
 **debug_rules** | **bool** |  | [optional]
 **application_acceleration** | **bool** |  | [optional]
-**caching** | **bool** |  | [optional]
 **device_detection** | **bool** |  | [optional]
 **edge_firewall** | **bool** |  | [optional]
 **edge_functions** | **bool** |  | [optional]

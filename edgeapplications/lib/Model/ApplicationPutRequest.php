@@ -64,7 +64,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'minimum_tls_version' => 'string',
         'active' => 'bool',
         'application_acceleration' => 'bool',
-        'caching' => 'bool',
         'device_detection' => 'bool',
         'edge_firewall' => 'bool',
         'edge_functions' => 'bool',
@@ -94,7 +93,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'minimum_tls_version' => null,
         'active' => null,
         'application_acceleration' => null,
-        'caching' => null,
         'device_detection' => null,
         'edge_firewall' => null,
         'edge_functions' => null,
@@ -122,7 +120,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 		'minimum_tls_version' => false,
 		'active' => false,
 		'application_acceleration' => false,
-		'caching' => false,
 		'device_detection' => false,
 		'edge_firewall' => false,
 		'edge_functions' => false,
@@ -230,7 +227,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'minimum_tls_version' => 'minimum_tls_version',
         'active' => 'active',
         'application_acceleration' => 'application_acceleration',
-        'caching' => 'caching',
         'device_detection' => 'device_detection',
         'edge_firewall' => 'edge_firewall',
         'edge_functions' => 'edge_functions',
@@ -258,7 +254,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'minimum_tls_version' => 'setMinimumTlsVersion',
         'active' => 'setActive',
         'application_acceleration' => 'setApplicationAcceleration',
-        'caching' => 'setCaching',
         'device_detection' => 'setDeviceDetection',
         'edge_firewall' => 'setEdgeFirewall',
         'edge_functions' => 'setEdgeFunctions',
@@ -286,7 +281,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'minimum_tls_version' => 'getMinimumTlsVersion',
         'active' => 'getActive',
         'application_acceleration' => 'getApplicationAcceleration',
-        'caching' => 'getCaching',
         'device_detection' => 'getDeviceDetection',
         'edge_firewall' => 'getEdgeFirewall',
         'edge_functions' => 'getEdgeFunctions',
@@ -365,7 +359,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('minimum_tls_version', $data ?? [], null);
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('application_acceleration', $data ?? [], null);
-        $this->setIfExists('caching', $data ?? [], null);
         $this->setIfExists('device_detection', $data ?? [], null);
         $this->setIfExists('edge_firewall', $data ?? [], null);
         $this->setIfExists('edge_functions', $data ?? [], null);
@@ -624,33 +617,6 @@ class ApplicationPutRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable application_acceleration cannot be null');
         }
         $this->container['application_acceleration'] = $application_acceleration;
-
-        return $this;
-    }
-
-    /**
-     * Gets caching
-     *
-     * @return bool|null
-     */
-    public function getCaching()
-    {
-        return $this->container['caching'];
-    }
-
-    /**
-     * Sets caching
-     *
-     * @param bool|null $caching caching
-     *
-     * @return self
-     */
-    public function setCaching($caching)
-    {
-        if (is_null($caching)) {
-            throw new \InvalidArgumentException('non-nullable caching cannot be null');
-        }
-        $this->container['caching'] = $caching;
 
         return $this;
     }

@@ -65,7 +65,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'active' => 'bool',
         'debug_rules' => 'bool',
         'application_acceleration' => 'bool',
-        'caching' => 'bool',
         'device_detection' => 'bool',
         'edge_firewall' => 'bool',
         'edge_functions' => 'bool',
@@ -93,7 +92,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'active' => null,
         'debug_rules' => null,
         'application_acceleration' => null,
-        'caching' => null,
         'device_detection' => null,
         'edge_firewall' => null,
         'edge_functions' => null,
@@ -119,7 +117,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
 		'active' => false,
 		'debug_rules' => false,
 		'application_acceleration' => false,
-		'caching' => false,
 		'device_detection' => false,
 		'edge_firewall' => false,
 		'edge_functions' => false,
@@ -225,7 +222,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'active' => 'active',
         'debug_rules' => 'debug_rules',
         'application_acceleration' => 'application_acceleration',
-        'caching' => 'caching',
         'device_detection' => 'device_detection',
         'edge_firewall' => 'edge_firewall',
         'edge_functions' => 'edge_functions',
@@ -251,7 +247,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'active' => 'setActive',
         'debug_rules' => 'setDebugRules',
         'application_acceleration' => 'setApplicationAcceleration',
-        'caching' => 'setCaching',
         'device_detection' => 'setDeviceDetection',
         'edge_firewall' => 'setEdgeFirewall',
         'edge_functions' => 'setEdgeFunctions',
@@ -277,7 +272,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         'active' => 'getActive',
         'debug_rules' => 'getDebugRules',
         'application_acceleration' => 'getApplicationAcceleration',
-        'caching' => 'getCaching',
         'device_detection' => 'getDeviceDetection',
         'edge_firewall' => 'getEdgeFirewall',
         'edge_functions' => 'getEdgeFunctions',
@@ -354,7 +348,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('active', $data ?? [], null);
         $this->setIfExists('debug_rules', $data ?? [], null);
         $this->setIfExists('application_acceleration', $data ?? [], null);
-        $this->setIfExists('caching', $data ?? [], null);
         $this->setIfExists('device_detection', $data ?? [], null);
         $this->setIfExists('edge_firewall', $data ?? [], null);
         $this->setIfExists('edge_functions', $data ?? [], null);
@@ -634,33 +627,6 @@ class ApplicationUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable application_acceleration cannot be null');
         }
         $this->container['application_acceleration'] = $application_acceleration;
-
-        return $this;
-    }
-
-    /**
-     * Gets caching
-     *
-     * @return bool|null
-     */
-    public function getCaching()
-    {
-        return $this->container['caching'];
-    }
-
-    /**
-     * Sets caching
-     *
-     * @param bool|null $caching caching
-     *
-     * @return self
-     */
-    public function setCaching($caching)
-    {
-        if (is_null($caching)) {
-            throw new \InvalidArgumentException('non-nullable caching cannot be null');
-        }
-        $this->container['caching'] = $caching;
 
         return $this;
     }
