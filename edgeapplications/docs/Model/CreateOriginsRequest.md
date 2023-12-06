@@ -14,5 +14,7 @@ Name | Type | Description | Notes
 **hmac_region_name** | **string** |  | [optional]
 **hmac_access_key** | **string** |  | [optional]
 **hmac_secret_key** | **string** |  | [optional]
+**bucket** | **string** |  | [optional]
+**prefix** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
