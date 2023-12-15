@@ -55,7 +55,7 @@ $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Au
 // $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new OpenAPI\Client\Api\BucketsApi(
+$apiInstance = new OpenAPI\Client\Api\StorageApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -64,10 +64,10 @@ $apiInstance = new OpenAPI\Client\Api\BucketsApi(
 $bucket_create = new \OpenAPI\Client\Model\BucketCreate(); // \OpenAPI\Client\Model\BucketCreate
 
 try {
-    $result = $apiInstance->apiV1StorageBucketsCreate($bucket_create);
+    $result = $apiInstance->storageApiBucketsCreate($bucket_create);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BucketsApi->apiV1StorageBucketsCreate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling StorageApi->storageApiBucketsCreate: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -78,22 +78,29 @@ All URIs are relative to *https://api.azion.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*BucketsApi* | [**apiV1StorageBucketsCreate**](docs/Api/BucketsApi.md#apiv1storagebucketscreate) | **POST** /v4/storage/buckets | /v4/storage/buckets
-*BucketsApi* | [**apiV1StorageBucketsDestroy**](docs/Api/BucketsApi.md#apiv1storagebucketsdestroy) | **DELETE** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
-*BucketsApi* | [**apiV1StorageBucketsList**](docs/Api/BucketsApi.md#apiv1storagebucketslist) | **GET** /v4/storage/buckets | /v4/storage/buckets
-*BucketsApi* | [**apiV1StorageBucketsPartialUpdate**](docs/Api/BucketsApi.md#apiv1storagebucketspartialupdate) | **PATCH** /v4/storage/buckets/{name} | /v4/storage/buckets/:name
+*StorageApi* | [**storageApiBucketsCreate**](docs/Api/StorageApi.md#storageapibucketscreate) | **POST** /v4/storage/buckets | Create a new bucket
+*StorageApi* | [**storageApiBucketsDestroy**](docs/Api/StorageApi.md#storageapibucketsdestroy) | **DELETE** /v4/storage/buckets/{name} | Delete a bucket
+*StorageApi* | [**storageApiBucketsList**](docs/Api/StorageApi.md#storageapibucketslist) | **GET** /v4/storage/buckets | List buckets
+*StorageApi* | [**storageApiBucketsObjectsCreate**](docs/Api/StorageApi.md#storageapibucketsobjectscreate) | **POST** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Create new object key
+*StorageApi* | [**storageApiBucketsObjectsDestroy**](docs/Api/StorageApi.md#storageapibucketsobjectsdestroy) | **DELETE** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Delete object key
+*StorageApi* | [**storageApiBucketsObjectsList**](docs/Api/StorageApi.md#storageapibucketsobjectslist) | **GET** /v4/storage/buckets/{bucket_name}/objects | List buckets objects
+*StorageApi* | [**storageApiBucketsObjectsRetrieve**](docs/Api/StorageApi.md#storageapibucketsobjectsretrieve) | **GET** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object
+*StorageApi* | [**storageApiBucketsObjectsUpdate**](docs/Api/StorageApi.md#storageapibucketsobjectsupdate) | **PUT** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key
+*StorageApi* | [**storageApiBucketsPartialUpdate**](docs/Api/StorageApi.md#storageapibucketspartialupdate) | **PATCH** /v4/storage/buckets/{name} | Update bucket info
 
 ## Models
 
 - [Bucket](docs/Model/Bucket.md)
 - [BucketCreate](docs/Model/BucketCreate.md)
+- [BucketObject](docs/Model/BucketObject.md)
 - [EdgeAccessEnum](docs/Model/EdgeAccessEnum.md)
+- [ObjectResponseData](docs/Model/ObjectResponseData.md)
 - [PaginatedBucketList](docs/Model/PaginatedBucketList.md)
-- [PatchedBucket](docs/Model/PatchedBucket.md)
+- [PaginatedBucketObjectList](docs/Model/PaginatedBucketObjectList.md)
 - [ResponseBucket](docs/Model/ResponseBucket.md)
-- [ResponseDeleteBucket](docs/Model/ResponseDeleteBucket.md)
-- [ResponseDeleteBucketData](docs/Model/ResponseDeleteBucketData.md)
 - [StateEnum](docs/Model/StateEnum.md)
+- [SuccessBucketOperation](docs/Model/SuccessBucketOperation.md)
+- [SuccessObjectOperation](docs/Model/SuccessObjectOperation.md)
 
 ## Authorization
 
