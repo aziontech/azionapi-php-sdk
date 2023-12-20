@@ -354,12 +354,6 @@ class UpdateOriginsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['addresses'] === null) {
-            $invalidProperties[] = "'addresses' can't be null";
-        }
-        if ($this->container['host_header'] === null) {
-            $invalidProperties[] = "'host_header' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -432,7 +426,7 @@ class UpdateOriginsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets addresses
      *
-     * @return \OpenAPI\Client\Model\CreateOriginsRequestAddresses[]
+     * @return \OpenAPI\Client\Model\CreateOriginsRequestAddresses[]|null
      */
     public function getAddresses()
     {
@@ -442,7 +436,7 @@ class UpdateOriginsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets addresses
      *
-     * @param \OpenAPI\Client\Model\CreateOriginsRequestAddresses[] $addresses addresses
+     * @param \OpenAPI\Client\Model\CreateOriginsRequestAddresses[]|null $addresses addresses
      *
      * @return self
      */
@@ -486,7 +480,7 @@ class UpdateOriginsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets host_header
      *
-     * @return string
+     * @return string|null
      */
     public function getHostHeader()
     {
@@ -496,7 +490,7 @@ class UpdateOriginsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets host_header
      *
-     * @param string $host_header host_header
+     * @param string|null $host_header host_header
      *
      * @return self
      */

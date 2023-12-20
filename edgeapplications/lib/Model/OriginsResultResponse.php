@@ -393,53 +393,8 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['origin_id'] === null) {
-            $invalidProperties[] = "'origin_id' can't be null";
-        }
-        if ($this->container['origin_key'] === null) {
-            $invalidProperties[] = "'origin_key' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['origin_type'] === null) {
-            $invalidProperties[] = "'origin_type' can't be null";
-        }
-        if ($this->container['addresses'] === null) {
-            $invalidProperties[] = "'addresses' can't be null";
-        }
-        if ($this->container['origin_protocol_policy'] === null) {
-            $invalidProperties[] = "'origin_protocol_policy' can't be null";
-        }
-        if ($this->container['is_origin_redirection_enabled'] === null) {
-            $invalidProperties[] = "'is_origin_redirection_enabled' can't be null";
-        }
-        if ($this->container['host_header'] === null) {
-            $invalidProperties[] = "'host_header' can't be null";
-        }
-        if ($this->container['method'] === null) {
-            $invalidProperties[] = "'method' can't be null";
-        }
-        if ($this->container['origin_path'] === null) {
-            $invalidProperties[] = "'origin_path' can't be null";
-        }
-        if ($this->container['connection_timeout'] === null) {
-            $invalidProperties[] = "'connection_timeout' can't be null";
-        }
-        if ($this->container['timeout_between_bytes'] === null) {
-            $invalidProperties[] = "'timeout_between_bytes' can't be null";
-        }
-        if ($this->container['hmac_authentication'] === null) {
-            $invalidProperties[] = "'hmac_authentication' can't be null";
-        }
-        if ($this->container['hmac_region_name'] === null) {
-            $invalidProperties[] = "'hmac_region_name' can't be null";
-        }
-        if ($this->container['hmac_access_key'] === null) {
-            $invalidProperties[] = "'hmac_access_key' can't be null";
-        }
-        if ($this->container['hmac_secret_key'] === null) {
-            $invalidProperties[] = "'hmac_secret_key' can't be null";
         }
         return $invalidProperties;
     }
@@ -459,7 +414,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets origin_id
      *
-     * @return int
+     * @return int|null
      */
     public function getOriginId()
     {
@@ -469,7 +424,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets origin_id
      *
-     * @param int $origin_id origin_id
+     * @param int|null $origin_id origin_id
      *
      * @return self
      */
@@ -486,7 +441,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets origin_key
      *
-     * @return string
+     * @return string|null
      */
     public function getOriginKey()
     {
@@ -496,7 +451,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets origin_key
      *
-     * @param string $origin_key origin_key
+     * @param string|null $origin_key origin_key
      *
      * @return self
      */
@@ -540,7 +495,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets origin_type
      *
-     * @return string
+     * @return string|null
      */
     public function getOriginType()
     {
@@ -550,7 +505,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets origin_type
      *
-     * @param string $origin_type origin_type
+     * @param string|null $origin_type origin_type
      *
      * @return self
      */
@@ -567,7 +522,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets addresses
      *
-     * @return \OpenAPI\Client\Model\OriginsResultResponseAddresses[]
+     * @return \OpenAPI\Client\Model\OriginsResultResponseAddresses[]|null
      */
     public function getAddresses()
     {
@@ -577,7 +532,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets addresses
      *
-     * @param \OpenAPI\Client\Model\OriginsResultResponseAddresses[] $addresses addresses
+     * @param \OpenAPI\Client\Model\OriginsResultResponseAddresses[]|null $addresses addresses
      *
      * @return self
      */
@@ -594,7 +549,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets origin_protocol_policy
      *
-     * @return string
+     * @return string|null
      */
     public function getOriginProtocolPolicy()
     {
@@ -604,7 +559,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets origin_protocol_policy
      *
-     * @param string $origin_protocol_policy origin_protocol_policy
+     * @param string|null $origin_protocol_policy origin_protocol_policy
      *
      * @return self
      */
@@ -621,7 +576,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets is_origin_redirection_enabled
      *
-     * @return bool
+     * @return bool|null
      */
     public function getIsOriginRedirectionEnabled()
     {
@@ -631,7 +586,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_origin_redirection_enabled
      *
-     * @param bool $is_origin_redirection_enabled is_origin_redirection_enabled
+     * @param bool|null $is_origin_redirection_enabled is_origin_redirection_enabled
      *
      * @return self
      */
@@ -648,7 +603,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets host_header
      *
-     * @return string
+     * @return string|null
      */
     public function getHostHeader()
     {
@@ -658,7 +613,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets host_header
      *
-     * @param string $host_header host_header
+     * @param string|null $host_header host_header
      *
      * @return self
      */
@@ -675,7 +630,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets method
      *
-     * @return string
+     * @return string|null
      */
     public function getMethod()
     {
@@ -685,7 +640,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets method
      *
-     * @param string $method method
+     * @param string|null $method method
      *
      * @return self
      */
@@ -702,7 +657,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets origin_path
      *
-     * @return string
+     * @return string|null
      */
     public function getOriginPath()
     {
@@ -712,7 +667,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets origin_path
      *
-     * @param string $origin_path origin_path
+     * @param string|null $origin_path origin_path
      *
      * @return self
      */
@@ -729,7 +684,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets connection_timeout
      *
-     * @return int
+     * @return int|null
      */
     public function getConnectionTimeout()
     {
@@ -739,7 +694,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets connection_timeout
      *
-     * @param int $connection_timeout connection_timeout
+     * @param int|null $connection_timeout connection_timeout
      *
      * @return self
      */
@@ -756,7 +711,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets timeout_between_bytes
      *
-     * @return int
+     * @return int|null
      */
     public function getTimeoutBetweenBytes()
     {
@@ -766,7 +721,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets timeout_between_bytes
      *
-     * @param int $timeout_between_bytes timeout_between_bytes
+     * @param int|null $timeout_between_bytes timeout_between_bytes
      *
      * @return self
      */
@@ -783,7 +738,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hmac_authentication
      *
-     * @return bool
+     * @return bool|null
      */
     public function getHmacAuthentication()
     {
@@ -793,7 +748,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hmac_authentication
      *
-     * @param bool $hmac_authentication hmac_authentication
+     * @param bool|null $hmac_authentication hmac_authentication
      *
      * @return self
      */
@@ -810,7 +765,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hmac_region_name
      *
-     * @return string
+     * @return string|null
      */
     public function getHmacRegionName()
     {
@@ -820,7 +775,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hmac_region_name
      *
-     * @param string $hmac_region_name hmac_region_name
+     * @param string|null $hmac_region_name hmac_region_name
      *
      * @return self
      */
@@ -837,7 +792,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hmac_access_key
      *
-     * @return string
+     * @return string|null
      */
     public function getHmacAccessKey()
     {
@@ -847,7 +802,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hmac_access_key
      *
-     * @param string $hmac_access_key hmac_access_key
+     * @param string|null $hmac_access_key hmac_access_key
      *
      * @return self
      */
@@ -864,7 +819,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hmac_secret_key
      *
-     * @return string
+     * @return string|null
      */
     public function getHmacSecretKey()
     {
@@ -874,7 +829,7 @@ class OriginsResultResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hmac_secret_key
      *
-     * @param string $hmac_secret_key hmac_secret_key
+     * @param string|null $hmac_secret_key hmac_secret_key
      *
      * @return self
      */
