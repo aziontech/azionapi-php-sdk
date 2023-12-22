@@ -1135,6 +1135,7 @@ class StorageApi
      *
      * @param  string $bucket_name bucket_name (required)
      * @param  string $object_key object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsCreate'] to see the possible values for this operation
      *
@@ -1142,9 +1143,9 @@ class StorageApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\SuccessObjectOperation
      */
-    public function storageApiBucketsObjectsCreate($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
+    public function storageApiBucketsObjectsCreate($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
     {
-        list($response) = $this->storageApiBucketsObjectsCreateWithHttpInfo($bucket_name, $object_key, $body, $contentType);
+        list($response) = $this->storageApiBucketsObjectsCreateWithHttpInfo($bucket_name, $object_key, $content_type, $body, $contentType);
         return $response;
     }
 
@@ -1155,6 +1156,7 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsCreate'] to see the possible values for this operation
      *
@@ -1162,9 +1164,9 @@ class StorageApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\SuccessObjectOperation, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storageApiBucketsObjectsCreateWithHttpInfo($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
+    public function storageApiBucketsObjectsCreateWithHttpInfo($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
     {
-        $request = $this->storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $body, $contentType);
+        $request = $this->storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $content_type, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1281,15 +1283,16 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsCreate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsCreateAsync($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
+    public function storageApiBucketsObjectsCreateAsync($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
     {
-        return $this->storageApiBucketsObjectsCreateAsyncWithHttpInfo($bucket_name, $object_key, $body, $contentType)
+        return $this->storageApiBucketsObjectsCreateAsyncWithHttpInfo($bucket_name, $object_key, $content_type, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1304,16 +1307,17 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsCreate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsCreateAsyncWithHttpInfo($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
+    public function storageApiBucketsObjectsCreateAsyncWithHttpInfo($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SuccessObjectOperation';
-        $request = $this->storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $body, $contentType);
+        $request = $this->storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $content_type, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1356,13 +1360,14 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsCreate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
+    public function storageApiBucketsObjectsCreateRequest($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsCreate'][0])
     {
 
         // verify the required parameter 'bucket_name' is set
@@ -1381,6 +1386,7 @@ class StorageApi
 
 
 
+
         $resourcePath = '/v4/storage/buckets/{bucket_name}/objects/{object_key}';
         $formParams = [];
         $queryParams = [];
@@ -1389,6 +1395,10 @@ class StorageApi
         $multipart = false;
 
 
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
+        }
 
         // path params
         if ($bucket_name !== null) {
@@ -2486,6 +2496,7 @@ class StorageApi
      *
      * @param  string $bucket_name bucket_name (required)
      * @param  string $object_key object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsUpdate'] to see the possible values for this operation
      *
@@ -2493,9 +2504,9 @@ class StorageApi
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\SuccessObjectOperation
      */
-    public function storageApiBucketsObjectsUpdate($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
+    public function storageApiBucketsObjectsUpdate($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
     {
-        list($response) = $this->storageApiBucketsObjectsUpdateWithHttpInfo($bucket_name, $object_key, $body, $contentType);
+        list($response) = $this->storageApiBucketsObjectsUpdateWithHttpInfo($bucket_name, $object_key, $content_type, $body, $contentType);
         return $response;
     }
 
@@ -2506,6 +2517,7 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsUpdate'] to see the possible values for this operation
      *
@@ -2513,9 +2525,9 @@ class StorageApi
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\SuccessObjectOperation, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storageApiBucketsObjectsUpdateWithHttpInfo($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
+    public function storageApiBucketsObjectsUpdateWithHttpInfo($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
     {
-        $request = $this->storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $body, $contentType);
+        $request = $this->storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $content_type, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2632,15 +2644,16 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsUpdateAsync($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
+    public function storageApiBucketsObjectsUpdateAsync($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
     {
-        return $this->storageApiBucketsObjectsUpdateAsyncWithHttpInfo($bucket_name, $object_key, $body, $contentType)
+        return $this->storageApiBucketsObjectsUpdateAsyncWithHttpInfo($bucket_name, $object_key, $content_type, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2655,16 +2668,17 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsUpdateAsyncWithHttpInfo($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
+    public function storageApiBucketsObjectsUpdateAsyncWithHttpInfo($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
     {
         $returnType = '\OpenAPI\Client\Model\SuccessObjectOperation';
-        $request = $this->storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $body, $contentType);
+        $request = $this->storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $content_type, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2707,13 +2721,14 @@ class StorageApi
      *
      * @param  string $bucket_name (required)
      * @param  string $object_key (required)
+     * @param  string $content_type The content type of the file (Example: text/plain). (optional)
      * @param  \SplFileObject $body (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
+    public function storageApiBucketsObjectsUpdateRequest($bucket_name, $object_key, $content_type = null, $body = null, string $contentType = self::contentTypes['storageApiBucketsObjectsUpdate'][0])
     {
 
         // verify the required parameter 'bucket_name' is set
@@ -2732,6 +2747,7 @@ class StorageApi
 
 
 
+
         $resourcePath = '/v4/storage/buckets/{bucket_name}/objects/{object_key}';
         $formParams = [];
         $queryParams = [];
@@ -2740,6 +2756,10 @@ class StorageApi
         $multipart = false;
 
 
+        // header params
+        if ($content_type !== null) {
+            $headerParams['Content-Type'] = ObjectSerializer::toHeaderValue($content_type);
+        }
 
         // path params
         if ($bucket_name !== null) {

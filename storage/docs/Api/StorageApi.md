@@ -206,7 +206,7 @@ try {
 ## `storageApiBucketsObjectsCreate()`
 
 ```php
-storageApiBucketsObjectsCreate($bucket_name, $object_key, $body): \OpenAPI\Client\Model\SuccessObjectOperation
+storageApiBucketsObjectsCreate($bucket_name, $object_key, $content_type, $body): \OpenAPI\Client\Model\SuccessObjectOperation
 ```
 
 Create new object key
@@ -234,10 +234,11 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
 );
 $bucket_name = 'bucket_name_example'; // string
 $object_key = 'object_key_example'; // string
+$content_type = 'content_type_example'; // string | The content type of the file (Example: text/plain).
 $body = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsCreate($bucket_name, $object_key, $body);
+    $result = $apiInstance->storageApiBucketsObjectsCreate($bucket_name, $object_key, $content_type, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsCreate: ', $e->getMessage(), PHP_EOL;
@@ -250,6 +251,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **bucket_name** | **string**|  | |
 | **object_key** | **string**|  | |
+| **content_type** | **string**| The content type of the file (Example: text/plain). | [optional] |
 | **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
@@ -466,7 +468,7 @@ try {
 ## `storageApiBucketsObjectsUpdate()`
 
 ```php
-storageApiBucketsObjectsUpdate($bucket_name, $object_key, $body): \OpenAPI\Client\Model\SuccessObjectOperation
+storageApiBucketsObjectsUpdate($bucket_name, $object_key, $content_type, $body): \OpenAPI\Client\Model\SuccessObjectOperation
 ```
 
 Update the object key
@@ -494,10 +496,11 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
 );
 $bucket_name = 'bucket_name_example'; // string
 $object_key = 'object_key_example'; // string
+$content_type = 'content_type_example'; // string | The content type of the file (Example: text/plain).
 $body = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsUpdate($bucket_name, $object_key, $body);
+    $result = $apiInstance->storageApiBucketsObjectsUpdate($bucket_name, $object_key, $content_type, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -510,6 +513,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **bucket_name** | **string**|  | |
 | **object_key** | **string**|  | |
+| **content_type** | **string**| The content type of the file (Example: text/plain). | [optional] |
 | **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
