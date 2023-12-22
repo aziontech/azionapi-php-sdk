@@ -34,9 +34,3 @@ lib/Model/SuccessBucketOperation.php
 lib/Model/SuccessObjectOperation.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/StorageApiTest.php
-test/Model/BucketObjectTest.php
-test/Model/ObjectResponseDataTest.php
-test/Model/PaginatedBucketObjectListTest.php
-test/Model/SuccessBucketOperationTest.php
-test/Model/SuccessObjectOperationTest.php
