@@ -206,7 +206,7 @@ try {
 ## `storageApiBucketsObjectsCreate()`
 
 ```php
-storageApiBucketsObjectsCreate($bucket_name, $object_key, $request_body): \OpenAPI\Client\Model\SuccessObjectOperation
+storageApiBucketsObjectsCreate($bucket_name, $object_key, $body): \OpenAPI\Client\Model\SuccessObjectOperation
 ```
 
 Create new object key
@@ -234,10 +234,10 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
 );
 $bucket_name = 'bucket_name_example'; // string
 $object_key = 'object_key_example'; // string
-$request_body = NULL; // array<string,mixed>
+$body = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsCreate($bucket_name, $object_key, $request_body);
+    $result = $apiInstance->storageApiBucketsObjectsCreate($bucket_name, $object_key, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsCreate: ', $e->getMessage(), PHP_EOL;
@@ -250,7 +250,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **bucket_name** | **string**|  | |
 | **object_key** | **string**|  | |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | [optional] |
+| **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
 
@@ -466,7 +466,7 @@ try {
 ## `storageApiBucketsObjectsUpdate()`
 
 ```php
-storageApiBucketsObjectsUpdate($bucket_name, $object_key, $request_body): \OpenAPI\Client\Model\SuccessObjectOperation
+storageApiBucketsObjectsUpdate($bucket_name, $object_key, $body): \OpenAPI\Client\Model\SuccessObjectOperation
 ```
 
 Update the object key
@@ -494,10 +494,10 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
 );
 $bucket_name = 'bucket_name_example'; // string
 $object_key = 'object_key_example'; // string
-$request_body = NULL; // array<string,mixed>
+$body = "/path/to/file.txt"; // \SplFileObject
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsUpdate($bucket_name, $object_key, $request_body);
+    $result = $apiInstance->storageApiBucketsObjectsUpdate($bucket_name, $object_key, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsUpdate: ', $e->getMessage(), PHP_EOL;
@@ -510,7 +510,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **bucket_name** | **string**|  | |
 | **object_key** | **string**|  | |
-| **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  | [optional] |
+| **body** | **\SplFileObject****\SplFileObject**|  | [optional] |
 
 ### Return type
 
