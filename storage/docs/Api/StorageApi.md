@@ -338,7 +338,7 @@ try {
 ## `storageApiBucketsObjectsList()`
 
 ```php
-storageApiBucketsObjectsList($bucket_name, $page, $page_size): \OpenAPI\Client\Model\PaginatedBucketObjectList
+storageApiBucketsObjectsList($bucket_name, $continuation_token, $max_object_count): \OpenAPI\Client\Model\PaginatedBucketObjectList
 ```
 
 List buckets objects
@@ -365,11 +365,11 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
     $config
 );
 $bucket_name = 'bucket_name_example'; // string
-$page = 56; // int | A page number within the paginated result set.
-$page_size = 56; // int | Number of results to return per page.
+$continuation_token = 'continuation_token_example'; // string | Token for next page.
+$max_object_count = 56; // int | Number of results to return per page.
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsList($bucket_name, $page, $page_size);
+    $result = $apiInstance->storageApiBucketsObjectsList($bucket_name, $continuation_token, $max_object_count);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsList: ', $e->getMessage(), PHP_EOL;
@@ -381,8 +381,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **bucket_name** | **string**|  | |
-| **page** | **int**| A page number within the paginated result set. | [optional] |
-| **page_size** | **int**| Number of results to return per page. | [optional] |
+| **continuation_token** | **string**| Token for next page. | [optional] |
+| **max_object_count** | **int**| Number of results to return per page. | [optional] |
 
 ### Return type
 
@@ -404,7 +404,7 @@ try {
 ## `storageApiBucketsObjectsRetrieve()`
 
 ```php
-storageApiBucketsObjectsRetrieve($bucket_name, $object_key): \SplFileObject
+storageApiBucketsObjectsRetrieve($bucket_name, $object_key)
 ```
 
 Download object
@@ -434,8 +434,7 @@ $bucket_name = 'bucket_name_example'; // string
 $object_key = 'object_key_example'; // string
 
 try {
-    $result = $apiInstance->storageApiBucketsObjectsRetrieve($bucket_name, $object_key);
-    print_r($result);
+    $apiInstance->storageApiBucketsObjectsRetrieve($bucket_name, $object_key);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsObjectsRetrieve: ', $e->getMessage(), PHP_EOL;
 }
@@ -450,7 +449,7 @@ try {
 
 ### Return type
 
-**\SplFileObject**
+void (empty response body)
 
 ### Authorization
 
@@ -459,7 +458,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/octet-stream`
+- **Accept**: `text/html`, `application/json`, `application/xml`, `text/plain`, `image/jpeg`, `image/png`, `image/gif`, `video/mp4`, `audio/mpeg`, `application/pdf`, `application/javascript`, `text/css`, `application/octet-stream`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -536,7 +535,7 @@ try {
 ## `storageApiBucketsPartialUpdate()`
 
 ```php
-storageApiBucketsPartialUpdate($name): \OpenAPI\Client\Model\ResponseBucket
+storageApiBucketsPartialUpdate($name, $bucket_update): \OpenAPI\Client\Model\ResponseBucket
 ```
 
 Update bucket info
@@ -563,9 +562,10 @@ $apiInstance = new OpenAPI\Client\Api\StorageApi(
     $config
 );
 $name = 'name_example'; // string
+$bucket_update = new \OpenAPI\Client\Model\BucketUpdate(); // \OpenAPI\Client\Model\BucketUpdate
 
 try {
-    $result = $apiInstance->storageApiBucketsPartialUpdate($name);
+    $result = $apiInstance->storageApiBucketsPartialUpdate($name, $bucket_update);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->storageApiBucketsPartialUpdate: ', $e->getMessage(), PHP_EOL;
@@ -577,6 +577,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **name** | **string**|  | |
+| **bucket_update** | [**\OpenAPI\Client\Model\BucketUpdate**](../Model/BucketUpdate.md)|  | [optional] |
 
 ### Return type
 
@@ -588,7 +589,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

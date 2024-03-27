@@ -1821,17 +1821,17 @@ class StorageApi
      * List buckets objects
      *
      * @param  string $bucket_name bucket_name (required)
-     * @param  int $page A page number within the paginated result set. (optional)
-     * @param  int $page_size Number of results to return per page. (optional)
+     * @param  string $continuation_token Token for next page. (optional)
+     * @param  int $max_object_count Number of results to return per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\PaginatedBucketObjectList
      */
-    public function storageApiBucketsObjectsList($bucket_name, $page = null, $page_size = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
+    public function storageApiBucketsObjectsList($bucket_name, $continuation_token = null, $max_object_count = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
     {
-        list($response) = $this->storageApiBucketsObjectsListWithHttpInfo($bucket_name, $page, $page_size, $contentType);
+        list($response) = $this->storageApiBucketsObjectsListWithHttpInfo($bucket_name, $continuation_token, $max_object_count, $contentType);
         return $response;
     }
 
@@ -1841,17 +1841,17 @@ class StorageApi
      * List buckets objects
      *
      * @param  string $bucket_name (required)
-     * @param  int $page A page number within the paginated result set. (optional)
-     * @param  int $page_size Number of results to return per page. (optional)
+     * @param  string $continuation_token Token for next page. (optional)
+     * @param  int $max_object_count Number of results to return per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsList'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\PaginatedBucketObjectList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storageApiBucketsObjectsListWithHttpInfo($bucket_name, $page = null, $page_size = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
+    public function storageApiBucketsObjectsListWithHttpInfo($bucket_name, $continuation_token = null, $max_object_count = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
     {
-        $request = $this->storageApiBucketsObjectsListRequest($bucket_name, $page, $page_size, $contentType);
+        $request = $this->storageApiBucketsObjectsListRequest($bucket_name, $continuation_token, $max_object_count, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1967,16 +1967,16 @@ class StorageApi
      * List buckets objects
      *
      * @param  string $bucket_name (required)
-     * @param  int $page A page number within the paginated result set. (optional)
-     * @param  int $page_size Number of results to return per page. (optional)
+     * @param  string $continuation_token Token for next page. (optional)
+     * @param  int $max_object_count Number of results to return per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsListAsync($bucket_name, $page = null, $page_size = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
+    public function storageApiBucketsObjectsListAsync($bucket_name, $continuation_token = null, $max_object_count = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
     {
-        return $this->storageApiBucketsObjectsListAsyncWithHttpInfo($bucket_name, $page, $page_size, $contentType)
+        return $this->storageApiBucketsObjectsListAsyncWithHttpInfo($bucket_name, $continuation_token, $max_object_count, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1990,17 +1990,17 @@ class StorageApi
      * List buckets objects
      *
      * @param  string $bucket_name (required)
-     * @param  int $page A page number within the paginated result set. (optional)
-     * @param  int $page_size Number of results to return per page. (optional)
+     * @param  string $continuation_token Token for next page. (optional)
+     * @param  int $max_object_count Number of results to return per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsObjectsListAsyncWithHttpInfo($bucket_name, $page = null, $page_size = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
+    public function storageApiBucketsObjectsListAsyncWithHttpInfo($bucket_name, $continuation_token = null, $max_object_count = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
     {
         $returnType = '\OpenAPI\Client\Model\PaginatedBucketObjectList';
-        $request = $this->storageApiBucketsObjectsListRequest($bucket_name, $page, $page_size, $contentType);
+        $request = $this->storageApiBucketsObjectsListRequest($bucket_name, $continuation_token, $max_object_count, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2042,14 +2042,14 @@ class StorageApi
      * Create request for operation 'storageApiBucketsObjectsList'
      *
      * @param  string $bucket_name (required)
-     * @param  int $page A page number within the paginated result set. (optional)
-     * @param  int $page_size Number of results to return per page. (optional)
+     * @param  string $continuation_token Token for next page. (optional)
+     * @param  int $max_object_count Number of results to return per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsObjectsList'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storageApiBucketsObjectsListRequest($bucket_name, $page = null, $page_size = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
+    public function storageApiBucketsObjectsListRequest($bucket_name, $continuation_token = null, $max_object_count = null, string $contentType = self::contentTypes['storageApiBucketsObjectsList'][0])
     {
 
         // verify the required parameter 'bucket_name' is set
@@ -2071,17 +2071,17 @@ class StorageApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
+            $continuation_token,
+            'continuation_token', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'page_size', // param base name
+            $max_object_count,
+            'max_object_count', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -2168,12 +2168,11 @@ class StorageApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \SplFileObject
+     * @return void
      */
     public function storageApiBucketsObjectsRetrieve($bucket_name, $object_key, string $contentType = self::contentTypes['storageApiBucketsObjectsRetrieve'][0])
     {
-        list($response) = $this->storageApiBucketsObjectsRetrieveWithHttpInfo($bucket_name, $object_key, $contentType);
-        return $response;
+        $this->storageApiBucketsObjectsRetrieveWithHttpInfo($bucket_name, $object_key, $contentType);
     }
 
     /**
@@ -2187,7 +2186,7 @@ class StorageApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function storageApiBucketsObjectsRetrieveWithHttpInfo($bucket_name, $object_key, string $contentType = self::contentTypes['storageApiBucketsObjectsRetrieve'][0])
     {
@@ -2228,74 +2227,10 @@ class StorageApi
                 );
             }
 
-            switch($statusCode) {
-                case 200:
-                    if ('\SplFileObject' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\SplFileObject' !== 'string') {
-                            try {
-                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                            } catch (\JsonException $exception) {
-                                throw new ApiException(
-                                    sprintf(
-                                        'Error JSON decoding server response (%s)',
-                                        $request->getUri()
-                                    ),
-                                    $statusCode,
-                                    $response->getHeaders(),
-                                    $content
-                                );
-                            }
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\SplFileObject';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    try {
-                        $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
-                    } catch (\JsonException $exception) {
-                        throw new ApiException(
-                            sprintf(
-                                'Error JSON decoding server response (%s)',
-                                $request->getUri()
-                            ),
-                            $statusCode,
-                            $response->getHeaders(),
-                            $content
-                        );
-                    }
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
+            return [null, $statusCode, $response->getHeaders()];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\SplFileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
@@ -2337,27 +2272,14 @@ class StorageApi
      */
     public function storageApiBucketsObjectsRetrieveAsyncWithHttpInfo($bucket_name, $object_key, string $contentType = self::contentTypes['storageApiBucketsObjectsRetrieve'][0])
     {
-        $returnType = '\SplFileObject';
+        $returnType = '';
         $request = $this->storageApiBucketsObjectsRetrieveRequest($bucket_name, $object_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2432,7 +2354,7 @@ class StorageApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/octet-stream', ],
+            ['text/html', 'application/json', 'application/xml', 'text/plain', 'image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'audio/mpeg', 'application/pdf', 'application/javascript', 'text/css', 'application/octet-stream', ],
             $contentType,
             $multipart
         );
@@ -2850,15 +2772,16 @@ class StorageApi
      * Update bucket info
      *
      * @param  string $name name (required)
+     * @param  \OpenAPI\Client\Model\BucketUpdate $bucket_update bucket_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsPartialUpdate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \OpenAPI\Client\Model\ResponseBucket|\OpenAPI\Client\Model\ResponseBucket
      */
-    public function storageApiBucketsPartialUpdate($name, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
+    public function storageApiBucketsPartialUpdate($name, $bucket_update = null, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
     {
-        list($response) = $this->storageApiBucketsPartialUpdateWithHttpInfo($name, $contentType);
+        list($response) = $this->storageApiBucketsPartialUpdateWithHttpInfo($name, $bucket_update, $contentType);
         return $response;
     }
 
@@ -2868,15 +2791,16 @@ class StorageApi
      * Update bucket info
      *
      * @param  string $name (required)
+     * @param  \OpenAPI\Client\Model\BucketUpdate $bucket_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsPartialUpdate'] to see the possible values for this operation
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \OpenAPI\Client\Model\ResponseBucket|\OpenAPI\Client\Model\ResponseBucket, HTTP status code, HTTP response headers (array of strings)
      */
-    public function storageApiBucketsPartialUpdateWithHttpInfo($name, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
+    public function storageApiBucketsPartialUpdateWithHttpInfo($name, $bucket_update = null, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
     {
-        $request = $this->storageApiBucketsPartialUpdateRequest($name, $contentType);
+        $request = $this->storageApiBucketsPartialUpdateRequest($name, $bucket_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3027,14 +2951,15 @@ class StorageApi
      * Update bucket info
      *
      * @param  string $name (required)
+     * @param  \OpenAPI\Client\Model\BucketUpdate $bucket_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsPartialUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsPartialUpdateAsync($name, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
+    public function storageApiBucketsPartialUpdateAsync($name, $bucket_update = null, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
     {
-        return $this->storageApiBucketsPartialUpdateAsyncWithHttpInfo($name, $contentType)
+        return $this->storageApiBucketsPartialUpdateAsyncWithHttpInfo($name, $bucket_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3048,15 +2973,16 @@ class StorageApi
      * Update bucket info
      *
      * @param  string $name (required)
+     * @param  \OpenAPI\Client\Model\BucketUpdate $bucket_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsPartialUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function storageApiBucketsPartialUpdateAsyncWithHttpInfo($name, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
+    public function storageApiBucketsPartialUpdateAsyncWithHttpInfo($name, $bucket_update = null, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
     {
         $returnType = '\OpenAPI\Client\Model\ResponseBucket';
-        $request = $this->storageApiBucketsPartialUpdateRequest($name, $contentType);
+        $request = $this->storageApiBucketsPartialUpdateRequest($name, $bucket_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3098,12 +3024,13 @@ class StorageApi
      * Create request for operation 'storageApiBucketsPartialUpdate'
      *
      * @param  string $name (required)
+     * @param  \OpenAPI\Client\Model\BucketUpdate $bucket_update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['storageApiBucketsPartialUpdate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function storageApiBucketsPartialUpdateRequest($name, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
+    public function storageApiBucketsPartialUpdateRequest($name, $bucket_update = null, string $contentType = self::contentTypes['storageApiBucketsPartialUpdate'][0])
     {
 
         // verify the required parameter 'name' is set
@@ -3112,6 +3039,7 @@ class StorageApi
                 'Missing the required parameter $name when calling storageApiBucketsPartialUpdate'
             );
         }
+
 
 
         $resourcePath = '/v4/storage/buckets/{name}';
@@ -3140,7 +3068,14 @@ class StorageApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($bucket_update)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($bucket_update));
+            } else {
+                $httpBody = $bucket_update;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
