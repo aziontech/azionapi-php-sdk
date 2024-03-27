@@ -1,6 +1,6 @@
 <?php
 /**
- * PaginatedBucketObjectList
+ * BucketUpdate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PaginatedBucketObjectList Class Doc Comment
+ * BucketUpdate Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSerializable
+class BucketUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PaginatedBucketObjectList';
+    protected static $openAPIModelName = 'BucketUpdate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'next' => 'string',
-        'previous' => 'string',
-        'continuation_token' => 'string',
-        'results' => '\OpenAPI\Client\Model\BucketObject[]'
+        'edge_access' => '\OpenAPI\Client\Model\EdgeAccessEnum'
     ];
 
     /**
@@ -72,11 +68,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => null,
-        'next' => 'uri',
-        'previous' => 'uri',
-        'continuation_token' => null,
-        'results' => null
+        'edge_access' => null
     ];
 
     /**
@@ -85,11 +77,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-        'next' => true,
-        'previous' => true,
-        'continuation_token' => true,
-        'results' => false
+        'edge_access' => false
     ];
 
     /**
@@ -178,11 +166,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'next' => 'next',
-        'previous' => 'previous',
-        'continuation_token' => 'continuation_token',
-        'results' => 'results'
+        'edge_access' => 'edge_access'
     ];
 
     /**
@@ -191,11 +175,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'next' => 'setNext',
-        'previous' => 'setPrevious',
-        'continuation_token' => 'setContinuationToken',
-        'results' => 'setResults'
+        'edge_access' => 'setEdgeAccess'
     ];
 
     /**
@@ -204,11 +184,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'next' => 'getNext',
-        'previous' => 'getPrevious',
-        'continuation_token' => 'getContinuationToken',
-        'results' => 'getResults'
+        'edge_access' => 'getEdgeAccess'
     ];
 
     /**
@@ -268,11 +244,7 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('next', $data ?? [], null);
-        $this->setIfExists('previous', $data ?? [], null);
-        $this->setIfExists('continuation_token', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
+        $this->setIfExists('edge_access', $data ?? [], null);
     }
 
     /**
@@ -302,18 +274,9 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['continuation_token']) && (mb_strlen($this->container['continuation_token']) > 200)) {
-            $invalidProperties[] = "invalid value for 'continuation_token', the character length must be smaller than or equal to 200.";
+        if ($this->container['edge_access'] === null) {
+            $invalidProperties[] = "'edge_access' can't be null";
         }
-
-        if (!is_null($this->container['continuation_token']) && (mb_strlen($this->container['continuation_token']) < 10)) {
-            $invalidProperties[] = "invalid value for 'continuation_token', the character length must be bigger than or equal to 10.";
-        }
-
-        if (!is_null($this->container['continuation_token']) && !preg_match("/.*/", $this->container['continuation_token'])) {
-            $invalidProperties[] = "invalid value for 'continuation_token', must be conform to the pattern /.*/.";
-        }
-
         return $invalidProperties;
     }
 
@@ -330,167 +293,28 @@ class PaginatedBucketObjectList implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets count
+     * Gets edge_access
      *
-     * @return int|null
+     * @return \OpenAPI\Client\Model\EdgeAccessEnum
      */
-    public function getCount()
+    public function getEdgeAccess()
     {
-        return $this->container['count'];
+        return $this->container['edge_access'];
     }
 
     /**
-     * Sets count
+     * Sets edge_access
      *
-     * @param int|null $count count
+     * @param \OpenAPI\Client\Model\EdgeAccessEnum $edge_access edge_access
      *
      * @return self
      */
-    public function setCount($count)
+    public function setEdgeAccess($edge_access)
     {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        if (is_null($edge_access)) {
+            throw new \InvalidArgumentException('non-nullable edge_access cannot be null');
         }
-        $this->container['count'] = $count;
-
-        return $this;
-    }
-
-    /**
-     * Gets next
-     *
-     * @return string|null
-     */
-    public function getNext()
-    {
-        return $this->container['next'];
-    }
-
-    /**
-     * Sets next
-     *
-     * @param string|null $next next
-     *
-     * @return self
-     */
-    public function setNext($next)
-    {
-        if (is_null($next)) {
-            array_push($this->openAPINullablesSetToNull, 'next');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('next', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['next'] = $next;
-
-        return $this;
-    }
-
-    /**
-     * Gets previous
-     *
-     * @return string|null
-     */
-    public function getPrevious()
-    {
-        return $this->container['previous'];
-    }
-
-    /**
-     * Sets previous
-     *
-     * @param string|null $previous previous
-     *
-     * @return self
-     */
-    public function setPrevious($previous)
-    {
-        if (is_null($previous)) {
-            array_push($this->openAPINullablesSetToNull, 'previous');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['previous'] = $previous;
-
-        return $this;
-    }
-
-    /**
-     * Gets continuation_token
-     *
-     * @return string|null
-     */
-    public function getContinuationToken()
-    {
-        return $this->container['continuation_token'];
-    }
-
-    /**
-     * Sets continuation_token
-     *
-     * @param string|null $continuation_token continuation_token
-     *
-     * @return self
-     */
-    public function setContinuationToken($continuation_token)
-    {
-        if (is_null($continuation_token)) {
-            array_push($this->openAPINullablesSetToNull, 'continuation_token');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('continuation_token', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        if (!is_null($continuation_token) && (mb_strlen($continuation_token) > 200)) {
-            throw new \InvalidArgumentException('invalid length for $continuation_token when calling PaginatedBucketObjectList., must be smaller than or equal to 200.');
-        }
-        if (!is_null($continuation_token) && (mb_strlen($continuation_token) < 10)) {
-            throw new \InvalidArgumentException('invalid length for $continuation_token when calling PaginatedBucketObjectList., must be bigger than or equal to 10.');
-        }
-        if (!is_null($continuation_token) && (!preg_match("/.*/", ObjectSerializer::toString($continuation_token)))) {
-            throw new \InvalidArgumentException("invalid value for \$continuation_token when calling PaginatedBucketObjectList., must conform to the pattern /.*/.");
-        }
-
-        $this->container['continuation_token'] = $continuation_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \OpenAPI\Client\Model\BucketObject[]|null
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \OpenAPI\Client\Model\BucketObject[]|null $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
+        $this->container['edge_access'] = $edge_access;
 
         return $this;
     }

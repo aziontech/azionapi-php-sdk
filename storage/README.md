@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 - [Bucket](docs/Model/Bucket.md)
 - [BucketCreate](docs/Model/BucketCreate.md)
 - [BucketObject](docs/Model/BucketObject.md)
+- [BucketUpdate](docs/Model/BucketUpdate.md)
 - [EdgeAccessEnum](docs/Model/EdgeAccessEnum.md)
 - [ObjectResponseData](docs/Model/ObjectResponseData.md)
 - [PaginatedBucketList](docs/Model/PaginatedBucketList.md)
