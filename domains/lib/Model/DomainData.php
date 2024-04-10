@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDomainRequest
+ * DomainData
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * UpdateDomainRequest Class Doc Comment
+ * DomainData Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UpdateDomainRequest';
+    protected static $openAPIModelName = 'DomainData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -450,13 +450,13 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateDomainRequest., must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid length for $name when calling DomainData., must be smaller than or equal to 100.');
         }
         if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateDomainRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $name when calling DomainData., must be bigger than or equal to 1.');
         }
         if ((!preg_match("/[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/", ObjectSerializer::toString($name)))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling UpdateDomainRequest., must conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.");
+            throw new \InvalidArgumentException("invalid value for \$name when calling DomainData., must conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.");
         }
 
         $this->container['name'] = $name;
@@ -569,10 +569,10 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         if (($edge_application_id > -8446744073709551616)) {
-            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling UpdateDomainRequest., must be smaller than or equal to -8446744073709551616.');
+            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling DomainData., must be smaller than or equal to -8446744073709551616.');
         }
         if (($edge_application_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling UpdateDomainRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling DomainData., must be bigger than or equal to 1.');
         }
 
         $this->container['edge_application_id'] = $edge_application_id;

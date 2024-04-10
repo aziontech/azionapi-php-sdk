@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateDomainRequest
+ * DomainEntity
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * UpdateDomainRequest Class Doc Comment
+ * DomainEntity Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class DomainEntity implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UpdateDomainRequest';
+    protected static $openAPIModelName = 'DomainEntity';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -67,7 +67,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => 'bool',
         'mtls_trusted_ca_certificate_id' => 'int',
         'mtls_verification' => 'string',
-        'crl_list' => 'int[]'
+        'crl_list' => 'int[]',
+        'id' => 'int',
+        'domain_name' => 'string'
     ];
 
     /**
@@ -88,7 +90,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => null,
         'mtls_trusted_ca_certificate_id' => 'int64',
         'mtls_verification' => null,
-        'crl_list' => 'int64'
+        'crl_list' => 'int64',
+        'id' => 'int64',
+        'domain_name' => null
     ];
 
     /**
@@ -107,7 +111,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => false,
         'mtls_trusted_ca_certificate_id' => true,
         'mtls_verification' => false,
-        'crl_list' => true
+        'crl_list' => true,
+        'id' => false,
+        'domain_name' => false
     ];
 
     /**
@@ -206,7 +212,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => 'is_mtls_enabled',
         'mtls_trusted_ca_certificate_id' => 'mtls_trusted_ca_certificate_id',
         'mtls_verification' => 'mtls_verification',
-        'crl_list' => 'crl_list'
+        'crl_list' => 'crl_list',
+        'id' => 'id',
+        'domain_name' => 'domain_name'
     ];
 
     /**
@@ -225,7 +233,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => 'setIsMtlsEnabled',
         'mtls_trusted_ca_certificate_id' => 'setMtlsTrustedCaCertificateId',
         'mtls_verification' => 'setMtlsVerification',
-        'crl_list' => 'setCrlList'
+        'crl_list' => 'setCrlList',
+        'id' => 'setId',
+        'domain_name' => 'setDomainName'
     ];
 
     /**
@@ -244,7 +254,9 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'is_mtls_enabled' => 'getIsMtlsEnabled',
         'mtls_trusted_ca_certificate_id' => 'getMtlsTrustedCaCertificateId',
         'mtls_verification' => 'getMtlsVerification',
-        'crl_list' => 'getCrlList'
+        'crl_list' => 'getCrlList',
+        'id' => 'getId',
+        'domain_name' => 'getDomainName'
     ];
 
     /**
@@ -345,6 +357,8 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('mtls_trusted_ca_certificate_id', $data ?? [], null);
         $this->setIfExists('mtls_verification', $data ?? [], null);
         $this->setIfExists('crl_list', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('domain_name', $data ?? [], null);
     }
 
     /**
@@ -450,13 +464,13 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateDomainRequest., must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid length for $name when calling DomainEntity., must be smaller than or equal to 100.');
         }
         if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateDomainRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $name when calling DomainEntity., must be bigger than or equal to 1.');
         }
         if ((!preg_match("/[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/", ObjectSerializer::toString($name)))) {
-            throw new \InvalidArgumentException("invalid value for \$name when calling UpdateDomainRequest., must conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.");
+            throw new \InvalidArgumentException("invalid value for \$name when calling DomainEntity., must conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.");
         }
 
         $this->container['name'] = $name;
@@ -569,10 +583,10 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         }
 
         if (($edge_application_id > -8446744073709551616)) {
-            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling UpdateDomainRequest., must be smaller than or equal to -8446744073709551616.');
+            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling DomainEntity., must be smaller than or equal to -8446744073709551616.');
         }
         if (($edge_application_id < 1)) {
-            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling UpdateDomainRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for $edge_application_id when calling DomainEntity., must be bigger than or equal to 1.');
         }
 
         $this->container['edge_application_id'] = $edge_application_id;
@@ -779,6 +793,60 @@ class UpdateDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['crl_list'] = $crl_list;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return int|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets domain_name
+     *
+     * @return string|null
+     */
+    public function getDomainName()
+    {
+        return $this->container['domain_name'];
+    }
+
+    /**
+     * Sets domain_name
+     *
+     * @param string|null $domain_name domain_name
+     *
+     * @return self
+     */
+    public function setDomainName($domain_name)
+    {
+        if (is_null($domain_name)) {
+            throw new \InvalidArgumentException('non-nullable domain_name cannot be null');
+        }
+        $this->container['domain_name'] = $domain_name;
 
         return $this;
     }
