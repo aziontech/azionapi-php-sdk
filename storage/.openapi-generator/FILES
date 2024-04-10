@@ -7,6 +7,7 @@ docs/Api/StorageApi.md
 docs/Model/Bucket.md
 docs/Model/BucketCreate.md
 docs/Model/BucketObject.md
+docs/Model/BucketUpdate.md
 docs/Model/EdgeAccessEnum.md
 docs/Model/ObjectResponseData.md
 docs/Model/PaginatedBucketList.md
@@ -23,6 +24,7 @@ lib/HeaderSelector.php
 lib/Model/Bucket.php
 lib/Model/BucketCreate.php
 lib/Model/BucketObject.php
+lib/Model/BucketUpdate.php
 lib/Model/EdgeAccessEnum.php
 lib/Model/ModelInterface.php
 lib/Model/ObjectResponseData.php
@@ -34,3 +36,4 @@ lib/Model/SuccessBucketOperation.php
 lib/Model/SuccessObjectOperation.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BucketUpdateTest.php
