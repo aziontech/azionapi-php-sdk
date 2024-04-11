@@ -66,6 +66,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => 'string',
         'is_mtls_enabled' => 'bool',
         'mtls_trusted_ca_certificate_id' => 'int',
+        'edge_firewall_id' => 'int',
         'mtls_verification' => 'string',
         'crl_list' => 'int[]'
     ];
@@ -87,6 +88,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => null,
         'is_mtls_enabled' => null,
         'mtls_trusted_ca_certificate_id' => 'int64',
+        'edge_firewall_id' => 'int64',
         'mtls_verification' => null,
         'crl_list' => 'int64'
     ];
@@ -106,6 +108,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => false,
         'is_mtls_enabled' => false,
         'mtls_trusted_ca_certificate_id' => true,
+        'edge_firewall_id' => true,
         'mtls_verification' => false,
         'crl_list' => true
     ];
@@ -205,6 +208,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => 'environment',
         'is_mtls_enabled' => 'is_mtls_enabled',
         'mtls_trusted_ca_certificate_id' => 'mtls_trusted_ca_certificate_id',
+        'edge_firewall_id' => 'edge_firewall_id',
         'mtls_verification' => 'mtls_verification',
         'crl_list' => 'crl_list'
     ];
@@ -224,6 +228,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => 'setEnvironment',
         'is_mtls_enabled' => 'setIsMtlsEnabled',
         'mtls_trusted_ca_certificate_id' => 'setMtlsTrustedCaCertificateId',
+        'edge_firewall_id' => 'setEdgeFirewallId',
         'mtls_verification' => 'setMtlsVerification',
         'crl_list' => 'setCrlList'
     ];
@@ -243,6 +248,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'environment' => 'getEnvironment',
         'is_mtls_enabled' => 'getIsMtlsEnabled',
         'mtls_trusted_ca_certificate_id' => 'getMtlsTrustedCaCertificateId',
+        'edge_firewall_id' => 'getEdgeFirewallId',
         'mtls_verification' => 'getMtlsVerification',
         'crl_list' => 'getCrlList'
     ];
@@ -343,6 +349,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('environment', $data ?? [], null);
         $this->setIfExists('is_mtls_enabled', $data ?? [], null);
         $this->setIfExists('mtls_trusted_ca_certificate_id', $data ?? [], null);
+        $this->setIfExists('edge_firewall_id', $data ?? [], null);
         $this->setIfExists('mtls_verification', $data ?? [], null);
         $this->setIfExists('crl_list', $data ?? [], null);
     }
@@ -717,6 +724,40 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['mtls_trusted_ca_certificate_id'] = $mtls_trusted_ca_certificate_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets edge_firewall_id
+     *
+     * @return int|null
+     */
+    public function getEdgeFirewallId()
+    {
+        return $this->container['edge_firewall_id'];
+    }
+
+    /**
+     * Sets edge_firewall_id
+     *
+     * @param int|null $edge_firewall_id edge_firewall_id
+     *
+     * @return self
+     */
+    public function setEdgeFirewallId($edge_firewall_id)
+    {
+        if (is_null($edge_firewall_id)) {
+            array_push($this->openAPINullablesSetToNull, 'edge_firewall_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('edge_firewall_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['edge_firewall_id'] = $edge_firewall_id;
 
         return $this;
     }
