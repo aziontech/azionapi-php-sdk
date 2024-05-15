@@ -1,6 +1,6 @@
 <?php
 /**
- * DomainResponseWithResult
+ * DomainDataDigitalCertificateId
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * DomainResponseWithResult Class Doc Comment
+ * DomainDataDigitalCertificateId Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class DomainDataDigitalCertificateId implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DomainResponseWithResult';
+    protected static $openAPIModelName = 'DomainData_digital_certificate_id';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'links' => '\OpenAPI\Client\Model\DomainLinks',
-        'results' => '\OpenAPI\Client\Model\DomainEntity',
-        'total_pages' => 'int',
-        'schema_version' => 'int'
+        
     ];
 
     /**
@@ -72,11 +68,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => 'int64',
-        'links' => null,
-        'results' => null,
-        'total_pages' => 'int64',
-        'schema_version' => 'int64'
+        
     ];
 
     /**
@@ -85,11 +77,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-        'links' => false,
-        'results' => false,
-        'total_pages' => false,
-        'schema_version' => false
+        
     ];
 
     /**
@@ -178,11 +166,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'links' => 'links',
-        'results' => 'results',
-        'total_pages' => 'total_pages',
-        'schema_version' => 'schema_version'
+        
     ];
 
     /**
@@ -191,11 +175,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'links' => 'setLinks',
-        'results' => 'setResults',
-        'total_pages' => 'setTotalPages',
-        'schema_version' => 'setSchemaVersion'
+        
     ];
 
     /**
@@ -204,11 +184,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'links' => 'getLinks',
-        'results' => 'getResults',
-        'total_pages' => 'getTotalPages',
-        'schema_version' => 'getSchemaVersion'
+        
     ];
 
     /**
@@ -268,11 +244,6 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('links', $data ?? [], null);
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('total_pages', $data ?? [], null);
-        $this->setIfExists('schema_version', $data ?? [], null);
     }
 
     /**
@@ -302,12 +273,6 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['schema_version'] === null) {
-            $invalidProperties[] = "'schema_version' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -322,141 +287,6 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets count
-     *
-     * @return int|null
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int|null $count count
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
-        }
-        $this->container['count'] = $count;
-
-        return $this;
-    }
-
-    /**
-     * Gets links
-     *
-     * @return \OpenAPI\Client\Model\DomainLinks|null
-     */
-    public function getLinks()
-    {
-        return $this->container['links'];
-    }
-
-    /**
-     * Sets links
-     *
-     * @param \OpenAPI\Client\Model\DomainLinks|null $links links
-     *
-     * @return self
-     */
-    public function setLinks($links)
-    {
-        if (is_null($links)) {
-            throw new \InvalidArgumentException('non-nullable links cannot be null');
-        }
-        $this->container['links'] = $links;
-
-        return $this;
-    }
-
-    /**
-     * Gets results
-     *
-     * @return \OpenAPI\Client\Model\DomainEntity
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \OpenAPI\Client\Model\DomainEntity $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_pages
-     *
-     * @return int|null
-     */
-    public function getTotalPages()
-    {
-        return $this->container['total_pages'];
-    }
-
-    /**
-     * Sets total_pages
-     *
-     * @param int|null $total_pages total_pages
-     *
-     * @return self
-     */
-    public function setTotalPages($total_pages)
-    {
-        if (is_null($total_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
-        }
-        $this->container['total_pages'] = $total_pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets schema_version
-     *
-     * @return int
-     */
-    public function getSchemaVersion()
-    {
-        return $this->container['schema_version'];
-    }
-
-    /**
-     * Sets schema_version
-     *
-     * @param int $schema_version schema_version
-     *
-     * @return self
-     */
-    public function setSchemaVersion($schema_version)
-    {
-        if (is_null($schema_version)) {
-            throw new \InvalidArgumentException('non-nullable schema_version cannot be null');
-        }
-        $this->container['schema_version'] = $schema_version;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
