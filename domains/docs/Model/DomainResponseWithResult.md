@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **int** |  | [optional]
 **links** | [**\OpenAPI\Client\Model\DomainLinks**](DomainLinks.md) |  | [optional]
-**results** | [**\OpenAPI\Client\Model\DomainEntity**](DomainEntity.md) |  |
+**results** | [**\OpenAPI\Client\Model\DomainEntityResponse**](DomainEntityResponse.md) |  |
 **total_pages** | **int** |  | [optional]
 **schema_version** | **int** |  |
 

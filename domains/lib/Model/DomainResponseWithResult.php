@@ -59,7 +59,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'count' => 'int',
         'links' => '\OpenAPI\Client\Model\DomainLinks',
-        'results' => '\OpenAPI\Client\Model\DomainEntity',
+        'results' => '\OpenAPI\Client\Model\DomainEntityResponse',
         'total_pages' => 'int',
         'schema_version' => 'int'
     ];
@@ -380,7 +380,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets results
      *
-     * @return \OpenAPI\Client\Model\DomainEntity
+     * @return \OpenAPI\Client\Model\DomainEntityResponse
      */
     public function getResults()
     {
@@ -390,7 +390,7 @@ class DomainResponseWithResult implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets results
      *
-     * @param \OpenAPI\Client\Model\DomainEntity $results results
+     * @param \OpenAPI\Client\Model\DomainEntityResponse $results results
      *
      * @return self
      */
