@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **total_pages** | **int** |  |
 **schema_version** | **int** |  |
 **links** | [**\OpenAPI\Client\Model\DomainLinks**](DomainLinks.md) |  |
-**results** | [**\OpenAPI\Client\Model\DomainEntity[]**](DomainEntity.md) |  |
+**results** | [**\OpenAPI\Client\Model\DomainEntityResponse[]**](DomainEntityResponse.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
