@@ -6,7 +6,6 @@ composer.json
 docs/Api/DomainsApi.md
 docs/Model/CreateDomainRequest.md
 docs/Model/DomainData.md
-docs/Model/DomainDataDigitalCertificateId.md
 docs/Model/DomainEntity.md
 docs/Model/DomainLinks.md
 docs/Model/DomainResponseWithResult.md
@@ -20,7 +19,6 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/CreateDomainRequest.php
 lib/Model/DomainData.php
-lib/Model/DomainDataDigitalCertificateId.php
 lib/Model/DomainEntity.php
 lib/Model/DomainLinks.php
 lib/Model/DomainResponseWithResult.php
@@ -30,4 +28,3 @@ lib/Model/PutDomainRequest.php
 lib/Model/UpdateDomainRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DomainDataDigitalCertificateIdTest.php

@@ -91,7 +91,6 @@ Class | Method | HTTP request | Description
 
 - [CreateDomainRequest](docs/Model/CreateDomainRequest.md)
 - [DomainData](docs/Model/DomainData.md)
-- [DomainDataDigitalCertificateId](docs/Model/DomainDataDigitalCertificateId.md)
 - [DomainEntity](docs/Model/DomainEntity.md)
 - [DomainLinks](docs/Model/DomainLinks.md)
 - [DomainResponseWithResult](docs/Model/DomainResponseWithResult.md)

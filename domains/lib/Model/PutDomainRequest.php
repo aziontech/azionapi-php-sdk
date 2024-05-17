@@ -62,7 +62,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'cname_access_only' => 'bool',
         'is_active' => 'bool',
         'edge_application_id' => 'int',
-        'digital_certificate_id' => '\OpenAPI\Client\Model\DomainDataDigitalCertificateId',
+        'digital_certificate_id' => 'string',
         'environment' => 'string',
         'is_mtls_enabled' => 'bool',
         'mtls_trusted_ca_certificate_id' => 'int',
@@ -410,6 +410,18 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'edge_application_id', must be bigger than or equal to 1.";
         }
 
+        if (!is_null($this->container['digital_certificate_id']) && (mb_strlen($this->container['digital_certificate_id']) > 100)) {
+            $invalidProperties[] = "invalid value for 'digital_certificate_id', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['digital_certificate_id']) && (mb_strlen($this->container['digital_certificate_id']) < 1)) {
+            $invalidProperties[] = "invalid value for 'digital_certificate_id', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['digital_certificate_id']) && !preg_match("/[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/", $this->container['digital_certificate_id'])) {
+            $invalidProperties[] = "invalid value for 'digital_certificate_id', must be conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.";
+        }
+
         $allowedValues = $this->getEnvironmentAllowableValues();
         if (!is_null($this->container['environment']) && !in_array($this->container['environment'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -599,7 +611,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets digital_certificate_id
      *
-     * @return \OpenAPI\Client\Model\DomainDataDigitalCertificateId|null
+     * @return string|null
      */
     public function getDigitalCertificateId()
     {
@@ -609,7 +621,7 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets digital_certificate_id
      *
-     * @param \OpenAPI\Client\Model\DomainDataDigitalCertificateId|null $digital_certificate_id digital_certificate_id
+     * @param string|null $digital_certificate_id digital_certificate_id
      *
      * @return self
      */
@@ -618,6 +630,16 @@ class PutDomainRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($digital_certificate_id)) {
             throw new \InvalidArgumentException('non-nullable digital_certificate_id cannot be null');
         }
+        if ((mb_strlen($digital_certificate_id) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $digital_certificate_id when calling PutDomainRequest., must be smaller than or equal to 100.');
+        }
+        if ((mb_strlen($digital_certificate_id) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $digital_certificate_id when calling PutDomainRequest., must be bigger than or equal to 1.');
+        }
+        if ((!preg_match("/[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/", ObjectSerializer::toString($digital_certificate_id)))) {
+            throw new \InvalidArgumentException("invalid value for \$digital_certificate_id when calling PutDomainRequest., must conform to the pattern /[a-zA-Z0-9$%^&*()-+=\\[\\]{};:?><,|\/]+/.");
+        }
+
         $this->container['digital_certificate_id'] = $digital_certificate_id;
 
         return $this;
