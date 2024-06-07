@@ -1,6 +1,6 @@
 <?php
 /**
- * BucketCreate
+ * ResponseS3Credential
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * BucketCreate Class Doc Comment
+ * ResponseS3Credential Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResponseS3Credential implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BucketCreate';
+    protected static $openAPIModelName = 'ResponseS3Credential';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'edge_access' => '\OpenAPI\Client\Model\EdgeAccessEnum'
+        'state' => 'string',
+        'data' => '\OpenAPI\Client\Model\S3Credential'
     ];
 
     /**
@@ -69,8 +69,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'edge_access' => null
+        'state' => null,
+        'data' => null
     ];
 
     /**
@@ -79,8 +79,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'edge_access' => false
+        'state' => false,
+        'data' => false
     ];
 
     /**
@@ -169,8 +169,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'edge_access' => 'edge_access'
+        'state' => 'state',
+        'data' => 'data'
     ];
 
     /**
@@ -179,8 +179,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'edge_access' => 'setEdgeAccess'
+        'state' => 'setState',
+        'data' => 'setData'
     ];
 
     /**
@@ -189,8 +189,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'edge_access' => 'getEdgeAccess'
+        'state' => 'getState',
+        'data' => 'getData'
     ];
 
     /**
@@ -250,8 +250,8 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('edge_access', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -281,20 +281,18 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 63)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 63.";
+        if (!is_null($this->container['state']) && (mb_strlen($this->container['state']) > 30)) {
+            $invalidProperties[] = "invalid value for 'state', the character length must be smaller than or equal to 30.";
         }
 
-        if ((mb_strlen($this->container['name']) < 6)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 6.";
+        if (!is_null($this->container['state']) && (mb_strlen($this->container['state']) < 1)) {
+            $invalidProperties[] = "invalid value for 'state', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['edge_access'] === null) {
-            $invalidProperties[] = "'edge_access' can't be null";
+        if (!is_null($this->container['state']) && !preg_match("/.*/", $this->container['state'])) {
+            $invalidProperties[] = "invalid value for 'state', must be conform to the pattern /.*/.";
         }
+
         return $invalidProperties;
     }
 
@@ -311,62 +309,65 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets state
      *
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getState()
     {
-        return $this->container['name'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets name
+     * Sets state
      *
-     * @param string $name name
+     * @param string|null $state state
      *
      * @return self
      */
-    public function setName($name)
+    public function setState($state)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        if ((mb_strlen($name) > 63)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be smaller than or equal to 63.');
+        if ((mb_strlen($state) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $state when calling ResponseS3Credential., must be smaller than or equal to 30.');
         }
-        if ((mb_strlen($name) < 6)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be bigger than or equal to 6.');
+        if ((mb_strlen($state) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $state when calling ResponseS3Credential., must be bigger than or equal to 1.');
+        }
+        if ((!preg_match("/.*/", ObjectSerializer::toString($state)))) {
+            throw new \InvalidArgumentException("invalid value for \$state when calling ResponseS3Credential., must conform to the pattern /.*/.");
         }
 
-        $this->container['name'] = $name;
+        $this->container['state'] = $state;
 
         return $this;
     }
 
     /**
-     * Gets edge_access
+     * Gets data
      *
-     * @return \OpenAPI\Client\Model\EdgeAccessEnum
+     * @return \OpenAPI\Client\Model\S3Credential|null
      */
-    public function getEdgeAccess()
+    public function getData()
     {
-        return $this->container['edge_access'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets edge_access
+     * Sets data
      *
-     * @param \OpenAPI\Client\Model\EdgeAccessEnum $edge_access edge_access
+     * @param \OpenAPI\Client\Model\S3Credential|null $data data
      *
      * @return self
      */
-    public function setEdgeAccess($edge_access)
+    public function setData($data)
     {
-        if (is_null($edge_access)) {
-            throw new \InvalidArgumentException('non-nullable edge_access cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['edge_access'] = $edge_access;
+        $this->container['data'] = $data;
 
         return $this;
     }

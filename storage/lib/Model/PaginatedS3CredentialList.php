@@ -1,6 +1,6 @@
 <?php
 /**
- * BucketCreate
+ * PaginatedS3CredentialList
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * BucketCreate Class Doc Comment
+ * PaginatedS3CredentialList Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaginatedS3CredentialList implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BucketCreate';
+    protected static $openAPIModelName = 'PaginatedS3CredentialList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'edge_access' => '\OpenAPI\Client\Model\EdgeAccessEnum'
+        'count' => 'int',
+        'next' => 'string',
+        'previous' => 'string',
+        'results' => '\OpenAPI\Client\Model\S3Credential[]'
     ];
 
     /**
@@ -69,8 +71,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'edge_access' => null
+        'count' => null,
+        'next' => 'uri',
+        'previous' => 'uri',
+        'results' => null
     ];
 
     /**
@@ -79,8 +83,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'edge_access' => false
+        'count' => false,
+        'next' => true,
+        'previous' => true,
+        'results' => false
     ];
 
     /**
@@ -169,8 +175,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'edge_access' => 'edge_access'
+        'count' => 'count',
+        'next' => 'next',
+        'previous' => 'previous',
+        'results' => 'results'
     ];
 
     /**
@@ -179,8 +187,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'edge_access' => 'setEdgeAccess'
+        'count' => 'setCount',
+        'next' => 'setNext',
+        'previous' => 'setPrevious',
+        'results' => 'setResults'
     ];
 
     /**
@@ -189,8 +199,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'edge_access' => 'getEdgeAccess'
+        'count' => 'getCount',
+        'next' => 'getNext',
+        'previous' => 'getPrevious',
+        'results' => 'getResults'
     ];
 
     /**
@@ -250,8 +262,10 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('edge_access', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('next', $data ?? [], null);
+        $this->setIfExists('previous', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -281,20 +295,14 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 63)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 63.";
+        if (!is_null($this->container['count']) && ($this->container['count'] > 1000)) {
+            $invalidProperties[] = "invalid value for 'count', must be smaller than or equal to 1000.";
         }
 
-        if ((mb_strlen($this->container['name']) < 6)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 6.";
+        if (!is_null($this->container['count']) && ($this->container['count'] < 0)) {
+            $invalidProperties[] = "invalid value for 'count', must be bigger than or equal to 0.";
         }
 
-        if ($this->container['edge_access'] === null) {
-            $invalidProperties[] = "'edge_access' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -311,62 +319,131 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets count
      *
-     * @return string
+     * @return int|null
      */
-    public function getName()
+    public function getCount()
     {
-        return $this->container['name'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets name
+     * Sets count
      *
-     * @param string $name name
+     * @param int|null $count count
      *
      * @return self
      */
-    public function setName($name)
+    public function setCount($count)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 63)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be smaller than or equal to 63.');
-        }
-        if ((mb_strlen($name) < 6)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be bigger than or equal to 6.');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
 
-        $this->container['name'] = $name;
+        if (($count > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $count when calling PaginatedS3CredentialList., must be smaller than or equal to 1000.');
+        }
+        if (($count < 0)) {
+            throw new \InvalidArgumentException('invalid value for $count when calling PaginatedS3CredentialList., must be bigger than or equal to 0.');
+        }
+
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets edge_access
+     * Gets next
      *
-     * @return \OpenAPI\Client\Model\EdgeAccessEnum
+     * @return string|null
      */
-    public function getEdgeAccess()
+    public function getNext()
     {
-        return $this->container['edge_access'];
+        return $this->container['next'];
     }
 
     /**
-     * Sets edge_access
+     * Sets next
      *
-     * @param \OpenAPI\Client\Model\EdgeAccessEnum $edge_access edge_access
+     * @param string|null $next next
      *
      * @return self
      */
-    public function setEdgeAccess($edge_access)
+    public function setNext($next)
     {
-        if (is_null($edge_access)) {
-            throw new \InvalidArgumentException('non-nullable edge_access cannot be null');
+        if (is_null($next)) {
+            array_push($this->openAPINullablesSetToNull, 'next');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('next', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['edge_access'] = $edge_access;
+        $this->container['next'] = $next;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous
+     *
+     * @return string|null
+     */
+    public function getPrevious()
+    {
+        return $this->container['previous'];
+    }
+
+    /**
+     * Sets previous
+     *
+     * @param string|null $previous previous
+     *
+     * @return self
+     */
+    public function setPrevious($previous)
+    {
+        if (is_null($previous)) {
+            array_push($this->openAPINullablesSetToNull, 'previous');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous'] = $previous;
+
+        return $this;
+    }
+
+    /**
+     * Gets results
+     *
+     * @return \OpenAPI\Client\Model\S3Credential[]|null
+     */
+    public function getResults()
+    {
+        return $this->container['results'];
+    }
+
+    /**
+     * Sets results
+     *
+     * @param \OpenAPI\Client\Model\S3Credential[]|null $results results
+     *
+     * @return self
+     */
+    public function setResults($results)
+    {
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
+        }
+        $this->container['results'] = $results;
 
         return $this;
     }

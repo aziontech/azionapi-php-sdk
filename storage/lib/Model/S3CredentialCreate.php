@@ -1,6 +1,6 @@
 <?php
 /**
- * BucketCreate
+ * S3CredentialCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * BucketCreate Class Doc Comment
+ * S3CredentialCreate Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
+class S3CredentialCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BucketCreate';
+    protected static $openAPIModelName = 'S3CredentialCreate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'edge_access' => '\OpenAPI\Client\Model\EdgeAccessEnum'
+        'capabilities' => 'string[]',
+        'bucket' => 'string',
+        'expiration_date' => '\DateTime'
     ];
 
     /**
@@ -70,7 +72,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'edge_access' => null
+        'capabilities' => null,
+        'bucket' => null,
+        'expiration_date' => 'date-time'
     ];
 
     /**
@@ -80,7 +84,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'edge_access' => false
+        'capabilities' => false,
+        'bucket' => false,
+        'expiration_date' => false
     ];
 
     /**
@@ -170,7 +176,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'edge_access' => 'edge_access'
+        'capabilities' => 'capabilities',
+        'bucket' => 'bucket',
+        'expiration_date' => 'expiration_date'
     ];
 
     /**
@@ -180,7 +188,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'name' => 'setName',
-        'edge_access' => 'setEdgeAccess'
+        'capabilities' => 'setCapabilities',
+        'bucket' => 'setBucket',
+        'expiration_date' => 'setExpirationDate'
     ];
 
     /**
@@ -190,7 +200,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'name' => 'getName',
-        'edge_access' => 'getEdgeAccess'
+        'capabilities' => 'getCapabilities',
+        'bucket' => 'getBucket',
+        'expiration_date' => 'getExpirationDate'
     ];
 
     /**
@@ -251,7 +263,9 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('edge_access', $data ?? [], null);
+        $this->setIfExists('capabilities', $data ?? [], null);
+        $this->setIfExists('bucket', $data ?? [], null);
+        $this->setIfExists('expiration_date', $data ?? [], null);
     }
 
     /**
@@ -281,20 +295,42 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 63)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 63.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 200)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 200.";
         }
 
-        if ((mb_strlen($this->container['name']) < 6)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 6.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['edge_access'] === null) {
-            $invalidProperties[] = "'edge_access' can't be null";
+        if (!is_null($this->container['name']) && !preg_match("/.*/", $this->container['name'])) {
+            $invalidProperties[] = "invalid value for 'name', must be conform to the pattern /.*/.";
         }
+
+        if (!is_null($this->container['bucket']) && (mb_strlen($this->container['bucket']) > 200)) {
+            $invalidProperties[] = "invalid value for 'bucket', the character length must be smaller than or equal to 200.";
+        }
+
+        if (!is_null($this->container['bucket']) && (mb_strlen($this->container['bucket']) < 1)) {
+            $invalidProperties[] = "invalid value for 'bucket', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['bucket']) && !preg_match("/.*/", $this->container['bucket'])) {
+            $invalidProperties[] = "invalid value for 'bucket', must be conform to the pattern /.*/.";
+        }
+
+        if (!is_null($this->container['expiration_date']) && (mb_strlen($this->container['expiration_date']) > 30)) {
+            $invalidProperties[] = "invalid value for 'expiration_date', the character length must be smaller than or equal to 30.";
+        }
+
+        if (!is_null($this->container['expiration_date']) && (mb_strlen($this->container['expiration_date']) < 10)) {
+            $invalidProperties[] = "invalid value for 'expiration_date', the character length must be bigger than or equal to 10.";
+        }
+
+        if (!is_null($this->container['expiration_date']) && !preg_match("/.*/", $this->container['expiration_date'])) {
+            $invalidProperties[] = "invalid value for 'expiration_date', must be conform to the pattern /.*/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,7 +349,7 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -323,7 +359,7 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string|null $name name
      *
      * @return self
      */
@@ -332,11 +368,14 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 63)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be smaller than or equal to 63.');
+        if ((mb_strlen($name) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling S3CredentialCreate., must be smaller than or equal to 200.');
         }
-        if ((mb_strlen($name) < 6)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling BucketCreate., must be bigger than or equal to 6.');
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling S3CredentialCreate., must be bigger than or equal to 1.');
+        }
+        if ((!preg_match("/.*/", ObjectSerializer::toString($name)))) {
+            throw new \InvalidArgumentException("invalid value for \$name when calling S3CredentialCreate., must conform to the pattern /.*/.");
         }
 
         $this->container['name'] = $name;
@@ -345,28 +384,102 @@ class BucketCreate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets edge_access
+     * Gets capabilities
      *
-     * @return \OpenAPI\Client\Model\EdgeAccessEnum
+     * @return string[]|null
      */
-    public function getEdgeAccess()
+    public function getCapabilities()
     {
-        return $this->container['edge_access'];
+        return $this->container['capabilities'];
     }
 
     /**
-     * Sets edge_access
+     * Sets capabilities
      *
-     * @param \OpenAPI\Client\Model\EdgeAccessEnum $edge_access edge_access
+     * @param string[]|null $capabilities capabilities
      *
      * @return self
      */
-    public function setEdgeAccess($edge_access)
+    public function setCapabilities($capabilities)
     {
-        if (is_null($edge_access)) {
-            throw new \InvalidArgumentException('non-nullable edge_access cannot be null');
+        if (is_null($capabilities)) {
+            throw new \InvalidArgumentException('non-nullable capabilities cannot be null');
         }
-        $this->container['edge_access'] = $edge_access;
+        $this->container['capabilities'] = $capabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets bucket
+     *
+     * @return string|null
+     */
+    public function getBucket()
+    {
+        return $this->container['bucket'];
+    }
+
+    /**
+     * Sets bucket
+     *
+     * @param string|null $bucket bucket
+     *
+     * @return self
+     */
+    public function setBucket($bucket)
+    {
+        if (is_null($bucket)) {
+            throw new \InvalidArgumentException('non-nullable bucket cannot be null');
+        }
+        if ((mb_strlen($bucket) > 200)) {
+            throw new \InvalidArgumentException('invalid length for $bucket when calling S3CredentialCreate., must be smaller than or equal to 200.');
+        }
+        if ((mb_strlen($bucket) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $bucket when calling S3CredentialCreate., must be bigger than or equal to 1.');
+        }
+        if ((!preg_match("/.*/", ObjectSerializer::toString($bucket)))) {
+            throw new \InvalidArgumentException("invalid value for \$bucket when calling S3CredentialCreate., must conform to the pattern /.*/.");
+        }
+
+        $this->container['bucket'] = $bucket;
+
+        return $this;
+    }
+
+    /**
+     * Gets expiration_date
+     *
+     * @return \DateTime|null
+     */
+    public function getExpirationDate()
+    {
+        return $this->container['expiration_date'];
+    }
+
+    /**
+     * Sets expiration_date
+     *
+     * @param \DateTime|null $expiration_date expiration_date
+     *
+     * @return self
+     */
+    public function setExpirationDate($expiration_date)
+    {
+        if (is_null($expiration_date)) {
+            throw new \InvalidArgumentException('non-nullable expiration_date cannot be null');
+        }
+        if ((mb_strlen($expiration_date) > 30)) {
+            throw new \InvalidArgumentException('invalid length for $expiration_date when calling S3CredentialCreate., must be smaller than or equal to 30.');
+        }
+        if ((mb_strlen($expiration_date) < 10)) {
+            throw new \InvalidArgumentException('invalid length for $expiration_date when calling S3CredentialCreate., must be bigger than or equal to 10.');
+        }
+        if ((!preg_match("/.*/", ObjectSerializer::toString($expiration_date)))) {
+            throw new \InvalidArgumentException("invalid value for \$expiration_date when calling S3CredentialCreate., must conform to the pattern /.*/.");
+        }
+
+        $this->container['expiration_date'] = $expiration_date;
 
         return $this;
     }

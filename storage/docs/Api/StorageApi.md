@@ -13,6 +13,10 @@ All URIs are relative to https://api.azion.com, except if the operation defines 
 | [**storageApiBucketsObjectsRetrieve()**](StorageApi.md#storageApiBucketsObjectsRetrieve) | **GET** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Download object |
 | [**storageApiBucketsObjectsUpdate()**](StorageApi.md#storageApiBucketsObjectsUpdate) | **PUT** /v4/storage/buckets/{bucket_name}/objects/{object_key} | Update the object key |
 | [**storageApiBucketsPartialUpdate()**](StorageApi.md#storageApiBucketsPartialUpdate) | **PATCH** /v4/storage/buckets/{name} | Update bucket info |
+| [**storageApiS3CredentialsByAccessKey()**](StorageApi.md#storageApiS3CredentialsByAccessKey) | **GET** /v4/storage/s3-credentials/{s3_credential_access_key} | get by s3 credentials by access key |
+| [**storageApiS3CredentialsCreate()**](StorageApi.md#storageApiS3CredentialsCreate) | **POST** /v4/storage/s3-credentials | create s3 credentials |
+| [**storageApiS3CredentialsDelete()**](StorageApi.md#storageApiS3CredentialsDelete) | **DELETE** /v4/storage/s3-credentials/{s3_credential_access_key} | delete by s3 credentials |
+| [**storageApiS3CredentialsList()**](StorageApi.md#storageApiS3CredentialsList) | **GET** /v4/storage/s3-credentials | List s3 credentials |
 
 
 ## `storageApiBucketsCreate()`
@@ -458,7 +462,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/html`, `application/json`, `application/xml`, `text/plain`, `image/jpeg`, `image/png`, `image/gif`, `video/mp4`, `audio/mpeg`, `application/pdf`, `application/javascript`, `text/css`, `application/octet-stream`
+- **Accept**: `text/html`, `application/json`, `application/xml`, `text/plain`, `image/jpeg`, `image/png`, `image/gif`, `video/mp4`, `audio/mpeg`, `application/pdf`, `application/javascript`, `text/css`, `application/octet-stream`, `multipart/form-data`, `application/x-www-form-urlencoded`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -590,6 +594,260 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `storageApiS3CredentialsByAccessKey()`
+
+```php
+storageApiS3CredentialsByAccessKey($s3_credential_access_key): \OpenAPI\Client\Model\ResponseS3Credential
+```
+
+get by s3 credentials by access key
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\StorageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$s3_credential_access_key = 's3_credential_access_key_example'; // string
+
+try {
+    $result = $apiInstance->storageApiS3CredentialsByAccessKey($s3_credential_access_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling StorageApi->storageApiS3CredentialsByAccessKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **s3_credential_access_key** | **string**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ResponseS3Credential**](../Model/ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `storageApiS3CredentialsCreate()`
+
+```php
+storageApiS3CredentialsCreate($s3_credential_create): \OpenAPI\Client\Model\ResponseS3Credential
+```
+
+create s3 credentials
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\StorageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$s3_credential_create = new \OpenAPI\Client\Model\S3CredentialCreate(); // \OpenAPI\Client\Model\S3CredentialCreate
+
+try {
+    $result = $apiInstance->storageApiS3CredentialsCreate($s3_credential_create);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling StorageApi->storageApiS3CredentialsCreate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **s3_credential_create** | [**\OpenAPI\Client\Model\S3CredentialCreate**](../Model/S3CredentialCreate.md)|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ResponseS3Credential**](../Model/ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `storageApiS3CredentialsDelete()`
+
+```php
+storageApiS3CredentialsDelete($s3_credential_access_key): \OpenAPI\Client\Model\ResponseS3Credential
+```
+
+delete by s3 credentials
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\StorageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$s3_credential_access_key = 's3_credential_access_key_example'; // string
+
+try {
+    $result = $apiInstance->storageApiS3CredentialsDelete($s3_credential_access_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling StorageApi->storageApiS3CredentialsDelete: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **s3_credential_access_key** | **string**|  | |
+
+### Return type
+
+[**\OpenAPI\Client\Model\ResponseS3Credential**](../Model/ResponseS3Credential.md)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `storageApiS3CredentialsList()`
+
+```php
+storageApiS3CredentialsList($key, $last_modified, $size, $continuation_token): \OpenAPI\Client\Model\PaginatedS3CredentialList
+```
+
+List s3 credentials
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: tokenAuth
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = OpenAPI\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new OpenAPI\Client\Api\StorageApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$key = 'key_example'; // string | Object key. Used to identify the object for requests. Sent in POST requests as a path variable.
+$last_modified = 'last_modified_example'; // string | Timestamp of the last modification to the object.
+$size = 56; // int | Size of file in bytes.
+$continuation_token = 'continuation_token_example'; // string | Hash that can be added to the continuation_token query to skip list to the next page.
+
+try {
+    $result = $apiInstance->storageApiS3CredentialsList($key, $last_modified, $size, $continuation_token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling StorageApi->storageApiS3CredentialsList: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **key** | **string**| Object key. Used to identify the object for requests. Sent in POST requests as a path variable. | [optional] |
+| **last_modified** | **string**| Timestamp of the last modification to the object. | [optional] |
+| **size** | **int**| Size of file in bytes. | [optional] |
+| **continuation_token** | **string**| Hash that can be added to the continuation_token query to skip list to the next page. | [optional] |
+
+### Return type
+
+[**\OpenAPI\Client\Model\PaginatedS3CredentialList**](../Model/PaginatedS3CredentialList.md)
+
+### Authorization
+
+[tokenAuth](../../README.md#tokenAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
