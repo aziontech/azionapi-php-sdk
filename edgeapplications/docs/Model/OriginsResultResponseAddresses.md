@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | **string** |  |
-**weight** | **string** |  |
+**weight** | **int** |  |
 **server_role** | **string** |  |
 **is_active** | **bool** |  |
 
