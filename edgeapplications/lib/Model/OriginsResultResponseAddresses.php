@@ -84,7 +84,7 @@ class OriginsResultResponseAddresses implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'address' => false,
-        'weight' => true,
+        'weight' => false,
         'server_role' => false,
         'is_active' => false
     ];
@@ -301,6 +301,14 @@ class OriginsResultResponseAddresses implements ModelInterface, ArrayAccess, \Js
         if ($this->container['weight'] === null) {
             $invalidProperties[] = "'weight' can't be null";
         }
+        if (($this->container['weight'] > 100)) {
+            $invalidProperties[] = "invalid value for 'weight', must be smaller than or equal to 100.";
+        }
+
+        if (($this->container['weight'] < 1)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 1.";
+        }
+
         if ($this->container['server_role'] === null) {
             $invalidProperties[] = "'server_role' can't be null";
         }
@@ -369,15 +377,16 @@ class OriginsResultResponseAddresses implements ModelInterface, ArrayAccess, \Js
     public function setWeight($weight)
     {
         if (is_null($weight)) {
-            array_push($this->openAPINullablesSetToNull, 'weight');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('weight', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable weight cannot be null');
         }
+
+        if (($weight > 100)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling OriginsResultResponseAddresses., must be smaller than or equal to 100.');
+        }
+        if (($weight < 1)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling OriginsResultResponseAddresses., must be bigger than or equal to 1.');
+        }
+
         $this->container['weight'] = $weight;
 
         return $this;

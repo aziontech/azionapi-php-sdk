@@ -85,7 +85,7 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'address' => false,
         'is_active' => false,
-        'weight' => true,
+        'weight' => false,
         'server_role' => false
     ];
 
@@ -298,6 +298,14 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['address'] === null) {
             $invalidProperties[] = "'address' can't be null";
         }
+        if (!is_null($this->container['weight']) && ($this->container['weight'] > 100)) {
+            $invalidProperties[] = "invalid value for 'weight', must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['weight']) && ($this->container['weight'] < 1)) {
+            $invalidProperties[] = "invalid value for 'weight', must be bigger than or equal to 1.";
+        }
+
         if (!is_null($this->container['server_role']) && (mb_strlen($this->container['server_role']) > 10)) {
             $invalidProperties[] = "invalid value for 'server_role', the character length must be smaller than or equal to 10.";
         }
@@ -399,15 +407,16 @@ class CreateOriginsRequestAddresses implements ModelInterface, ArrayAccess, \Jso
     public function setWeight($weight)
     {
         if (is_null($weight)) {
-            array_push($this->openAPINullablesSetToNull, 'weight');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('weight', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable weight cannot be null');
         }
+
+        if (($weight > 100)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling CreateOriginsRequestAddresses., must be smaller than or equal to 100.');
+        }
+        if (($weight < 1)) {
+            throw new \InvalidArgumentException('invalid value for $weight when calling CreateOriginsRequestAddresses., must be bigger than or equal to 1.');
+        }
+
         $this->container['weight'] = $weight;
 
         return $this;
