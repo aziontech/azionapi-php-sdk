@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional]
 **language** | **string** |  | [optional]
 **code** | **string** |  | [optional]
-**json_args** | **mixed** |  | [optional]
+**json_args** | [**\OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs**](CreateEdgeFunctionRequestJsonArgs.md) |  | [optional]
 **initiator_type** | **string** |  | [optional]
 **active** | **bool** |  | [optional]
 **is_proprietary_code** | **bool** |  | [optional]
