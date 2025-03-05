@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
 **code** | **string** |  | [optional]
-**json_args** | [**\OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs**](CreateEdgeFunctionRequestJsonArgs.md) |  | [optional]
+**json_args** | **mixed** |  | [optional]
 **active** | **bool** |  | [optional]
 **initiator_type** | **string** |  | [optional]
 **language** | **string** |  | [optional]

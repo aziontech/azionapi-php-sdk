@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateApplicationResult
+ * ApplicationCreateInstanceRequestArgs
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * CreateApplicationResult Class Doc Comment
+ * ApplicationCreateInstanceRequestArgs Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApplicationCreateInstanceRequestArgs implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateApplicationResult';
+    protected static $openAPIModelName = 'ApplicationCreateInstanceRequest_args';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +57,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'results' => '\OpenAPI\Client\Model\ApplicationResultsCreate',
-        'schema_version' => 'int'
+        
     ];
 
     /**
@@ -69,8 +68,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'results' => null,
-        'schema_version' => 'int64'
+        
     ];
 
     /**
@@ -79,8 +77,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'results' => false,
-        'schema_version' => false
+        
     ];
 
     /**
@@ -169,8 +166,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'results' => 'results',
-        'schema_version' => 'schema_version'
+        
     ];
 
     /**
@@ -179,8 +175,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'results' => 'setResults',
-        'schema_version' => 'setSchemaVersion'
+        
     ];
 
     /**
@@ -189,8 +184,7 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'results' => 'getResults',
-        'schema_version' => 'getSchemaVersion'
+        
     ];
 
     /**
@@ -250,8 +244,6 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('results', $data ?? [], null);
-        $this->setIfExists('schema_version', $data ?? [], null);
     }
 
     /**
@@ -281,12 +273,6 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['results'] === null) {
-            $invalidProperties[] = "'results' can't be null";
-        }
-        if ($this->container['schema_version'] === null) {
-            $invalidProperties[] = "'schema_version' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,60 +287,6 @@ class CreateApplicationResult implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets results
-     *
-     * @return \OpenAPI\Client\Model\ApplicationResultsCreate
-     */
-    public function getResults()
-    {
-        return $this->container['results'];
-    }
-
-    /**
-     * Sets results
-     *
-     * @param \OpenAPI\Client\Model\ApplicationResultsCreate $results results
-     *
-     * @return self
-     */
-    public function setResults($results)
-    {
-        if (is_null($results)) {
-            throw new \InvalidArgumentException('non-nullable results cannot be null');
-        }
-        $this->container['results'] = $results;
-
-        return $this;
-    }
-
-    /**
-     * Gets schema_version
-     *
-     * @return int
-     */
-    public function getSchemaVersion()
-    {
-        return $this->container['schema_version'];
-    }
-
-    /**
-     * Sets schema_version
-     *
-     * @param int $schema_version schema_version
-     *
-     * @return self
-     */
-    public function setSchemaVersion($schema_version)
-    {
-        if (is_null($schema_version)) {
-            throw new \InvalidArgumentException('non-nullable schema_version cannot be null');
-        }
-        $this->container['schema_version'] = $schema_version;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *

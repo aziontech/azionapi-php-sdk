@@ -59,7 +59,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'name' => 'string',
         'code' => 'string',
-        'json_args' => '\OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs',
+        'json_args' => 'mixed',
         'active' => 'bool',
         'is_proprietary_code' => 'bool'
     ];
@@ -87,7 +87,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'name' => false,
         'code' => false,
-        'json_args' => false,
+        'json_args' => true,
         'active' => false,
         'is_proprietary_code' => false
     ];
@@ -374,7 +374,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets json_args
      *
-     * @return \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null
+     * @return mixed|null
      */
     public function getJsonArgs()
     {
@@ -384,14 +384,21 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets json_args
      *
-     * @param \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null $json_args json_args
+     * @param mixed|null $json_args json_args
      *
      * @return self
      */
     public function setJsonArgs($json_args)
     {
         if (is_null($json_args)) {
-            throw new \InvalidArgumentException('non-nullable json_args cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'json_args');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('json_args', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['json_args'] = $json_args;
 

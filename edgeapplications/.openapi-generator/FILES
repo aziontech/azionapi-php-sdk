@@ -21,6 +21,7 @@ docs/Model/ApplicationCachePutResponse.md
 docs/Model/ApplicationCacheResponseDetails.md
 docs/Model/ApplicationCacheResults.md
 docs/Model/ApplicationCreateInstanceRequest.md
+docs/Model/ApplicationCreateInstanceRequestArgs.md
 docs/Model/ApplicationInstanceResults.md
 docs/Model/ApplicationInstancesGetOneResponse.md
 docs/Model/ApplicationInstancesGetResponse.md
@@ -90,6 +91,7 @@ lib/Model/ApplicationCachePutResponse.php
 lib/Model/ApplicationCacheResponseDetails.php
 lib/Model/ApplicationCacheResults.php
 lib/Model/ApplicationCreateInstanceRequest.php
+lib/Model/ApplicationCreateInstanceRequestArgs.php
 lib/Model/ApplicationInstanceResults.php
 lib/Model/ApplicationInstancesGetOneResponse.php
 lib/Model/ApplicationInstancesGetResponse.php
@@ -140,3 +142,4 @@ lib/Model/UpdateOriginsRequest.php
 lib/Model/UpdateRulesEngineRequest.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ApplicationCreateInstanceRequestArgsTest.php
