@@ -59,7 +59,7 @@ class PutEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'name' => 'string',
         'code' => 'string',
-        'json_args' => '\OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs',
+        'json_args' => 'mixed',
         'active' => 'bool',
         'initiator_type' => 'string',
         'language' => 'string',
@@ -91,7 +91,7 @@ class PutEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     protected static array $openAPINullables = [
         'name' => false,
         'code' => false,
-        'json_args' => false,
+        'json_args' => true,
         'active' => false,
         'initiator_type' => false,
         'language' => false,
@@ -412,7 +412,7 @@ class PutEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets json_args
      *
-     * @return \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null
+     * @return mixed|null
      */
     public function getJsonArgs()
     {
@@ -422,14 +422,21 @@ class PutEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets json_args
      *
-     * @param \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null $json_args json_args
+     * @param mixed|null $json_args json_args
      *
      * @return self
      */
     public function setJsonArgs($json_args)
     {
         if (is_null($json_args)) {
-            throw new \InvalidArgumentException('non-nullable json_args cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'json_args');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('json_args', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['json_args'] = $json_args;
 
