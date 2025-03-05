@@ -1,6 +1,6 @@
 <?php
 /**
- * PatchEdgeFunctionRequest
+ * CreateEdgeFunctionRequestJsonArgs
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * PatchEdgeFunctionRequest Class Doc Comment
+ * CreateEdgeFunctionRequestJsonArgs Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
@@ -40,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateEdgeFunctionRequestJsonArgs implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PatchEdgeFunctionRequest';
+    protected static $openAPIModelName = 'CreateEdgeFunctionRequest_json_args';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'code' => 'string',
-        'json_args' => '\OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs',
-        'active' => 'bool',
-        'is_proprietary_code' => 'bool'
+        
     ];
 
     /**
@@ -72,11 +68,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'code' => null,
-        'json_args' => null,
-        'active' => null,
-        'is_proprietary_code' => null
+        
     ];
 
     /**
@@ -85,11 +77,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'code' => false,
-        'json_args' => false,
-        'active' => false,
-        'is_proprietary_code' => false
+        
     ];
 
     /**
@@ -178,11 +166,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'code' => 'code',
-        'json_args' => 'json_args',
-        'active' => 'active',
-        'is_proprietary_code' => 'is_proprietary_code'
+        
     ];
 
     /**
@@ -191,11 +175,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'code' => 'setCode',
-        'json_args' => 'setJsonArgs',
-        'active' => 'setActive',
-        'is_proprietary_code' => 'setIsProprietaryCode'
+        
     ];
 
     /**
@@ -204,11 +184,7 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'code' => 'getCode',
-        'json_args' => 'getJsonArgs',
-        'active' => 'getActive',
-        'is_proprietary_code' => 'getIsProprietaryCode'
+        
     ];
 
     /**
@@ -268,11 +244,6 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('json_args', $data ?? [], null);
-        $this->setIfExists('active', $data ?? [], null);
-        $this->setIfExists('is_proprietary_code', $data ?? [], null);
     }
 
     /**
@@ -316,141 +287,6 @@ class PatchEdgeFunctionRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets json_args
-     *
-     * @return \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null
-     */
-    public function getJsonArgs()
-    {
-        return $this->container['json_args'];
-    }
-
-    /**
-     * Sets json_args
-     *
-     * @param \OpenAPI\Client\Model\CreateEdgeFunctionRequestJsonArgs|null $json_args json_args
-     *
-     * @return self
-     */
-    public function setJsonArgs($json_args)
-    {
-        if (is_null($json_args)) {
-            throw new \InvalidArgumentException('non-nullable json_args cannot be null');
-        }
-        $this->container['json_args'] = $json_args;
-
-        return $this;
-    }
-
-    /**
-     * Gets active
-     *
-     * @return bool|null
-     */
-    public function getActive()
-    {
-        return $this->container['active'];
-    }
-
-    /**
-     * Sets active
-     *
-     * @param bool|null $active active
-     *
-     * @return self
-     */
-    public function setActive($active)
-    {
-        if (is_null($active)) {
-            throw new \InvalidArgumentException('non-nullable active cannot be null');
-        }
-        $this->container['active'] = $active;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_proprietary_code
-     *
-     * @return bool|null
-     */
-    public function getIsProprietaryCode()
-    {
-        return $this->container['is_proprietary_code'];
-    }
-
-    /**
-     * Sets is_proprietary_code
-     *
-     * @param bool|null $is_proprietary_code is_proprietary_code
-     *
-     * @return self
-     */
-    public function setIsProprietaryCode($is_proprietary_code)
-    {
-        if (is_null($is_proprietary_code)) {
-            throw new \InvalidArgumentException('non-nullable is_proprietary_code cannot be null');
-        }
-        $this->container['is_proprietary_code'] = $is_proprietary_code;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
