@@ -1,0 +1,5 @@
+# Test tooling
+node_modules/
+tests/vitest/harness/vendor/
+.php-cs-fixer.cache
+.phpunit.result.cache
